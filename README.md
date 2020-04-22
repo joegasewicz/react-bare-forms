@@ -1,5 +1,5 @@
-
 # React Bare Forms
+![ReactBareForms](images/rbf_logo.png?raw=true "React Bare Forms")
 
 #### Install
 ```
