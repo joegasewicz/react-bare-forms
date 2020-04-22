@@ -5,4 +5,9 @@
 npm install react-bare-forms
 ```
 
+#### Usage
+```typescript jsx
+    // todo
+```
+
 Licence MIT
