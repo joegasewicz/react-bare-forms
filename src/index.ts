@@ -5,11 +5,20 @@ import {
 import {
     Submit,
     Field,
+    TextArea,
 } from "./form-elements";
 
+import {
+    isFieldEmpty,
+    customValidator,
+} from "./validators";
 
 export {
-    Form,
+    // Form elements
     Field,
+    Form,
     Submit,
+    // Validators
+    customValidator,
+    isFieldEmpty,
 }

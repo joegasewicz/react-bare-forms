@@ -5,7 +5,7 @@ export interface IValidation {
     messages: Array<string>;
 }
 
-export type Validators = Array<(...args: Array<any>) => IValidation>;
+export type Validators = Array<(...args: Array<any>) => any>; // TODO fix type
 
 export type IValidationFunction = (...args: Array<any>) => IValidation|_FieldEmptyErrorMsg;
 

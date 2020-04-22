@@ -54,18 +54,20 @@ export const FormContext = createContext<IFormContext>(DEFAULT_FORM_STATE);
 export const Form = (props: IFormContext) => {
     const startingState = {...DEFAULT_FORM_STATE, state: props.state, formKey: props.formKey, isSubmitted: false};
     const [currentState, updateState] = useState(startingState);
-    if(currentState === null) {
-        // TODO use custom error
-        throw Error("React-Bare-Forms: You must pass your React component state to Form");
-    }
-    const children = props.children || null;
 
-    const setIsSubmitted = (): void => {
+    const setIsSubmitted = (): void => { // TODO not updating on second mount
         updateState({
             ...currentState,
             isSubmitted: true,
         });
     };
+
+
+    if(currentState === null) {
+        // TODO use custom error
+        throw Error("React-Bare-Forms: You must pass your React component state to Form");
+    }
+    const children = props.children || null;
 
     return (
         <FormContext.Provider value={{...currentState, setIsSubmitted}}>
@@ -103,6 +105,7 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
                     return (
                         <>{validators.map((_, index: number) => {
                             const validationResult = validators[index](formState[name]);
+                            console.log("valid -----> ", context.isSubmitted);
                             if(!validationResult.isValid && context.isSubmitted) {
                                 return validationResult.messages.map((msg: string) =>
                                     <div className="alert alert-danger">{msg}</div>);
@@ -118,51 +121,4 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
         </FormContext.Consumer>
     );
 };
-
-
-// -------------------------------------------
-// Controls
-/**
- *
- * @param fieldType
- * @param name
- */
-export const selectElement = (fieldType: FieldTypes, name: any) => {
-    switch(fieldType) {
-        case "text": {
-            return <textarea className="form-control" rows={10}  onChange={handleChange(name)} />;
-        }
-        case "email": {
-            return <input type="text" className="form-control"/>;
-        }
-        case "password": {
-            return <input type="text" className="form-control"/>;
-        }
-        case "textarea": {
-            return <textarea className="form-control" rows={10}  onChange={handleChange(name)} />;
-        }
-        case "select": {
-            // return <div className="form-group">
-            //             //     <label>Instrument</label>
-            //             //     <select className="form-control">
-            //             //     {JSON.stringify(this.props.instruments)}
-            //             // {this.props.instruments && this.props.instruments.length ?
-            //             //     this.props.instruments.map((instr: IInstruments) =>
-            //             //         <option value={instr.instr_id}>{instr.name}</option>)
-            //             //     : null}
-            //             // </select>
-            //             // </div>;
-            return <></>;
-        }
-        case "checkbox": {
-            return <></>;
-        }
-        default: {
-            return <input type="text" className="form-control"/>;
-        }
-    }
-};
-
-
-
 
