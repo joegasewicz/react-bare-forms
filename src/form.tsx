@@ -105,7 +105,6 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
                     return (
                         <>{validators.map((_, index: number) => {
                             const validationResult = validators[index](formState[name]);
-                            console.log("valid -----> ", context.isSubmitted);
                             if(!validationResult.isValid && context.isSubmitted) {
                                 return validationResult.messages.map((msg: string) =>
                                     <div className="alert alert-danger">{msg}</div>);
