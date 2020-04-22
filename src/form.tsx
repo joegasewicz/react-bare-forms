@@ -32,7 +32,7 @@ interface ISubmitProps {
 }
 interface IFormControlProps {
     name: any;
-    text: string;
+    label: string;
     type: FieldTypes;
     hint?: string;
     validators?: Validators
@@ -67,7 +67,8 @@ export const Form = (props: IFormContext) => {
     const startingState = {...DEFAULT_FORM_STATE, state: props.state, formKey: props.formKey, isSubmitted: false};
     const [currentState, updateState] = useState(startingState);
     if(currentState === null) {
-        throw Error("React-TS-Forms: You must pass your React component state to Form");
+        // TODO use custom error
+        throw Error("React-Bare-Forms: You must pass your React component state to Form");
     }
     const children = props.children || null;
 
@@ -216,16 +217,16 @@ const selectElement = (fieldType: FieldTypes, name: any) => {
  * @param props
  * @constructor
  */
-export const FormControl = (props: IFormControlProps) => {
-    const {name, text, type, hint = "", validators = null} = props;
+export const Field = (props: IFormControlProps) => {
+    const {name, label, type, hint = "", validators = null} = props;
     return(
         <div className="form-group">
-            <label>{text}</label>
+            {label && <label>{label}</label>}
     {hint && <small className="form-text text-muted">{hint}</small>}
         {selectElement(type, name)}
         {props.validators && <ControlValidators validators={validators} name={name} />}
         </div>
-        );
+    );
 };
 
 
