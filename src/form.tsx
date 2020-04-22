@@ -3,17 +3,18 @@ import {ChangeEvent, ReactChildren, useState, createContext, useContext, ReactEl
 import {SyntheticEvent} from "react";
 import {IValidation, Validators} from "./validators";
 import {FieldTypes} from "./form-elements";
+import {handleChange, handleSubmit} from "./handlers";
 
 // ------------------------------------------------------
 // TYPES
 
-type FormType =
+export type FormType =
     |HTMLTextAreaElement
     |HTMLInputElement
     |HTMLButtonElement;
-type IReactState = {};
-type FormState<T> = { [K in keyof T]: T[K] };
-interface IFormState {
+export type IReactState = {};
+export type FormState<T> = { [K in keyof T]: T[K] };
+export interface IFormState {
     children: any;
     formKey: string;
     state: {};
@@ -76,26 +77,6 @@ export const Form = (props: IFormContext) => {
 
     </FormContext.Provider>
 );
-};
-
-/**
- *
- * @param name
- */
-const handleChange = <T, K extends keyof IFormState>(name: K) => {
-    const currentState: any = useContext(FormContext);
-    const [_, updateState] = useState(currentState);
-    if(currentState) {
-        return (e: ChangeEvent<FormType>): void => {
-            updateState({
-                ...currentState,
-                formData: {
-                    ...currentState[name],
-                    [name]: (e.target.value as any)
-                } as FormState<IFormState>
-            });
-        }
-    }
 };
 
 
@@ -185,32 +166,4 @@ export const selectElement = (fieldType: FieldTypes, name: any) => {
 
 
 
-function handleSubmit(e: SyntheticEvent, localState: IFormContext, updateState: any) {
-    e.preventDefault();
-    let currentErrors: Array<string> = [];
 
-    if(localState.formKey && localState.state) {
-        const formData = localState.state[localState.formKey];
-
-        if (formData) {
-            Object.keys(formData).map((key) => {
-
-                if(!formData[key] || formData[key] === "") {
-                    const currentError = `Missing ${key} details.`;
-                    currentErrors = [...currentErrors, currentError];
-                    updateState({
-                        ...localState,
-                        formErrors: currentErrors,
-                    });
-                }
-            });
-
-            if(currentErrors.length) {
-                alert("ERRORS!")
-            } else {
-                alert("Submitted Success!");
-            }
-        }
-    }
-
-}
