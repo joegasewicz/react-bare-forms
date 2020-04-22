@@ -20,6 +20,11 @@ export interface IFormState {
     state: {};
 }
 
+export interface IFormElementValidators {
+    validators: Validators;
+    name: any;
+}
+
 export interface IFormContext {
     state?: any;
     children?: any;
@@ -64,62 +69,56 @@ export const Form = (props: IFormContext) => {
 
     return (
         <FormContext.Provider value={{...currentState, setIsSubmitted}}>
-
-    <FormContext.Consumer>
-        {(context: IFormContext) => (
-        <form
-            onSubmit={(e: SyntheticEvent) => handleSubmit(e, context, updateState)}
->
-    {children}
-    </form>
-)}
-    </FormContext.Consumer>
-
-    </FormContext.Provider>
-);
+            <FormContext.Consumer>
+                {(context: IFormContext) => (
+                    <form onSubmit={(e: SyntheticEvent) => handleSubmit(e, context, updateState)}>
+                        {children}
+                    </form>
+                )}
+            </FormContext.Consumer>
+        </FormContext.Provider>
+    );
 };
-
-
-
 
 /**
  *
- * @param validators
- * @param name
+ * @param props
+ * @constructor
  */
-export const ControlValidators = (props: any): ReactElement => {
-    const {validators = null, name}: {validators: Validators, name: any} = props;
+export const FormElementValidators = (props: IFormElementValidators): ReactElement => {
+    const {validators = null, name}: IFormElementValidators = props;
     return (
         <FormContext.Consumer>
             {(context: IFormContext) => {
-        if(!context.state) {
-            return null;
-        }
-        const formState = context.state[context.formKey];
+                if(!context.state) {
+                    return null;
+                }
+                const formState = context.state[context.formKey];
 
-        if(!formState) {
-            return null;
-        }
+                if(!formState) {
+                    return null;
+                }
 
-        if(validators && Array.isArray(validators) && validators.length) {
-            return (
-                <>{validators.map((_, index: number) => {
-                        const validationResult = validators[index](formState[name]);
-                        if(!validationResult.isValid && context.isSubmitted) {
-                            return validationResult.messages.map((msg: string) =>
-                                <div className="alert alert-danger">{msg}</div>);
-                        }
-                    })}</>
-            );
+                if(validators && Array.isArray(validators) && validators.length) {
+                    return (
+                        <>{validators.map((_, index: number) => {
+                            const validationResult = validators[index](formState[name]);
+                            if(!validationResult.isValid && context.isSubmitted) {
+                                return validationResult.messages.map((msg: string) =>
+                                    <div className="alert alert-danger">{msg}</div>);
+                            }
+                        })}</>
+                    );
 
-        } else {
-            return null;
-        }
+                } else {
+                    return null;
+                }
 
-    }}
-    </FormContext.Consumer>
-);
+            }}
+        </FormContext.Consumer>
+    );
 };
+
 
 // -------------------------------------------
 // Controls

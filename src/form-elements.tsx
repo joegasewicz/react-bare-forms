@@ -1,5 +1,5 @@
 import * as React from "react";
-import {ControlValidators, FormContext, IFormContext, selectElement} from "./form";
+import {FormElementValidators, FormContext, IFormContext, selectElement} from "./form";
 import {Validators} from "./validators";
 
 export type FieldTypes =
@@ -56,7 +56,7 @@ export const Field = (props: IFormElementProps) => {
             {label && <label>{label}</label>}
             {hint && <small className="form-text text-muted">{hint}</small>}
             {selectElement(type, name)}
-            {props.validators && <ControlValidators validators={validators} name={name} />}
+            {props.validators && <FormElementValidators validators={validators} name={name} />}
         </div>
     );
 };
