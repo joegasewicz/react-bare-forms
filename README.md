@@ -13,7 +13,7 @@ npm install react-bare-forms
 
 
 #### Bootstrap 4
-There are several ways to include Bootstrap 4:
+There are several ways to include Bootstrap 4 but here we are going to use sass:
 
 ```
     npm install bootstrap
@@ -52,7 +52,7 @@ You can import them like this:
 @import "~bootstrap/scss/alert";
 @import "~bootstrap/scss/buttons";
 ```
-And finally import them into your React application:
+And finally import your sass into your React application:
 
 ```jsx
 import "./mystyles.scss";
