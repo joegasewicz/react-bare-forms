@@ -13,8 +13,7 @@ npm install react-bare-forms
 
 
 #### Bootstrap 4
-React Bare Forms only includes bootstrap 4 components required to style forms.
-The following components are used:
+To keep bundle sizes to a minimum, React Bare Forms only includes the following bootstrap 4 components:
 - Forms
 - Buttons
 - Alerts
