@@ -13,6 +13,8 @@ npm install react-bare-forms
 
 
 #### Bootstrap 4
+Bootstrap 4 doesn't come with React Bare Forms so that you can obtain the smallest bundle size possible!
+
 There are several ways to include Bootstrap 4 but here we are going to use sass:
 
 ```
