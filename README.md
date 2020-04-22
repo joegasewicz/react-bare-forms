@@ -13,9 +13,49 @@ npm install react-bare-forms
 
 
 #### Bootstrap 4
-To keep bundle sizes to a minimum, React Bare Forms only includes the following bootstrap 4 components:
+There are several ways to include Bootstrap 4:
+
+```
+    npm install bootstrap
+```
+
+Then install the loaders
+```
+npm install style-loader css-loader sass-loader --save-dev
+
+# Then in your webpack.config.js:
+
+    {
+             test: /\.scss$/,
+             use: [
+                 "style-loader", // creates style nodes from JS strings
+                 "css-loader", // translates CSS into CommonJS
+                 "sass-loader" // compiles Sass to CSS, using Node Sass by default
+             ]
+    }
+```
+If you want to keep bundle sizes to a minimum, React Bare Forms only requires the following bootstrap 4 components:
 - Forms
 - Buttons
 - Alerts
+
+You can import them like this:
+```scss
+// - mystyles.scss
+// Required
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+// Optional
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/buttons";
+```
+And finally import them into your React application:
+
+```jsx
+import "./mystyles.scss";
+```
 
 Licence MIT
