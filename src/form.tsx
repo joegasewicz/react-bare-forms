@@ -1,9 +1,7 @@
 import * as React from "react";
 import {ChangeEvent, ReactChildren, useState, createContext, useContext, ReactElement} from "react";
-import {JSXElement} from "@babel/types";
 import {SyntheticEvent} from "react";
 import {IValidation} from "./validators";
-import {IInstruments} from "../../store/instruments/payloads";
 
 // ------------------------------------------------------
 // TYPES
@@ -192,16 +190,17 @@ const selectField = (fieldType: FieldTypes, name: any) => {
             return <textarea className="form-control" rows={10}  onChange={handleChange(name)} />;
         }
         case "select": {
-            return <div className="form-group">
-                <label>Instrument</label>
-                <select className="form-control">
-                {JSON.stringify(this.props.instruments)}
-            {this.props.instruments && this.props.instruments.length ?
-                this.props.instruments.map((instr: IInstruments) =>
-                    <option value={instr.instr_id}>{instr.name}</option>)
-                : null}
-            </select>
-            </div>;
+            // return <div className="form-group">
+            //             //     <label>Instrument</label>
+            //             //     <select className="form-control">
+            //             //     {JSON.stringify(this.props.instruments)}
+            //             // {this.props.instruments && this.props.instruments.length ?
+            //             //     this.props.instruments.map((instr: IInstruments) =>
+            //             //         <option value={instr.instr_id}>{instr.name}</option>)
+            //             //     : null}
+            //             // </select>
+            //             // </div>;
+            return <></>;
         }
         case "checkbox": {
             return <></>;
