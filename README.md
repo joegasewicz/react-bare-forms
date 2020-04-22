@@ -1,6 +1,6 @@
 ![ReactBareForms](images/rbf_logo.png?raw=true "React Bare Forms")
 
-The worlds most simple form library for React & Bootstrap 4.
+React library to build forms with Bootstrap 4 styling.
 #### Install
 ```
 npm install react-bare-forms
