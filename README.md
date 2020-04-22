@@ -8,7 +8,20 @@ npm install react-bare-forms
 
 #### Usage
 ```typescript jsx
-    // todo
+import * as ReactBareForms from "react-bare-forms";
+
+
+    <ReactBareForms.Form state={this.state} formKey="myForm1">
+    
+        <ReactBareForms.Field
+            name="message"
+            hint="Must be at least 5 characters long"
+            label="Your Name"
+            validators={[ReactBareForms.isFieldEmpty(5)]}
+        ></ReactBareForms.Field>
+        
+        <ReactBareForms.Submit>Submit</Submit>
+    </ReactBareForms.Form>
 ```
 
 
