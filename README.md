@@ -4,3 +4,5 @@
 ```
 npm install react-bare-forms
 ```
+
+Licence MIT

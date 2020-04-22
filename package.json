@@ -10,5 +10,9 @@
     "react"
   ],
   "author": "joegasewicz",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "ts-loader": "^7.0.1",
+    "typescript": "^3.8.3"
+  }
 }
