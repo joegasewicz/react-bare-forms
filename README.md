@@ -30,7 +30,7 @@ Then install the loaders
 ```
 npm install style-loader css-loader sass-loader --save-dev
 
-# Then in your webpack.config.js:
+# In your webpack.config.js:
 
     {
              test: /\.scss$/,

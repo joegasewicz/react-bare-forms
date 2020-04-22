@@ -9,7 +9,7 @@ export type IValidationFunction = (...args: Array<any>) => IValidation|_FieldEmp
 
 /**
  *
- * @param minLength
+ * @param minLength Then minimum length of the value
  */
 export function isFieldEmpty(minLength: number = null): IValidationFunction {
     if(minLength === null) {
