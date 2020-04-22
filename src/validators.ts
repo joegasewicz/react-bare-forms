@@ -5,20 +5,25 @@ export interface IValidation {
     messages: Array<string>;
 }
 
+export type IValidationFunction = (...args: Array<any>) => IValidation|_FieldEmptyErrorMsg;
+
 /**
  *
  * @param minLength
  */
-export function isFieldEmpty(minLength: number = null): Function {
-    if(!minLength) {
+export function isFieldEmpty(minLength: number = null): IValidationFunction {
+    if(minLength === null) {
         throw new _FieldEmptyErrorMsg(_isFieldEmptyErrorMsg);
-
     }
     return function (...args: Array<any>): IValidation {
-        const isValid = (args[0].length >= args[1]);
+        let messages: Array<string> = [];
+        const isValid = (args[0].length >= minLength);
+        if(!isValid) {
+            messages = [`Must be at least ${minLength} characters`];
+        }
         return {
             isValid,
-            messages: ["Must be at least 50 characters"],
+            messages,
         }
     }
 }
