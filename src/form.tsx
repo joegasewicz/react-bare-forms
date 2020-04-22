@@ -1,43 +1,25 @@
 import * as React from "react";
 import {ChangeEvent, ReactChildren, useState, createContext, useContext, ReactElement} from "react";
 import {SyntheticEvent} from "react";
-import {IValidation} from "./validators";
+import {IValidation, Validators} from "./validators";
+import {FieldTypes} from "./form-elements";
 
 // ------------------------------------------------------
 // TYPES
+
 type FormType =
     |HTMLTextAreaElement
     |HTMLInputElement
     |HTMLButtonElement;
 type IReactState = {};
 type FormState<T> = { [K in keyof T]: T[K] };
-type FieldTypes =
-    | "text"
-    | "submit"
-    | "textarea"
-    | "select"
-    | "password"
-    | "email"
-    | "checkbox";
-
-type Validators = Array<(...args: Array<any>) => IValidation>;
 interface IFormState {
     children: any;
     formKey: string;
     state: {};
 }
-interface ISubmitProps {
-    children: any;
-    type: string;
-}
-interface IFormControlProps {
-    name: any;
-    label: string;
-    type: FieldTypes;
-    hint?: string;
-    validators?: Validators
-}
-interface IFormContext {
+
+export interface IFormContext {
     state?: any;
     children?: any;
     formKey?: string;
@@ -56,7 +38,7 @@ const DEFAULT_FORM_STATE: any = {
     setIsSubmitted: () => {},
 };
 
-const FormContext = createContext<IFormContext>(DEFAULT_FORM_STATE);
+export const FormContext = createContext<IFormContext>(DEFAULT_FORM_STATE);
 
 /**
  *
@@ -117,25 +99,14 @@ const handleChange = <T, K extends keyof IFormState>(name: K) => {
 };
 
 
-export const Submit = (props: ISubmitProps): any => {
 
-    return <FormContext.Consumer>
-        {({setIsSubmitted}: IFormContext) => {
-        return <button
-            disabled={false}
-        type="submit"
-        onClick={() => setIsSubmitted()}
-    >{props.children}</button>
-    }}
-    </FormContext.Consumer>
-};
 
 /**
  *
  * @param validators
  * @param name
  */
-const ControlValidators = (props: any): ReactElement => {
+export const ControlValidators = (props: any): ReactElement => {
     const {validators = null, name}: {validators: Validators, name: any} = props;
     return (
         <FormContext.Consumer>
@@ -176,7 +147,7 @@ const ControlValidators = (props: any): ReactElement => {
  * @param fieldType
  * @param name
  */
-const selectElement = (fieldType: FieldTypes, name: any) => {
+export const selectElement = (fieldType: FieldTypes, name: any) => {
     switch(fieldType) {
         case "text": {
             return <textarea className="form-control" rows={10}  onChange={handleChange(name)} />;
@@ -212,22 +183,6 @@ const selectElement = (fieldType: FieldTypes, name: any) => {
     }
 };
 
-/**
- *
- * @param props
- * @constructor
- */
-export const Field = (props: IFormControlProps) => {
-    const {name, label, type, hint = "", validators = null} = props;
-    return(
-        <div className="form-group">
-            {label && <label>{label}</label>}
-    {hint && <small className="form-text text-muted">{hint}</small>}
-        {selectElement(type, name)}
-        {props.validators && <ControlValidators validators={validators} name={name} />}
-        </div>
-    );
-};
 
 
 function handleSubmit(e: SyntheticEvent, localState: IFormContext, updateState: any) {

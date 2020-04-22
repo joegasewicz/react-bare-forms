@@ -5,11 +5,13 @@ export interface IValidation {
     messages: Array<string>;
 }
 
+export type Validators = Array<(...args: Array<any>) => IValidation>;
+
 export type IValidationFunction = (...args: Array<any>) => IValidation|_FieldEmptyErrorMsg;
 
 /**
  *
- * @param minLength Then minimum length of the value
+ * @param minLength The minimum length required
  */
 export function isFieldEmpty(minLength: number = null): IValidationFunction {
     if(minLength === null) {
@@ -25,5 +27,16 @@ export function isFieldEmpty(minLength: number = null): IValidationFunction {
             isValid,
             messages,
         }
+    }
+}
+
+/**
+ * Function that takes a callback which contains the callers own validation logic
+ * & returns an object with isValid & messages keys.
+ * @param callback
+ */
+export function customValidator(callback: (...args: Array<any>) => IValidation): IValidationFunction  {
+    return function (...args: Array<any>) {
+        return callback(...args);
     }
 }
