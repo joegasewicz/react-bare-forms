@@ -10,7 +10,8 @@
     "typeRoots": [
       "node_modules/@types/",
       "index.d.ts"
-    ]
+    ],
+    "esModuleInterop": true
   },
   "include": [
     "./src/**/*",
