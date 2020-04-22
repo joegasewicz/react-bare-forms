@@ -20,6 +20,8 @@ module.exports =  function(env, argv) {
         output: {
             filename: argv["output-filename"],
             path: path.resolve(__dirname, argv["output-path"]),
+            library: "react-bare-lib",
+            libraryTarget: "umd",
         },
     };
 };

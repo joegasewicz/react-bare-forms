@@ -6,7 +6,15 @@
     "module": "es6",
     "target": "es5",
     "jsx": "react",
-    "allowJs": true
-  }
+    "allowJs": true,
+    "typeRoots": [
+      "node_modules/@types/",
+      "index.d.ts"
+    ]
+  },
+  "include": [
+    "./src/**/*",
+    "./showcase/**/*"
+  ]
 }
 

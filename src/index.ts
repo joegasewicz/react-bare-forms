@@ -1,1 +1,8 @@
-alert("react-bare-forms");
+import {
+    Form,
+} from "./form";
+
+
+export {
+    Form,
+}

@@ -63,7 +63,7 @@ const FormContext = createContext<IFormContext>(DEFAULT_FORM_STATE);
  * @param props
  * @constructor
  */
-export const ReactTSForm = (props: IFormContext) => {
+export const Form = (props: IFormContext) => {
     const startingState = {...DEFAULT_FORM_STATE, state: props.state, formKey: props.formKey, isSubmitted: false};
     const [currentState, updateState] = useState(startingState);
     if(currentState === null) {
@@ -175,7 +175,7 @@ const ControlValidators = (props: any): ReactElement => {
  * @param fieldType
  * @param name
  */
-const selectField = (fieldType: FieldTypes, name: any) => {
+const selectElement = (fieldType: FieldTypes, name: any) => {
     switch(fieldType) {
         case "text": {
             return <textarea className="form-control" rows={10}  onChange={handleChange(name)} />;
@@ -222,7 +222,7 @@ export const FormControl = (props: IFormControlProps) => {
         <div className="form-group">
             <label>{text}</label>
     {hint && <small className="form-text text-muted">{hint}</small>}
-        {selectField(type, name)}
+        {selectElement(type, name)}
         {props.validators && <ControlValidators validators={validators} name={name} />}
         </div>
         );

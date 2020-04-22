@@ -4,9 +4,9 @@
   "description": "A bare minimal React form library for quick & simple forms.",
   "main": "index.js",
   "scripts": {
-    "build-dev": "webpack --env.mode devlopment --entry=./src/index.ts --output-path=hello --output-filename=index.js",
-    "build-prod": "webpack --env.mode production --entry=./src/index.ts --output-path=hello --output-filename=index.js",
-    "server": "webpack-dev-server --env.mode development --entry=./showcase/index.tsx --output-path=dist --output-filename=bundle.js",
+    "build-dev": "webpack --env.mode devlopment --entry=./src/index.ts --output-path=lib --output-filename=index.js",
+    "build-prod": "webpack --env.mode production --entry=./src/index.ts --output-path=lib --output-filename=index.js",
+    "server": "webpack-dev-server --config webpack.config.dev.js --output-path=dist --output-filename=bundle.js",
     "test": "jest"
   },
   "keywords": [
@@ -17,6 +17,7 @@
   "devDependencies": {
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
+    "html-webpack-plugin": "^4.2.0",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^7.0.1",
     "typescript": "^3.8.3",
