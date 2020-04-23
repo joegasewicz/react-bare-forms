@@ -110,10 +110,9 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
         <FormContext.Consumer>
             {(context: IFormContext) => {
                 const formState = context.state[context.formKey];
-                if(!formState || !context.formMetaData) {
+                if(!formState || !context.formMetaData || !validators && !Array.isArray(validators)) {
                     return null;
-                }
-                if(validators && Array.isArray(validators) && validators.length) {
+                } else {
                     return (
                         <>{validators.map((_, index: number) => {
                             const validationResult = validators[index](formState[name]);
@@ -123,8 +122,6 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
                             }
                         })}</>
                     );
-                } else {
-                    return null;
                 }
             }}
         </FormContext.Consumer>
