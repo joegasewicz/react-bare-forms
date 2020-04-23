@@ -58,3 +58,18 @@ export function setFormData(update: Function, current: IFormContext) {
         });
     };
 }
+
+/**
+ *
+ * @param update
+ * @param current
+ */
+export const setIsSubmitted = (update: Function, current: IFormContext): Function => {
+    return (): void => {
+        update({
+            ...current,
+            isSubmitted: true,
+        });
+    }
+
+};

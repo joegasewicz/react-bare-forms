@@ -4,7 +4,7 @@ import {SyntheticEvent} from "react";
 import {IValidation, Validators} from "./validators";
 import {FieldTypes} from "./form-elements";
 import {handleChange, handleSubmit} from "./handlers";
-import {setFormData, shouldShowValidation} from "./_helpers";
+import {setFormData, setIsSubmitted, shouldShowValidation} from "./_helpers";
 
 // ------------------------------------------------------
 // TYPES
@@ -80,14 +80,6 @@ export const Form = (props: IFormContext) => {
     };
     const [currentState, updateState] = useState(startingState);
 
-    const setIsSubmitted = (): void => { // TODO not updating on second mount
-        updateState({
-            ...currentState,
-            isSubmitted: true,
-        });
-    };
-
-
     if(currentState === null) {
         // TODO use custom error
         throw Error("React-Bare-Forms: You must pass your React component state to Form");
@@ -95,7 +87,7 @@ export const Form = (props: IFormContext) => {
     const children = props.children || null;
 
     return (
-        <FormContext.Provider value={{...currentState, setIsSubmitted, setFormData: setFormData(updateState, currentState)}}>
+        <FormContext.Provider value={{...currentState, setIsSubmitted: setIsSubmitted(updateState, currentState), setFormData: setFormData(updateState, currentState)}}>
             <FormContext.Consumer>
                 {(context: IFormContext) => (
                     <form onSubmit={(e: SyntheticEvent) => handleSubmit(e, context, updateState)}>
