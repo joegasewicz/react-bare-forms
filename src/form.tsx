@@ -109,9 +109,6 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
     return (
         <FormContext.Consumer>
             {(context: IFormContext) => {
-                if(!context.state) {
-                    return null;
-                }
                 const formState = context.state[context.formKey];
 
                 if(!formState || !context.formMetaData) {
