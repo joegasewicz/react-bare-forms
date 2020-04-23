@@ -113,7 +113,6 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
                 return (
                     <>{formState &&
                     context.formMetaData &&
-                    validators &&
                     Array.isArray(validators) &&
                     validators.map((_, index: number) => {
                         const validationResult = validators[index](formState[name]);
