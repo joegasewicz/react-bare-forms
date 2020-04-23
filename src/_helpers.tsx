@@ -48,7 +48,6 @@ export const shouldShowValidation = (validationResult: IValidation, context: IFo
  */
 export function setFormData(update: Function, current: IFormContext) {
     return (name: any, e: ChangeEvent<FormType>) => {
-        let blur = e.target.blur;
             const elementMetaData: IFormElementMeta = {
                 value: e.target.value,
                 isTouched: true,

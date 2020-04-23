@@ -117,8 +117,7 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
                     validators.map((_, index: number) => {
                         const validationResult = validators[index](formState[name]);
                         if(shouldShowValidation(validationResult, context, name)) {
-                            return validationResult.messages.map((msg: string) =>
-                                <div className="alert alert-danger">{msg}</div>);
+                            return validationResult.messages.map((msg: string) => <div className="alert mt-2 alert-danger">{msg}</div>);
                         }
                     })}</>
                 );
