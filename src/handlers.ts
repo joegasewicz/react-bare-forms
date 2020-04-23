@@ -47,7 +47,7 @@ export const handleChange = <T, K extends keyof IFormState>(name: K, context: IF
     if(context.state) {
         return (e: ChangeEvent<FormType>): void => {
             const value: any = e.target.value;
-            context.setFormData(name, value);
+            context.setFormData(name, e);
         }
     }
 };

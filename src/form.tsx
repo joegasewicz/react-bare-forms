@@ -35,7 +35,7 @@ export interface IFormContext {
     // The state that the caller passes into the Form component
     state?: any;
     // Metadata used to track each form element such as events .etc
-    formMetaData: IFormElementMeta;
+    formMetaData?: { [k: string]: IFormElementMeta };
     children?: any;
     // The name of the nested form data key on the state object
     formKey: string;
@@ -44,7 +44,7 @@ export interface IFormContext {
     // Method used to update the isSubmitted state on the form context
     setIsSubmitted?: () => void,
     // Method used to update both the current state & formMetaData.
-    setFormData?: (name: any, value: any) => void;
+    setFormData?: (name: any, e: ChangeEvent<FormType>) => void;
     // Object that describes all the validation errors when the user clicks submit.
     formErrors?: Array<string>;
     // Whether to show validation errors in real-time or after the caller clicks on the Submit Component
@@ -59,7 +59,7 @@ const DEFAULT_FORM_STATE: any = {
     isSubmitted: false,
     formErrors: null,
     setIsSubmitted: () => {},
-    setFormData: (name: any, value: any) => {},
+    setFormData: (name: any, e: ChangeEvent<FormType>) => {},
     dynamic: false,
 };
 
@@ -114,7 +114,7 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
                 }
                 const formState = context.state[context.formKey];
 
-                if(!formState) {
+                if(!formState || !context.formMetaData) {
                     return null;
                 }
 
@@ -122,7 +122,7 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
                     return (
                         <>{validators.map((_, index: number) => {
                             const validationResult = validators[index](formState[name]);
-                            if(shouldShowValidation(validationResult, context)) {
+                            if(shouldShowValidation(validationResult, context, name)) {
                                 return validationResult.messages.map((msg: string) =>
                                     <div className="alert alert-danger">{msg}</div>);
                             }

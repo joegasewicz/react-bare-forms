@@ -1,8 +1,10 @@
 import * as React from "react";
 import {handleChange} from "./handlers";
 import {FieldTypes} from "./form-elements";
-import {IFormContext} from "./form";
+import {FormType, IFormContext, IFormElementMeta} from "./form";
 import {IValidation} from "./validators";
+import {SyntheticEvent} from "react";
+import {ChangeEvent} from "react";
 
 /**
  *
@@ -33,8 +35,8 @@ export const selectTextField = (fieldType: FieldTypes, name: any, context: IForm
  * @param validationResult
  * @param context
  */
-export const shouldShowValidation = (validationResult: IValidation, context: IFormContext) => {
-    return (!validationResult.isValid && context.dynamic) ||
+export const shouldShowValidation = (validationResult: IValidation, context: IFormContext, name: string) => {
+    return (!validationResult.isValid && context.dynamic && context.formMetaData[name].isTouched) ||
         (!validationResult.isValid && context.isSubmitted);
 };
 
@@ -45,16 +47,25 @@ export const shouldShowValidation = (validationResult: IValidation, context: IFo
  * @param current
  */
 export function setFormData(update: Function, current: IFormContext) {
-    return (name: any, value: any) => {
-        update({
+    return (name: any, e: ChangeEvent<FormType>) => {
+        let blur = e.target.blur;
+            const elementMetaData: IFormElementMeta = {
+                value: e.target.value,
+                isTouched: true,
+            };
+            update({
             ...current,
             state: {
                 ...current.state,
                 [current.formKey]: {
                     ...current.state[current.formKey],
-                    [name]: value,
+                    [name]: e.target.value,
                 }
-            }
+            },
+            formMetaData: {
+                ...current.formMetaData,
+                [name]: elementMetaData,
+            },
         });
     };
 }
