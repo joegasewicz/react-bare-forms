@@ -55,12 +55,18 @@ export const Submit = (props: ISubmitProps): any => {
 export const Field = (props: IFormElementProps) => {
     const {name, label, type, hint = "", validators = null} = props;
     return(
-        <div className="form-group">
-            {label && <label>{label}</label>}
-            {hint && <small className="form-text text-muted">{hint}</small>}
-            {selectTextField(type, name)}
-            {props.validators && <FormElementValidators validators={validators} name={name} />}
-        </div>
+        <FormContext.Consumer>
+            {(context: IFormContext) => (
+                <div className="form-group">
+                    {label && <label>{label}</label>}
+                    {hint && <small className="form-text text-muted">{hint}</small>}
+                    {selectTextField(type, name, context)}
+                    {props.validators && <FormElementValidators validators={validators} name={name} />}
+                </div>
+                )
+            }
+        </FormContext.Consumer>
+
     );
 };
 
@@ -70,7 +76,7 @@ export const TextArea = (props: IFormElementProps) => {
         <div className="form-group">
             {label && <label>{label}</label>}
             {hint && <small className="form-text text-muted">{hint}</small>}
-            <textarea className="form-control" rows={10}  onChange={handleChange(name)} />;
+            {/*<textarea className="form-control" rows={10}  onChange={handleChange(name)} />;*/}
             {props.validators && <FormElementValidators validators={validators} name={name} />}
         </div>
     );
@@ -82,7 +88,7 @@ export const Select = (props: IFormElementProps) => {
         <div className="form-group">
             {label && <label>{label}</label>}
             {hint && <small className="form-text text-muted">{hint}</small>}
-            {selectTextField(type, name)}
+            {/*{selectTextField(type, name)}*/}
             {props.validators && <FormElementValidators validators={validators} name={name} />}
         </div>
     );

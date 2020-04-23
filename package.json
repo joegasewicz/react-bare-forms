@@ -6,7 +6,7 @@
   "scripts": {
     "build-dev": "webpack --env.mode devlopment --entry=./src/index.ts --output-path=lib --output-filename=index.js",
     "build-prod": "webpack --env.mode production --entry=./src/index.ts --output-path=lib --output-filename=index.js",
-    "server": "webpack-dev-server --config webpack.config.dev.js --output-path=dist --output-filename=bundle.js",
+    "start": "webpack-dev-server --config webpack.config.dev.js --output-path=dist --output-filename=bundle.js",
     "test": "jest"
   },
   "jest": {

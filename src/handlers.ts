@@ -37,18 +37,11 @@ export function handleSubmit(e: SyntheticEvent, localState: IFormContext, update
  *
  * @param name
  */
-export const handleChange = <T, K extends keyof IFormState>(name: K) => {
-    const currentState: any = useContext(FormContext);
-    const [_, updateState] = useState(currentState);
-    if(currentState) {
+export const handleChange = <T, K extends keyof IFormState>(name: K, context: IFormContext) => {
+    if(context.state) {
         return (e: ChangeEvent<FormType>): void => {
-            updateState({
-                ...currentState,
-                formData: {
-                    ...currentState[name],
-                    [name]: (e.target.value as any)
-                } as FormState<IFormState>
-            });
+            const value: any = e.target.value;
+            context.setFormData(name, value);
         }
     }
 };

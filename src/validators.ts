@@ -19,7 +19,8 @@ export function isFieldEmpty(minLength: number = null): IValidationFunction {
     }
     return function (...args: Array<any>): IValidation {
         let messages: Array<string> = [];
-        const isValid = (args[0].length >= minLength);
+        const testValue = args[0];
+        const isValid = (testValue.length >= minLength);
         if(!isValid) {
             messages = [`Must be at least ${minLength} characters`];
         }

@@ -28,10 +28,12 @@ export interface IFormElementValidators {
 export interface IFormContext {
     state?: any;
     children?: any;
-    formKey?: string;
+    formKey: string;
     isSubmitted?: boolean;
     setIsSubmitted?: () => void,
+    setFormData?: (name: any, value: any) => void;
     formErrors?: Array<string>;
+    dynamic?: boolean;
 }
 
 // ------------------------------------------------------
@@ -42,6 +44,8 @@ const DEFAULT_FORM_STATE: any = {
     isSubmitted: false,
     formErrors: null,
     setIsSubmitted: () => {},
+    setFormData: (name: any, value: any) => {},
+    dynamic: false,
 };
 
 export const FormContext = createContext<IFormContext>(DEFAULT_FORM_STATE);
@@ -52,13 +56,32 @@ export const FormContext = createContext<IFormContext>(DEFAULT_FORM_STATE);
  * @constructor
  */
 export const Form = (props: IFormContext) => {
-    const startingState = {...DEFAULT_FORM_STATE, state: props.state, formKey: props.formKey, isSubmitted: false};
+    const startingState = {
+        ...DEFAULT_FORM_STATE,
+        state: props.state,
+        formKey: props.formKey,
+        isSubmitted: false,
+        dynamic: props.dynamic || false,
+    };
     const [currentState, updateState] = useState(startingState);
 
     const setIsSubmitted = (): void => { // TODO not updating on second mount
         updateState({
             ...currentState,
             isSubmitted: true,
+        });
+    };
+
+    const setFormData = (name: any, value: any) => {
+        updateState({
+            ...currentState,
+            state: {
+                ...currentState.state,
+               [currentState.formKey]: {
+                   ...currentState.state[currentState.formKey],
+                   [name]: value,
+               }
+            }
         });
     };
 
@@ -70,7 +93,7 @@ export const Form = (props: IFormContext) => {
     const children = props.children || null;
 
     return (
-        <FormContext.Provider value={{...currentState, setIsSubmitted}}>
+        <FormContext.Provider value={{...currentState, setIsSubmitted, setFormData}}>
             <FormContext.Consumer>
                 {(context: IFormContext) => (
                     <form onSubmit={(e: SyntheticEvent) => handleSubmit(e, context, updateState)}>
@@ -101,11 +124,16 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
                     return null;
                 }
 
+                const shouldShowValidation = (validationResult: IValidation, context: IFormContext) => {
+                    return (!validationResult.isValid && context.dynamic) ||
+                        (!validationResult.isValid && context.isSubmitted);
+                };
+
                 if(validators && Array.isArray(validators) && validators.length) {
                     return (
                         <>{validators.map((_, index: number) => {
                             const validationResult = validators[index](formState[name]);
-                            if(!validationResult.isValid && context.isSubmitted) {
+                            if(shouldShowValidation(validationResult, context)) {
                                 return validationResult.messages.map((msg: string) =>
                                     <div className="alert alert-danger">{msg}</div>);
                             }

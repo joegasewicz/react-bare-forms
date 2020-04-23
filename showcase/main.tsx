@@ -25,7 +25,7 @@ export class Main extends React.Component<IProps, IState> {
                 <div>
                     <div className="container">
 
-                            <ReactBareForms.Form state={this.state} formKey="myForm1">
+                            <ReactBareForms.Form state={this.state} formKey="myForm1" dynamic={true}>
                                 <h2 className="text-center">Text Field</h2>
                                 <div className="row">
                                     <div className="col-md-6">
@@ -34,6 +34,7 @@ export class Main extends React.Component<IProps, IState> {
                                             hint="Must be at least 5 characters long"
                                             label="Your Name"
                                             validators={[isFieldEmpty(5)]}
+                                            type="text"
                                         ></ReactBareForms.Field>
                                     </div>
                                     <div className="col-md-6">
