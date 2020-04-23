@@ -1,6 +1,12 @@
 import {ChangeEvent, SyntheticEvent, useContext, useState} from "react";
 import {FormContext, FormState, FormType, IFormContext, IFormState} from "./form";
 
+/**
+ *
+ * @param e
+ * @param localState
+ * @param updateState
+ */
 export function handleSubmit(e: SyntheticEvent, localState: IFormContext, updateState: any) {
     e.preventDefault();
     let currentErrors: Array<string> = [];
@@ -32,10 +38,10 @@ export function handleSubmit(e: SyntheticEvent, localState: IFormContext, update
 }
 
 
-
 /**
  *
  * @param name
+ * @param context
  */
 export const handleChange = <T, K extends keyof IFormState>(name: K, context: IFormContext) => {
     if(context.state) {

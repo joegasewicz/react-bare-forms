@@ -4,6 +4,7 @@ import {SyntheticEvent} from "react";
 import {IValidation, Validators} from "./validators";
 import {FieldTypes} from "./form-elements";
 import {handleChange, handleSubmit} from "./handlers";
+import {shouldShowValidation} from "./_helpers";
 
 // ------------------------------------------------------
 // TYPES
@@ -25,14 +26,28 @@ export interface IFormElementValidators {
     name: any;
 }
 
+export interface IFormElementMeta {
+    value: any;
+    isTouched: boolean;
+}
+
 export interface IFormContext {
+    // The state that the caller passes into the Form component
     state?: any;
+    // Metadata used to track each form element such as events .etc
+    formMetaData: IFormElementMeta;
     children?: any;
+    // The name of the nested form data key on the state object
     formKey: string;
+    // Set when the caller clicks on the Submit component
     isSubmitted?: boolean;
+    // Method used to update the isSubmitted state on the form context
     setIsSubmitted?: () => void,
+    // Method used to update both the current state & formMetaData.
     setFormData?: (name: any, value: any) => void;
+    // Object that describes all the validation errors when the user clicks submit.
     formErrors?: Array<string>;
+    // Whether to show validation errors in real-time or after the caller clicks on the Submit Component
     dynamic?: boolean;
 }
 
@@ -123,11 +138,6 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
                 if(!formState) {
                     return null;
                 }
-
-                const shouldShowValidation = (validationResult: IValidation, context: IFormContext) => {
-                    return (!validationResult.isValid && context.dynamic) ||
-                        (!validationResult.isValid && context.isSubmitted);
-                };
 
                 if(validators && Array.isArray(validators) && validators.length) {
                     return (
