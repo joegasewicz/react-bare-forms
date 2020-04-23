@@ -110,21 +110,19 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
         <FormContext.Consumer>
             {(context: IFormContext) => {
                 const formState = context.state[context.formKey];
-                if(!formState || !context.formMetaData || !validators && !Array.isArray(validators)) {
-                    return null;
-                } else {
-                    return (
-                        <>{validators.map((_, index: number) => {
-                            const validationResult = validators[index](formState[name]);
-                            if(shouldShowValidation(validationResult, context, name)) {
-                                return validationResult.messages.map((msg: string) =>
-                                    <div className="alert alert-danger">{msg}</div>);
-                            } else {
-                                return null;
-                            }
-                        })}</>
-                    );
-                }
+                return (
+                    <>{formState &&
+                    context.formMetaData &&
+                    validators &&
+                    Array.isArray(validators) &&
+                    validators.map((_, index: number) => {
+                        const validationResult = validators[index](formState[name]);
+                        if(shouldShowValidation(validationResult, context, name)) {
+                            return validationResult.messages.map((msg: string) =>
+                                <div className="alert alert-danger">{msg}</div>);
+                        }
+                    })}</>
+                );
             }}
         </FormContext.Consumer>
     );
