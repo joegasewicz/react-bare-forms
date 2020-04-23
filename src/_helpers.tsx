@@ -37,3 +37,24 @@ export const shouldShowValidation = (validationResult: IValidation, context: IFo
     return (!validationResult.isValid && context.dynamic) ||
         (!validationResult.isValid && context.isSubmitted);
 };
+
+
+/**
+ *
+ * @param update
+ * @param current
+ */
+export function setFormData(update: Function, current: IFormContext) {
+    return (name: any, value: any) => {
+        update({
+            ...current,
+            state: {
+                ...current.state,
+                [current.formKey]: {
+                    ...current.state[current.formKey],
+                    [name]: value,
+                }
+            }
+        });
+    };
+}
