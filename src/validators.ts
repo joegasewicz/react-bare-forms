@@ -1,7 +1,5 @@
 import {_FieldEmptyErrorMsg,  _isFieldEmptyErrorMsg} from "./_errors";
 import {default as React, ReactElement} from "react";
-import {shouldShowValidation} from "../_src/_helpers";
-import {FormContext, IFormContext, IFormElementValidators} from "../_src/form";
 import {FormConsumer} from "./form";
 
 export interface IValidation {
@@ -39,8 +37,8 @@ export type IValidators = Array<IValidationFunction>;
  */
 export function areFieldsEqual(passwordKey: string): IValidationFunction {
     return (...args: Array<any>): IValidation => {
-        const [password, confirmPassword] = args;
-        if(password === confirmPassword) {
+        const [password, context] = args;
+        if(password === context.state[passwordKey]) {
             return {
                 isValid: true,
                 messages: [],
