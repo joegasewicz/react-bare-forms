@@ -16,11 +16,20 @@ interface IField {
     hint?: string;
     /** These are the {@link IValidators} that you can pass in the validate the form element. */
     validators?: IValidators;
-}
-
-interface ITextInputField extends IField {
+    /** Add additional css */
     className?: string;
 }
+
+interface ITextInputField extends IField {}
+
+interface IPasswordField extends IField {}
+
+interface IConfirmPasswordField extends IField {
+    /** This is the name of the password field you wish to match against. See {@link ConfirmPasswordField}. */
+    match: string;
+}
+
+interface IEmailField extends IField {}
 
 /**
  *
@@ -49,19 +58,22 @@ export const TextInputField = (props: ITextInputField) =>
 /**
  * @params props
  */
-export const PasswordField = (props: ITextInputField) =>
+export const PasswordField = (props: IPasswordField) =>
     _createTextInputField("password")(props);
 
 /**
+ * the prop of `match` is required. The `match` prop will make a direct comparison against
+ * the {@link PasswordField} form element. If their values are equal then these 2 inputs fields
+ * are valid.
  * @params props
  */
-export const ConfirmPasswordField = (props: ITextInputField) =>
+export const ConfirmPasswordField = (props: IConfirmPasswordField) =>
     _createTextInputField("password")(props);
 
 /*
  * @param props
  */
-export const EmailField = (props: ITextInputField)=>
+export const EmailField = (props: IEmailField) =>
     _createTextInputField("email")(props);
 
 /**
@@ -81,7 +93,6 @@ function _createTextInputField(type: string) {
                     className={`form-control ${props.className}`}
                 />;
                 const _validate = props.validators ? <FormElementValidators validators={props.validators} name={props.name} />: null;
-
                 if(context.bare) {
                     return (
                         <>
