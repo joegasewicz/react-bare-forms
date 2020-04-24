@@ -33,7 +33,7 @@ export type IValidators = Array<IValidationFunction>;
  *        // other props...
  *        validators={[areFieldsEqual("myPassword")]}
  *   />
- *   // message: Passwords fields do not match
+ *   // message: Password fields do not match
  * ```
  * @param `passwordKey` The name of the password form element you watch to match against
  */
@@ -48,7 +48,7 @@ export function areFieldsEqual(passwordKey: string): IValidationFunction {
         } else {
             return {
                 isValid: false,
-                messages: [`Passwords fields do not match`],
+                messages: [`Password fields do not match`],
             }
         }
     }
