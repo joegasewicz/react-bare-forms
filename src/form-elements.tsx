@@ -13,19 +13,31 @@ interface IField {
 }
 
 interface ITextInputField extends IField {
-
+    className?: string;
 }
 
 /**
  *
  * @param props
  * ```
+ * // A bare form example ... remember to set the {@link Form.bare} property to `true`
+ * <TextInputField
+ *    value={this.state.message}
+ *    name="username"
+ * />
  *
+ * // Example with Bootstrap styling (Bootstrap styling comes as default)
+ *
+ * <TextInputField
+ *    value={this.state.message}
+ *    name="username"
+ *    hint="Needs to be at least 50 characters long"
+ *    labelText="Username"
+ *  />
  * ```
  * @constructor
  */
 export const TextInputField = (props: ITextInputField) => {
-
     return (
         <FormConsumer>
             {(context: any) => {
@@ -34,11 +46,12 @@ export const TextInputField = (props: ITextInputField) => {
                     value={context.message}
                     onChange={context.updateParentState}
                     name={props.name}
+                    className={`form-control ${props.className}`}
                 />;
                 if(context.bare) {
                     return _input;
                 } else {
-                    return <FormGroup labelText={} hint={} >{_input}</FormGroup>
+                    return <FormGroup labelText={props.labelText} hint={props.hint} >{_input}</FormGroup>
                 }
 
             }}

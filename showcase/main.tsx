@@ -46,9 +46,14 @@ export class Main extends React.Component<IProps, IState> {
                             {/*</ReactBareForms.Form>*/}
 
 
-                        <Form state={this.state} context={this} bare={true}>
+                        <Form state={this.state} context={this}>
 
-                            <TextInputField value={this.state.message} name="message" />
+                            <TextInputField
+                                value={this.state.message}
+                                name="username"
+                                hint="Needs to be at least 50 characters long"
+                                labelText="Username"
+                            />
                             <FormConsumer>
                                 {(context: any) => {
                                     // this.setState({...context});
