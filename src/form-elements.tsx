@@ -43,12 +43,38 @@ interface ITextInputField extends IField {
  * ```
  * @constructor
  */
-export const TextInputField = (props: ITextInputField) => {
-    return (
+export const TextInputField = (props: ITextInputField) =>
+    _createTextInputField("text")(props);
+
+/**
+ * @params props
+ */
+export const PasswordField = (props: ITextInputField) =>
+    _createTextInputField("password")(props);
+
+/**
+ * @params props
+ */
+export const ConfirmPasswordField = (props: ITextInputField) =>
+    _createTextInputField("password")(props);
+
+/*
+ * @param props
+ */
+export const EmailField = (props: ITextInputField)=>
+    _createTextInputField("email")(props);
+
+/**
+ * @internal
+ * @param type
+ * @private
+ */
+function _createTextInputField(type: string) {
+    return (props: ITextInputField) => (
         <FormConsumer>
             {(context: any) => {
                 const _input = <input
-                    type="text"
+                    type={type}
                     value={context[props.name]}
                     onChange={(e) => context.updateParentState(e, props.name)}
                     name={props.name}
@@ -76,7 +102,7 @@ export const TextInputField = (props: ITextInputField) => {
         </FormConsumer>
 
     );
-};
+}
 
 /** @internal */
 interface IFormGroup {
