@@ -116,5 +116,5 @@ dist
 
 .idea/
 dist/
-_src
-docs
+_src/
+docs/
