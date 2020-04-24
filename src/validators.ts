@@ -16,6 +16,44 @@ export type IValidator = (t: any) => IValidationFunction;
 /** The expected validator's type that {@link IField} elements can consume */
 export type IValidators = Array<IValidationFunction>;
 
+
+/**
+ * The `passwordKey` is normally the first password form field the user fills in before
+ * then confirming that the password is correct with a confirm password field. this validator
+ * check that both password fields are equal or else will return an error message and set this
+ * field to invalid.`
+ * @example
+ * ```
+ *  <PasswordField
+ *      // other props...
+ *      name="myPassword"
+ *  />
+ *
+ *  <ConfirmPasswordField
+ *        // other props...
+ *        validators={[areFieldsEqual("myPassword")]}
+ *   />
+ *   // message: Passwords fields do not match
+ * ```
+ * @param `passwordKey` The name of the password form element you watch to match against
+ */
+export function areFieldsEqual(passwordKey: string): IValidationFunction {
+    return (...args: Array<any>): IValidation => {
+        const [password, confirmPassword] = args;
+        if(password === confirmPassword) {
+            return {
+                isValid: true,
+                messages: [],
+            }
+        } else {
+            return {
+                isValid: false,
+                messages: [`Passwords fields do not match`],
+            }
+        }
+    }
+}
+
 /**
  * The `isFieldEmpty` validator performs a comparison against `minLength` & the field element
  * value. If they are equal or the `minLength` is greater than the form element value then
@@ -26,9 +64,9 @@ export type IValidators = Array<IValidationFunction>;
  *        // other props...
  *        validators={[isFieldEmpty(5)]}
  *   />
- *   // message: Must be at least 5 characters
+ *   // message: Must be at least 5 characters`
  * ```
- * @param minLength
+ * @param minLength The minimum length of the form field value
  */
 export function isFieldEmpty(minLength: number = null): IValidationFunction {
     if(minLength === null) {
