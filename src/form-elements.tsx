@@ -1,5 +1,8 @@
 import {default as React} from "react";
 import {FormConsumer} from "./form";
+import {IValidators} from "./validators";
+
+
 
 interface IField {
     /** The name of the form element (this should match the state property that you want be updated by this form element) */
@@ -10,6 +13,8 @@ interface IField {
     labelText?: string;
     /** If *bare* (see {@link Form.bare}) is set to true then *hint* will be inserted within **small** tags. */
     hint?: string;
+    /** These are the {@link IValidators} that you can pass in the validate the form element. */
+    validators?: Array<IValidators>
 }
 
 interface ITextInputField extends IField {
