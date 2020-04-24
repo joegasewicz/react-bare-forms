@@ -14,7 +14,7 @@ export const FormElementValidators = (props: any): ReactElement => {
             <FormConsumer>
                 {(context: any) => {
                     const styles = !context.bare ? `alert mt-2 alert-danger ${props.className}` : props.className;
-                    if(!context.state[name]) {
+                    if(!context.state || !context.state[name]) {
                         return null;
                     }
                     return (
