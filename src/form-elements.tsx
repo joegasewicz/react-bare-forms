@@ -92,9 +92,9 @@ interface IFormGroup {
 function FormGroup(props: IFormGroup): React.ReactElement {
     return (
         <div className="form-group">
-            {props.labelText && <label htmlFor="exampleInputEmail1">{props.labelText}</label>}
+            {props.labelText && <label>{props.labelText}</label>}
             {props.children}
-            {props.hint && <small id="emailHelp" className="form-text text-muted">{props.hint}</small>}
+            {props.hint && <small className="form-text text-muted">{props.hint}</small>}
         </div>
     )
 }
