@@ -54,19 +54,20 @@ export const TextInputField = (props: ITextInputField) => {
                     name={props.name}
                     className={`form-control ${props.className}`}
                 />;
+                const _validate = props.validators ? <FormElementValidators validators={props.validators} name={props.name} />: null;
 
                 if(context.bare) {
                     return (
                         <>
                             {_input}
-                            {props.validators && <FormElementValidators validators={props.validators} name={props.name} />}
+                            {_validate}
                         </>
                     );
                 } else {
                     return (
                         <FormGroup labelText={props.labelText} hint={props.hint} >
                             {_input}
-                            {props.validators && <FormElementValidators validators={props.validators} name={props.name} />}
+                            {_validate}
                         </FormGroup>
                     )
                 }
