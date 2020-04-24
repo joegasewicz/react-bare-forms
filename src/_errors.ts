@@ -13,7 +13,7 @@
  * @private
  */
 export const _throwNewErrorMsg = (type: string, name: string, message: string): string =>
-     `React Bare Forms ERROR:\n\t${type} - ${name}\n\t- ${message}`;
+    `React Bare Forms ERROR:\n\t${type} - ${name}\n\t- ${message}`;
 
 
 export const _isFieldEmptyErrorMsg = _throwNewErrorMsg(

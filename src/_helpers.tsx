@@ -1,10 +1,7 @@
+import {FieldTypes} from "../_src/form-elements";
+import {IFormContext} from "../_src/form";
+import {handleChange} from "../_src/handlers";
 import * as React from "react";
-import {handleChange} from "./handlers";
-import {FieldTypes} from "./form-elements";
-import {FormType, IFormContext, IFormElementMeta} from "./form";
-import {IValidation} from "./validators";
-import {SyntheticEvent} from "react";
-import {ChangeEvent} from "react";
 
 /**
  *
@@ -30,56 +27,12 @@ export const selectTextField = (fieldType: FieldTypes, name: any, context: IForm
     }
 };
 
-/**
- *
- * @param validationResult
- * @param context
- */
-export const shouldShowValidation = (validationResult: IValidation, context: IFormContext, name: string) => {
-    return (!validationResult.isValid && context.dynamic && context.formMetaData[name].isTouched) ||
-        (!validationResult.isValid && context.isSubmitted);
-};
 
-
-/**
- *
- * @param update
- * @param current
- */
-export function setFormData(update: Function, current: IFormContext) {
-    return (name: any, e: ChangeEvent<FormType>) => {
-            const elementMetaData: IFormElementMeta = {
-                value: e.target.value,
-                isTouched: true,
-            };
-            update({
-            ...current,
-            state: {
-                ...current.state,
-                [current.formKey]: {
-                    ...current.state[current.formKey],
-                    [name]: e.target.value,
-                }
-            },
-            formMetaData: {
-                ...current.formMetaData,
-                [name]: elementMetaData,
-            },
+export function updateStateFromPassedInContext(state: any, setState: Function): (e: any) => void {
+    return (e: any) => {
+        setState({
+            message: e.target.value,
         });
     };
+
 }
-
-/**
- *
- * @param update
- * @param current
- */
-export const setIsSubmitted = (update: Function, current: IFormContext): Function => {
-    return (): void => {
-        update({
-            ...current,
-            isSubmitted: true,
-        });
-    }
-
-};

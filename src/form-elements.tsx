@@ -1,8 +1,9 @@
 import * as React from "react";
 import {FormElementValidators, FormContext, IFormContext} from "./form";
 import {Validators} from "./validators";
-import {selectTextField} from "./_helpers";
-import {handleChange} from "./handlers";
+import {selectTextField} from "../_src/_helpers";
+
+
 
 export type FieldTypes =
     | "text"
@@ -63,7 +64,7 @@ export const Field = (props: IFormElementProps) => {
                     {selectTextField(type, name, context)}
                     {props.validators && <FormElementValidators validators={validators} name={name} />}
                 </div>
-                )
+            )
             }
         </FormContext.Consumer>
 
