@@ -115,6 +115,6 @@ dist
 .pnp.*
 
 .idea/
-dist
-_src
-docs
+dist/
+_src/
+docs/
