@@ -2,20 +2,21 @@ import * as React from "react";
 import {ChangeEvent, useEffect} from "react";
 import {FormConsumer, Form} from "../src/form";
 import {TextInputField} from "../src/form-elements";
+import {isFieldEmpty} from "../src/validators";
 // import * as ReactBareForms from "../src/index";
 // import {isFieldEmpty, Submit} from "../src/index";
 
 interface IProps{}
 
 interface IState{
-    message: string;
+    username: string;
 }
 
 
 export class Main extends React.Component<IProps, IState> {
 
     state = {
-        message: "",
+        username: "",
     };
 
     public render(): React.ReactElement {
@@ -26,33 +27,14 @@ export class Main extends React.Component<IProps, IState> {
                 <div>
                     <div className="container">
 
-                            {/*<ReactBareForms.Form state={this.state} formKey="myForm1" dynamic={true}>*/}
-                            {/*    <h2 className="text-center">Text Field</h2>*/}
-                            {/*    <div className="row">*/}
-                            {/*        <div className="col-md-6">*/}
-                            {/*            <ReactBareForms.Field*/}
-                            {/*                name="message"*/}
-                            {/*                hint="Must be at least 5 characters long"*/}
-                            {/*                label="Your Name"*/}
-                            {/*                validators={[isFieldEmpty(5)]}*/}
-                            {/*                type="text"*/}
-                            {/*            ></ReactBareForms.Field>*/}
-                            {/*        </div>*/}
-                            {/*        <div className="col-md-6">*/}
-                            {/*            <p>Click to test the input field wth & without a value</p>*/}
-                            {/*            <Submit>Submit</Submit>*/}
-                            {/*        </div>*/}
-                            {/*    </div>*/}
-                            {/*</ReactBareForms.Form>*/}
-
-
                         <Form state={this.state} context={this}>
 
                             <TextInputField
-                                value={this.state.message}
+                                value={this.state.username}
                                 name="username"
-                                hint="Needs to be at least 50 characters long"
+                                hint="Enter your username"
                                 labelText="Username"
+                                validators={[isFieldEmpty(5)]}
                             />
                             <FormConsumer>
                                 {(context: any) => {
@@ -62,7 +44,6 @@ export class Main extends React.Component<IProps, IState> {
                             </FormConsumer>
                         </Form>
 
-
                         <code>State: {JSON.stringify(this.state)}</code>
 
                     </div>
@@ -71,7 +52,5 @@ export class Main extends React.Component<IProps, IState> {
         </>
     );
     }
-
-
 }
 

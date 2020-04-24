@@ -1,4 +1,8 @@
 import {_FieldEmptyErrorMsg,  _isFieldEmptyErrorMsg} from "./_errors";
+import {default as React, ReactElement} from "react";
+import {shouldShowValidation} from "../_src/_helpers";
+import {FormContext, IFormContext, IFormElementValidators} from "../_src/form";
+import {FormConsumer} from "./form";
 
 export interface IValidation {
     isValid: boolean;
@@ -11,8 +15,18 @@ export type IValidator = (t: any) => IValidationFunction;
 export type IValidators = Array<IValidationFunction>;
 
 /**
- *
- * @param minLength The minimum length required
+ * The `isFieldEmpty` validator performs a comparison against `minLength` & the field element
+ * value. If they are equal or the `minLength` is greater than the form element value then
+ * this element is not valid & a message is displayed.
+ * @example
+ * ```
+ *  <TextInputField
+ *        // other props...
+ *        validators={[isFieldEmpty(5)]}
+ *   />
+ *   // message: Must be at least 5 characters
+ * ```
+ * @param minLength
  */
 export function isFieldEmpty(minLength: number = null): IValidationFunction {
     if(minLength === null) {

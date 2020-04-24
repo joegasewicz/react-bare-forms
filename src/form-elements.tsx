@@ -1,6 +1,7 @@
 import {default as React} from "react";
 import {FormConsumer} from "./form";
 import {IValidators} from "./validators";
+import {FormElementValidators} from "./_helpers";
 
 
 
@@ -14,7 +15,7 @@ interface IField {
     /** If *bare* (see {@link Form.bare}) is set to true then *hint* will be inserted within **small** tags. */
     hint?: string;
     /** These are the {@link IValidators} that you can pass in the validate the form element. */
-    validators?: Array<IValidators>
+    validators?: IValidators;
 }
 
 interface ITextInputField extends IField {
@@ -27,14 +28,14 @@ interface ITextInputField extends IField {
  * ```
  * // A bare form example ... remember to set the {@link Form.bare} property to `true`
  * <TextInputField
- *    value={this.state.message}
+ *    value={this.state.username}
  *    name="username"
  * />
  *
  * // Example with Bootstrap styling (Bootstrap styling comes as default)
  *
  * <TextInputField
- *    value={this.state.message}
+ *    value={this.state.username}
  *    name="username"
  *    hint="Needs to be at least 50 characters long"
  *    labelText="Username"
@@ -48,15 +49,29 @@ export const TextInputField = (props: ITextInputField) => {
             {(context: any) => {
                 const _input = <input
                     type="text"
-                    value={context.message}
-                    onChange={context.updateParentState}
+                    value={context[props.name]}
+                    onChange={(e) => context.updateParentState(e, props.name)}
                     name={props.name}
                     className={`form-control ${props.className}`}
                 />;
+
                 if(context.bare) {
-                    return _input;
+                    return (
+                        <>
+                            {_input}
+                            <div><code>{JSON.stringify(context)}</code></div>
+                            <hr />
+                            {props.validators && <FormElementValidators validators={props.validators} name={props.name} />}
+                        </>
+                    );
                 } else {
-                    return <FormGroup labelText={props.labelText} hint={props.hint} >{_input}</FormGroup>
+                    return (
+                        <FormGroup labelText={props.labelText} hint={props.hint} >
+                            {_input}
+                            <code>{JSON.stringify(context)}</code>
+                            {props.validators && <FormElementValidators validators={props.validators} name={props.name} />}
+                        </FormGroup>
+                    )
                 }
 
             }}

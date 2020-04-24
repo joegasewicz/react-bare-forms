@@ -42,7 +42,7 @@ export interface IFormContext {
     formKey?: string;
     metadata: TypeMetadata;
     state: any;
-    updateParentState: (e: any) => void;
+    updateParentState: (e: React.ChangeEvent<any>, name: string) => void;
 }
 
 /** @internal */
@@ -54,7 +54,6 @@ export const FormProvider = FormContext.Provider;
  * @example For example:
  * ```
  * <Form state={this.state} context={this}>
- *    <TextInputField value={this.state.message} state={this.state} />
  *      <FormConsumer>
  *      {({state}) => {
  *          return <div>{state} is equal {myState}</div>;
@@ -67,8 +66,8 @@ export const FormConsumer = FormContext.Consumer;
 
 
 export const handleChange = (e: ChangeEvent<any>) => {
-    // this.setState({myForm1: {
-    //         message: e.target.value,
+    // this.setState({myForm: {
+    //         username: e.target.value,
     //     }})
 };
 
