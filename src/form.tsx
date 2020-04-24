@@ -28,7 +28,7 @@ export interface IForm {
     debug?: boolean;
     /** Default is True. If set to false, the  validators will not be called until the form is submitted. */
     dynamic?: boolean;
-    /** Optional */
+    /** The passed through props to the Form component */
     children?: any;
     /** Default set to false. If set to true then it will now use bootstrap styling or any extra elements. */
     bare?: boolean;
@@ -54,10 +54,10 @@ export const FormProvider = FormContext.Provider;
  * @example For example:
  * ```
  * <Form state={this.state} context={this}>
- *    <InputText value={this.state.message} state={this.state} />
+ *    <TextInputField value={this.state.message} state={this.state} />
  *      <FormConsumer>
- *      {(context: any) => {
- *          return <div>{context} is equal {myState}</div>;
+ *      {({state}) => {
+ *          return <div>{state} is equal {myState}</div>;
  *      }}
  *    </FormConsumer>
  * </Form>
@@ -81,25 +81,10 @@ export const handleSubmit = (e: React.SyntheticEvent) => {
  * @param props
  * @constructor
  */
-export const Button = (props: any) => {
+export const Submit = (props: any) => {
     return <button type="submit">Submit</button>;
 };
 
-export const InputText = (props: any) => {
-    const [state, setState] = useState(props.state);
-    return (
-        <FormConsumer>
-            {(context: any) => {
-                return (<input
-                    type="text"
-                    value={context.message}
-                    onChange={context.updateState}
-                />);
-            }}
-        </FormConsumer>
-
-    );
-};
 
 /**
  * The main Form component
@@ -117,15 +102,15 @@ export const InputText = (props: any) => {
  * @constructor
  */
 export const Form = (props: IForm) => {
-    const [state, setState] = useState(props.state);
+    const [parentState, setParentState] = useState(props.state);
 
     // If the parent component is a class component, then the state needs to be updated from the parent context
     if(props.context) {
         useEffect(() => {
             props.context.setState({
-                ...state,
+                ...parentState,
             });
-        }, [state]);
+        }, [parentState]);
     }
 
     const providerContext: IFormContext = {
@@ -135,7 +120,7 @@ export const Form = (props: IForm) => {
         debug: props.debug || false,
         dynamic: props.dynamic || true,
         metadata: {},
-        updateParentState: updateStateFromPassedInContext(state, setState),
+        updateParentState: updateStateFromPassedInContext(parentState, setParentState),
     };
 
     return (

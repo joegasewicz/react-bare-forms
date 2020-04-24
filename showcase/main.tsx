@@ -1,6 +1,7 @@
 import * as React from "react";
 import {ChangeEvent, useEffect} from "react";
-import {FormConsumer, Form, InputText} from "../src/form";
+import {FormConsumer, Form} from "../src/form";
+import {TextInputField} from "../src/form-elements";
 // import * as ReactBareForms from "../src/index";
 // import {isFieldEmpty, Submit} from "../src/index";
 
@@ -45,8 +46,9 @@ export class Main extends React.Component<IProps, IState> {
                             {/*</ReactBareForms.Form>*/}
 
 
-                        <Form state={this.state} context={this}>
-                            <InputText value={this.state.message} state={this.state} />
+                        <Form state={this.state} context={this} bare={true}>
+
+                            <TextInputField value={this.state.message} name="message" />
                             <FormConsumer>
                                 {(context: any) => {
                                     // this.setState({...context});
