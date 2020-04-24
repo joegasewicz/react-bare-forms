@@ -1,6 +1,6 @@
-/** @internal */
 import * as React from "react";
 
+/** @internal */
 type TypeHandler = (e: React.ChangeEvent<any>, name: string) => void;
 
 /** @internal */

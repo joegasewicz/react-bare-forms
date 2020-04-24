@@ -64,12 +64,6 @@ export const FormProvider = FormContext.Provider;
 export const FormConsumer = FormContext.Consumer;
 
 
-export const handleChange = (e: ChangeEvent<any>) => {
-    // this.setState({myForm: {
-    //         username: e.target.value,
-    //     }})
-};
-
 export const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
 };

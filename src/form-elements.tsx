@@ -59,8 +59,6 @@ export const TextInputField = (props: ITextInputField) => {
                     return (
                         <>
                             {_input}
-                            <div><code>{JSON.stringify(context)}</code></div>
-                            <hr />
                             {props.validators && <FormElementValidators validators={props.validators} name={props.name} />}
                         </>
                     );
@@ -68,7 +66,6 @@ export const TextInputField = (props: ITextInputField) => {
                     return (
                         <FormGroup labelText={props.labelText} hint={props.hint} >
                             {_input}
-                            <code>{JSON.stringify(context)}</code>
                             {props.validators && <FormElementValidators validators={props.validators} name={props.name} />}
                         </FormGroup>
                     )
