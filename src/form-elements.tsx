@@ -24,11 +24,6 @@ interface ITextInputField extends IField {}
 
 interface IPasswordField extends IField {}
 
-interface IConfirmPasswordField extends IField {
-    /** This is the name of the password field you wish to match against. See {@link ConfirmPasswordField}. */
-    match: string;
-}
-
 interface IEmailField extends IField {}
 
 /**
@@ -59,15 +54,6 @@ export const TextInputField = (props: ITextInputField) =>
  * @params props
  */
 export const PasswordField = (props: IPasswordField) =>
-    _createTextInputField("password")(props);
-
-/**
- * the prop of `match` is required. The `match` prop will make a direct comparison against
- * the {@link PasswordField} form element. If their values are equal then these 2 inputs fields
- * are valid.
- * @params props
- */
-export const ConfirmPasswordField = (props: IConfirmPasswordField) =>
     _createTextInputField("password")(props);
 
 /*

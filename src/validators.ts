@@ -38,7 +38,7 @@ export type IValidators = Array<IValidationFunction>;
 export function areFieldsEqual(passwordKey: string): IValidationFunction {
     return (...args: Array<any>): IValidation => {
         const [password, context] = args;
-        if(password === context.state[passwordKey]) {
+        if(context.state && password === context.state[passwordKey]) {
             return {
                 isValid: true,
                 messages: [],
