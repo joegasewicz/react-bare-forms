@@ -74,8 +74,6 @@
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_src_form_.iform.html" class="tsd-kind-icon">IForm</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_src_form_.iformcontext.html" class="tsd-kind-icon">IForm<wbr>Context</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_src_form_._iformmetadata.html" class="tsd-kind-icon">_IForm<wbr>Metadata</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -88,8 +86,6 @@
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_src_form_.html#formconsumer" class="tsd-kind-icon">Form<wbr>Consumer</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_src_form_.html#formcontext" class="tsd-kind-icon">Form<wbr>Context</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_src_form_.html#formprovider" class="tsd-kind-icon">Form<wbr>Provider</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -113,14 +109,14 @@
 					<div class="tsd-signature tsd-kind-icon">Type<wbr>Metadata<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/form.tsx:13</li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/df3016b/src/form.tsx#L14">src/form.tsx:14</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-index-signature">
-								<h5><span class="tsd-signature-symbol">[</span>k: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><a href="../interfaces/_src_form_._iformmetadata.html" class="tsd-signature-type">_IFormMetadata</a></h5>
+								<h5><span class="tsd-signature-symbol">[</span>k: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">_IFormMetadata</span></h5>
 							</li>
 						</ul>
 					</div>
@@ -134,40 +130,24 @@
 					<div class="tsd-signature tsd-kind-icon">Form<wbr>Consumer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ExoticComponent</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ConsumerProps</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = FormContext.Consumer</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in src/form.tsx:56</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
-					<a name="formcontext" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> Form<wbr>Context</h3>
-					<div class="tsd-signature tsd-kind-icon">Form<wbr>Context<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Context</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = React.createContext({})</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in src/form.tsx:53</li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<dl class="tsd-comment-tags">
-							<dt>internal</dt>
-							<dd></dd>
-						</dl>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
-					<a name="formprovider" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> Form<wbr>Provider</h3>
-					<div class="tsd-signature tsd-kind-icon">Form<wbr>Provider<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ProviderExoticComponent</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ProviderProps</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = FormContext.Provider</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in src/form.tsx:55</li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/df3016b/src/form.tsx#L66">src/form.tsx:66</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<dl class="tsd-comment-tags">
 							<dt>var</dt>
-							<dd><p>This is a test</p>
+							<dd><p>Access the form state within a React Conext Api Consumer scope</p>
 							</dd>
+							<dt>example</dt>
+							<dd><p>For example:</p>
+								<pre><code><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Form</span> <span class="hljs-attr">state</span>=</span></span><span class="hljs-template-variable">{this.state}</span><span class="xml"><span class="hljs-tag"> <span class="hljs-attr">context</span>=</span></span><span class="hljs-template-variable">{this}</span><span class="xml"><span class="hljs-tag">&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">InputText</span> <span class="hljs-attr">value</span>=</span></span><span class="hljs-template-variable">{this.state.message}</span><span class="xml"><span class="hljs-tag"> <span class="hljs-attr">state</span>=</span></span><span class="hljs-template-variable">{this.state}</span><span class="xml"><span class="hljs-tag"> /&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">FormConsumer</span>&gt;</span>
+     </span><span class="hljs-template-variable">{(context: any) =&gt; {
+         return &lt;div&gt;{context}</span><span class="xml"> is equal </span><span class="hljs-template-variable">{myState}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>;
+     }}
+   <span class="hljs-tag">&lt;/<span class="hljs-name">FormConsumer</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Form</span>&gt;</span></span></code></pre></dd>
 						</dl>
 					</div>
 				</section>
@@ -184,9 +164,11 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/form.tsx:69</li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/df3016b/src/form.tsx#L84">src/form.tsx:84</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -207,7 +189,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/form.tsx:104</li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/df3016b/src/form.tsx#L119">src/form.tsx:119</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -246,7 +228,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/form.tsx:73</li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/df3016b/src/form.tsx#L88">src/form.tsx:88</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -269,7 +251,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/form.tsx:59</li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/df3016b/src/form.tsx#L69">src/form.tsx:69</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -292,7 +274,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in src/form.tsx:65</li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/df3016b/src/form.tsx#L75">src/form.tsx:75</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -365,23 +347,11 @@
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="../interfaces/_src_form_.iform.html" class="tsd-kind-icon">IForm</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="../interfaces/_src_form_.iformcontext.html" class="tsd-kind-icon">IForm<wbr>Context</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="../interfaces/_src_form_._iformmetadata.html" class="tsd-kind-icon">_IForm<wbr>Metadata</a>
-					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
 						<a href="_src_form_.html#typemetadata" class="tsd-kind-icon">Type<wbr>Metadata</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-module">
 						<a href="_src_form_.html#formconsumer" class="tsd-kind-icon">Form<wbr>Consumer</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-module">
-						<a href="_src_form_.html#formcontext" class="tsd-kind-icon">Form<wbr>Context</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-module">
-						<a href="_src_form_.html#formprovider" class="tsd-kind-icon">Form<wbr>Provider</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_src_form_.html#button" class="tsd-kind-icon">Button</a>

@@ -3,6 +3,7 @@ import {shouldShowValidation} from "../_src/_helpers";
 import {FormType, IFormElementMeta, IFormElementValidators} from "../_src/form";
 import {updateStateFromPassedInContext} from "./_helpers";
 
+/** @internal */
 export interface _IFormMetadata {
     messages: Array<string>;
     isValid: boolean;
@@ -13,32 +14,27 @@ export interface _IFormMetadata {
 export type TypeMetadata = { [k: string]: _IFormMetadata};
 
 /**
- * @property state The passed in state from the parent component
- * @property context If the parent component is a class component then the context must contain the parent's **this** keyword.
- * @property formKey If the form's state is not directly contained at parent's state root object, then formKey needs to represent the key.
- * @property debug Default is false. If set to true then the form state will be displayed just below the form component in `code` tags.
- * @property dynamic Default is True. If set to false, the  validators will not be called until the form is submitted.
- * @property bare Default set to false. If set to true then it will now use bootstrap styling or any extra elements.
+ * @interface **IForm** Exported Form interface available to the caller. Contains all the properties required by
+ * the Form *RBF* Form's component.
  */
 export interface IForm {
+    /** The passed in state from the parent component */
     state: any;
-    // If the parent component is a class component then the context must contain the parent's **this** keyword.
+    /** If the parent component is a class component then the context must contain the parent's **this** keyword. */
     context?: any;
-    // If the form's state is not directly contained at parent's state root object, then formKey needs to represent the key.
+    /** If the form's state is not directly contained at parent's state root object, then formKey needs to represent the key. */
     formKey?: string;
-    // Default is false. If set to true then the form state will be displayed just below the form component in `code` tags.
+    /** Default is false. If set to true then the form state will be displayed just below the form component in `code` tags. */
     debug?: boolean;
-    // Default is True. If set to false, the  validators will not be called until the form is submitted.
+    /** Default is True. If set to false, the  validators will not be called until the form is submitted. */
     dynamic?: boolean;
-    // Optional
+    /** Optional */
     children?: any;
-    // Default set to false. If set to true then it will now use bootstrap styling or any extra elements.
+    /** Default set to false. If set to true then it will now use bootstrap styling or any extra elements. */
     bare?: boolean;
 }
 
-/**
- * @internal
- */
+/** @internal */
 export interface IFormContext {
     bare?: boolean;
     debug?: boolean;
@@ -53,7 +49,20 @@ export interface IFormContext {
 export const FormContext = React.createContext({});
 /** @internal */
 export const FormProvider = FormContext.Provider;
-/** @var Access the form state within a React Conext Api Consumer scope */
+/**
+ * @var Access the form state within a React Conext Api Consumer scope
+ * @example For example:
+ * ```
+ * <Form state={this.state} context={this}>
+ *    <InputText value={this.state.message} state={this.state} />
+ *      <FormConsumer>
+ *      {(context: any) => {
+ *          return <div>{context} is equal {myState}</div>;
+ *      }}
+ *    </FormConsumer>
+ * </Form>
+ * ```
+ * */
 export const FormConsumer = FormContext.Consumer;
 
 
@@ -67,6 +76,11 @@ export const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
 };
 
+/**
+ *
+ * @param props
+ * @constructor
+ */
 export const Button = (props: any) => {
     return <button type="submit">Submit</button>;
 };
