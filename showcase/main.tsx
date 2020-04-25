@@ -1,7 +1,7 @@
 import * as React from "react";
 import {ChangeEvent, useEffect} from "react";
 import {FormConsumer, Form} from "../src/form";
-import { PasswordField, TextInputField} from "../src/form-elements";
+import {EmailField, PasswordField, TextInputField} from "../src/form-elements";
 import {areFieldsEqual, isFieldEmpty} from "../src/validators";
 // import * as ReactBareForms from "../src/index";
 // import {isFieldEmpty, Submit} from "../src/index";
@@ -12,6 +12,7 @@ interface IState{
     // username: string;
     password: string;
     confirmPassword: string;
+    email: string;
 }
 
 
@@ -21,6 +22,7 @@ export class Main extends React.Component<IProps, IState> {
         // username: "",
         password: "",
         confirmPassword: "",
+        email: "",
     };
 
     public render(): React.ReactElement {
@@ -32,7 +34,7 @@ export class Main extends React.Component<IProps, IState> {
                     <div className="container">
                         <div className="container">
 
-                            <Form state={this.state} context={this}>
+                            <Form state={this.state} context={this} bare={false}>
 
                                 <TextInputField
                                     value={this.state.password}
@@ -56,6 +58,14 @@ export class Main extends React.Component<IProps, IState> {
                                     hint="Password must match"
                                     labelText="Confirm Password"
                                     validators={[isFieldEmpty(5), areFieldsEqual("password")]}
+                                />
+
+                                <EmailField
+                                    name="email"
+                                    value={this.state.email}
+                                    hint="Your email"
+                                    labelText="Please enter your email"
+                                    validators={[]}
                                 />
 
 
