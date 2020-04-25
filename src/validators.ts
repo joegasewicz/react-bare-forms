@@ -37,7 +37,7 @@ export type IValidationVariable = (arg: any) => IValidationFunction;
  * ```
  * @param `passwordKey` The name of the password form element you watch to match against
  */
-export const areFieldsEqual = customValidator((passwordKey, fieldValue, context) => {
+export const areFieldsEqual: IValidationVariable = customValidator((passwordKey, fieldValue, context) => {
     if(fieldValue !== context.state[passwordKey]) {
         return [`Password fields do not match`];
     }
