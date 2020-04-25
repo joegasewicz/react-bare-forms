@@ -14,7 +14,7 @@ export type IValidator = (t: any) => IValidationFunction;
 /** The expected validator's type that {@link IField} elements can consume */
 export type IValidators = Array<IValidationFunction>;
 /** The custom validator type callback */
-export type ICreateValidatorCallback = (arg: any, fieldValue: any, context: IFormContext) => Array<string>|null;
+export type ICustomValidatorCallback = (arg: any, fieldValue: any, context: IFormContext) => Array<string>|null;
 
 export type IValidationVariable = (arg: any) => IValidationFunction;
 /**
@@ -96,7 +96,7 @@ export const isFieldEmpty: IValidationVariable = customValidator((minLength, fie
  * if the `fieldValue`is **NOT** validated.
  * @param callback
  */
-export function customValidator(callback: ICreateValidatorCallback): (arg: any) => IValidationFunction  {
+export function customValidator(callback: ICustomValidatorCallback): (arg: any) => IValidationFunction  {
     return (arg: any): IValidationFunction => {
         return (...args: Array<any>) => {
             const fieldValue: any = args[0];
