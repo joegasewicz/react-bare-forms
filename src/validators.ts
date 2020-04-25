@@ -1,6 +1,7 @@
 import {_FieldEmptyErrorMsg,  _isFieldEmptyErrorMsg} from "./_errors";
 import {default as React, ReactElement} from "react";
 import {FormConsumer, IFormContext} from "./form";
+import {EMAIL_REGEX} from "./_regex";
 
 export interface IValidation {
     isValid: boolean;
@@ -16,7 +17,7 @@ export type IValidators = Array<IValidationFunction>;
 /** The custom validator type callback */
 export type ICustomValidatorCallback = (arg: any, fieldValue: any, context: IFormContext) => Array<string>|null;
 
-export type IValidationVariable = (arg: any) => IValidationFunction;
+export type IValidationVariable = (arg?: any) => IValidationFunction;
 /**
  * The `passwordKey` is normally the first password form field the user fills in before
  * then confirming that the password is correct with a confirm password field. this validator
@@ -53,14 +54,32 @@ export const areFieldsEqual: IValidationVariable = customValidator((passwordKey,
  *        // other props...
  *        validators={[isFieldEmpty(5)]}
  *   />
- *   // message: Must be at least 5 characters`
+ *   // message: Must be at least 5 characters
  * ```
  * @param minLength The minimum length of the form field value
  */
-export const isFieldEmpty: IValidationVariable = customValidator((minLength, fieldValue, context) => {
+export const isFieldEmpty: IValidationVariable = customValidator((minLength, fieldValue, _) => {
     const isValid = (fieldValue.length >= minLength);
     if(!isValid) {
         return [`Must be at least ${minLength} characters`];
+    }
+});
+
+/**
+ * This validator doesn't require any arguments to be passed in.
+ * @example
+ * ```
+ *  <EmailField
+ *    // other props...
+ *    validators={[isEmailValid()]}
+ *  />
+ *  // message: Must be a valid email
+ * ```
+ */
+export const isEmailValid: IValidationVariable = customValidator((_, fieldValue, context) => {
+    const isValid = EMAIL_REGEX.test(String(fieldValue).toLowerCase());
+    if(!isValid) {
+        return [`Must be a valid email`];
     }
 });
 
@@ -97,7 +116,7 @@ export const isFieldEmpty: IValidationVariable = customValidator((minLength, fie
  * @param callback
  */
 export function customValidator(callback: ICustomValidatorCallback): (arg: any) => IValidationFunction  {
-    return (arg: any): IValidationFunction => {
+    return (arg: any = null): IValidationFunction => {
         return (...args: Array<any>) => {
             const fieldValue: any = args[0];
             const context: IFormContext = args[1];

@@ -2,7 +2,7 @@ import * as React from "react";
 import {ChangeEvent, useEffect} from "react";
 import {FormConsumer, Form} from "../src/form";
 import {EmailField, PasswordField, TextInputField} from "../src/form-elements";
-import {areFieldsEqual, isFieldEmpty} from "../src/validators";
+import {areFieldsEqual, isEmailValid, isFieldEmpty} from "../src/validators";
 // import * as ReactBareForms from "../src/index";
 // import {isFieldEmpty, Submit} from "../src/index";
 
@@ -65,7 +65,7 @@ export class Main extends React.Component<IProps, IState> {
                                     value={this.state.email}
                                     hint="Your email"
                                     labelText="Please enter your email"
-                                    validators={[]}
+                                    validators={[isEmailValid()]}
                                 />
 
 
