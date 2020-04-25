@@ -77,7 +77,7 @@ export const isFieldEmpty: IValidationVariable = customValidator((minLength, fie
 
 /**
  * Function that takes a callback which contains the callers own validation logic
- * & either an array ofd string(s) which are the validation error message or *undefined*. Below is an
+ * & either an array of string(s) which are the validation error message or *undefined*. Below is an
  * example of creatinga custom validator to test if a field has a string length of nth.
  *
  * There are 3 arguments available to your custom validation callback:
