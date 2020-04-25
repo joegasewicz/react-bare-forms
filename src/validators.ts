@@ -83,15 +83,14 @@ export const isFieldEmpty: IValidationVariable = customValidator((minLength, fie
  * There are 3 arguments available to your custom validation callback:
  *  - **arg** This is the your own value used to in the validation comparison
  *  @example
- *  ``
- *  const myArg = 5;
+ *  ```
+ *  const myArg = 5;`
  *
  *  <TextInputField
  *    // other props...
  *    validators={[myValidator(myArg)]} // <- `myArg`
  *  />
- *  ```
- *
+ * ```
  *  - **fieldValue** This is the current form element value being passed to the validator
  *  - **context** This is the context object that contains the state
  * For example:
