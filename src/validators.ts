@@ -37,22 +37,11 @@ export type IValidationVariable = (arg: any) => IValidationFunction;
  * ```
  * @param `passwordKey` The name of the password form element you watch to match against
  */
-export function areFieldsEqual(passwordKey: string): IValidationFunction {
-    return (...args: Array<any>): IValidation => {
-        const [password, context] = args;
-        if(password === context.state[passwordKey]) {
-            return {
-                isValid: true,
-                messages: [],
-            }
-        } else {
-            return {
-                isValid: false,
-                messages: [`Password fields do not match`],
-            }
-        }
+export const areFieldsEqual = customValidator((passwordKey, fieldValue, context) => {
+    if(fieldValue !== context.state[passwordKey]) {
+        return [`Password fields do not match`];
     }
-}
+});
 
 /**
  * The `isFieldEmpty` validator performs a comparison against `minLength` & the field element

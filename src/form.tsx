@@ -16,7 +16,7 @@ export type TypeMetadata = { [k: string]: _IFormMetadata};
  * @interface **IForm** Exported Form interface available to the caller. Contains all the properties required by
  * the Form *RBF* Form's component.
  */
-export interface IForm {
+export interface IForm extends React.FormHTMLAttributes<HTMLFormElement> { // TODO check this is correct
     /** The passed in state from the parent component */
     state: any;
     /** If the parent component is a class component then the context must contain the parent's **this** keyword. */
@@ -114,11 +114,10 @@ export const Form = (props: IForm) => {
         metadata: {},
         updateParentState: updateStateFromPassedInContext(parentState, setParentState),
     };
-
     return (
         <FormProvider value={providerContext}>
-            <form onSubmit={handleSubmit} autoComplete="off">{props.children}</form>
+            <form onSubmit={handleSubmit} {...props}>{props.children}</form>
         </FormProvider>
 
-    )
+    );
 };

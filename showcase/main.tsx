@@ -34,7 +34,7 @@ export class Main extends React.Component<IProps, IState> {
                     <div className="container">
                         <div className="container">
 
-                            <Form state={this.state} context={this} bare={false}>
+                            <Form state={this.state} context={this} bare={false} autoComplete="off">
 
                                 <TextInputField
                                     value={this.state.password}
