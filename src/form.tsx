@@ -124,11 +124,11 @@ export const Form = (props: IForm) => {
     const [context, updateContext] = useState(providerContext);
 
     const _providerContext: IFormContext = {
-        bare: props.bare || false,
+        bare: props.bare || context.bare,
         state: props.state,
         formKey: props.formKey,
-        debug: props.debug || false,
-        dynamic: props.dynamic || true,
+        debug: props.debug || context.debug,
+        dynamic: props.dynamic || context.dynamic,
         metadata: context.metadata,
         updateParentState: updateStateFromPassedInContext(parentState, setParentState),
         updateFieldValidation: updateValidationMetadata(context, updateContext),
