@@ -1,4 +1,4 @@
-import {areFieldsEqual, isFieldEmpty} from "../src/validators";
+import {areFieldsEqual, isEmailValid, isFieldEmpty} from "../src/validators";
 import {_FieldEmptyErrorMsg,  _isFieldEmptyErrorMsg} from "../src/_errors";
 
 const isFieldEmptyResult = (limit: number) => ({
@@ -50,11 +50,31 @@ describe("#areFieldsEqual()", () => {
     expect(areFieldsEqual("username")("gooodbye", context)).toEqual({
         isValid: false,
         messages: ["Fields do not match"],
-    })
+    });
 });
 
 describe("#isEmailValid()", () => {
-
+    let context = {
+        state: {
+            my_email: "joebloggs@gmail.com",
+        }
+    };
+    expect(isEmailValid()(context.state.my_email, context)).toEqual({
+        isValid: true,
+        messages: [],
+    });
+    expect(isEmailValid()("joe@joe", context)).toEqual({
+        isValid: false,
+        messages: ["Must be a valid email"],
+    });
+    expect(isEmailValid()("joe@joe.com", context)).toEqual({
+        isValid: true,
+        messages: [],
+    });
+    expect(isEmailValid()("joe@joe.", context)).toEqual({
+        isValid: false,
+        messages: ["Must be a valid email"],
+    });
 });
 
 describe("#customValidator()", () => {
