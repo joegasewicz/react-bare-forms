@@ -1,6 +1,7 @@
 import {ChangeEvent, default as React, useContext, useEffect, useState} from "react";
 import {updateStateFromPassedInContext} from "./_handlers";
 import {IValidation} from "./validators";
+import {updateValidationMetadata} from "./_context_updaters";
 
 
 
@@ -110,7 +111,6 @@ export const Submit = (props: any) => {
 export const Form = (props: IForm) => {
     const [parentState, setParentState] = useState(props.state);
 
-
     // If the parent component is a class component, then the state needs to be updated from the parent context
     if(props.context) {
         useEffect(() => {
@@ -120,43 +120,8 @@ export const Form = (props: IForm) => {
         }, [parentState]);
     }
 
-    const updateValidationMetadata = (context: any, update: any) =>
-        (fieldName: string, fieldValue: any, validation: IValidation): void => {
-            if(typeof context.metadata === "undefined") {
-                return;
-            }
-            if(!(fieldName in context.metadata)) {
-                update({
-                    ...context,
-                     metadata: {
-                         ...context.metadata,
-                         [fieldName]: {
-                             ...validation,
-                             value: fieldValue,
-                             isTouched: true,
-                         }
-                     },
-                });
-                // Should update context.metadata value
-            } else if(context.metadata[fieldName].value != fieldValue) {
-                update({
-                    ...context,
-                    metadata: {
-                        ...context.metadata,
-                        [fieldName]: {
-                            ...validation,
-                            value: fieldValue,
-                            isTouched: true,
-                        }
-                    },
-                });
-            }
-
-        };
-
 
     const [context, updateContext] = useState(providerContext);
-    const updateFieldValidation = updateValidationMetadata(context, updateContext);
 
     const _providerContext: IFormContext = {
         bare: props.bare || false,
@@ -166,11 +131,11 @@ export const Form = (props: IForm) => {
         dynamic: props.dynamic || true,
         metadata: context.metadata,
         updateParentState: updateStateFromPassedInContext(parentState, setParentState),
+        updateFieldValidation: updateValidationMetadata(context, updateContext),
     };
 
-
     return (
-        <FormProvider value={{..._providerContext, updateFieldValidation}}>
+        <FormProvider value={_providerContext}>
             <form onSubmit={handleSubmit} {...props}>{props.children}</form>
         </FormProvider>
     );

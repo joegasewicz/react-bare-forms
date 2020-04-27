@@ -21,7 +21,41 @@
 //          }
 //     }
 // };
+import {IValidation} from "./validators";
 
 
+export const updateValidationMetadata = (context: any, update: any) =>
+    (fieldName: string, fieldValue: any, validation: IValidation): void => {
+        if(typeof context.metadata === "undefined") {
+            return;
+        }
+        if(!(fieldName in context.metadata)) {
+            update({
+                ...context,
+                metadata: {
+                    ...context.metadata,
+                    [fieldName]: {
+                        ...validation,
+                        value: fieldValue,
+                        isTouched: true,
+                    }
+                },
+            });
+            // Should update context.metadata value
+        } else if(context.metadata[fieldName].value != fieldValue) {
+            update({
+                ...context,
+                metadata: {
+                    ...context.metadata,
+                    [fieldName]: {
+                        ...validation,
+                        value: fieldValue,
+                        isTouched: true,
+                    }
+                },
+            });
+        }
+
+    };
 
 
