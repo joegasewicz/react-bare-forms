@@ -155,23 +155,22 @@ export const Form = (props: IForm) => {
         };
 
 
-    const [context, updateContext] = useState(FormContext);
+    const [context, updateContext] = useState(providerContext);
+    const updateFieldValidation = updateValidationMetadata(context, updateContext);
 
-    const providerContext: IFormContext = {
+    const _providerContext: IFormContext = {
         bare: props.bare || false,
         state: props.state,
         formKey: props.formKey,
         debug: props.debug || false,
         dynamic: props.dynamic || true,
-        metadata: {},
+        metadata: context.metadata,
         updateParentState: updateStateFromPassedInContext(parentState, setParentState),
     };
 
 
-    const updateFieldValidation = updateValidationMetadata(context, updateContext);
-
     return (
-        <FormProvider value={{...providerContext, updateFieldValidation}}>
+        <FormProvider value={{..._providerContext, updateFieldValidation}}>
             <form onSubmit={handleSubmit} {...props}>{props.children}</form>
         </FormProvider>
     );
