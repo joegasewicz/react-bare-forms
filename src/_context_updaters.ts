@@ -29,33 +29,18 @@ export const updateValidationMetadata = (context: any, update: any) =>
         if(typeof context.metadata === "undefined") {
             return;
         }
-        if(!(fieldName in context.metadata)) {
-            update({
-                ...context,
-                metadata: {
-                    ...context.metadata,
-                    [fieldName]: {
-                        ...validation,
-                        value: fieldValue,
-                        isTouched: true,
-                    }
-                },
-            });
-            // Should update context.metadata value
-        } else if(context.metadata[fieldName].value != fieldValue) {
-            update({
-                ...context,
-                metadata: {
-                    ...context.metadata,
-                    [fieldName]: {
-                        ...validation,
-                        value: fieldValue,
-                        isTouched: true,
-                    }
-                },
-            });
+        let contextUpdates = {
+            ...context,
+            metadata: {
+                ...context.metadata,
+                [fieldName]: {
+                    ...validation,
+                    value: fieldValue,
+                    isTouched: true,
+                }
+            },
+        };
+        if(!(fieldName in context.metadata) || context.metadata[fieldName].value != fieldValue) {
+            update(contextUpdates);
         }
-
     };
-
-
