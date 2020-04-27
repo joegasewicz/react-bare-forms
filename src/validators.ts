@@ -121,17 +121,19 @@ export function customValidator(callback: ICustomValidatorCallback): (arg: any) 
             const fieldValue: any = args[0];
             const context: IFormContext = args[1];
             const messages = callback(arg, fieldValue, context);
+            let validationData;
             if (Array.isArray(messages) && messages.length >= 1) {
-                return {
+                validationData = {
                     isValid: false,
                     messages,
                 }
             } else {
-                return {
+                validationData = {
                     isValid: true,
                     messages: [],
                 }
             }
+            return validationData;
         }
     }
 }

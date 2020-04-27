@@ -1,3 +1,5 @@
+// Handlers
+// Handlers are methods on the context object that update state.
 import * as React from "react";
 
 /** @internal */

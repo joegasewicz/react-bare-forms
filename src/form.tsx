@@ -1,5 +1,8 @@
-import {ChangeEvent, default as React, useEffect, useState} from "react";
+import {ChangeEvent, default as React, useContext, useEffect, useState} from "react";
 import {updateStateFromPassedInContext} from "./_handlers";
+import {IValidation} from "./validators";
+import {updateValidationMetadata} from "./_context_updaters";
+
 
 
 /** @internal */
@@ -10,6 +13,7 @@ export interface _IFormMetadata {
     value: any;
 }
 
+/** @internal */
 export type TypeMetadata = { [k: string]: _IFormMetadata};
 
 /**
@@ -41,11 +45,22 @@ export interface IFormContext {
     formKey?: string;
     metadata: TypeMetadata;
     state: any;
-    updateParentState: (e: React.ChangeEvent<any>, name: string) => void;
+    updateParentState?: (e: React.ChangeEvent<any>, name: string) => void;
+    updateFieldValidation?: (fieldName: string, fieldValue: any, validation: IValidation) => void;
 }
 
+
+const providerContext: IFormContext = {
+    bare: false,
+    state: {},
+    formKey: null,
+    debug: false,
+    dynamic: true,
+    metadata: {},
+};
+
 /** @internal */
-export const FormContext = React.createContext({});
+export const FormContext = React.createContext(providerContext);
 /** @internal */
 export const FormProvider = FormContext.Provider;
 /**
@@ -105,19 +120,23 @@ export const Form = (props: IForm) => {
         }, [parentState]);
     }
 
-    const providerContext: IFormContext = {
-        bare: props.bare || false,
+
+    const [context, updateContext] = useState(providerContext);
+
+    const _providerContext: IFormContext = {
+        bare: props.bare || context.bare,
         state: props.state,
         formKey: props.formKey,
-        debug: props.debug || false,
-        dynamic: props.dynamic || true,
-        metadata: {},
+        debug: props.debug || context.debug,
+        dynamic: props.dynamic || context.dynamic,
+        metadata: context.metadata,
         updateParentState: updateStateFromPassedInContext(parentState, setParentState),
+        updateFieldValidation: updateValidationMetadata(context, updateContext),
     };
+
     return (
-        <FormProvider value={providerContext}>
+        <FormProvider value={_providerContext}>
             <form onSubmit={handleSubmit} {...props}>{props.children}</form>
         </FormProvider>
-
     );
 };
