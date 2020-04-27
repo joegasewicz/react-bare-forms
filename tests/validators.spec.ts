@@ -1,4 +1,4 @@
-import {areFieldsEqual, isEmailValid, isFieldEmpty} from "../src/validators";
+import {areFieldsEqual, customValidator, isEmailValid, isFieldEmpty, IValidationVariable} from "../src/validators";
 import {_FieldEmptyErrorMsg,  _isFieldEmptyErrorMsg} from "../src/_errors";
 
 const isFieldEmptyResult = (limit: number) => ({
@@ -75,8 +75,52 @@ describe("#isEmailValid()", () => {
         isValid: false,
         messages: ["Must be a valid email"],
     });
+    expect(isEmailValid()("", context)).toEqual({
+        isValid: false,
+        messages: ["Must be a valid email"],
+    });
 });
 
 describe("#customValidator()", () => {
+    const testIsTrue: IValidationVariable = customValidator((undefined, fieldValue, _) => {
+        if(!fieldValue) {
+            return [`Must be true`];
+        }
+    });
+    expect(testIsTrue()(true, {})).toEqual({
+        isValid: true,
+        messages: [],
+    });
+    expect(testIsTrue()(false, {})).toEqual({
+        isValid: false,
+        messages: ["Must be true"],
+    });
+
+    const context = {
+        state: {
+            someKey: "bananas",
+        }
+    };
+    const testContext: IValidationVariable = customValidator((myKey, fieldValue, context) => {
+        const result = context.state[myKey];
+
+        if(result !== "bananas") {
+            return [`Should equal bananas`];
+        }
+    });
+    expect(testContext("someKey")(undefined, context)).toEqual({
+        isValid: true,
+        messages: [],
+    });
+
+    expect(testContext("someKey")(undefined, {state: "apples"})).toEqual({
+        isValid: false,
+        messages: ["Should equal bananas"],
+    });
+
+    expect(testContext("wrongKey")(undefined, context)).toEqual({
+        isValid: false,
+        messages: ["Should equal bananas"],
+    });
 
 });
