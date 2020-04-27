@@ -20,6 +20,7 @@ export const FormElementValidators = (props: any): ReactElement => {
                     return (
                         <>{validators.map((key: any, index: number) => {
                             const validationResult = validators[index](context.state[name], context);
+                            context.updateFieldValidation(name, context.state[name], validationResult);
                             return validationResult.messages.map((msg: string) => {
                                 return <div className={styles}>{msg}</div>
                             });
