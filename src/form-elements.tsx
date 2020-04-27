@@ -97,7 +97,6 @@ function _createTextInputField(type: string) {
 
             }}
         </FormConsumer>
-
     );
 }
 

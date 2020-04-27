@@ -34,13 +34,13 @@ export type IValidationVariable = (arg?: any) => IValidationFunction;
  *        // other props...
  *        validators={[areFieldsEqual("myPassword")]}
  *   />
- *   // message: Password fields do not match
+ *   // message: Fields do not match
  * ```
  * @param `passwordKey` The name of the password form element you watch to match against
  */
 export const areFieldsEqual: IValidationVariable = customValidator((passwordKey, fieldValue, context) => {
     if(fieldValue !== context.state[passwordKey]) {
-        return [`Password fields do not match`];
+        return [`Fields do not match`];
     }
 });
 
