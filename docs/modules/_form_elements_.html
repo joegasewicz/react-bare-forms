@@ -70,11 +70,11 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-not-exported">
+						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported"><a href="../interfaces/_form_elements_.iemailfield.html" class="tsd-kind-icon">IEmail<wbr>Field</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported"><a href="../interfaces/_form_elements_.ifield.html" class="tsd-kind-icon">IField</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_form_elements_.ifield.html" class="tsd-kind-icon">IField</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported"><a href="../interfaces/_form_elements_.ipasswordfield.html" class="tsd-kind-icon">IPassword<wbr>Field</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported"><a href="../interfaces/_form_elements_.itextinputfield.html" class="tsd-kind-icon">IText<wbr>Input<wbr>Field</a></li>
 							</ul>
@@ -102,13 +102,33 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/a88a8a3/src/form-elements.tsx#L62">src/form-elements.tsx:62</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/1197b5d/src/form-elements.tsx#L122">src/form-elements.tsx:122</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>props: <a href="../interfaces/_form_elements_.iemailfield.html" class="tsd-signature-type">IEmailField</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<pre><code>// A bare form example ... remember to <span class="hljs-keyword">set</span> the {@<span class="hljs-keyword">link</span> Form.bare} property <span class="hljs-keyword">to</span> <span class="hljs-string">`true`</span>
+&lt;TextInputField
+   <span class="hljs-keyword">value</span>={this.state.username}
+   <span class="hljs-keyword">name</span>=<span class="hljs-string">"username"</span>
+/&gt;
+
+// Example <span class="hljs-keyword">with</span> Bootstrap styling (Bootstrap styling comes <span class="hljs-keyword">as</span> <span class="hljs-keyword">default</span>)
+
+&lt;TextInputField
+   <span class="hljs-keyword">value</span>={this.state.username}
+   <span class="hljs-keyword">name</span>=<span class="hljs-string">"username"</span>
+   hint=<span class="hljs-string">"Needs to be at least 50 characters long"</span>
+   labelText=<span class="hljs-string">"Username"</span>
+ /&gt;</code></pre>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -125,20 +145,52 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/a88a8a3/src/form-elements.tsx#L56">src/form-elements.tsx:56</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/1197b5d/src/form-elements.tsx#L98">src/form-elements.tsx:98</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
-								<dl class="tsd-comment-tags">
-									<dt>params</dt>
-									<dd><p>props</p>
-									</dd>
-								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>props: <a href="../interfaces/_form_elements_.ipasswordfield.html" class="tsd-signature-type">IPasswordField</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<pre><code>// A bare form example ... remember to <span class="hljs-keyword">set</span> the {@<span class="hljs-keyword">link</span> Form.bare} property <span class="hljs-keyword">to</span> <span class="hljs-string">`true`</span>
+&lt;PasswordField
+   <span class="hljs-keyword">value</span>={this.state.username}
+   <span class="hljs-keyword">name</span>=<span class="hljs-string">"username"</span>
+   validators={[isEmailValid()]}
+/&gt;
+
+// Example <span class="hljs-keyword">with</span> Bootstrap styling (Bootstrap styling comes <span class="hljs-keyword">as</span> <span class="hljs-keyword">default</span>)
+
+&lt;PasswordField
+   <span class="hljs-keyword">value</span>={this.state.password}
+   <span class="hljs-keyword">name</span>=<span class="hljs-string">"password"</span>
+   hint=<span class="hljs-string">"Needs to be at least 8 characters long"</span>
+   labelText=<span class="hljs-string">"Password"</span>
+   validators={[isEmailValid()]}
+ /&gt;</code></pre><p>Also we can create two <em>PasswordField</em> components to confirm passwords are equal. Please see
+												<a href="_validators_.html#arefieldsequal">areFieldsEqual</a> for more info.
+												The first <em>PasswordField</em> has has a <em>name</em> prop of <strong>password</strong> &amp; the second <em>PasswordField</em> a name
+												prop of <em>confirmPassword</em>. Then we can add a <a href="_validators_.html#arefieldsequal">areFieldsEqual</a> validator to the <em>PasswordField</em>
+												with the <em>confirmPassword</em> name props (also notice how <a href="_validators_.html#arefieldsequal">areFieldsEqual</a> takes the first <em>PasswordField</em>
+											name as an argument).</p>
+											<pre><code>&lt;<span class="hljs-symbol">PasswordField</span>
+ name=<span class="hljs-string">"password"</span>
+ // other props...
+
+ validators={[isEmailValid()]}
+/&gt;
+
+&lt;<span class="hljs-symbol">PasswordField</span>
+ name=<span class="hljs-string">"confirmPassword"</span>
+ // other props...
+ validators={[areFieldsEqual(<span class="hljs-string">"password"</span>)]}
+/&gt;</code></pre>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -155,7 +207,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/a88a8a3/src/form-elements.tsx#L50">src/form-elements.tsx:50</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/1197b5d/src/form-elements.tsx#L50">src/form-elements.tsx:50</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -197,6 +249,9 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="__context_updaters_.html">&quot;_<wbr>context_<wbr>updaters&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="__errors_.html">&quot;_<wbr>errors&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -218,7 +273,7 @@
 					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
 						<a href="../interfaces/_form_elements_.iemailfield.html" class="tsd-kind-icon">IEmail<wbr>Field</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="../interfaces/_form_elements_.ifield.html" class="tsd-kind-icon">IField</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
@@ -246,6 +301,7 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
