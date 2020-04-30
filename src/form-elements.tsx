@@ -1,11 +1,11 @@
 import {default as React} from "react";
 import {FormConsumer} from "./form";
 import {IValidators} from "./validators";
-import {FormElementValidators} from "./_helpers";
+import {FormElementValidators, mergeDefaultCssWithProps} from "./_helpers";
 
 
 
-interface IField {
+export interface IField {
     /** The name of the form element (this should match the state property that you want be updated by this form element) */
     name: string;
     /** The state property that gets updated by this input field */
@@ -76,7 +76,7 @@ function _createTextInputField(type: string) {
                     value={context[props.name]}
                     onChange={(e) => context.updateParentState(e, props.name)}
                     name={props.name}
-                    className={`form-control ${props.className}`}
+                    className={mergeDefaultCssWithProps("form-control", props.className, context.bare)}
                 />;
                 const _validate = props.validators ? <FormElementValidators validators={props.validators} name={props.name} />: null;
                 if(context.bare) {
@@ -88,7 +88,7 @@ function _createTextInputField(type: string) {
                     );
                 } else {
                     return (
-                        <FormGroup labelText={props.labelText} hint={props.hint} >
+                        <FormGroup labelText={props.labelText} hint={props.hint}>
                             {_input}
                             {_validate}
                         </FormGroup>
@@ -112,7 +112,7 @@ interface IFormGroup {
  * @param props
  * @constructor
  */
-function FormGroup(props: IFormGroup): React.ReactElement {
+export function FormGroup(props: IFormGroup): React.ReactElement {
     return (
         <div className="form-group">
             {props.labelText && <label>{props.labelText}</label>}

@@ -11,6 +11,9 @@
     "typedoc": "typedoc --mode modules --ignoreCompilerErrors --stripInternal --out docs src && touch docs/.nojekyll"
   },
   "jest": {
+    "setupFiles": [
+      "./tests/setupTests.ts"
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",
@@ -27,11 +30,17 @@
   "author": "joegasewicz",
   "license": "MIT",
   "devDependencies": {
+    "@types/enzyme": "^3.10.5",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^25.2.1",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
+    "@types/react-test-renderer": "^16.9.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "html-webpack-plugin": "^4.2.0",
     "jest": "^25.4.0",
+    "react-test-renderer": "^16.13.1",
     "source-map-loader": "^0.2.4",
     "ts-jest": "^25.4.0",
     "ts-loader": "^7.0.1",

@@ -1,6 +1,7 @@
 import * as React from "react";
 import {ReactElement} from "react";
 import {FormConsumer} from "./form";
+import {IField} from "./form-elements";
 
 /**
  * @internal
@@ -31,3 +32,20 @@ export const FormElementValidators = (props: any): ReactElement => {
         </>
     );
 };
+
+/**
+ * @internal
+ * @param defaultValue
+ * @param cssProps
+ * @param bare
+ */
+export function mergeDefaultCssWithProps(defaultValue: string, cssProps: any, bare: boolean): string {
+    let cssStr = "";
+    if(!bare) {
+        cssStr += `${defaultValue} `;
+    }
+    if (cssProps) {
+        cssStr += `${cssProps}`;
+    }
+    return cssStr;
+}
