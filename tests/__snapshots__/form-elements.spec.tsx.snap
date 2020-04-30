@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#EmailField() it should display validation errors 1`] = `
+<div
+  className="form-group"
+>
+  <input
+    className="form-control "
+    name="email"
+    onChange={[Function]}
+    type="email"
+  />
+  <div
+    className="alert mt-2 alert-danger undefined"
+  >
+    Must be a valid email
+  </div>
+</div>
+`;
+
+exports[`#EmailField() should render a single input tag with no bootstrap styles 1`] = `
+<input
+  className=""
+  name="email"
+  onChange={[Function]}
+  type="email"
+/>
+`;
+
+exports[`#EmailField() should render an email field with the bootstrap styled tags 1`] = `
+<div
+  className="form-group"
+>
+  <input
+    className="form-control "
+    name="email"
+    onChange={[Function]}
+    type="email"
+  />
+</div>
+`;
+
+exports[`#PasswordField() it should display validation errors 1`] = `
+<div
+  className="form-group"
+>
+  <input
+    className="form-control "
+    name="password"
+    onChange={[Function]}
+    type="password"
+  />
+  <div
+    className="alert mt-2 alert-danger undefined"
+  >
+    Must be at least 5 characters
+  </div>
+</div>
+`;
+
+exports[`#PasswordField() should render a single input tag with no bootstrap styles 1`] = `
+<input
+  className=""
+  name="password"
+  onChange={[Function]}
+  type="password"
+/>
+`;
+
+exports[`#PasswordField() should render an input field with the bootstrap styled tags 1`] = `
+<div
+  className="form-group"
+>
+  <input
+    className="form-control "
+    name="password"
+    onChange={[Function]}
+    type="password"
+  />
+</div>
+`;
+
+exports[`#TextInputField() it should display validation errors 1`] = `
+<div
+  className="form-group"
+>
+  <input
+    className="form-control "
+    name="username"
+    onChange={[Function]}
+    type="text"
+  />
+  <div
+    className="alert mt-2 alert-danger undefined"
+  >
+    Must be at least 5 characters
+  </div>
+</div>
+`;
+
+exports[`#TextInputField() should render a single input tag with no bootstrap styles 1`] = `
+<input
+  className=""
+  name="username"
+  onChange={[Function]}
+  type="text"
+/>
+`;
+
+exports[`#TextInputField() should render an input field with the bootstrap styled tags 1`] = `
+<div
+  className="form-group"
+>
+  <input
+    className="form-control "
+    name="username"
+    onChange={[Function]}
+    type="text"
+  />
+</div>
+`;

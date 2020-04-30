@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 import TestRenderer from "react-test-renderer";
 import {Form} from "../src/form";
 import {
@@ -30,7 +31,7 @@ describe("<Form />", () => {
     it("should render form tags with no other elements", () => {
 
         act(() => {
-            render(
+            ReactDOM.render(
                 <Form state={{}} bare={true}>
 
                 </Form>, container);
