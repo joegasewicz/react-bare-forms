@@ -51,13 +51,73 @@ export const TextInputField = (props: ITextInputField) =>
     _createTextInputField("text")(props);
 
 /**
- * @params props
+ *
+ * @param props
+ * ```
+ * // A bare form example ... remember to set the {@link Form.bare} property to `true`
+ * <PasswordField
+ *    value={this.state.username}
+ *    name="username"
+ *    validators={[isEmailValid()]}
+ * />
+ *
+ * // Example with Bootstrap styling (Bootstrap styling comes as default)
+ *
+ * <PasswordField
+ *    value={this.state.password}
+ *    name="password"
+ *    hint="Needs to be at least 8 characters long"
+ *    labelText="Password"
+ *    validators={[isEmailValid()]}
+ *  />
+ *  ```
+ * Also we can create two *PasswordField* components to confirm passwords are equal. Please see
+ * {@link areFieldsEqual} for more info.
+ * The first *PasswordField* has has a *name* prop of **password** & the second *PasswordField* a name
+ * prop of *confirmPassword*. Then we can add a {@link areFieldsEqual} validator to the *PasswordField*
+ * with the *confirmPassword* name props (also notice how {@link areFieldsEqual} takes the first *PasswordField*
+ * name as an argument).
+ *
+ * ```
+ * <PasswordField
+ *  name="password"
+ *  // other props...
+ *
+ *  validators={[isEmailValid()]}
+ * />
+ *
+ * <PasswordField
+ *  name="confirmPassword"
+ *  // other props...
+ *  validators={[areFieldsEqual("password")]}
+ * />
+ * ```
+ *
+ * @constructor
  */
 export const PasswordField = (props: IPasswordField) =>
     _createTextInputField("password")(props);
 
-/*
+/**
+ *
  * @param props
+ * ```
+ * // A bare form example ... remember to set the {@link Form.bare} property to `true`
+ * <TextInputField
+ *    value={this.state.username}
+ *    name="username"
+ * />
+ *
+ * // Example with Bootstrap styling (Bootstrap styling comes as default)
+ *
+ * <TextInputField
+ *    value={this.state.username}
+ *    name="username"
+ *    hint="Needs to be at least 50 characters long"
+ *    labelText="Username"
+ *  />
+ * ```
+ * @constructor
  */
 export const EmailField = (props: IEmailField) =>
     _createTextInputField("email")(props);

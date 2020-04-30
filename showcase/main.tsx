@@ -44,7 +44,6 @@ export class Main extends React.Component<IProps, IState> {
                                     validators={[isFieldEmpty(5)]}
                                 />
 
-
                                 <PasswordField
                                     name="password"
                                     value={this.state.password}
