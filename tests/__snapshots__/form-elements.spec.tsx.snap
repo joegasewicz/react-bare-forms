@@ -9,7 +9,7 @@ exports[`#<TextAreaField /> it should display validation errors 1`] = `
     className="form-control "
     name="about_text"
     onChange={[Function]}
-    rows={5}
+    rows={20}
   />
   <div
     className="alert mt-2 alert-danger undefined"

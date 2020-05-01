@@ -591,6 +591,7 @@ describe("#<TextAreaField />", () => {
         let component = renderer.create(
             <FormProvider value={contextDefault}>
                 <TextAreaField
+                    rows={20}
                     name="about_text"
                     value={state.about_text}
                     validators={[isFieldEmpty(5)]}
@@ -630,6 +631,7 @@ describe("#<TextAreaField />", () => {
             <div>
                 <FormProvider value={contextDefault}>
                     <TextAreaField
+                        rows={10}
                         name="about_text"
                         value={state.about_text}
                         validators={[isFieldEmpty(5)]}

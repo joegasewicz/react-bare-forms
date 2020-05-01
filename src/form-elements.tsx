@@ -166,7 +166,27 @@ function _createTextInputField(type: string) {
 
 
 /**
+ * The TextAreaField takes in an extra prop of *row* which is a number & declares
+ * the number of rows displayed by the textarea element. The TextAreaField accepts
+ * all the {@link IField} props.
+ * ```
+ * // A bare form example ... remember to set the {@link Form.bare} property to `true`
+ * <TextAreaField
+ *    value={this.state.about}
+ *    name="about"
+ *    validators={[isFieldEmpty(20)]}
+ * />
  *
+ * // Example with Bootstrap styling (Bootstrap styling comes as default)
+ *
+ * <TextAreaField
+ *    name="about"
+ *    value={this.state.about}
+ *    hint="Must be at least 20 characters"
+ *    labelText="About you..."
+ *    validators={[isFieldEmpty(20)]}
+ * />
+ * ```
  * @param props
  * @constructor
  */
