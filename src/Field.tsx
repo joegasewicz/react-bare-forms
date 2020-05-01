@@ -74,7 +74,7 @@ abstract class Field<PropsType extends any> {
         return cssStr;
     }
 
-    static overrideEvent(e: any, value: any) {
+    overrideEvent(e: any, value: any) {
         return {
             ...e,
             target: {
@@ -145,7 +145,7 @@ export class CheckBoxField<T extends any> extends Field<T> implements IFieldClas
             return <input
                 type={this.type}
                 checked={context.state[this.props.name] || false}
-                onChange={(e) => context.updateParentState(Field.overrideEvent(e, context.state[this.props.name]), this.props.name)}
+                onChange={(e) => context.updateParentState(this.overrideEvent(e, context.state[this.props.name]), this.props.name)}
                 name={this.props.name}
                 className={Field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
             />;
@@ -210,15 +210,28 @@ export class RadioField<T extends any> extends Field<T> implements IFieldClass<T
 
     public getField() {
         return (context: IFormContext) => {
+            // TODO update the
             return <input
                 type={this.type}
                 checked={context.state[this.props.name] || false}
-                onChange={(e) => context.updateParentState(Field.overrideEvent(e, context.state[this.props.name]), this.props.name)}
+                onChange={(e) => context.updateParentState(this.overrideEvent(e, context.state[this.props.name]), this.props.name)}
                 name={this.props.name}
                 className={Field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
             />;
         }
     }
+
+    overrideEvent(e: any, value: any) {
+        // TODO
+        return {
+            ...e,
+            target: {
+                ...e.target,
+                value: !value,
+            }
+        }
+    }
+
 }
 
 
