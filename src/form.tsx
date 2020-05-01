@@ -1,9 +1,15 @@
 import {default as React, useEffect, useState} from "react";
 import {updateStateFromPassedInContext} from "./_handlers";
 import {IValidation} from "./validators";
-import {updateValidationMetadata} from "./_context_updaters";
+import {updateRadioGroupMetadata, updateValidationMetadata} from "./_context_updaters";
+import {IRadioField} from "./form-elements";
 
 
+export interface IRadioGroupChildren {
+    name: string;
+    isChecked: boolean;
+    disabled: boolean; // TODO
+}
 
 /** @internal */
 export interface _IFormMetadata {
@@ -15,12 +21,18 @@ export interface _IFormMetadata {
 
 /** @internal */
 export type TypeMetadata = { [k: string]: _IFormMetadata};
+export type TypeRadioGroup = {[k: string]: IRadioGroupChildren};
+
+export interface IMetdadata {
+    fieldGroups: TypeRadioGroup;
+    inputs: TypeMetadata;
+}
 
 /**
  * @interface **IForm** Exported Form interface available to the caller. Contains all the properties required by
  * the Form *RBF* Form's component.
  */
-export interface IForm extends React.FormHTMLAttributes<HTMLFormElement> { // TODO check this is correct
+export interface IForm extends React.FormHTMLAttributes<HTMLFormElement> {
     /** The passed in state from the parent component */
     state: any;
     /** If the parent component is a class component then the context must contain the parent's **this** keyword. */
@@ -47,6 +59,7 @@ export interface IFormContext {
     state: any;
     updateParentState?: (e: React.ChangeEvent<any>, name: string) => void;
     updateFieldValidation?: (fieldName: string, fieldValue: any, validation: IValidation) => void;
+    updateFormGroupMetadata?: (fieldGroupKey: string, radioProps: Array<{ props: IRadioField}>) => void;
 }
 
 
@@ -56,7 +69,7 @@ const providerContext: IFormContext = {
     formKey: null,
     debug: false,
     dynamic: true,
-    metadata: {},
+    metadata: { inputs: ({} as any), fieldGroups: ({} as any)},
 };
 
 /** @internal */
@@ -132,6 +145,7 @@ export const Form = (props: IForm) => {
         metadata: context.metadata,
         updateParentState: updateStateFromPassedInContext(parentState, setParentState),
         updateFieldValidation: updateValidationMetadata(context, updateContext),
+        updateFormGroupMetadata: updateRadioGroupMetadata(context, updateContext),
     };
 
     return (

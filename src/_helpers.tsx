@@ -1,7 +1,7 @@
 import * as React from "react";
 import {ReactElement} from "react";
 import {FormConsumer} from "./form";
-import {IField} from "./form-elements";
+
 
 /**
  * @internal
@@ -21,9 +21,9 @@ export const FormElementValidators = (props: any): ReactElement => {
                     return (
                         <>{validators.map((key: any, index: number) => {
                             const validationResult = validators[index](context.state[name], context);
-                            context.updateFieldValidation(name, context.state[name], validationResult);
+                            setTimeout(() => context.updateFieldValidation(name, context.state[name], validationResult), 0);
                             return validationResult.messages.map((msg: string) => {
-                                return <div className={styles}>{msg}</div>
+                                return <div key={index} className={styles}>{msg}</div>
                             });
                         })}</>
                     );
