@@ -22,6 +22,7 @@
 //     }
 // };
 import {IValidation} from "./validators";
+import {IRadioField} from "./form-elements";
 
 
 export const updateValidationMetadata = (context: any, update: any) =>
@@ -33,14 +34,31 @@ export const updateValidationMetadata = (context: any, update: any) =>
             ...context,
             metadata: {
                 ...context.metadata,
-                [fieldName]: {
-                    ...validation,
-                    value: fieldValue,
-                    isTouched: true,
-                }
+                inputs: {
+                  ...context.metadata.inputs,
+                    [fieldName]: {
+                        ...validation,
+                        value: fieldValue,
+                        isTouched: true,
+                    }
+                },
             },
         };
-        if(!(fieldName in context.metadata) || context.metadata[fieldName].value != fieldValue) {
+        if(!(fieldName in context.metadata.inputs) || context.metadata.inputs[fieldName].value != fieldValue) {
             update(contextUpdates);
         }
     };
+
+
+
+export function updateRadioGroupMetadata(context: any, update: any) {
+    return (radioProps: Array<IRadioField>) => {
+        if(typeof context.metadata === "undefined") {
+            return;
+        }
+        let contextUpdates = {
+            ...context,
+
+        }
+    }
+}

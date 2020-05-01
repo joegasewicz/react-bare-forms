@@ -16,11 +16,16 @@ export interface _IFormMetadata {
     isValid: boolean;
     isTouched: boolean;
     value: any;
-    radioGroup: {[k: string]: IRadioGroupChildren};
 }
 
 /** @internal */
 export type TypeMetadata = { [k: string]: _IFormMetadata};
+export type TypeRadioGroup = {[k: string]: IRadioGroupChildren};
+
+export interface IMetdadata {
+    fieldGroups: TypeRadioGroup;
+    inputs: TypeMetadata;
+}
 
 /**
  * @interface **IForm** Exported Form interface available to the caller. Contains all the properties required by
@@ -62,7 +67,7 @@ const providerContext: IFormContext = {
     formKey: null,
     debug: false,
     dynamic: true,
-    metadata: {},
+    metadata: { inputs: ({} as any), fieldGroups: ({} as any)},
 };
 
 /** @internal */
