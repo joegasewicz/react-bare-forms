@@ -185,18 +185,6 @@ export class TextAreaField<T extends any> extends Field<T> implements IFieldClas
     }
 }
 
-// class CheckBox extends Field implements IFieldClass {
-//     constructor(type: string, props: IField) {
-//         super(type, props);
-//         this.type = type;
-//         this.props = props;
-//     }
-//
-//     public create() {
-//         return this.createField(this.getField());
-//     }
-// }
-
 
 // class Radio extends Field implements IFieldClass {
 //
