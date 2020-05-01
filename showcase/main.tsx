@@ -1,7 +1,7 @@
 import * as React from "react";
 import {ChangeEvent, useEffect} from "react";
 import {FormConsumer, Form} from "../src/form";
-import {EmailField, PasswordField, TextAreaField, TextInputField} from "../src/form-elements";
+import {CheckBoxField, EmailField, PasswordField, TextAreaField, TextInputField} from "../src/form-elements";
 import {areFieldsEqual, isEmailValid, isFieldEmpty} from "../src/validators";
 import {TextArea} from "../_src/form-elements";
 // import * as ReactBareForms from "../src/index";
@@ -15,6 +15,7 @@ interface IState{
     confirmPassword: string;
     email: string;
     about: string;
+    terms: boolean;
 }
 
 
@@ -26,6 +27,7 @@ export class Main extends React.Component<IProps, IState> {
         confirmPassword: "",
         email: "",
         about: "",
+        terms: false,
     };
 
     public render(): React.ReactElement {
@@ -76,6 +78,13 @@ export class Main extends React.Component<IProps, IState> {
                                     hint="Your email"
                                     labelText="Must be at least 20 characters"
                                     validators={[isFieldEmpty(20)]}
+                                />
+
+                                <CheckBoxField
+                                    name="terms"
+                                    value={this.state.terms}
+                                    hint="Your email"
+                                    labelText="Must be at least 20 characters"
                                 />
 
 

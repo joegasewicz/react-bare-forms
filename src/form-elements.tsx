@@ -26,7 +26,9 @@ interface IPasswordField extends IField {}
 
 interface IEmailField extends IField {}
 
-interface ITextAreaProps extends IField {
+interface ICheckBoxField extends IField {}
+
+interface ITextAreaField extends IField {
     rows?: number;
 }
 
@@ -126,6 +128,16 @@ export const PasswordField = (props: IPasswordField) =>
 export const EmailField = (props: IEmailField) =>
     _createTextInputField("email")(props);
 
+
+/**
+ *
+ * @param props
+ * @constructor
+ */
+export const CheckBoxField = (props: ICheckBoxField) =>
+    _createTextInputField("checkbox")(props);
+
+
 /**
  * @internal
  * @param type
@@ -190,13 +202,13 @@ function _createTextInputField(type: string) {
  * @param props
  * @constructor
  */
-export const TextAreaField = (props: ITextAreaProps) => {
+export const TextAreaField = (props: ITextAreaField) => {
     const { rows = 5 } = props;
 
     return (
         <FormConsumer>
             {(context: IFormContext) => {
-                let _textArea: ReactElement<ITextAreaProps> =
+                let _textArea: ReactElement<ITextAreaField> =
                     <textarea
                         className={mergeDefaultCssWithProps("form-control", props.className, context.bare)}
                         rows={rows}
