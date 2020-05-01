@@ -73,16 +73,18 @@
 						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported"><a href="../interfaces/_form_elements_.iemailfield.html" class="tsd-kind-icon">IEmail<wbr>Field</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_form_elements_.icheckboxfield.html" class="tsd-kind-icon">ICheck<wbr>Box<wbr>Field</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_form_elements_.iemailfield.html" class="tsd-kind-icon">IEmail<wbr>Field</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_form_elements_.ifield.html" class="tsd-kind-icon">IField</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported"><a href="../interfaces/_form_elements_.ipasswordfield.html" class="tsd-kind-icon">IPassword<wbr>Field</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported"><a href="../interfaces/_form_elements_.itextareaprops.html" class="tsd-kind-icon">IText<wbr>Area<wbr>Props</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported"><a href="../interfaces/_form_elements_.itextinputfield.html" class="tsd-kind-icon">IText<wbr>Input<wbr>Field</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_form_elements_.ipasswordfield.html" class="tsd-kind-icon">IPassword<wbr>Field</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_form_elements_.itextareafield.html" class="tsd-kind-icon">IText<wbr>Area<wbr>Field</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_form_elements_.itextinputfield.html" class="tsd-kind-icon">IText<wbr>Input<wbr>Field</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_form_elements_.html#checkboxfield" class="tsd-kind-icon">Check<wbr>Box<wbr>Field</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_form_elements_.html#emailfield" class="tsd-kind-icon">Email<wbr>Field</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_form_elements_.html#passwordfield" class="tsd-kind-icon">Password<wbr>Field</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_form_elements_.html#textareafield" class="tsd-kind-icon">Text<wbr>Area<wbr>Field</a></li>
@@ -95,6 +97,49 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="checkboxfield" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> Check<wbr>Box<wbr>Field</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">Check<wbr>Box<wbr>Field<span class="tsd-signature-symbol">(</span>props<span class="tsd-signature-symbol">: </span><a href="../interfaces/_form_elements_.icheckboxfield.html" class="tsd-signature-type">ICheckBoxField</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Element</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9c58d90/src/form-elements.tsx#L176">src/form-elements.tsx:176</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>The CheckBoxField requires a <em>checked</em> prop instead of a <em>value</em> prop. See
+									<a href="../interfaces/_form_elements_.icheckboxfield.html">ICheckBoxField</a>.</p>
+									<p>```
+									// A bare form example ... remember to set the {@link Form.bare} property to <code>true</code></p>
+								</div>
+								<p><CheckBoxField
+									name="terms"
+									checked={this.state.terms}
+								/></p>
+								<p>// Example with Bootstrap styling (Bootstrap styling comes as default)
+									<CheckBoxField
+									name="terms"
+									checked={this.state.terms}
+									hint="Click to agree"
+									labelText="Agree to terms & conditions"
+									/>
+								```</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>props: <a href="../interfaces/_form_elements_.icheckboxfield.html" class="tsd-signature-type">ICheckBoxField</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
 					<a name="emailfield" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> Email<wbr>Field</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
@@ -104,7 +149,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9b131d8/src/form-elements.tsx#L126">src/form-elements.tsx:126</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9c58d90/src/form-elements.tsx#L148">src/form-elements.tsx:148</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -147,7 +192,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9b131d8/src/form-elements.tsx#L102">src/form-elements.tsx:102</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9c58d90/src/form-elements.tsx#L122">src/form-elements.tsx:122</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -203,13 +248,13 @@
 					<a name="textareafield" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> Text<wbr>Area<wbr>Field</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">Text<wbr>Area<wbr>Field<span class="tsd-signature-symbol">(</span>props<span class="tsd-signature-symbol">: </span><a href="../interfaces/_form_elements_.itextareaprops.html" class="tsd-signature-type">ITextAreaProps</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Element</span></li>
+						<li class="tsd-signature tsd-kind-icon">Text<wbr>Area<wbr>Field<span class="tsd-signature-symbol">(</span>props<span class="tsd-signature-symbol">: </span><a href="../interfaces/_form_elements_.itextareafield.html" class="tsd-signature-type">ITextAreaField</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Element</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9b131d8/src/form-elements.tsx#L193">src/form-elements.tsx:193</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9c58d90/src/form-elements.tsx#L207">src/form-elements.tsx:207</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -238,7 +283,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>props: <a href="../interfaces/_form_elements_.itextareaprops.html" class="tsd-signature-type">ITextAreaProps</a></h5>
+									<h5>props: <a href="../interfaces/_form_elements_.itextareafield.html" class="tsd-signature-type">ITextAreaField</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -255,7 +300,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9b131d8/src/form-elements.tsx#L54">src/form-elements.tsx:54</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9c58d90/src/form-elements.tsx#L72">src/form-elements.tsx:72</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -297,6 +342,9 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="_field_.html">&quot;<wbr>Field&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="__context_updaters_.html">&quot;_<wbr>context_<wbr>updaters&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -318,20 +366,26 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/_form_elements_.icheckboxfield.html" class="tsd-kind-icon">ICheck<wbr>Box<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="../interfaces/_form_elements_.iemailfield.html" class="tsd-kind-icon">IEmail<wbr>Field</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="../interfaces/_form_elements_.ifield.html" class="tsd-kind-icon">IField</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="../interfaces/_form_elements_.ipasswordfield.html" class="tsd-kind-icon">IPassword<wbr>Field</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
-						<a href="../interfaces/_form_elements_.itextareaprops.html" class="tsd-kind-icon">IText<wbr>Area<wbr>Props</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/_form_elements_.itextareafield.html" class="tsd-kind-icon">IText<wbr>Area<wbr>Field</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
 						<a href="../interfaces/_form_elements_.itextinputfield.html" class="tsd-kind-icon">IText<wbr>Input<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_form_elements_.html#checkboxfield" class="tsd-kind-icon">Check<wbr>Box<wbr>Field</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_form_elements_.html#emailfield" class="tsd-kind-icon">Email<wbr>Field</a>
@@ -362,9 +416,11 @@
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
 			</ul>
 		</div>
 	</div>

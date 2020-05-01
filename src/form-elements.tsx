@@ -152,7 +152,24 @@ export const EmailField = (props: IEmailField) => {
 
 
 /**
+ * The CheckBoxField requires a *checked* prop instead of a *value* prop. See
+ * {@link ICheckBoxField}.
+ * ```
+ * // A bare form example ... remember to set the {@link Form.bare} property to `true`
  *
+ * <CheckBoxField
+ *   name="terms"
+ *   checked={this.state.terms}
+ * />
+ *
+ * // Example with Bootstrap styling (Bootstrap styling comes as default)
+ * <CheckBoxField
+ *   name="terms"
+ *   checked={this.state.terms}
+ *   hint="Click to agree"
+ *   labelText="Agree to terms & conditions"
+ * />
+ * ```
  * @param props
  * @constructor
  */
