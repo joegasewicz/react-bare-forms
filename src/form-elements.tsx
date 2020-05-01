@@ -170,7 +170,7 @@ function _createTextInputField(type: string) {
  * @param props
  * @constructor
  */
-export const TextField = (props: ITextAreaProps) => {
+export const TextAreaField = (props: ITextAreaProps) => {
     const { rows = 5 } = props;
 
     return (
@@ -192,7 +192,7 @@ export const TextField = (props: ITextAreaProps) => {
                     </>;
                 } else {
                     return (
-                        <div className="form-group">s
+                        <div className="form-group">
                             <label>{props.labelText}</label>
                             {_textArea}
                             {_validate}
