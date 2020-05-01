@@ -13,8 +13,6 @@ import {
 export interface IField {
     /** The name of the form element (this should match the state property that you want be updated by this form element) */
     name: string;
-    /** The state property that gets updated by this input field */
-    value: any;
     /** If *bare* (see {@link IForm.bare}) is set to true then *labelText* will be inserted within **label** tags. */
     labelText?: string;
     /** If *bare* (see {@link Form.bare}) is set to true then *hint* will be inserted within **small** tags. */
@@ -25,16 +23,29 @@ export interface IField {
     className?: string;
 }
 
-export interface ITextInputField extends IField {}
+export interface ITextInputField extends IField {
+    /** The state property that gets updated by this input field */
+    value: any;
+}
 
-export interface IPasswordField extends IField {}
+export interface IPasswordField extends IField {
+    /** The state property that gets updated by this input field */
+    value: any;
+}
 
-export interface IEmailField extends IField {}
+export interface IEmailField extends IField {
+    /** The state property that gets updated by this input field */
+    value: any;
+}
 
-export interface ICheckBoxField extends IField {}
+export interface ICheckBoxField extends IField {
+    checked: boolean;
+}
 
 export interface ITextAreaField extends IField {
     rows?: number;
+    /** The state property that gets updated by this input field */
+    value: any;
 }
 
 /**

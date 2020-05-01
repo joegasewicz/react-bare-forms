@@ -37,7 +37,7 @@ abstract class Field<PropsType extends any> {
 
     props: PropsType;
 
-    constructor(props: PropsType, type?: string) {
+    protected constructor(props: PropsType, type?: string) {
         this.type = type;
         this.props = props;
     }
@@ -74,6 +74,16 @@ abstract class Field<PropsType extends any> {
         return cssStr;
     }
 
+    static overrideEvent(e: any, value: any) {
+        return {
+            ...e,
+            target: {
+                ...e.target,
+                value: !value,
+            }
+        }
+    }
+
 }
 
 
@@ -89,7 +99,6 @@ export class InputField<T extends any> extends Field<T> implements IFieldClass<T
         return this.createField(this.getField());
     }
 
-
     public formGroup(children: any): ReactElement {
         return _genericFormGroup<T>(this.props, children);
     }
@@ -98,7 +107,7 @@ export class InputField<T extends any> extends Field<T> implements IFieldClass<T
         return (context: IFormContext) => {
             return <input
                 type={this.type}
-                value={(context as any)[this.props.name]}
+                value={(context.state as any)[this.props.name]}
                 onChange={(e) => context.updateParentState(e, this.props.name)}
                 name={this.props.name}
                 className={Field.mergeDefaultCssWithProps("form-control", this.props.className, context.bare)}
@@ -121,7 +130,6 @@ export class CheckBoxField<T extends any> extends Field<T> implements IFieldClas
         return this.createField(this.getField());
     }
 
-
     public formGroup(children: any): ReactElement {
         return (
             <div className="form-group form-check">
@@ -134,16 +142,17 @@ export class CheckBoxField<T extends any> extends Field<T> implements IFieldClas
 
     public getField() {
         return (context: IFormContext) => {
+            const currentCheckboxValue = (context.state as any)[this.props.name];
             return <input
                 type={this.type}
-                value={(context as any)[this.props.name]}
-                onChange={(e) => context.updateParentState(e, this.props.name)}
+                checked={currentCheckboxValue}
+                onChange={(e) => context.updateParentState(Field.overrideEvent(e, currentCheckboxValue), this.props.name)}
                 name={this.props.name}
                 className={Field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
             />;
         }
-    }
 
+    }
 }
 
 
@@ -158,7 +167,6 @@ export class TextAreaField<T extends any> extends Field<T> implements IFieldClas
         return this.createField(this.getField());
     }
 
-
     public formGroup(children: any): ReactElement {
         return _genericFormGroup<T>(this.props, children);
     }
@@ -170,15 +178,13 @@ export class TextAreaField<T extends any> extends Field<T> implements IFieldClas
                 <textarea
                     className={mergeDefaultCssWithProps("form-control", this.props.className, context.bare)}
                     rows={rows}
-                    value={(context as any)[this.props.name] }
+                    value={(context.state as any)[this.props.name] }
                     onChange={(e) => context.updateParentState(e, this.props.name)}
                     name={this.props.name}
                 />
             );
-
         }
     }
-
 }
 
 // class CheckBox extends Field implements IFieldClass {

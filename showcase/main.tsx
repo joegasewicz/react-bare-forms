@@ -82,9 +82,9 @@ export class Main extends React.Component<IProps, IState> {
 
                                 <CheckBoxField
                                     name="terms"
-                                    value={this.state.terms}
-                                    hint="Your email"
-                                    labelText="Must be at least 20 characters"
+                                    checked={this.state.terms}
+                                    hint="Click to agree"
+                                    labelText="Agree to terms & conditions"
                                 />
 
 
