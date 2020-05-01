@@ -1,5 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`#<TextAreaField /> it should display validation errors 1`] = `
+<div
+  className="form-group"
+>
+  <label />
+  <textarea
+    className="form-control "
+    name="about_text"
+    onChange={[Function]}
+    rows={20}
+  />
+  <div
+    className="alert mt-2 alert-danger undefined"
+  >
+    Must be at least 5 characters
+  </div>
+</div>
+`;
+
+exports[`#<TextAreaField /> should render a single input tag with no bootstrap styles 1`] = `
+<textarea
+  className=""
+  name="about_text"
+  onChange={[Function]}
+  rows={5}
+/>
+`;
+
+exports[`#<TextAreaField /> should render an input field with the bootstrap styled tags 1`] = `
+<div
+  className="form-group"
+>
+  <label />
+  <textarea
+    className="form-control "
+    name="about_text"
+    onChange={[Function]}
+    rows={5}
+  />
+</div>
+`;
+
 exports[`#EmailField() it should display validation errors 1`] = `
 <div
   className="form-group"

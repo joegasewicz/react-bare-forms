@@ -1,5 +1,5 @@
-import {default as React} from "react";
-import {FormConsumer} from "./form";
+import {default as React, ReactElement} from "react";
+import {FormConsumer, IFormContext} from "./form";
 import {IValidators} from "./validators";
 import {FormElementValidators, mergeDefaultCssWithProps} from "./_helpers";
 
@@ -25,6 +25,10 @@ interface ITextInputField extends IField {}
 interface IPasswordField extends IField {}
 
 interface IEmailField extends IField {}
+
+interface ITextAreaProps extends IField {
+    rows?: number;
+}
 
 /**
  *
@@ -130,10 +134,10 @@ export const EmailField = (props: IEmailField) =>
 function _createTextInputField(type: string) {
     return (props: ITextInputField) => (
         <FormConsumer>
-            {(context: any) => {
+            {(context: IFormContext) => {
                 const _input = <input
                     type={type}
-                    value={context[props.name]}
+                    value={(context as any)[props.name]}
                     onChange={(e) => context.updateParentState(e, props.name)}
                     name={props.name}
                     className={mergeDefaultCssWithProps("form-control", props.className, context.bare)}
@@ -160,6 +164,67 @@ function _createTextInputField(type: string) {
     );
 }
 
+
+/**
+ * The TextAreaField takes in an extra prop of *row* which is a number & declares
+ * the number of rows displayed by the textarea element. The TextAreaField accepts
+ * all the {@link IField} props.
+ * ```
+ * // A bare form example ... remember to set the {@link Form.bare} property to `true`
+ * <TextAreaField
+ *    value={this.state.about}
+ *    name="about"
+ *    validators={[isFieldEmpty(20)]}
+ * />
+ *
+ * // Example with Bootstrap styling (Bootstrap styling comes as default)
+ *
+ * <TextAreaField
+ *    name="about"
+ *    value={this.state.about}
+ *    hint="Must be at least 20 characters"
+ *    labelText="About you..."
+ *    validators={[isFieldEmpty(20)]}
+ * />
+ * ```
+ * @param props
+ * @constructor
+ */
+export const TextAreaField = (props: ITextAreaProps) => {
+    const { rows = 5 } = props;
+
+    return (
+        <FormConsumer>
+            {(context: IFormContext) => {
+                let _textArea: ReactElement<ITextAreaProps> =
+                    <textarea
+                        className={mergeDefaultCssWithProps("form-control", props.className, context.bare)}
+                        rows={rows}
+                        value={(context as any)[props.name] }
+                        onChange={(e) => context.updateParentState(e, props.name)}
+                        name={props.name}
+                    />;
+                const _validate = props.validators ? <FormElementValidators validators={props.validators} name={props.name} />: null;
+                if(context.bare) {
+                    return <>
+                        {_textArea}
+                        {_validate}
+                    </>;
+                } else {
+                    return (
+                        <div className="form-group">
+                            <label>{props.labelText}</label>
+                            {_textArea}
+                            {_validate}
+                        </div>
+                    )
+                }
+            }}
+        </FormConsumer>
+    );
+};
+
+
 /** @internal */
 interface IFormGroup {
     children: any;
@@ -179,5 +244,5 @@ export function FormGroup(props: IFormGroup): React.ReactElement {
             {props.children}
             {props.hint && <small className="form-text text-muted">{props.hint}</small>}
         </div>
-    )
+    );
 }
