@@ -51,6 +51,7 @@ export interface ITextAreaField extends IField {
 
 export interface IRadioField extends IField {
     checked: boolean;
+    disabled?: boolean;
 }
 
 /**
@@ -224,26 +225,24 @@ export const TextAreaField = (props: ITextAreaField) => {
   return textArea.create();
 };
 
+export interface IRadioGroupProps {
+    name: string;
+    children: any;
+}
 
-
-export function RadioGroup(props: any) {
-
-    return (
+/**
+ *
+ * @param props
+ * @constructor
+ */
+export function RadioGroup(props: IRadioGroupProps) {
+    return (<>
         <FormConsumer>
             {(context: IFormContext) => {
-                // get children
-                console.log("props ----> ", props.children);
-                props.map((props: IRadioField) => {
-
-                });
-                // update the context metadata
-                return props.children;
-                // return (
-                //     <FormProvider value={}>
-                //
-                //     </FormProvider>
-                // )
+                // update state on next cycle tick - TODO use useEffect
+                setTimeout(() => context.updateFormGroupMetadata(props.name, props.children));
+                return <>{props.children}</>;
             }}
         </FormConsumer>
-    )
+    </>);
 }

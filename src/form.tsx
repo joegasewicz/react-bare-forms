@@ -1,7 +1,8 @@
 import {default as React, useEffect, useState} from "react";
 import {updateStateFromPassedInContext} from "./_handlers";
 import {IValidation} from "./validators";
-import {updateValidationMetadata} from "./_context_updaters";
+import {updateRadioGroupMetadata, updateValidationMetadata} from "./_context_updaters";
+import {IRadioField} from "./form-elements";
 
 
 export interface IRadioGroupChildren {
@@ -58,6 +59,7 @@ export interface IFormContext {
     state: any;
     updateParentState?: (e: React.ChangeEvent<any>, name: string) => void;
     updateFieldValidation?: (fieldName: string, fieldValue: any, validation: IValidation) => void;
+    updateFormGroupMetadata?: (fieldGroupKey: string, radioProps: Array<{ props: IRadioField}>) => void;
 }
 
 
@@ -143,6 +145,7 @@ export const Form = (props: IForm) => {
         metadata: context.metadata,
         updateParentState: updateStateFromPassedInContext(parentState, setParentState),
         updateFieldValidation: updateValidationMetadata(context, updateContext),
+        updateFormGroupMetadata: updateRadioGroupMetadata(context, updateContext),
     };
 
     return (

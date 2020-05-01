@@ -101,30 +101,30 @@ export class Main extends React.Component<IProps, IState> {
                                 />
 
 
-                                {/*<RadioGroup>*/}
-                                {/*    <RadioField*/}
-                                {/*        name="radio1"*/}
-                                {/*        checked={this.state.radio1}*/}
-                                {/*        hint="Click to agree"*/}
-                                {/*        labelText="Agree to terms & conditions"*/}
-                                {/*    />*/}
+                                <RadioGroup name="group1">
+                                    <RadioField
+                                        name="radio1"
+                                        checked={this.state.radio1}
+                                        hint="Click to agree"
+                                        labelText="Agree to terms & conditions"
+                                    />
 
-                                {/*    <RadioField*/}
-                                {/*        name="radio2"*/}
-                                {/*        checked={this.state.radio2}*/}
-                                {/*        hint="Click to agree"*/}
-                                {/*        labelText="Agree to terms & conditions"*/}
-                                {/*    />*/}
+                                    <RadioField
+                                        name="radio2"
+                                        checked={this.state.radio2}
+                                        hint="Click to agree"
+                                        labelText="Agree to terms & conditions"
+                                    />
 
-                                {/*    <RadioField*/}
-                                {/*        name="radio3"*/}
-                                {/*        checked={this.state.radio3}*/}
-                                {/*        hint="Click to agree"*/}
-                                {/*        labelText="Agree to terms & conditions"*/}
-                                {/*    />*/}
+                                    <RadioField
+                                        name="radio3"
+                                        checked={this.state.radio3}
+                                        hint="Click to agree"
+                                        labelText="Agree to terms & conditions"
+                                    />
 
 
-                                {/*</RadioGroup>*/}
+                                </RadioGroup>
 
 
 
