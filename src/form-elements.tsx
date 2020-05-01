@@ -1,7 +1,12 @@
 import {default as React, ReactElement} from "react";
 import {FormConsumer, IFormContext} from "./form";
 import {IValidators} from "./validators";
-import {FormElementValidators, mergeDefaultCssWithProps} from "./_helpers";
+import {FormElementValidators, FormGroup, mergeDefaultCssWithProps} from "./_helpers";
+import {
+    InputField,
+    TextAreaField as _TextAreaField,
+    CheckBoxField as _CheckBoxField,
+} from "./Field";
 
 
 
@@ -20,15 +25,15 @@ export interface IField {
     className?: string;
 }
 
-interface ITextInputField extends IField {}
+export interface ITextInputField extends IField {}
 
-interface IPasswordField extends IField {}
+export interface IPasswordField extends IField {}
 
-interface IEmailField extends IField {}
+export interface IEmailField extends IField {}
 
-interface ICheckBoxField extends IField {}
+export interface ICheckBoxField extends IField {}
 
-interface ITextAreaField extends IField {
+export interface ITextAreaField extends IField {
     rows?: number;
 }
 
@@ -53,8 +58,10 @@ interface ITextAreaField extends IField {
  * ```
  * @constructor
  */
-export const TextInputField = (props: ITextInputField) =>
-    _createTextInputField("text")(props);
+export const TextInputField = (props: ITextInputField) => {
+  const textInput = new InputField<ITextInputField>("text", props);
+  return textInput.create();
+};
 
 /**
  *
@@ -101,8 +108,10 @@ export const TextInputField = (props: ITextInputField) =>
  *
  * @constructor
  */
-export const PasswordField = (props: IPasswordField) =>
-    _createTextInputField("password")(props);
+export const PasswordField = (props: IPasswordField) => {
+  const passwordInput = new InputField<IPasswordField>("password", props);
+  return passwordInput.create();
+};
 
 /**
  *
@@ -125,8 +134,10 @@ export const PasswordField = (props: IPasswordField) =>
  * ```
  * @constructor
  */
-export const EmailField = (props: IEmailField) =>
-    _createTextInputField("email")(props);
+export const EmailField = (props: IEmailField) => {
+  const emailInput = new InputField<IEmailField>("email", props);
+  return emailInput.create();
+};
 
 
 /**
@@ -134,47 +145,10 @@ export const EmailField = (props: IEmailField) =>
  * @param props
  * @constructor
  */
-export const CheckBoxField = (props: ICheckBoxField) =>
-    _createTextInputField("checkbox")(props);
-
-
-/**
- * @internal
- * @param type
- * @private
- */
-function _createTextInputField(type: string) {
-    return (props: ITextInputField) => (
-        <FormConsumer>
-            {(context: IFormContext) => {
-                const _input = <input
-                    type={type}
-                    value={(context as any)[props.name]}
-                    onChange={(e) => context.updateParentState(e, props.name)}
-                    name={props.name}
-                    className={mergeDefaultCssWithProps("form-control", props.className, context.bare)}
-                />;
-                const _validate = props.validators ? <FormElementValidators validators={props.validators} name={props.name} />: null;
-                if(context.bare) {
-                    return (
-                        <>
-                            {_input}
-                            {_validate}
-                        </>
-                    );
-                } else {
-                    return (
-                        <FormGroup labelText={props.labelText} hint={props.hint}>
-                            {_input}
-                            {_validate}
-                        </FormGroup>
-                    )
-                }
-
-            }}
-        </FormConsumer>
-    );
-}
+export const CheckBoxField = (props: ICheckBoxField) => {
+  const checkBox = new _CheckBoxField<ICheckBoxField>("checkbox", props);
+  return checkBox.create();
+};
 
 
 /**
@@ -203,58 +177,7 @@ function _createTextInputField(type: string) {
  * @constructor
  */
 export const TextAreaField = (props: ITextAreaField) => {
-    const { rows = 5 } = props;
-
-    return (
-        <FormConsumer>
-            {(context: IFormContext) => {
-                let _textArea: ReactElement<ITextAreaField> =
-                    <textarea
-                        className={mergeDefaultCssWithProps("form-control", props.className, context.bare)}
-                        rows={rows}
-                        value={(context as any)[props.name] }
-                        onChange={(e) => context.updateParentState(e, props.name)}
-                        name={props.name}
-                    />;
-                const _validate = props.validators ? <FormElementValidators validators={props.validators} name={props.name} />: null;
-                if(context.bare) {
-                    return <>
-                        {_textArea}
-                        {_validate}
-                    </>;
-                } else {
-                    return (
-                        <div className="form-group">
-                            <label>{props.labelText}</label>
-                            {_textArea}
-                            {_validate}
-                        </div>
-                    )
-                }
-            }}
-        </FormConsumer>
-    );
+  const textArea = new _TextAreaField(props);
+  return textArea.create();
 };
 
-
-/** @internal */
-interface IFormGroup {
-    children: any;
-    labelText?: string;
-    hint?: string;
-}
-
-/**
- * @internal
- * @param props
- * @constructor
- */
-export function FormGroup(props: IFormGroup): React.ReactElement {
-    return (
-        <div className="form-group">
-            {props.labelText && <label>{props.labelText}</label>}
-            {props.children}
-            {props.hint && <small className="form-text text-muted">{props.hint}</small>}
-        </div>
-    );
-}

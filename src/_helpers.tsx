@@ -49,3 +49,25 @@ export function mergeDefaultCssWithProps(defaultValue: string, cssProps: any, ba
     }
     return cssStr;
 }
+
+/** @internal */
+interface IFormGroup {
+    children: any;
+    labelText?: string;
+    hint?: string;
+}
+
+/**
+ * @internal
+ * @param props
+ * @constructor
+ */
+export function FormGroup(props: IFormGroup): React.ReactElement {
+    return (
+        <div className="form-group">
+            {props.labelText && <label>{props.labelText}</label>}
+            {props.children}
+            {props.hint && <small className="form-text text-muted">{props.hint}</small>}
+        </div>
+    );
+}
