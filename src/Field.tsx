@@ -107,7 +107,7 @@ export class InputField<T extends any> extends Field<T> implements IFieldClass<T
         return (context: IFormContext) => {
             return <input
                 type={this.type}
-                value={(context.state as any)[this.props.name]}
+                value={context.state[this.props.name]}
                 onChange={(e) => context.updateParentState(e, this.props.name)}
                 name={this.props.name}
                 className={Field.mergeDefaultCssWithProps("form-control", this.props.className, context.bare)}
@@ -142,16 +142,14 @@ export class CheckBoxField<T extends any> extends Field<T> implements IFieldClas
 
     public getField() {
         return (context: IFormContext) => {
-            const currentCheckboxValue = (context.state as any)[this.props.name];
             return <input
                 type={this.type}
-                checked={currentCheckboxValue}
-                onChange={(e) => context.updateParentState(Field.overrideEvent(e, currentCheckboxValue), this.props.name)}
+                checked={context.state[this.props.name]}
+                onChange={(e) => context.updateParentState(Field.overrideEvent(e, context.state[this.props.name]), this.props.name)}
                 name={this.props.name}
                 className={Field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
             />;
         }
-
     }
 }
 
@@ -178,7 +176,7 @@ export class TextAreaField<T extends any> extends Field<T> implements IFieldClas
                 <textarea
                     className={mergeDefaultCssWithProps("form-control", this.props.className, context.bare)}
                     rows={rows}
-                    value={(context.state as any)[this.props.name] }
+                    value={context.state[this.props.name]}
                     onChange={(e) => context.updateParentState(e, this.props.name)}
                     name={this.props.name}
                 />
