@@ -1,7 +1,14 @@
 import * as React from "react";
 import {ChangeEvent, useEffect} from "react";
 import {FormConsumer, Form} from "../src/form";
-import {CheckBoxField, EmailField, PasswordField, TextAreaField, TextInputField} from "../src/form-elements";
+import {
+    CheckBoxField,
+    EmailField,
+    PasswordField,
+    RadioField, RadioGroup,
+    TextAreaField,
+    TextInputField
+} from "../src/form-elements";
 import {areFieldsEqual, isEmailValid, isFieldEmpty} from "../src/validators";
 import {TextArea} from "../_src/form-elements";
 // import * as ReactBareForms from "../src/index";
@@ -16,6 +23,9 @@ interface IState{
     email: string;
     about: string;
     terms: boolean;
+    radio1: boolean;
+    radio2: boolean;
+    radio3: boolean;
 }
 
 
@@ -28,6 +38,9 @@ export class Main extends React.Component<IProps, IState> {
         email: "",
         about: "",
         terms: false,
+        radio1: true,
+        radio2: false,
+        radio3: false,
     };
 
     public render(): React.ReactElement {
@@ -86,6 +99,34 @@ export class Main extends React.Component<IProps, IState> {
                                     hint="Click to agree"
                                     labelText="Agree to terms & conditions"
                                 />
+
+
+                                <RadioGroup>
+                                    <RadioField
+                                        name="radio1"
+                                        checked={this.state.radio1}
+                                        hint="Click to agree"
+                                        labelText="Agree to terms & conditions"
+                                    />
+
+                                    <RadioField
+                                        name="radio2"
+                                        checked={this.state.radio2}
+                                        hint="Click to agree"
+                                        labelText="Agree to terms & conditions"
+                                    />
+
+                                    <RadioField
+                                        name="radio3"
+                                        checked={this.state.radio3}
+                                        hint="Click to agree"
+                                        labelText="Agree to terms & conditions"
+                                    />
+
+
+                                </RadioGroup>
+
+
 
 
                                 <FormConsumer>

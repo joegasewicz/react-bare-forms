@@ -4,6 +4,11 @@ import {IValidation} from "./validators";
 import {updateValidationMetadata} from "./_context_updaters";
 
 
+export interface IRadioGroupChildren {
+    name: string;
+    isChecked: boolean;
+    disabled: boolean; // TODO
+}
 
 /** @internal */
 export interface _IFormMetadata {
@@ -11,6 +16,7 @@ export interface _IFormMetadata {
     isValid: boolean;
     isTouched: boolean;
     value: any;
+    radioGroup: {[k: string]: IRadioGroupChildren};
 }
 
 /** @internal */
@@ -20,7 +26,7 @@ export type TypeMetadata = { [k: string]: _IFormMetadata};
  * @interface **IForm** Exported Form interface available to the caller. Contains all the properties required by
  * the Form *RBF* Form's component.
  */
-export interface IForm extends React.FormHTMLAttributes<HTMLFormElement> { // TODO check this is correct
+export interface IForm extends React.FormHTMLAttributes<HTMLFormElement> {
     /** The passed in state from the parent component */
     state: any;
     /** If the parent component is a class component then the context must contain the parent's **this** keyword. */

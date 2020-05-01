@@ -1,11 +1,12 @@
 import {default as React, ReactElement} from "react";
-import {FormConsumer, IFormContext} from "./form";
+import {FormConsumer, FormProvider, IForm, IFormContext} from "./form";
 import {IValidators} from "./validators";
 import {FormElementValidators, FormGroup, mergeDefaultCssWithProps} from "./_helpers";
 import {
     InputField,
     TextAreaField as _TextAreaField,
     CheckBoxField as _CheckBoxField,
+    RadioField as _RadioField,
 } from "./Field";
 
 
@@ -46,6 +47,10 @@ export interface ITextAreaField extends IField {
     rows?: number;
     /** The state property that gets updated by this input field */
     value: any;
+}
+
+export interface IRadioField extends IField {
+    checked: boolean;
 }
 
 /**
@@ -178,6 +183,16 @@ export const CheckBoxField = (props: ICheckBoxField) => {
   return checkBox.create();
 };
 
+/**
+ *
+ * @param props
+ * @constructor
+ */
+export const RadioField = (props: IRadioField) => {
+  const radio = new _RadioField("radio", props);
+  return radio.create();
+};
+
 
 /**
  * The TextAreaField takes in an extra prop of *row* which is a number & declares
@@ -209,3 +224,26 @@ export const TextAreaField = (props: ITextAreaField) => {
   return textArea.create();
 };
 
+
+
+export function RadioGroup(props: any) {
+
+    return (
+        <FormConsumer>
+            {(context: IFormContext) => {
+                // get children
+                console.log("props ----> ", props.children);
+                props.map((props: IRadioField) => {
+
+                });
+                // update the context metadata
+                return props.children;
+                // return (
+                //     <FormProvider value={}>
+                //
+                //     </FormProvider>
+                // )
+            }}
+        </FormConsumer>
+    )
+}

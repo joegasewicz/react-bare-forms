@@ -186,10 +186,42 @@ export class TextAreaField<T extends any> extends Field<T> implements IFieldClas
 }
 
 
-// class Radio extends Field implements IFieldClass {
-//
-// }
-//
+export class RadioField<T extends any> extends Field<T> implements IFieldClass<T> {
+
+    constructor(type: string, props: T) {
+        super(props, type);
+        this.type = type;
+        this.props = props;
+    }
+
+    public create() {
+        return this.createField(this.getField());
+    }
+
+    public formGroup(children: any): ReactElement {
+        return (
+            <div className="form-group form-check">
+                {children}
+                {this.props.labelText && <label className="form-check-label">{this.props.labelText}</label>}
+                {this.props.hint && <small className="form-text text-muted">{this.props.hint}</small>}
+            </div>
+        );
+    }
+
+    public getField() {
+        return (context: IFormContext) => {
+            return <input
+                type={this.type}
+                checked={context.state[this.props.name]}
+                onChange={(e) => context.updateParentState(Field.overrideEvent(e, context.state[this.props.name]), this.props.name)}
+                name={this.props.name}
+                className={Field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
+            />;
+        }
+    }
+}
+
+
 // class Select extends Field implements IFieldClass {
 //
 // }
