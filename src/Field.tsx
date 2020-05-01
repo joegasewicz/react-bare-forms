@@ -125,7 +125,7 @@ export class CheckBoxField<T extends any> extends Field<T> implements IFieldClas
     public formGroup(children: any): ReactElement {
         return (
             <div className="form-group form-check">
-                {this.props.children}
+                {children}
                 {this.props.labelText && <label className="form-check-label">{this.props.labelText}</label>}
                 {this.props.hint && <small className="form-text text-muted">{this.props.hint}</small>}
             </div>
