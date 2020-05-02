@@ -1,4 +1,4 @@
-![ReactBareForms](images/rbf_logo2.png?raw=true "React Bare Forms")
+![ReactBareForms](images/rbf_logo.svg?raw=true "React Bare Forms")
 
 React library to build forms & let you switch in & out Bootstrap 4 styling.
 
