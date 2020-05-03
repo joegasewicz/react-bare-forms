@@ -3,11 +3,7 @@
 import {IValidation} from "./validators";
 import {IRadioField} from "./form-elements";
 
-/**
- * @internal
- * @param context
- * @param update
- */
+/** @internal */
 export const updateValidationMetadata = (context: any, update: any) =>
     (fieldName: string, fieldValue: any, validation: IValidation): void => {
         if(typeof context.metadata === "undefined") {
@@ -31,11 +27,7 @@ export const updateValidationMetadata = (context: any, update: any) =>
         }
     };
 
-/**
- * @internal
- * @param radioProps
- * @private
- */
+/** @internal */
 function _addFieldGroupToMetadata(radioProps: Array<{ props: IRadioField}>) {
     let fieldGroups = {};
     for(let radioVal of radioProps) {
@@ -52,26 +44,37 @@ function _addFieldGroupToMetadata(radioProps: Array<{ props: IRadioField}>) {
     return fieldGroups;
 }
 
-/**
- * @internal
- * @param context
- * @param update
- */
+/** @internal */
+export function shouldUpdateRadioGroupContext(radioProps: Array<{ props: IRadioField}>, context: any, fieldGroupKey: string) {
+    for(let radio of radioProps) {
+        let radioContext = context.metadata.fieldGroups[fieldGroupKey][radio.props.name];
+        let radioState = radio.props;
+        if(radioContext.isChecked !== radioState.checked) {
+            return true;
+        }
+    }
+}
+
+/** @internal */
+// This function will be called nth (the length of radioProps) times
+// but will only update the context once per radio field group
 export function updateRadioGroupMetadata(context: any, update: any) {
     return (fieldGroupKey: string, radioProps: Array<{ props: IRadioField}>) => {
-        if(typeof context.metadata === "undefined" || fieldGroupKey in context.metadata.fieldGroups) {
+        if(typeof context.metadata === "undefined") {
             return;
+        } else if(!(fieldGroupKey in context.metadata.fieldGroups) ||
+            fieldGroupKey in context.metadata.fieldGroups && shouldUpdateRadioGroupContext(radioProps, context, fieldGroupKey)) {
+            let contextUpdates = {
+                ...context,
+                metadata: {
+                    ...context.metadata,
+                    fieldGroups: {
+                        ...context.metadata.fieldGroups,
+                        [fieldGroupKey]: _addFieldGroupToMetadata(radioProps),
+                    }
+                }
+            };
+            update(contextUpdates);
         }
-        let contextUpdates = {
-            ...context,
-            metadata: {
-               ...context.metadata,
-               fieldGroups: {
-                   ...context.metadata.fieldGroups,
-                   [fieldGroupKey]: _addFieldGroupToMetadata(radioProps),
-               }
-            }
-        };
-        update(contextUpdates);
     }
 }
