@@ -55,9 +55,12 @@ export interface IRadioField extends IField {
     disabled?: boolean;
 }
 
+export type TypeSelectCssSizeName = |"sm"|"default"|"lg";
+
 export interface ISelectField extends IField {
     value: any;
     options: Array<string>;
+    size?: TypeSelectCssSizeName;
 }
 
 /**

@@ -127,11 +127,11 @@ export class Main extends React.Component<IProps, IState> {
                                 </RadioGroup>
 
                                 <SelectField
+                                    size="lg"
                                     value={this.state.fruitChoice}
                                     name="fruitChoice"
                                     options={["banana", "apple", "orange"]}
                                 />
-
 
                                 <FormConsumer>
                                     {(context: any) => {
