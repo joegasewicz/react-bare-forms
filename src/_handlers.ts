@@ -1,6 +1,7 @@
 // Handlers
 // Handlers are methods on the context object that update state.
 import * as React from "react";
+import {IRadioGroupChildren} from "./form";
 
 /** @internal */
 type TypeHandler = (e: React.ChangeEvent<any>, name: string) => void;
@@ -12,4 +13,25 @@ export function updateStateFromPassedInContext(parentState: any, setParentState:
             [name]: e.target.value,
         });
     };
+}
+
+/** @internal */
+export function updateRadioGroupStateFromPassedInContext(parentState: any, setParentState: Function) {
+    return (e: React.ChangeEvent<any>, name: string, radioGroup: any) => {
+        if(radioGroup) {
+            const radioKeys = Object.keys(radioGroup);
+            let newState = {[name]: true};
+            Object.keys(radioGroup).forEach((key) => {
+               if(radioGroup[key].name !== name) {
+                   newState = {
+                       ...newState,
+                       [key]: false,
+                   }
+               }
+            });
+            setParentState({
+                ...newState
+            });
+        }
+    }
 }
