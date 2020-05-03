@@ -5,7 +5,7 @@ import {
     CheckBoxField,
     EmailField,
     PasswordField,
-    RadioField, RadioGroup,
+    RadioField, RadioGroup, SelectField,
     TextAreaField,
     TextInputField
 } from "../src/form-elements";
@@ -26,6 +26,7 @@ interface IState{
     radio1: boolean;
     radio2: boolean;
     radio3: boolean;
+    fruitChoice: string;
 }
 
 
@@ -41,6 +42,7 @@ export class Main extends React.Component<IProps, IState> {
         radio1: true,
         radio2: false,
         radio3: false,
+        fruitChoice: "",
     };
 
     public render(): React.ReactElement {
@@ -124,8 +126,12 @@ export class Main extends React.Component<IProps, IState> {
                                     />
                                 </RadioGroup>
 
-
-
+                                <SelectField
+                                    size="lg"
+                                    value={this.state.fruitChoice}
+                                    name="fruitChoice"
+                                    options={["banana", "apple", "orange"]}
+                                />
 
                                 <FormConsumer>
                                     {(context: any) => {

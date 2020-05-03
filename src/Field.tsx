@@ -1,7 +1,13 @@
 import {FormConsumer, IFormContext} from "./form";
 import {FormElementValidators, FormGroup, mergeDefaultCssWithProps} from "./_helpers";
 import {default as React, ReactElement} from "react";
-import {IField, IRadioGroupParentContext, ITextAreaField, RadioGroupContext} from "./form-elements";
+import {
+    IField,
+    IRadioGroupParentContext,
+    ITextAreaField,
+    RadioGroupContext,
+    TypeSelectCssSizeName
+} from "./form-elements";
 import {shouldUpdateRadioGroupContext} from "./_context_updaters";
 
 interface IFormGroup {
@@ -239,6 +245,49 @@ export class RadioField<T extends any> extends Field<T> implements IFieldClass<T
         }
     }
 
+}
+
+
+export class SelectField<T extends any> extends Field<T> implements IFieldClass<T> {
+
+    constructor(props: T) {
+        super(props);
+        this.props = props;
+    }
+
+    public create() {
+        return this.createField(this.getField());
+    }
+
+    public formGroup(children: any): ReactElement {
+        return _genericFormGroup<T>(this.props, children);
+    }
+
+    public getField() {
+        const {options = [], size = "default"} = this.props;
+        return (context: IFormContext) => {
+
+            return (
+                <select
+                    onChange={(e) => context.updateParentState(e, this.props.name)}
+                    name={this.props.name}
+                    className={Field.mergeDefaultCssWithProps(this.getSelectCssName(this.props.size), this.props.className, context.bare)}
+                >
+                    {options.map((optVal: string, i: number) => {
+                        return <option value={optVal} key={i}>{optVal}</option>
+                    })}
+                </select>
+            );
+        }
+    }
+
+    private getSelectCssName(name: TypeSelectCssSizeName) {
+        if(name === "default") {
+            return "form-control"
+        } else {
+            return `form-control form-control-${name}`;
+        }
+    }
 }
 
 
