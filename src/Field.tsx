@@ -239,17 +239,6 @@ export class RadioField<T extends any> extends Field<T> implements IFieldClass<T
         }
     }
 
-    overrideEvent(e: any, value: any) {
-        // TODO
-        return {
-            ...e,
-            target: {
-                ...e.target,
-                value: !value,
-            }
-        }
-    }
-
 }
 
 
