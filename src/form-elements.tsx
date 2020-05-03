@@ -7,6 +7,7 @@ import {
     TextAreaField as _TextAreaField,
     CheckBoxField as _CheckBoxField,
     RadioField as _RadioField,
+    SelectField as _SelectField,
 } from "./Field";
 
 
@@ -52,6 +53,11 @@ export interface ITextAreaField extends IField {
 export interface IRadioField extends IField {
     checked: boolean;
     disabled?: boolean;
+}
+
+export interface ISelectField extends IField {
+    value: any;
+    options: Array<string>;
 }
 
 /**
@@ -185,17 +191,6 @@ export const CheckBoxField = (props: ICheckBoxField) => {
 };
 
 /**
- *
- * @param props
- * @constructor
- */
-export const RadioField = (props: IRadioField) => {
-  const radio = new _RadioField("radio", props);
-  return radio.create();
-};
-
-
-/**
  * The TextAreaField takes in an extra prop of *row* which is a number & declares
  * the number of rows displayed by the textarea element. The TextAreaField accepts
  * all the {@link IField} props.
@@ -255,3 +250,24 @@ export function RadioGroup(props: IRadioGroupProps) {
         </FormConsumer>
 </>);
 }
+
+/**
+ *
+ * @param props
+ * @constructor
+ */
+export const RadioField = (props: IRadioField) => {
+    const radio = new _RadioField("radio", props);
+    return radio.create();
+};
+
+/**
+ *
+ * @param props
+ * @constructor
+ */
+export const SelectField = (props: ISelectField) => {
+    const select = new _SelectField(props);
+    return select.create();
+};
+

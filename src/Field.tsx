@@ -242,6 +242,40 @@ export class RadioField<T extends any> extends Field<T> implements IFieldClass<T
 }
 
 
+export class SelectField<T extends any> extends Field<T> implements IFieldClass<T> {
+
+    constructor(props: T) {
+        super(props);
+        this.props = props;
+    }
+
+    public create() {
+        return this.createField(this.getField());
+    }
+
+    public formGroup(children: any): ReactElement {
+        return _genericFormGroup<T>(this.props, children);
+    }
+
+    public getField() {
+        const {options = []} = this.props;
+        return (context: IFormContext) => {
+            return (
+                <select
+                    onChange={(e) => context.updateParentState(e, this.props.name)}
+                    name={this.props.name}
+                    className={Field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
+                >
+                    {options.map((optVal: string, i: number) => {
+                        return <option value={optVal} key={i}>{optVal}</option>
+                    })}
+                </select>
+            );
+        }
+    }
+}
+
+
 // class Select extends Field implements IFieldClass {
 //
 // }
