@@ -122,8 +122,6 @@ export class Main extends React.Component<IProps, IState> {
                                         hint="Click to agree"
                                         labelText="Agree to terms & conditions"
                                     />
-
-
                                 </RadioGroup>
 
 
