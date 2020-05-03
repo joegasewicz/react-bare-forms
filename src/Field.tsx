@@ -2,6 +2,7 @@ import {FormConsumer, IFormContext} from "./form";
 import {FormElementValidators, FormGroup, mergeDefaultCssWithProps} from "./_helpers";
 import {default as React, ReactElement} from "react";
 import {IField, IRadioGroupParentContext, ITextAreaField, RadioGroupContext} from "./form-elements";
+import {shouldUpdateRadioGroupContext} from "./_context_updaters";
 
 interface IFormGroup {
     children: any;
@@ -213,15 +214,23 @@ export class RadioField<T extends any> extends Field<T> implements IFieldClass<T
             // TODO update the
             return (<RadioGroupContext.Consumer>
                 {(radioContext: IRadioGroupParentContext) => {
+                    const updateContexts = (e: React.ChangeEvent<any>, context: IFormContext) => {
+                        context.updateRadioGroupStateFromPassedInContext(
+                            this.overrideEvent(e, context.state[this.props.name]),
+                            this.props.name,
+                            radioGroup,
+                        );
+                        if(shouldUpdateRadioGroupContext(radioContext.children, context, radioContext.parent.name)) {
+                            context.updateRadioGroupMetadata(radioContext.parent.name, radioContext.children);
+                        }
+
+                    };
+
                     const radioGroup = context.metadata.fieldGroups[radioContext.parent.name];
                     return <input
                         type={this.type}
                         checked={context.state[this.props.name] || false}
-                        onChange={(e) => context.updateRadioGroupStateFromPassedInContext(
-                            this.overrideEvent(e, context.state[this.props.name]),
-                            this.props.name,
-                            radioGroup,
-                        )}
+                        onChange={(e) => updateContexts(e, context)}
                         name={this.props.name}
                         className={Field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
                     />

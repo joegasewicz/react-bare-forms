@@ -19,7 +19,6 @@ export function updateStateFromPassedInContext(parentState: any, setParentState:
 export function updateRadioGroupStateFromPassedInContext(parentState: any, setParentState: Function) {
     return (e: React.ChangeEvent<any>, name: string, radioGroup: any) => {
         if(radioGroup) {
-            const radioKeys = Object.keys(radioGroup);
             let newState = {[name]: true};
             Object.keys(radioGroup).forEach((key) => {
                if(radioGroup[key].name !== name) {
