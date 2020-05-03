@@ -230,19 +230,27 @@ export interface IRadioGroupProps {
     children: any;
 }
 
+
+export const RadioGroupContext = React.createContext({});
+
+export interface IRadioGroupParentContext {
+    parent: { name: string };
+}
+
 /**
  *
  * @param props
  * @constructor
  */
 export function RadioGroup(props: IRadioGroupProps) {
+    const contextValue: IRadioGroupParentContext = {parent: {name: props.name}};
     return (<>
         <FormConsumer>
             {(context: IFormContext) => {
                 // update state on next cycle tick - TODO use useEffect
                 setTimeout(() => context.updateFormGroupMetadata(props.name, props.children));
-                return <>{props.children}</>;
+                return <RadioGroupContext.Provider value={contextValue}>{props.children}</RadioGroupContext.Provider>;
             }}
         </FormConsumer>
-    </>);
+</>);
 }

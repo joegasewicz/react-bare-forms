@@ -1,7 +1,7 @@
 import {FormConsumer, IFormContext} from "./form";
 import {FormElementValidators, FormGroup, mergeDefaultCssWithProps} from "./_helpers";
 import {default as React, ReactElement} from "react";
-import {IField, ITextAreaField} from "./form-elements";
+import {IField, IRadioGroupParentContext, ITextAreaField, RadioGroupContext} from "./form-elements";
 
 interface IFormGroup {
     children: any;
@@ -211,13 +211,22 @@ export class RadioField<T extends any> extends Field<T> implements IFieldClass<T
     public getField() {
         return (context: IFormContext) => {
             // TODO update the
-            return <input
-                type={this.type}
-                checked={context.state[this.props.name] || false}
-                onChange={(e) => context.updateParentState(this.overrideEvent(e, context.state[this.props.name]), this.props.name)}
-                name={this.props.name}
-                className={Field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
-            />;
+            return (<RadioGroupContext.Consumer>
+                {(radioContext: IRadioGroupParentContext) => {
+                    const radioGroup = context.metadata.fieldGroups[radioContext.parent.name];
+                    return <input
+                        type={this.type}
+                        checked={context.state[this.props.name] || false}
+                        onChange={(e) => context.updateRadioGroupStateFromPassedInContext(
+                            this.overrideEvent(e, context.state[this.props.name]),
+                            this.props.name,
+                            radioGroup,
+                        )}
+                        name={this.props.name}
+                        className={Field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
+                    />
+                }}
+            </RadioGroupContext.Consumer>);
         }
     }
 

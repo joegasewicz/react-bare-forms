@@ -26,6 +26,89 @@ import * as ReactBareForms from "react-bare-forms";
     </ReactBareForms.Form>
 ```
 
+#### Text Input Fields
+```typescript jsx
+<TextInputField
+    value={this.state.password}
+    name="username"
+    hint="Enter your username"
+    labelText="Username"
+    validators={[isFieldEmpty(5)]}
+/>
+```
+#### Email Input Field
+```typescript jsx
+<EmailField
+    name="email"
+    value={this.state.email}
+    hint="Your email"
+    labelText="Please enter your email"
+    validators={[isEmailValid()]}
+/>
+```
+#### Password Input Field
+```typescript jsx
+<PasswordField
+    name="password"
+    value={this.state.password}
+    labelText="Pasword"
+    validators={[isFieldEmpty(5)]}
+/>
+
+<PasswordField
+    name="confirmPassword"
+    value={this.state.confirmPassword}
+    hint="Password must match"
+    labelText="Confirm Password"
+    validators={[isFieldEmpty(5), areFieldsEqual("password")]}
+/>
+```
+#### TextArea Input Field
+```typescript jsx
+<TextAreaField
+    name="about"
+    value={this.state.about}
+    hint="Your email"
+    labelText="Must be at least 20 characters"
+    validators={[isFieldEmpty(20)]}
+/>
+```
+#### Checkbox Input Field
+```typescript jsx
+<CheckBoxField
+    name="terms"
+    checked={this.state.terms}
+    hint="Click to agree"
+    labelText="Agree to terms & conditions"
+/>
+```
+
+#### Radio Buttons
+
+```typescript jsx
+<RadioGroup name="group1">
+    <RadioField
+        name="radio1"
+        checked={this.state.radio1}
+        hint="Click to agree"
+        labelText="Agree to terms & conditions"
+    />
+
+    <RadioField
+        name="radio2"
+        checked={this.state.radio2}
+        hint="Click to agree"
+        labelText="Agree to terms & conditions"
+    />
+
+    <RadioField
+        name="radio3"
+        checked={this.state.radio3}
+        hint="Click to agree"
+        labelText="Agree to terms & conditions"
+    />
+</RadioGroup>
+```
 
 #### Bootstrap 4
 Bootstrap 4 doesn't come with React Bare Forms so that you can obtain the smallest bundle size possible!
