@@ -17,6 +17,7 @@ export interface _IFormMetadata {
     isValid: boolean;
     isTouched: boolean;
     value: any;
+    validate: boolean;
 }
 
 /** @internal */
@@ -47,6 +48,8 @@ export interface IForm extends React.FormHTMLAttributes<HTMLFormElement> {
     children?: any;
     /** Default set to false. If set to true then it will now use bootstrap styling or any extra elements. */
     bare?: boolean;
+    /** Callback function wil be called on form submission if all validators pass */
+    callback?: Function;
 }
 
 /** @internal */
