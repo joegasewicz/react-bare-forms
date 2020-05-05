@@ -8,6 +8,7 @@ import {
     CheckBoxField as _CheckBoxField,
     RadioField as _RadioField,
     SelectField as _SelectField,
+    FileField as _FileField,
 } from "./Field";
 
 
@@ -53,6 +54,10 @@ export interface ITextAreaField extends IField {
 export interface IRadioField extends IField {
     checked: boolean;
     disabled?: boolean;
+}
+
+export interface IFileField extends IField {
+    value?: any; // TODO File type value Byte
 }
 
 export type TypeSelectCssSizeName = |"sm"|"default"|"lg";
@@ -267,5 +272,15 @@ export const RadioField = (props: IRadioField) => {
 export const SelectField = (props: ISelectField) => {
     const select = new _SelectField(props);
     return select.create();
+};
+
+/**
+ *
+ * @param props
+ * @constructor
+ */
+export const FileField = (props: IFileField) => {
+    const file = new _FileField(props);
+    return file.create();
 };
 
