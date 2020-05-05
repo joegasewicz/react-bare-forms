@@ -7,9 +7,6 @@ import {IRadioField} from "./form-elements";
 export const updateValidationMetadata = (context: any, update: any) => {
 
     return (fieldName: string, fieldValue: any, validations: Array<IValidation>): void => {
-        console.log("here------> 1", fieldName)
-        console.log("here------> 2", context.metadata.inputs)
-        console.log("here------> 3", fieldValue)
         if (typeof context.metadata === "undefined") {
             return;
         } else if (!(fieldName in context.metadata.inputs) || context.metadata.inputs[fieldName].value !== fieldValue) {

@@ -22,14 +22,13 @@ export const FormElementValidators = (props: any): ReactElement => {
 
         useEffect(() => {
             context.updateFieldValidation(name, context.state[name], validationResults)
-        }, [name, context, validationResults]);
+        }, [context.state]);
 
         if(context.metadata.inputs[name] && context.metadata.inputs[name].isTouched) {
-            return (<>{validationResults.map((result: IValidation) => {
-                return result.messages.map((msg: string, index: number) => {
-                        return <div key={index} className={styles}>{msg}</div>
-                });
-            })}</>);
+            return (<>{validationResults.map((result: IValidation) =>
+                result.messages.map((msg: string, index: number) =>
+                    <div key={index} className={styles}>{msg}</div>
+                ))}</>);
         } else {
             return null;
         }
