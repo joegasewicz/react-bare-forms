@@ -1,5 +1,5 @@
-import {default as React, ReactElement} from "react";
-import {FormConsumer, FormProvider, IForm, IFormContext} from "./form";
+import {default as React, ReactElement, useContext, useEffect} from "react";
+import {FormConsumer, FormContext, FormProvider, IForm, IFormContext} from "./form";
 import {IValidators} from "./validators";
 import {FormElementValidators, FormGroup, mergeDefaultCssWithProps} from "./_helpers";
 import {
@@ -243,15 +243,10 @@ export interface IRadioGroupParentContext {
  */
 export function RadioGroup(props: IRadioGroupProps) {
     const contextValue: IRadioGroupParentContext = {parent: {name: props.name}, children: props.children};
-    return (<>
-        <FormConsumer>
-            {(context: IFormContext) => {
-                // update state on next cycle tick - TODO use useEffect
-                setTimeout(() => context.updateRadioGroupMetadata(props.name, props.children));
-                return <RadioGroupContext.Provider value={contextValue}>{props.children}</RadioGroupContext.Provider>;
-            }}
-        </FormConsumer>
-</>);
+    const context = useContext(FormContext);
+    // update state on next cycle tick - TODO use useEffect
+    useEffect(() => context.updateRadioGroupMetadata(props.name, props.children), [props]);
+    return <RadioGroupContext.Provider value={contextValue}>{props.children}</RadioGroupContext.Provider>;
 }
 
 /**

@@ -1,6 +1,6 @@
 import * as React from "react";
 import {ChangeEvent, useEffect} from "react";
-import {FormConsumer, Form} from "../src/form";
+import {FormConsumer, Form, Submit} from "../src/form";
 import {
     CheckBoxField,
     EmailField,
@@ -11,6 +11,7 @@ import {
 } from "../src/form-elements";
 import {areFieldsEqual, isEmailValid, isFieldEmpty} from "../src/validators";
 import {TextArea} from "../_src/form-elements";
+import {SubmitButton} from "../src/Buttons";
 // import * as ReactBareForms from "../src/index";
 // import {isFieldEmpty, Submit} from "../src/index";
 
@@ -54,14 +55,18 @@ export class Main extends React.Component<IProps, IState> {
                     <div className="container">
                         <div className="container">
 
-                            <Form state={this.state} context={this} bare={false} autoComplete="off">
+                            <Form
+                                state={this.state}
+                                context={this}
+                                bare={false}
+                                autoComplete="off"
+                                callback={() => console.log("Form submitted")}>
 
                                 <TextInputField
                                     value={this.state.password}
                                     name="username"
                                     hint="Enter your username"
                                     labelText="Username"
-                                    validators={[isFieldEmpty(5)]}
                                 />
 
                                 <PasswordField
@@ -132,6 +137,8 @@ export class Main extends React.Component<IProps, IState> {
                                     name="fruitChoice"
                                     options={["banana", "apple", "orange"]}
                                 />
+
+                                <SubmitButton>Submit Form</SubmitButton>
 
                                 <FormConsumer>
                                     {(context: any) => {

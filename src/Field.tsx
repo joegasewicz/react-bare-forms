@@ -1,20 +1,11 @@
-import {FormConsumer, IFormContext} from "./form";
-import {FormElementValidators, FormGroup, mergeDefaultCssWithProps} from "./_helpers";
-import {default as React, ReactElement} from "react";
+import {FormContext, IFormContext} from "./form";
+import {FormElementValidators, mergeDefaultCssWithProps} from "./_helpers";
+import {default as React, ReactElement, useContext, useEffect} from "react";
 import {
-    IField,
-    IRadioGroupParentContext,
-    ITextAreaField,
     RadioGroupContext,
     TypeSelectCssSizeName
 } from "./form-elements";
 import {shouldUpdateRadioGroupContext} from "./_context_updaters";
-
-interface IFormGroup {
-    children: any;
-    labelText?: string;
-    hint?: string;
-}
 
 interface IFieldClass<T> {
     create: (context: IFormContext) => ReactElement<T>;
@@ -22,12 +13,7 @@ interface IFieldClass<T> {
     props: T;
 }
 
-/**
- * @internal
- * @param props
- * @param children
- * @private
- */
+/** @internal */
 function _genericFormGroup<T extends any>(props: T, children: any) {
     return (
         <div className="form-group">
@@ -38,6 +24,7 @@ function _genericFormGroup<T extends any>(props: T, children: any) {
     );
 }
 
+/** @internal */
 abstract class Field<PropsType extends any> {
 
     type?: string;
@@ -50,20 +37,15 @@ abstract class Field<PropsType extends any> {
     }
 
     public createField(fieldCallback: Function) {
-        return (
-            <FormConsumer>
-                {(context: IFormContext) => {
-                    const _validate = this.props.validators ?
-                        <FormElementValidators validators={this.props.validators} name={this.props.name} /> :
-                        null;
-                    if(context.bare) {
-                        return (<>{fieldCallback(context)}{_validate}</>);
-                    } else {
-                        return(<>{this.formGroup(fieldCallback(context))}{ _validate}</>);
-                    }
-                }}
-            </FormConsumer>
-        );
+        const context: IFormContext = useContext(FormContext);
+        const _validate = this.props.validators ?
+            <FormElementValidators validators={this.props.validators} name={this.props.name} value={this.props.value} /> :
+            null;
+        if(context.bare) {
+            return (<>{fieldCallback(context)}{_validate}</>);
+        } else {
+            return(<>{this.formGroup(fieldCallback(context))}{ _validate}</>);
+        }
     }
 
     public abstract formGroup(children: any): ReactElement;
@@ -81,7 +63,7 @@ abstract class Field<PropsType extends any> {
         return cssStr;
     }
 
-    overrideEvent(e: any, value: any) {
+    public overrideEvent(e: any, value: any) {
         return {
             ...e,
             target: {
@@ -93,7 +75,7 @@ abstract class Field<PropsType extends any> {
 
 }
 
-
+/** @internal */
 export class InputField<T extends any> extends Field<T> implements IFieldClass<T> {
 
     constructor(type: string, props: T) {
@@ -124,7 +106,7 @@ export class InputField<T extends any> extends Field<T> implements IFieldClass<T
 
 }
 
-
+/** @internal */
 export class CheckBoxField<T extends any> extends Field<T> implements IFieldClass<T> {
 
     constructor(type: string, props: T) {
@@ -160,7 +142,7 @@ export class CheckBoxField<T extends any> extends Field<T> implements IFieldClas
     }
 }
 
-
+/** @internal */
 export class TextAreaField<T extends any> extends Field<T> implements IFieldClass<T> {
 
     constructor(props: T) {
@@ -192,7 +174,7 @@ export class TextAreaField<T extends any> extends Field<T> implements IFieldClas
     }
 }
 
-
+/** @internal */
 export class RadioField<T extends any> extends Field<T> implements IFieldClass<T> {
 
     constructor(type: string, props: T) {
@@ -216,38 +198,36 @@ export class RadioField<T extends any> extends Field<T> implements IFieldClass<T
     }
 
     public getField() {
+        const radioContext: any = useContext(RadioGroupContext); // TODO - any
         return (context: IFormContext) => {
-            // TODO update the
-            return (<RadioGroupContext.Consumer>
-                {(radioContext: IRadioGroupParentContext) => {
-                    const updateContexts = (e: React.ChangeEvent<any>, context: IFormContext) => {
-                        context.updateRadioGroupStateFromPassedInContext(
-                            this.overrideEvent(e, context.state[this.props.name]),
-                            this.props.name,
-                            radioGroup,
-                        );
-                        if(shouldUpdateRadioGroupContext(radioContext.children, context, radioContext.parent.name)) {
-                            context.updateRadioGroupMetadata(radioContext.parent.name, radioContext.children);
-                        }
+        const updateContexts = (e: React.ChangeEvent<any>, context: IFormContext) => {
+            context.updateRadioGroupStateFromPassedInContext(
+                this.overrideEvent(e, context.state[this.props.name]),
+                this.props.name,
+                radioGroup,
+            );
+            if(shouldUpdateRadioGroupContext(radioContext.children, context, radioContext.parent.name)) {
+                useEffect(() => {
+                    context.updateRadioGroupMetadata(radioContext.parent.name, radioContext.children);
+                }, [radioContext]);
 
-                    };
+            }
+        };
+        const radioGroup = context.metadata.fieldGroups[radioContext.parent.name];
+        return <input
+            type={this.type}
+            checked={context.state[this.props.name] || false}
+            onChange={(e) => updateContexts(e, context)}
+            name={this.props.name}
+            className={Field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
+        />
 
-                    const radioGroup = context.metadata.fieldGroups[radioContext.parent.name];
-                    return <input
-                        type={this.type}
-                        checked={context.state[this.props.name] || false}
-                        onChange={(e) => updateContexts(e, context)}
-                        name={this.props.name}
-                        className={Field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
-                    />
-                }}
-            </RadioGroupContext.Consumer>);
         }
     }
 
 }
 
-
+/** @internal */
 export class SelectField<T extends any> extends Field<T> implements IFieldClass<T> {
 
     constructor(props: T) {
@@ -289,12 +269,3 @@ export class SelectField<T extends any> extends Field<T> implements IFieldClass<
         }
     }
 }
-
-
-// class Select extends Field implements IFieldClass {
-//
-// }
-//
-// class Submit extends Field implements IFieldClass {
-//
-// }
