@@ -1,8 +1,7 @@
-import {FormConsumer, IFormContext} from "./form";
+import {FormContext, IFormContext} from "./form";
 import {FormElementValidators, mergeDefaultCssWithProps} from "./_helpers";
 import {default as React, ReactElement, useContext, useEffect} from "react";
 import {
-    IRadioGroupParentContext,
     RadioGroupContext,
     TypeSelectCssSizeName
 } from "./form-elements";
@@ -38,20 +37,15 @@ abstract class Field<PropsType extends any> {
     }
 
     public createField(fieldCallback: Function) {
-        return (
-            <FormConsumer>
-                {(context: IFormContext) => {
-                    const _validate = this.props.validators ?
-                        <FormElementValidators validators={this.props.validators} name={this.props.name} value={this.props.value} /> :
-                        null;
-                    if(context.bare) {
-                        return (<>{fieldCallback(context)}{_validate}</>);
-                    } else {
-                        return(<>{this.formGroup(fieldCallback(context))}{ _validate}</>);
-                    }
-                }}
-            </FormConsumer>
-        );
+        const context: IFormContext = useContext(FormContext);
+        const _validate = this.props.validators ?
+            <FormElementValidators validators={this.props.validators} name={this.props.name} value={this.props.value} /> :
+            null;
+        if(context.bare) {
+            return (<>{fieldCallback(context)}{_validate}</>);
+        } else {
+            return(<>{this.formGroup(fieldCallback(context))}{ _validate}</>);
+        }
     }
 
     public abstract formGroup(children: any): ReactElement;
@@ -207,22 +201,18 @@ export class RadioField<T extends any> extends Field<T> implements IFieldClass<T
         const radioContext: any = useContext(RadioGroupContext); // TODO - any
         return (context: IFormContext) => {
         const updateContexts = (e: React.ChangeEvent<any>, context: IFormContext) => {
-            useEffect(() => {
-                context.updateRadioGroupStateFromPassedInContext(
-                    this.overrideEvent(e, context.state[this.props.name]),
-                    this.props.name,
-                    radioGroup,
-                );
-            }, [e, context, this.props,  radioGroup]);
-
+            context.updateRadioGroupStateFromPassedInContext(
+                this.overrideEvent(e, context.state[this.props.name]),
+                this.props.name,
+                radioGroup,
+            );
             if(shouldUpdateRadioGroupContext(radioContext.children, context, radioContext.parent.name)) {
                 useEffect(() => {
                     context.updateRadioGroupMetadata(radioContext.parent.name, radioContext.children);
                 }, [radioContext]);
+
             }
-
         };
-
         const radioGroup = context.metadata.fieldGroups[radioContext.parent.name];
         return <input
             type={this.type}
