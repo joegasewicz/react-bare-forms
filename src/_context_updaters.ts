@@ -8,13 +8,7 @@ import {useEffect} from "react";
 export const updateValidationMetadata = (context: any, update: any) => {
 
     return (fieldName: string, fieldValue: any, validation: IValidation): void => {
-
-        console.log("props 1---------> ", fieldName)
-        console.log("props 2---------> ", fieldValue)
-        console.log("props 3---------> ", validation)
         console.log("props 4---------> ", context.metadata.inputs)
-
-
         if (typeof context.metadata === "undefined") {
             return;
         } else if (!(fieldName in context.metadata.inputs) || context.metadata.inputs[fieldName].value !== fieldValue) {

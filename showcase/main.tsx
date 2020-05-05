@@ -69,20 +69,20 @@ export class Main extends React.Component<IProps, IState> {
                                     labelText="Username"
                                 />
 
-                                <PasswordField
-                                    name="password"
-                                    value={this.state.password}
-                                    labelText="Pasword"
-                                    validators={[isFieldEmpty(5)]}
-                                />
-
                                 {/*<PasswordField*/}
-                                {/*    name="confirmPassword"*/}
-                                {/*    value={this.state.confirmPassword}*/}
-                                {/*    hint="Password must match"*/}
-                                {/*    labelText="Confirm Password"*/}
-                                {/*    validators={[isFieldEmpty(5), areFieldsEqual("password")]}*/}
+                                {/*    name="password"*/}
+                                {/*    value={this.state.password}*/}
+                                {/*    labelText="Pasword"*/}
+                                {/*    validators={[isFieldEmpty(5)]}*/}
                                 {/*/>*/}
+
+                                <PasswordField
+                                name="confirmPassword"
+                                value={this.state.confirmPassword}
+                                hint="Password must match"
+                                labelText="Confirm Password"
+                                validators={[isFieldEmpty(5), areFieldsEqual("password")]}
+                            />
 
                                 {/*<EmailField*/}
                                 {/*    name="email"*/}
@@ -140,7 +140,6 @@ export class Main extends React.Component<IProps, IState> {
 
                                 <SubmitButton>Submit Form</SubmitButton>
 
-                                <SubmitButton>Submit Form</SubmitButton>
 
                                 <FormConsumer>
                                     {(context: any) => {

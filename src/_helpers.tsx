@@ -14,6 +14,29 @@ export const FormElementValidators = (props: any): ReactElement => {
     const styles = !context.bare ? `alert mt-2 alert-danger ${props.className}` : props.className;
     // TODO bug - this is not updating before something else updates
     if(context.metadata.inputs) {
+
+        // TODO validation results should be collected in an array and let the handler update context once per tick..
+        //
+        // let validationResults;
+        //
+        //
+        // useEffect(() => {
+        //     context.updateFieldValidation(name, context.state[name], validationResults)
+        // }, [name, context, validationResults]);
+        //
+        // validators.map((key: any, index: number) => {
+        //     const validationResult = validators[index](context.state[name], context);
+        //
+        //     if(context.metadata.inputs[name] && context.metadata.inputs[name].isTouched) {
+        //         return validationResult.messages.map((msg: string) => {
+        //             return <div key={index} className={styles}>{msg}</div>
+        //         });
+        //     } else {
+        //         return null;
+        //     }
+        // })
+
+
         return (
             <>{validators.map((key: any, index: number) => {
                 const validationResult = validators[index](context.state[name], context);
