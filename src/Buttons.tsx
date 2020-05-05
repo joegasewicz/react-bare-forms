@@ -35,9 +35,12 @@ class _SubmitButton implements Button<ISubmitButtonProps> {
                        if(context && context.metadata && Object.keys(context.metadata.inputs).length > 0) {
                            const inputItem = context.metadata.inputs;
                            Object.keys(inputItem).map((key: any) => {
-                               if(!inputItem[key].isValid) {
-                                   isDisabled = true;
+                               for(let val of inputItem[key].validation) {
+                                   if(!val.isValid) {
+                                       isDisabled = true;
+                                   }
                                }
+
                            });
                        }
                        return (<button

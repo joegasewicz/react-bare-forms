@@ -2,12 +2,14 @@
 // Methods to update & track the state of all inputs, validators & general form metadata
 import {IValidation} from "./validators";
 import {IRadioField} from "./form-elements";
-import {useEffect} from "react";
 
 /** @internal */
 export const updateValidationMetadata = (context: any, update: any) => {
 
-    return (fieldName: string, fieldValue: any, validation: IValidation): void => {
+    return (fieldName: string, fieldValue: any, validations: Array<IValidation>): void => {
+        console.log("here------> 1", fieldName)
+        console.log("here------> 2", context.metadata.inputs)
+        console.log("here------> 3", fieldValue)
         if (typeof context.metadata === "undefined") {
             return;
         } else if (!(fieldName in context.metadata.inputs) || context.metadata.inputs[fieldName].value !== fieldValue) {
@@ -18,10 +20,10 @@ export const updateValidationMetadata = (context: any, update: any) => {
                     inputs: {
                         ...context.metadata.inputs,
                         [fieldName]: {
-                            ...validation,
+                            validation: validations,
                             value: fieldValue,
                             isTouched: !!fieldValue,
-                        }
+                        },
                     },
                 },
             };

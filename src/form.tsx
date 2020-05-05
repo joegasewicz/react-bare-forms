@@ -17,7 +17,7 @@ export interface _IFormMetadata {
     isValid: boolean;
     isTouched: boolean;
     value: any;
-    validate: boolean;
+    validation: Array<IValidation>;
 }
 
 /** @internal */
@@ -62,7 +62,7 @@ export interface IFormContext {
     state: any;
     updateParentState?: (e: React.ChangeEvent<any>, name: string) => void;
     updateRadioGroupStateFromPassedInContext?: (e: React.ChangeEvent<any>, name: string, radioGroup: any) => void;
-    updateFieldValidation?: (fieldName: string, fieldValue: any, validation: IValidation) => void;
+    updateFieldValidation?: (fieldName: string, fieldValue: any, validation: Array<IValidation>) => void;
     updateRadioGroupMetadata?: (fieldGroupKey: string, radioProps: Array<{ props: IRadioField}>) => void;
 }
 

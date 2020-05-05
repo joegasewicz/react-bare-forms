@@ -69,12 +69,12 @@ export class Main extends React.Component<IProps, IState> {
                                     labelText="Username"
                                 />
 
-                                {/*<PasswordField*/}
-                                {/*    name="password"*/}
-                                {/*    value={this.state.password}*/}
-                                {/*    labelText="Pasword"*/}
-                                {/*    validators={[isFieldEmpty(5)]}*/}
-                                {/*/>*/}
+                                <PasswordField
+                                    name="password"
+                                    value={this.state.password}
+                                    labelText="Pasword"
+                                    validators={[isFieldEmpty(5)]}
+                                />
 
                                 <PasswordField
                                 name="confirmPassword"
@@ -84,61 +84,61 @@ export class Main extends React.Component<IProps, IState> {
                                 validators={[isFieldEmpty(5), areFieldsEqual("password")]}
                             />
 
-                                {/*<EmailField*/}
-                                {/*    name="email"*/}
-                                {/*    value={this.state.email}*/}
-                                {/*    hint="Your email"*/}
-                                {/*    labelText="Please enter your email"*/}
-                                {/*    validators={[isEmailValid()]}*/}
-                                {/*/>*/}
+                                <EmailField
+                                    name="email"
+                                    value={this.state.email}
+                                    hint="Your email"
+                                    labelText="Please enter your email"
+                                    validators={[isEmailValid()]}
+                                />
 
-                                {/*<TextAreaField*/}
-                                {/*    name="about"*/}
-                                {/*    value={this.state.about}*/}
-                                {/*    hint="Your email"*/}
-                                {/*    labelText="Must be at least 20 characters"*/}
-                                {/*    validators={[isFieldEmpty(20)]}*/}
-                                {/*/>*/}
+                                <TextAreaField
+                                    name="about"
+                                    value={this.state.about}
+                                    hint="Your email"
+                                    labelText="Must be at least 20 characters"
+                                    validators={[isFieldEmpty(20)]}
+                                />
 
-                                {/*<CheckBoxField*/}
-                                {/*    name="terms"*/}
-                                {/*    checked={this.state.terms}*/}
-                                {/*    hint="Click to agree"*/}
-                                {/*    labelText="Agree to terms & conditions"*/}
-                                {/*/>*/}
+                                <CheckBoxField
+                                    name="terms"
+                                    checked={this.state.terms}
+                                    hint="Click to agree"
+                                    labelText="Agree to terms & conditions"
+                                />
 
 
-                                {/*<RadioGroup name="group1">*/}
-                                {/*    <RadioField*/}
-                                {/*        name="radio1"*/}
-                                {/*        checked={this.state.radio1}*/}
-                                {/*        hint="Click to agree"*/}
-                                {/*        labelText="Agree to terms & conditions"*/}
-                                {/*    />*/}
+                            {/*    <RadioGroup name="group1">*/}
+                            {/*        <RadioField*/}
+                            {/*            name="radio1"*/}
+                            {/*            checked={this.state.radio1}*/}
+                            {/*            hint="Click to agree"*/}
+                            {/*            labelText="Agree to terms & conditions"*/}
+                            {/*        />*/}
 
-                                {/*    <RadioField*/}
-                                {/*        name="radio2"*/}
-                                {/*        checked={this.state.radio2}*/}
-                                {/*        hint="Click to agree"*/}
-                                {/*        labelText="Agree to terms & conditions"*/}
-                                {/*    />*/}
+                            {/*        <RadioField*/}
+                            {/*            name="radio2"*/}
+                            {/*            checked={this.state.radio2}*/}
+                            {/*            hint="Click to agree"*/}
+                            {/*            labelText="Agree to terms & conditions"*/}
+                            {/*        />*/}
 
-                                {/*    <RadioField*/}
-                                {/*        name="radio3"*/}
-                                {/*        checked={this.state.radio3}*/}
-                                {/*        hint="Click to agree"*/}
-                                {/*        labelText="Agree to terms & conditions"*/}
-                                {/*    />*/}
-                                {/*</RadioGroup>*/}
+                            {/*        <RadioField*/}
+                            {/*            name="radio3"*/}
+                            {/*            checked={this.state.radio3}*/}
+                            {/*            hint="Click to agree"*/}
+                            {/*            labelText="Agree to terms & conditions"*/}
+                            {/*        />*/}
+                            {/*    </RadioGroup>*/}
 
-                                {/*<SelectField*/}
-                                {/*    size="lg"*/}
-                                {/*    value={this.state.fruitChoice}*/}
-                                {/*    name="fruitChoice"*/}
-                                {/*    options={["banana", "apple", "orange"]}*/}
-                                {/*/>*/}
+                            {/*    <SelectField*/}
+                            {/*        size="lg"*/}
+                            {/*        value={this.state.fruitChoice}*/}
+                            {/*        name="fruitChoice"*/}
+                            {/*        options={["banana", "apple", "orange"]}*/}
+                            {/*    />*/}
 
-                                <SubmitButton>Submit Form</SubmitButton>
+                            {/*    <SubmitButton>Submit Form</SubmitButton>*/}
 
 
                                 <FormConsumer>
