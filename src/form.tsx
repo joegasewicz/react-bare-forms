@@ -96,9 +96,11 @@ export const FormProvider = FormContext.Provider;
 export const FormConsumer = FormContext.Consumer;
 
 
-export const handleSubmit = (e: React.SyntheticEvent) => {
-    e.preventDefault();
-};
+export const handleSubmit = (callback: Function) =>
+    (e: React.ChangeEvent<any>) => {
+        e.preventDefault();
+        callback();
+    };
 
 /**
  *
@@ -155,7 +157,7 @@ export const Form = (props: IForm) => {
 
     return (
         <FormProvider value={_providerContext}>
-            <form onSubmit={handleSubmit} {...props}>{props.children}</form>
+            <form onSubmit={handleSubmit(props.callback)} {...props}>{props.children}</form>
         </FormProvider>
     );
 };
