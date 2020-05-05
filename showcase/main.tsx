@@ -1,6 +1,6 @@
 import * as React from "react";
 import {ChangeEvent, useEffect} from "react";
-import {FormConsumer, Form} from "../src/form";
+import {FormConsumer, Form, Submit} from "../src/form";
 import {
     CheckBoxField,
     EmailField,
@@ -11,6 +11,7 @@ import {
 } from "../src/form-elements";
 import {areFieldsEqual, isEmailValid, isFieldEmpty} from "../src/validators";
 import {TextArea} from "../_src/form-elements";
+import {SubmitButton} from "../src/Buttons";
 // import * as ReactBareForms from "../src/index";
 // import {isFieldEmpty, Submit} from "../src/index";
 
@@ -54,14 +55,18 @@ export class Main extends React.Component<IProps, IState> {
                     <div className="container">
                         <div className="container">
 
-                            <Form state={this.state} context={this} bare={false} autoComplete="off">
+                            <Form
+                                state={this.state}
+                                context={this}
+                                bare={false}
+                                autoComplete="off"
+                                callback={() => console.log("Form submitted")}>
 
                                 <TextInputField
                                     value={this.state.password}
                                     name="username"
                                     hint="Enter your username"
                                     labelText="Username"
-                                    validators={[isFieldEmpty(5)]}
                                 />
 
                                 <PasswordField
@@ -71,67 +76,69 @@ export class Main extends React.Component<IProps, IState> {
                                     validators={[isFieldEmpty(5)]}
                                 />
 
-                                <PasswordField
-                                    name="confirmPassword"
-                                    value={this.state.confirmPassword}
-                                    hint="Password must match"
-                                    labelText="Confirm Password"
-                                    validators={[isFieldEmpty(5), areFieldsEqual("password")]}
-                                />
+                                {/*<PasswordField*/}
+                                {/*    name="confirmPassword"*/}
+                                {/*    value={this.state.confirmPassword}*/}
+                                {/*    hint="Password must match"*/}
+                                {/*    labelText="Confirm Password"*/}
+                                {/*    validators={[isFieldEmpty(5), areFieldsEqual("password")]}*/}
+                                {/*/>*/}
 
-                                <EmailField
-                                    name="email"
-                                    value={this.state.email}
-                                    hint="Your email"
-                                    labelText="Please enter your email"
-                                    validators={[isEmailValid()]}
-                                />
+                                {/*<EmailField*/}
+                                {/*    name="email"*/}
+                                {/*    value={this.state.email}*/}
+                                {/*    hint="Your email"*/}
+                                {/*    labelText="Please enter your email"*/}
+                                {/*    validators={[isEmailValid()]}*/}
+                                {/*/>*/}
 
-                                <TextAreaField
-                                    name="about"
-                                    value={this.state.about}
-                                    hint="Your email"
-                                    labelText="Must be at least 20 characters"
-                                    validators={[isFieldEmpty(20)]}
-                                />
+                                {/*<TextAreaField*/}
+                                {/*    name="about"*/}
+                                {/*    value={this.state.about}*/}
+                                {/*    hint="Your email"*/}
+                                {/*    labelText="Must be at least 20 characters"*/}
+                                {/*    validators={[isFieldEmpty(20)]}*/}
+                                {/*/>*/}
 
-                                <CheckBoxField
-                                    name="terms"
-                                    checked={this.state.terms}
-                                    hint="Click to agree"
-                                    labelText="Agree to terms & conditions"
-                                />
+                                {/*<CheckBoxField*/}
+                                {/*    name="terms"*/}
+                                {/*    checked={this.state.terms}*/}
+                                {/*    hint="Click to agree"*/}
+                                {/*    labelText="Agree to terms & conditions"*/}
+                                {/*/>*/}
 
 
-                                <RadioGroup name="group1">
-                                    <RadioField
-                                        name="radio1"
-                                        checked={this.state.radio1}
-                                        hint="Click to agree"
-                                        labelText="Agree to terms & conditions"
-                                    />
+                                {/*<RadioGroup name="group1">*/}
+                                {/*    <RadioField*/}
+                                {/*        name="radio1"*/}
+                                {/*        checked={this.state.radio1}*/}
+                                {/*        hint="Click to agree"*/}
+                                {/*        labelText="Agree to terms & conditions"*/}
+                                {/*    />*/}
 
-                                    <RadioField
-                                        name="radio2"
-                                        checked={this.state.radio2}
-                                        hint="Click to agree"
-                                        labelText="Agree to terms & conditions"
-                                    />
+                                {/*    <RadioField*/}
+                                {/*        name="radio2"*/}
+                                {/*        checked={this.state.radio2}*/}
+                                {/*        hint="Click to agree"*/}
+                                {/*        labelText="Agree to terms & conditions"*/}
+                                {/*    />*/}
 
-                                    <RadioField
-                                        name="radio3"
-                                        checked={this.state.radio3}
-                                        hint="Click to agree"
-                                        labelText="Agree to terms & conditions"
-                                    />
-                                </RadioGroup>
+                                {/*    <RadioField*/}
+                                {/*        name="radio3"*/}
+                                {/*        checked={this.state.radio3}*/}
+                                {/*        hint="Click to agree"*/}
+                                {/*        labelText="Agree to terms & conditions"*/}
+                                {/*    />*/}
+                                {/*</RadioGroup>*/}
 
-                                <SelectField
-                                    size="lg"
-                                    value={this.state.fruitChoice}
-                                    name="fruitChoice"
-                                    options={["banana", "apple", "orange"]}
-                                />
+                                {/*<SelectField*/}
+                                {/*    size="lg"*/}
+                                {/*    value={this.state.fruitChoice}*/}
+                                {/*    name="fruitChoice"*/}
+                                {/*    options={["banana", "apple", "orange"]}*/}
+                                {/*/>*/}
+
+                                <SubmitButton>Submit Form</SubmitButton>
 
                                 <FormConsumer>
                                     {(context: any) => {
