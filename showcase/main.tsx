@@ -140,6 +140,8 @@ export class Main extends React.Component<IProps, IState> {
 
                                 <SubmitButton>Submit Form</SubmitButton>
 
+                                <SubmitButton>Submit Form</SubmitButton>
+
                                 <FormConsumer>
                                     {(context: any) => {
                                         // this.setState({...context});
