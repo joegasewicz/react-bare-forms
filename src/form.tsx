@@ -26,6 +26,7 @@ export interface IFileMetaData {
     isTouched: boolean;
     validation: Array<IValidation>;
     refName: string;
+    file: File;
 }
 /** @internal */
 export type TypeInputMetadata = { [k: string]: IInputFieldMetadata};
@@ -55,29 +56,29 @@ export interface IForm extends React.FormHTMLAttributes<HTMLFormElement> {
     /** If the parent component is a class component then the context must contain the parent's **this** keyword. */
     context?: any;
     /** If the form's state is not directly contained at parent's state root object, then formKey needs to represent the key. */
-    formKey?: string;
+    readonly formKey?: string;
     /** Default is false. If set to true then the form state will be displayed just below the form component in `code` tags. */
-    debug?: boolean;
+    readonly debug?: boolean;
     /** Default is True. If set to false, the  validators will not be called until the form is submitted. */
-    dynamic?: boolean;
+    readonly dynamic?: boolean;
     /** The passed through props to the Form component */
     children?: any;
     /** Default set to false. If set to true then it will now use bootstrap styling or any extra elements. */
-    bare?: boolean;
+    readonly bare?: boolean;
     /** Callback function wil be called on form submission if all validators pass */
-    callback?: Function;
+    readonly callback?: Function;
 }
 /** @internal */
 export interface IFormContext {
-    bare?: boolean;
-    debug?: boolean;
-    dynamic?: boolean;
-    formKey?: string;
+    readonly bare?: boolean;
+    readonly debug?: boolean;
+    readonly dynamic?: boolean;
+    readonly formKey?: string;
     metadata: IMetadata;
     state: any;
     updateParentState?: (e: React.ChangeEvent<any>, name: string) => void;
     updateRadioGroupStateFromPassedInContext?: (e: React.ChangeEvent<any>, name: string, radioGroup: any) => void;
-    updateFieldValidation?: (fieldName: string, fieldValue: any, validation: Array<IValidation>) => void;
+    updateFieldValidation?: (fieldName: string, fieldValue: any, validation: Array<IValidation>, type?: TypeMetadataNames) => void;
     updateRadioGroupMetadata?: (fieldGroupKey: string, radioProps: Array<{ props: IRadioField}>) => void;
 }
 
@@ -131,7 +132,6 @@ export const handleSubmit = (props: IForm) =>
         } else {
             // TODO throw error
         }
-
     };
 
 /**

@@ -43,11 +43,15 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
                 if(context.metadata.inputs[name] && context.metadata.inputs[name].isTouched) {
                     return <ValidationResults results={validationResults} styles={styles} />;
                 }
-            }
-            case "fieldGroups": {
                 return null;
             }
             case "files": {
+                useEffect(() => {
+                    context.updateFieldValidation(name, context.state[name], validationResults, "files")
+                }, [context.state]);
+                if(context.metadata.inputs[name] && context.metadata.inputs[name].isTouched) {
+                    return <ValidationResults results={validationResults} styles={styles} />;
+                }
                 return null;
             }
             default: {

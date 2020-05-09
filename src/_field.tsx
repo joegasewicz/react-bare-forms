@@ -7,6 +7,7 @@ import {
     TypeSelectCssSizeName
 } from "./elements";
 import {shouldUpdateRadioGroupContext} from "./_context_updaters";
+import {createFileObject} from "./_file";
 
 interface IFieldClass<T> {
     create: (context: IFormContext) => ReactElement<T>;
@@ -293,11 +294,20 @@ export class FileField<T extends any> extends _field<T> implements IFieldClass<T
     }
 
     public getField() {
-        return (context: IFormContext) =>
-            (<input
+        const reader = new FileReader();
+
+        const updateFieldValidation = (e: React.ChangeEvent<HTMLInputElement>, context: IFormContext) => {
+            const file = createFileObject(this.props.ref);
+            context.updateFieldValidation(this.props.name, file, null, "files")
+
+        };
+        return (context: IFormContext) => {
+            return (<input
                 ref={this.props.ref}
                 type="file"
+                onChange={(e) => updateFieldValidation(e, context)}
                 className={_field.mergeDefaultCssWithProps("form-control-file", this.props.className, context.bare)}
             />);
+        }
     }
 }

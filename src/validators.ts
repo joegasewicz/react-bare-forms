@@ -88,9 +88,7 @@ export const isEmailValid: IValidationVariable = customValidator((_ , fieldValue
  * ... TODO chjeck the ref is not null and type blob / file
  */
 export const isFile: IValidationVariable = customValidator((_, fieldValue, context) => {
-    if(fieldValue instanceof Blob) {
-        return [`Must be a file type`];
-    }
+    return [`Must be a file type`];
 });
 
 /**
