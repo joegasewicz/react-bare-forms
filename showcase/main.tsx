@@ -1,6 +1,5 @@
 import * as React from "react";
-import {ChangeEvent, useEffect} from "react";
-import {FormConsumer, Form, Submit} from "../src/form";
+import {FormConsumer, Form} from "../src/form";
 import {
     CheckBoxField,
     EmailField, FileField,
@@ -10,10 +9,7 @@ import {
     TextInputField
 } from "../src/form-elements";
 import {areFieldsEqual, isEmailValid, isFieldEmpty, isFile} from "../src/validators";
-import {TextArea} from "../_src/form-elements";
-import {SubmitButton} from "../src/Buttons";
-// import * as ReactBareForms from "../src/index";
-// import {isFieldEmpty, Submit} from "../src/index";
+import {SubmitButton} from "../src/buttons";
 
 interface IProps{}
 
@@ -33,6 +29,9 @@ interface IState{
 
 
 export class Main extends React.Component<IProps, IState> {
+
+
+    // this.myFileRef =
 
     state = {
         // username: "",
