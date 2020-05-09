@@ -138,13 +138,13 @@ export class Main extends React.Component<IProps, IState> {
                                     options={["banana", "apple", "orange"]}
                                 />
 
-                                <FileField
-                                    ref={this.myFileRef}
-                                    hint="Must be a file"
-                                    labelText="Upload your file"
-                                    name="myFileTest"
-                                    validators={[isFile()]}
-                                />
+                                {/*<FileField*/}
+                                {/*    ref={this.myFileRef}*/}
+                                {/*    hint="Must be a file"*/}
+                                {/*    labelText="Upload your file"*/}
+                                {/*    name="myFileTest"*/}
+                                {/*    validators={[isFile()]}*/}
+                                {/*/>*/}
 
                                 <SubmitButton>Submit Form</SubmitButton>
 

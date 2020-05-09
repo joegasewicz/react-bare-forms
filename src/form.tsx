@@ -2,7 +2,7 @@ import {default as React, useEffect, useState} from "react";
 import {updateRadioGroupStateFromPassedInContext, updateStateFromPassedInContext} from "./_handlers";
 import {IValidation} from "./validators";
 import {updateRadioGroupMetadata, updateValidationMetadata} from "./_context_updaters";
-import {IRadioField} from "./elements";
+import {IFileField, IRadioField} from "./elements";
 import {getFileFromRef} from "./uncrontrolled";
 
 /** @internal */
@@ -12,7 +12,7 @@ export interface IRadioGroupChildren {
     disabled: boolean; // TODO
 }
 /** @internal */
-export interface _IFormMetadata {
+export interface IInputFieldMetadata {
     messages: Array<string>;
     isValid: boolean;
     isTouched: boolean;
@@ -28,15 +28,21 @@ export interface IFileMetaData {
     refName: string;
 }
 /** @internal */
-export type TypeMetadata = { [k: string]: _IFormMetadata};
+export type TypeInputMetadata = { [k: string]: IInputFieldMetadata};
 export type TypeRadioGroup = {[k: string]: IRadioGroupChildren};
 export type TypeFileMetadata = {[k: string]: IFileMetaData};
 /** @internal */
-export interface IMetdadata {
+export interface IMetadata {
     fieldGroups: TypeRadioGroup;
-    inputs: TypeMetadata;
+    inputs: TypeInputMetadata;
     files: TypeFileMetadata;
 }
+/** @internal **/
+export type TypeMetadataNames = "inputs"|"fieldGroups"|"files";
+/** @internal **/
+export type TypeMetadataTypes = TypeRadioGroup|TypeInputMetadata|TypeFileMetadata;
+/** @internal **/
+export type TypeFieldNames = "text"|"email"|"password"|"textArea"|"radio"|"checkbox"|"select"|"file";
 /**
  * @interface **IForm** Exported Form interface available to the caller. Contains all the properties required by
  * the Form *RBF* Form's component.
@@ -65,7 +71,7 @@ export interface IFormContext {
     debug?: boolean;
     dynamic?: boolean;
     formKey?: string;
-    metadata: IMetdadata;
+    metadata: IMetadata;
     state: any;
     updateParentState?: (e: React.ChangeEvent<any>, name: string) => void;
     updateRadioGroupStateFromPassedInContext?: (e: React.ChangeEvent<any>, name: string, radioGroup: any) => void;
