@@ -1,7 +1,7 @@
 // Context Updaters
 // Methods to update & track the state of all inputs, validators & general form metadata
 import {IValidation} from "./validators";
-import {IRadioField} from "./form-elements";
+import {IRadioField} from "./elements";
 
 /** @internal */
 export const updateValidationMetadata = (context: any, update: any) => {

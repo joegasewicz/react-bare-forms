@@ -2,7 +2,7 @@ import {default as React, useEffect, useState} from "react";
 import {updateRadioGroupStateFromPassedInContext, updateStateFromPassedInContext} from "./_handlers";
 import {IValidation} from "./validators";
 import {updateRadioGroupMetadata, updateValidationMetadata} from "./_context_updaters";
-import {IRadioField} from "./form-elements";
+import {IRadioField} from "./elements";
 
 
 export interface IRadioGroupChildren {

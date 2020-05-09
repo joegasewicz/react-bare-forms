@@ -4,7 +4,7 @@ import {
     EmailField, FormGroup,
     PasswordField, TextAreaField,
     TextInputField,
-} from "../src/form-elements";
+} from "../src/elements";
 import {FormConsumer, FormProvider} from "../src/form";
 import {isEmailValid, isFieldEmpty} from "../src/validators";
 import {updateValidationMetadata} from "../src/_context_updaters";

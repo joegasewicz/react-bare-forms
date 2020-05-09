@@ -15,18 +15,18 @@ import * as ReactBareForms from "react-bare-forms";
 
     <ReactBareForms.Form state={this.state} formKey="myForm1">
     
-        <ReactBareForms.Field
+        <ReactBareForms._field
             name="message"
             hint="Must be at least 5 characters long"
             label="Your Name"
             validators={[ReactBareForms.isFieldEmpty(5)]}
-        ></ReactBareForms.Field>
+        ></ReactBareForms._field>
         
         <ReactBareForms.Submit>Submit</Submit>
     </ReactBareForms.Form>
 ```
 
-#### Text Input Fields
+#### Text Input _field
 ```typescript jsx
 <TextInputField
     value={this.state.password}
@@ -36,7 +36,7 @@ import * as ReactBareForms from "react-bare-forms";
     validators={[isFieldEmpty(5)]}
 />
 ```
-#### Email Input Field
+#### Email Input _field
 ```typescript jsx
 <EmailField
     name="email"
@@ -46,7 +46,7 @@ import * as ReactBareForms from "react-bare-forms";
     validators={[isEmailValid()]}
 />
 ```
-#### Password Input Field
+#### Password Input _field
 ```typescript jsx
 <PasswordField
     name="password"
@@ -63,7 +63,7 @@ import * as ReactBareForms from "react-bare-forms";
     validators={[isFieldEmpty(5), areFieldsEqual("password")]}
 />
 ```
-#### TextArea Input Field
+#### TextArea Input _field
 ```typescript jsx
 <TextAreaField
     name="about"
@@ -73,7 +73,7 @@ import * as ReactBareForms from "react-bare-forms";
     validators={[isFieldEmpty(20)]}
 />
 ```
-#### Checkbox Input Field
+#### Checkbox Input _field
 ```typescript jsx
 <CheckBoxField
     name="terms"

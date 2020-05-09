@@ -4,7 +4,7 @@ import {ChangeEvent, default as React, ReactElement, useContext, useEffect} from
 import {
     RadioGroupContext,
     TypeSelectCssSizeName
-} from "./form-elements";
+} from "./elements";
 import {shouldUpdateRadioGroupContext} from "./_context_updaters";
 
 interface IFieldClass<T> {
@@ -25,7 +25,7 @@ function _genericFormGroup<T extends any>(props: T, children: any) {
 }
 
 /** @internal */
-abstract class Field<PropsType extends any> {
+abstract class _field<PropsType extends any> {
 
     type?: string;
 
@@ -76,7 +76,7 @@ abstract class Field<PropsType extends any> {
 }
 
 /** @internal */
-export class InputField<T extends any> extends Field<T> implements IFieldClass<T> {
+export class InputField<T extends any> extends _field<T> implements IFieldClass<T> {
 
     constructor(type: string, props: T) {
         super(props, type);
@@ -99,7 +99,7 @@ export class InputField<T extends any> extends Field<T> implements IFieldClass<T
                 value={context.state[this.props.name] || ""}
                 onChange={(e) => context.updateParentState(e, this.props.name)}
                 name={this.props.name}
-                className={Field.mergeDefaultCssWithProps("form-control", this.props.className, context.bare)}
+                className={_field.mergeDefaultCssWithProps("form-control", this.props.className, context.bare)}
             />;
         }
     }
@@ -107,7 +107,7 @@ export class InputField<T extends any> extends Field<T> implements IFieldClass<T
 }
 
 /** @internal */
-export class CheckBoxField<T extends any> extends Field<T> implements IFieldClass<T> {
+export class CheckBoxField<T extends any> extends _field<T> implements IFieldClass<T> {
 
     constructor(type: string, props: T) {
         super(props, type);
@@ -136,14 +136,14 @@ export class CheckBoxField<T extends any> extends Field<T> implements IFieldClas
                 checked={context.state[this.props.name] || false}
                 onChange={(e) => context.updateParentState(this.overrideEvent(e, context.state[this.props.name]), this.props.name)}
                 name={this.props.name}
-                className={Field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
+                className={_field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
             />;
         }
     }
 }
 
 /** @internal */
-export class TextAreaField<T extends any> extends Field<T> implements IFieldClass<T> {
+export class TextAreaField<T extends any> extends _field<T> implements IFieldClass<T> {
 
     constructor(props: T) {
         super(props);
@@ -175,7 +175,7 @@ export class TextAreaField<T extends any> extends Field<T> implements IFieldClas
 }
 
 /** @internal */
-export class RadioField<T extends any> extends Field<T> implements IFieldClass<T> {
+export class RadioField<T extends any> extends _field<T> implements IFieldClass<T> {
 
     constructor(type: string, props: T) {
         super(props, type);
@@ -219,7 +219,7 @@ export class RadioField<T extends any> extends Field<T> implements IFieldClass<T
             checked={context.state[this.props.name] || false}
             onChange={(e) => updateContexts(e, context)}
             name={this.props.name}
-            className={Field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
+            className={_field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
         />
 
         }
@@ -228,7 +228,7 @@ export class RadioField<T extends any> extends Field<T> implements IFieldClass<T
 }
 
 /** @internal */
-export class SelectField<T extends any> extends Field<T> implements IFieldClass<T> {
+export class SelectField<T extends any> extends _field<T> implements IFieldClass<T> {
 
     constructor(props: T) {
         super(props);
@@ -251,7 +251,7 @@ export class SelectField<T extends any> extends Field<T> implements IFieldClass<
                 <select
                     onChange={(e) => context.updateParentState(e, this.props.name)}
                     name={this.props.name}
-                    className={Field.mergeDefaultCssWithProps(this.getSelectCssName(this.props.size), this.props.className, context.bare)}
+                    className={_field.mergeDefaultCssWithProps(this.getSelectCssName(this.props.size), this.props.className, context.bare)}
                 >
                     {options.map((optVal: string, i: number) => {
                         return <option value={optVal} key={i}>{optVal}</option>
@@ -271,7 +271,7 @@ export class SelectField<T extends any> extends Field<T> implements IFieldClass<
 }
 
 /** @internal */
-export class FileField<T extends any> extends Field<T> implements IFieldClass<T> {
+export class FileField<T extends any> extends _field<T> implements IFieldClass<T> {
 
     fileInput: React.RefObject<HTMLInputElement>;
 
@@ -301,7 +301,7 @@ export class FileField<T extends any> extends Field<T> implements IFieldClass<T>
                 type="file"
                 onChange={(e) => this.handleFileChange(e, context)}
                 name={this.props.name}
-                className={Field.mergeDefaultCssWithProps("form-control-file", this.props.className, context.bare)}
+                className={_field.mergeDefaultCssWithProps("form-control-file", this.props.className, context.bare)}
             />);
     }
 
