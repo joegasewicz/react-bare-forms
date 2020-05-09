@@ -8,7 +8,7 @@ import {
     renderIntoDocument,
 } from "react-dom/test-utils";
 import {unmountComponentAtNode } from "react-dom";
-import {TextInputField} from "../src/form-elements";
+import {TextInputField} from "../src/elements";
 import { shallow, render } from 'enzyme';
 
 

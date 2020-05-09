@@ -7,9 +7,10 @@ import {
     RadioField, RadioGroup, SelectField,
     TextAreaField,
     TextInputField
-} from "../src/form-elements";
+} from "../src/elements";
 import {areFieldsEqual, isEmailValid, isFieldEmpty, isFile} from "../src/validators";
 import {SubmitButton} from "../src/buttons";
+import {createFileRef} from "../src/uncrontrolled";
 
 interface IProps{}
 
@@ -24,14 +25,13 @@ interface IState{
     radio2: boolean;
     radio3: boolean;
     fruitChoice: string;
-    file: any;
 }
 
 
 export class Main extends React.Component<IProps, IState> {
 
 
-    // this.myFileRef =
+    myFileRef = createFileRef();
 
     state = {
         // username: "",
@@ -44,7 +44,6 @@ export class Main extends React.Component<IProps, IState> {
         radio2: false,
         radio3: false,
         fruitChoice: "",
-        file: {},
     };
 
     public render(): React.ReactElement {
@@ -140,8 +139,8 @@ export class Main extends React.Component<IProps, IState> {
                                 />
 
                                 <FileField
+                                    ref={this.myFileRef}
                                     name="file"
-                                    value={this.state.file}
                                     hint="Must be a file"
                                     labelText="Upload your file"
                                     validators={[isFile()]}

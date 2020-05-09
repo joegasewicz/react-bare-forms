@@ -9,7 +9,7 @@ import {
     RadioField as _RadioField,
     SelectField as _SelectField,
     FileField as _FileField,
-} from "./field";
+} from "./_field";
 
 
 
@@ -57,7 +57,7 @@ export interface IRadioField extends IField {
 }
 
 export interface IFileField extends IField {
-    value?: any; // TODO File type value Byte
+    ref: React.RefObject<HTMLFormElement>;
 }
 
 export type TypeSelectCssSizeName = |"sm"|"default"|"lg";
