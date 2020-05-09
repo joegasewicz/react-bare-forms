@@ -3,14 +3,14 @@ import {updateRadioGroupStateFromPassedInContext, updateStateFromPassedInContext
 import {IValidation} from "./validators";
 import {updateRadioGroupMetadata, updateValidationMetadata} from "./_context_updaters";
 import {IRadioField} from "./elements";
+import {getFileFromRef} from "./uncrontrolled";
 
-
+/** @internal */
 export interface IRadioGroupChildren {
     name: string;
     isChecked: boolean;
     disabled: boolean; // TODO
 }
-
 /** @internal */
 export interface _IFormMetadata {
     messages: Array<string>;
@@ -19,16 +19,24 @@ export interface _IFormMetadata {
     value: any;
     validation: Array<IValidation>;
 }
-
+/** @internal */
+export interface IFileMetaData {
+    messages: Array<string>;
+    isValid: boolean;
+    isTouched: boolean;
+    validation: Array<IValidation>;
+    refName: string;
+}
 /** @internal */
 export type TypeMetadata = { [k: string]: _IFormMetadata};
 export type TypeRadioGroup = {[k: string]: IRadioGroupChildren};
-
+export type TypeFileMetadata = {[k: string]: IFileMetaData};
+/** @internal */
 export interface IMetdadata {
     fieldGroups: TypeRadioGroup;
     inputs: TypeMetadata;
+    files: TypeFileMetadata;
 }
-
 /**
  * @interface **IForm** Exported Form interface available to the caller. Contains all the properties required by
  * the Form *RBF* Form's component.
@@ -51,7 +59,6 @@ export interface IForm extends React.FormHTMLAttributes<HTMLFormElement> {
     /** Callback function wil be called on form submission if all validators pass */
     callback?: Function;
 }
-
 /** @internal */
 export interface IFormContext {
     bare?: boolean;
@@ -66,14 +73,18 @@ export interface IFormContext {
     updateRadioGroupMetadata?: (fieldGroupKey: string, radioProps: Array<{ props: IRadioField}>) => void;
 }
 
-
+/** @internal */
 const providerContext: IFormContext = {
     bare: false,
     state: {},
     formKey: null,
     debug: false,
     dynamic: true,
-    metadata: { inputs: ({} as any), fieldGroups: ({} as any)},
+    metadata: {
+        inputs: {},
+        fieldGroups: {},
+        files: {},
+    },
 };
 
 /** @internal */
@@ -95,11 +106,24 @@ export const FormProvider = FormContext.Provider;
  * */
 export const FormConsumer = FormContext.Consumer;
 
-
-export const handleSubmit = (callback: Function) =>
+/** @internal */
+export const handleSubmit = (props: IForm) =>
     (e: React.ChangeEvent<any>) => {
         e.preventDefault();
-        callback();
+        const { callback, } = props;
+        for (let elem of props.children) {
+            console.log(elem)
+            if(elem.ref && !(getFileFromRef(elem.ref) instanceof File)) {
+                console.log("NO FILE!")
+                // TODO run validator
+            }
+        }
+        if(typeof callback === "function" && callback()) {
+            callback();
+        } else {
+            // TODO throw error
+        }
+
     };
 
 /**
@@ -110,7 +134,6 @@ export const handleSubmit = (callback: Function) =>
 export const Submit = (props: any) => {
     return <button type="submit">Submit</button>;
 };
-
 
 /**
  * The main Form component
@@ -129,7 +152,6 @@ export const Submit = (props: any) => {
  */
 export const Form = (props: IForm) => {
     const [parentState, setParentState] = useState(props.state);
-
     // If the parent component is a class component, then the state needs to be updated from the parent context
     if(props.context) {
         useEffect(() => {
@@ -138,10 +160,7 @@ export const Form = (props: IForm) => {
             });
         }, [parentState]);
     }
-
-
     const [context, updateContext] = useState(providerContext);
-
     const _providerContext: IFormContext = {
         bare: props.bare || context.bare,
         state: props.state,
@@ -154,10 +173,9 @@ export const Form = (props: IForm) => {
         updateFieldValidation: updateValidationMetadata(context, updateContext),
         updateRadioGroupMetadata: updateRadioGroupMetadata(context, updateContext),
     };
-
     return (
         <FormProvider value={_providerContext}>
-            <form onSubmit={handleSubmit(props.callback)} {...props}>{props.children}</form>
+            <form onSubmit={handleSubmit(props)} {...props}>{props.children}</form>
         </FormProvider>
     );
 };

@@ -4,11 +4,7 @@ import {FormContext, IFormContext} from "./form";
 import {IValidation} from "./validators";
 
 
-/**
- * @internal
- * @param props
- * @constructor
- */
+/** @internal */
 export const FormElementValidators = (props: any): ReactElement => {
     const {validators = null, name, value = null}: any = props;
     const context: IFormContext = useContext(FormContext);
@@ -35,12 +31,7 @@ export const FormElementValidators = (props: any): ReactElement => {
     }
 };
 
-/**
- * @internal
- * @param defaultValue
- * @param cssProps
- * @param bare
- */
+/** @internal */
 export function mergeDefaultCssWithProps(defaultValue: string, cssProps: any, bare: boolean): string {
     let cssStr = "";
     if(!bare) {
@@ -59,11 +50,7 @@ interface IFormGroup {
     hint?: string;
 }
 
-/**
- * @internal
- * @param props
- * @constructor
- */
+/** @internal */
 export function FormGroup(props: IFormGroup): React.ReactElement {
     return (
         <div className="form-group">

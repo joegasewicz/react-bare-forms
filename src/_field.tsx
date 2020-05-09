@@ -273,8 +273,6 @@ export class SelectField<T extends any> extends _field<T> implements IFieldClass
 /** @internal */
 export class FileField<T extends any> extends _field<T> implements IFieldClass<T> {
 
-    fileInput: React.RefObject<HTMLInputElement>;
-
     constructor(props: T) {
         super(props);
         this.props = props;
@@ -293,18 +291,7 @@ export class FileField<T extends any> extends _field<T> implements IFieldClass<T
             (<input
                 ref={this.props.ref}
                 type="file"
-                onChange={(e) => this.handleFileChange(e, context)}
-                name={this.props.name}
                 className={_field.mergeDefaultCssWithProps("form-control-file", this.props.className, context.bare)}
             />);
-    }
-
-    public handleFileChange(e: ChangeEvent<any>, context: IFormContext) {
-
-        return context.updateParentState(this.overrideEvent(e, this.getFile()), this.props.name)
-    }
-
-    public getFile() {
-        return this.fileInput.current.files[0];
     }
 }
