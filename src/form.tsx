@@ -29,7 +29,9 @@ export interface IFileMetaData {
 }
 /** @internal */
 export type TypeInputMetadata = { [k: string]: IInputFieldMetadata};
+/** @internal */
 export type TypeRadioGroup = {[k: string]: IRadioGroupChildren};
+/** @internal */
 export type TypeFileMetadata = {[k: string]: IFileMetaData};
 /** @internal */
 export interface IMetadata {
