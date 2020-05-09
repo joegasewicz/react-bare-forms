@@ -70,7 +70,7 @@ export function mergeDefaultCssWithProps(defaultValue: string, cssProps: any, ba
 }
 
 /** @internal */
-export function getMetadataName(type: TypeFieldNames): TypeMetadataNames {
+export function getMetadataNameType(type: TypeFieldNames): TypeMetadataNames {
     switch(type) {
         case "text": {
             return "inputs";
@@ -88,10 +88,10 @@ export function getMetadataName(type: TypeFieldNames): TypeMetadataNames {
             return "fieldGroups";
         }
         case "checkbox": {
-            break; // TODO
+            return "fieldGroups";
         }
         case "select": {
-            break; // TODO
+            return "inputs";
         }
         case "file": {
             return "files";
