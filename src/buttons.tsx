@@ -40,7 +40,6 @@ class _SubmitButton implements Button<ISubmitButtonProps> {
                                        isDisabled = true;
                                    }
                                }
-
                            });
                        }
                        return (<button

@@ -140,9 +140,9 @@ export class Main extends React.Component<IProps, IState> {
 
                                 <FileField
                                     ref={this.myFileRef}
-                                    name="file"
                                     hint="Must be a file"
                                     labelText="Upload your file"
+                                    name="myFileTest"
                                     validators={[isFile()]}
                                 />
 
