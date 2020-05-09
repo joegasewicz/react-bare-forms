@@ -1,7 +1,7 @@
 import {default as React, ReactElement, useContext, useEffect} from "react";
-import {FormConsumer, FormContext, FormProvider, IForm, IFormContext} from "./form";
+import {FormConsumer, FormContext, FormProvider, IForm, IFormContext, TypeMetadataTypes} from "./form";
 import {IValidators} from "./validators";
-import {FormElementValidators, FormGroup, mergeDefaultCssWithProps} from "./_helpers";
+import {FormElementValidators, mergeDefaultCssWithProps} from "./_helpers";
 import {
     InputField,
     TextAreaField as _TextAreaField,
@@ -10,7 +10,6 @@ import {
     SelectField as _SelectField,
     FileField as _FileField,
 } from "./_field";
-
 
 
 export interface IField {
@@ -224,7 +223,7 @@ export const CheckBoxField = (props: ICheckBoxField) => {
  * @constructor
  */
 export const TextAreaField = (props: ITextAreaField) => {
-  const textArea = new _TextAreaField(props);
+  const textArea = new _TextAreaField<ITextAreaField>(props);
   return textArea.create();
 };
 
@@ -232,7 +231,6 @@ export interface IRadioGroupProps {
     name: string;
     children: any;
 }
-
 
 export const RadioGroupContext = React.createContext({});
 
@@ -281,6 +279,6 @@ export const SelectField = (props: ISelectField) => {
  */
 export const FileField = React.forwardRef((props: IFileField, ref: React.RefObject<HTMLFormElement>) => {
     let _props = {...props, ref };
-    const file = new _FileField(_props);
+    const file = new _FileField<IFileField>(_props);
     return file.create();
 });

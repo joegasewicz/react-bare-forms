@@ -2,6 +2,7 @@ import {FormContext, IFormContext} from "./form";
 import {FormElementValidators, mergeDefaultCssWithProps} from "./_helpers";
 import {ChangeEvent, default as React, ReactElement, useContext, useEffect} from "react";
 import {
+    IFileField,
     RadioGroupContext,
     TypeSelectCssSizeName
 } from "./elements";
@@ -9,7 +10,7 @@ import {shouldUpdateRadioGroupContext} from "./_context_updaters";
 
 interface IFieldClass<T> {
     create: (context: IFormContext) => ReactElement<T>;
-    type?: string;
+    type: string;
     props: T;
 }
 
@@ -27,7 +28,7 @@ function _genericFormGroup<T extends any>(props: T, children: any) {
 /** @internal */
 abstract class _field<PropsType extends any> {
 
-    type?: string;
+    type: string;
 
     props: PropsType;
 
@@ -39,7 +40,12 @@ abstract class _field<PropsType extends any> {
     public createField(fieldCallback: Function) {
         const context: IFormContext = useContext(FormContext);
         const _validate = this.props.validators ?
-            <FormElementValidators validators={this.props.validators} name={this.props.name} value={this.props.value} /> :
+            <FormElementValidators
+                validators={this.props.validators}
+                name={this.props.name}
+                value={this.props.value}
+                type="inputs"
+            /> :
             null;
         if(context.bare) {
             return (<>{fieldCallback(context)}{_validate}</>);
@@ -217,7 +223,6 @@ export class RadioField<T extends any> extends _field<T> implements IFieldClass<
         return <input
             type={this.type}
             checked={context.state[this.props.name] || false}
-            onChange={(e) => updateContexts(e, context)}
             name={this.props.name}
             className={_field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
         />
