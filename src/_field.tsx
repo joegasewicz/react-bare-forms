@@ -278,7 +278,6 @@ export class FileField<T extends any> extends _field<T> implements IFieldClass<T
     constructor(props: T) {
         super(props);
         this.props = props;
-        this.fileInput = React.createRef();
     }
 
     public create() {
@@ -290,14 +289,9 @@ export class FileField<T extends any> extends _field<T> implements IFieldClass<T
     }
 
     public getField() {
-        // TODO
-        // 1. Create a function that returns a react Ref
-        // 2. The calls creates a local variable assigns the result from the above function
-        // 3. then the var gets passed to FileField - here its updated and checked against inside the validator
-        // 4. the metadata value should be null but validate against the ref value
         return (context: IFormContext) =>
             (<input
-                ref={this.fileInput}
+                ref={this.props.ref}
                 type="file"
                 onChange={(e) => this.handleFileChange(e, context)}
                 name={this.props.name}
