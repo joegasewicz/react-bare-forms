@@ -238,7 +238,7 @@ export const RadioGroupContext = React.createContext({});
 
 export interface IRadioGroupParentContext {
     parent: { name: string };
-    children: any; // TODO
+    children: any;
 }
 
 /**
@@ -279,8 +279,8 @@ export const SelectField = (props: ISelectField) => {
  * @param props
  * @constructor
  */
-export const FileField = (props: IFileField) => {
-    const file = new _FileField(props);
+export const FileField = React.forwardRef((props: IFileField, ref: React.RefObject<HTMLFormElement>) => {
+    let _props = {...props, ref };
+    const file = new _FileField(_props);
     return file.create();
-};
-
+});

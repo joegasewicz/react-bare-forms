@@ -10,7 +10,7 @@ import {
 } from "../src/elements";
 import {areFieldsEqual, isEmailValid, isFieldEmpty, isFile} from "../src/validators";
 import {SubmitButton} from "../src/buttons";
-import {createFileRef} from "../src/uncrontrolled";
+import {createFileRef, getFileFromRef} from "../src/uncrontrolled";
 
 interface IProps{}
 
@@ -60,11 +60,11 @@ export class Main extends React.Component<IProps, IState> {
                                 context={this}
                                 bare={false}
                                 autoComplete="off"
-                                callback={() => console.log("Form submitted")}>
+                                callback={() => console.log("Form submitted ----> ", getFileFromRef(this.myFileRef))}>
 
                                 <TextInputField
                                     value={this.state.password}
-                                    name="username"
+                                    name="password"
                                     hint="Enter your username"
                                     labelText="Username"
                                 />
@@ -152,6 +152,7 @@ export class Main extends React.Component<IProps, IState> {
                                 <FormConsumer>
                                     {(context: any) => {
                                         // this.setState({...context});
+                                        console.log("file ref ----> ", this.myFileRef);
                                         return <div><code>Form State: {JSON.stringify(context)}</code></div>;
                                     }}
                                 </FormConsumer>
