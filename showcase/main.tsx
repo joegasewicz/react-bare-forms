@@ -1,19 +1,15 @@
 import * as React from "react";
-import {ChangeEvent, useEffect} from "react";
-import {FormConsumer, Form, Submit} from "../src/form";
+import {FormConsumer, Form} from "../src/form";
 import {
     CheckBoxField,
-    EmailField,
+    EmailField, FileField,
     PasswordField,
     RadioField, RadioGroup, SelectField,
     TextAreaField,
     TextInputField
 } from "../src/form-elements";
-import {areFieldsEqual, isEmailValid, isFieldEmpty} from "../src/validators";
-import {TextArea} from "../_src/form-elements";
-import {SubmitButton} from "../src/Buttons";
-// import * as ReactBareForms from "../src/index";
-// import {isFieldEmpty, Submit} from "../src/index";
+import {areFieldsEqual, isEmailValid, isFieldEmpty, isFile} from "../src/validators";
+import {SubmitButton} from "../src/buttons";
 
 interface IProps{}
 
@@ -28,10 +24,14 @@ interface IState{
     radio2: boolean;
     radio3: boolean;
     fruitChoice: string;
+    file: any;
 }
 
 
 export class Main extends React.Component<IProps, IState> {
+
+
+    // this.myFileRef =
 
     state = {
         // username: "",
@@ -44,6 +44,7 @@ export class Main extends React.Component<IProps, IState> {
         radio2: false,
         radio3: false,
         fruitChoice: "",
+        file: {},
     };
 
     public render(): React.ReactElement {
@@ -138,6 +139,14 @@ export class Main extends React.Component<IProps, IState> {
                                     options={["banana", "apple", "orange"]}
                                 />
 
+                                <FileField
+                                    name="file"
+                                    value={this.state.file}
+                                    hint="Must be a file"
+                                    labelText="Upload your file"
+                                    validators={[isFile()]}
+                                />
+
                                 <SubmitButton>Submit Form</SubmitButton>
 
 
@@ -150,8 +159,6 @@ export class Main extends React.Component<IProps, IState> {
                             </Form>
 
                         </div>
-
-
 
                         <code>State: {JSON.stringify(this.state)}</code>
 

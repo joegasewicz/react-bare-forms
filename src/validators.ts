@@ -84,6 +84,16 @@ export const isEmailValid: IValidationVariable = customValidator((_ , fieldValue
 });
 
 /**
+ * @example
+ * ... TODO chjeck the ref is not null and type blob / file
+ */
+export const isFile: IValidationVariable = customValidator((_, fieldValue, context) => {
+    if(fieldValue instanceof Blob) {
+        return [`Must be a file type`];
+    }
+});
+
+/**
  * Function that takes a callback which contains the callers own validation logic
  * & returns an array of string(s) which are the validation error message or *undefined*. Below is an
  * example of creatinga custom validator to test if a field has a string length of nth.

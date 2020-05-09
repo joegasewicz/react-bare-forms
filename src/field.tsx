@@ -1,6 +1,6 @@
 import {FormContext, IFormContext} from "./form";
 import {FormElementValidators, mergeDefaultCssWithProps} from "./_helpers";
-import {default as React, ReactElement, useContext, useEffect} from "react";
+import {ChangeEvent, default as React, ReactElement, useContext, useEffect} from "react";
 import {
     RadioGroupContext,
     TypeSelectCssSizeName
@@ -267,5 +267,50 @@ export class SelectField<T extends any> extends Field<T> implements IFieldClass<
         } else {
             return `form-control form-control-${name}`;
         }
+    }
+}
+
+/** @internal */
+export class FileField<T extends any> extends Field<T> implements IFieldClass<T> {
+
+    fileInput: React.RefObject<HTMLInputElement>;
+
+    constructor(props: T) {
+        super(props);
+        this.props = props;
+        this.fileInput = React.createRef();
+    }
+
+    public create() {
+        return this.createField(this.getField());
+    }
+
+    public formGroup(children: any): ReactElement {
+        return _genericFormGroup<T>(this.props, children);
+    }
+
+    public getField() {
+        // TODO
+        // 1. Create a function that returns a react Ref
+        // 2. The calls creates a local variable assigns the result from the above function
+        // 3. then the var gets passed to FileField - here its updated and checked against inside the validator
+        // 4. the metadata value should be null but validate against the ref value
+        return (context: IFormContext) =>
+            (<input
+                ref={this.fileInput}
+                type="file"
+                onChange={(e) => this.handleFileChange(e, context)}
+                name={this.props.name}
+                className={Field.mergeDefaultCssWithProps("form-control-file", this.props.className, context.bare)}
+            />);
+    }
+
+    public handleFileChange(e: ChangeEvent<any>, context: IFormContext) {
+
+        return context.updateParentState(this.overrideEvent(e, this.getFile()), this.props.name)
+    }
+
+    public getFile() {
+        return this.fileInput.current.files[0];
     }
 }
