@@ -1,16 +1,16 @@
 import * as React from "react";
 import {ReactElement, useContext, useEffect} from "react";
-import {FormContext, IFormContext, TypeFieldNames, TypeMetadataNames} from "./form";
-import {IValidation, IValidators} from "./validators";
+import {FormContext, IFormContext, METADATA_NAMES} from "./form";
+import {IValidation} from "./validators";
 import {FIELD_NAMES} from "./elements";
 
 
 /** @internal */
 interface IFormElementValidators {
-    validators: any; // todo
+    validators: Array<(...args: Array<any>) => IValidation>;
     name: string;
     value: any;
-    type: TypeMetadataNames;
+    type: METADATA_NAMES;
     className?: string;
 }
 /** @internal */
@@ -34,7 +34,7 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
         // Collect validators results before updating context
         let validationResults: Array<IValidation> = [];
         switch(type) {
-            case "inputs": {
+            case METADATA_NAMES.INPUTS: {
                 validators.map((key: any, index: number) => {
                     validationResults = [...validationResults , validators[index](context.state[name], context)];
                 });
@@ -46,7 +46,7 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
                 }
                 return null;
             }
-            case "files": {
+            case METADATA_NAMES.FILES: {
                 validators.map((key: any, index: number) => {
                     validationResults = [...validationResults , validators[index](name, context)];
                 });
@@ -56,6 +56,9 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
                 if(context.metadata.files[name] && context.metadata.files[name].isTouched) {
                     return <ValidationResults results={validationResults} styles={styles} />;
                 }
+                return null;
+            }
+            case METADATA_NAMES.FIELD_GROUPS: {
                 return null;
             }
             default: {
@@ -78,34 +81,34 @@ export function mergeDefaultCssWithProps(defaultValue: string, cssProps: any, ba
 }
 
 /** @internal */
-export function getMetadataNameType(type: FIELD_NAMES): TypeMetadataNames {
+export function getMetadataNameType(type: FIELD_NAMES): METADATA_NAMES {
     switch(type) {
         case FIELD_NAMES.TEXT: {
-            return "inputs";
+            return METADATA_NAMES.INPUTS;
         }
         case FIELD_NAMES.EMAIL: {
-            return "inputs";
+            return METADATA_NAMES.INPUTS;
         }
         case FIELD_NAMES.PASSWORD: {
-            return "inputs";
+            return METADATA_NAMES.INPUTS;
         }
         case FIELD_NAMES.TEXTAREA: {
-            return "inputs";
+            return METADATA_NAMES.INPUTS;
         }
         case FIELD_NAMES.RADIO: {
-            return "fieldGroups";
+            return METADATA_NAMES.FIELD_GROUPS;
         }
         case FIELD_NAMES.CHECKBOX: {
-            return "fieldGroups";
+            return METADATA_NAMES.INPUTS;
         }
         case FIELD_NAMES.SELECT: {
-            return "inputs";
+            return METADATA_NAMES.INPUTS;
         }
         case FIELD_NAMES.FILE: {
-            return "files";
+            return METADATA_NAMES.FILES;
         }
         default: {
-            return "inputs";
+            return METADATA_NAMES.INPUTS;
         }
     }
 }

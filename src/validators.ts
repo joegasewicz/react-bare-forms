@@ -1,6 +1,5 @@
 import {_FieldEmptyErrorMsg,  _isFieldEmptyErrorMsg} from "./_errors";
-import {default as React, ReactElement} from "react";
-import {FormConsumer, IFormContext} from "./form";
+import {IFormContext} from "./form";
 import {EMAIL_REGEX} from "./_regex";
 
 export interface IValidation {

@@ -2,7 +2,7 @@ import {default as React, useEffect, useState} from "react";
 import {updateRadioGroupStateFromPassedInContext, updateStateFromPassedInContext} from "./_handlers";
 import {IValidation} from "./validators";
 import {updateRadioGroupMetadata, updateValidationMetadata} from "./_context_updaters";
-import {IFileField, IRadioField} from "./elements";
+import {IRadioField} from "./elements";
 import {getFileFromRef} from "./uncrontrolled";
 
 /** @internal */
@@ -41,9 +41,13 @@ export interface IMetadata {
     files: TypeFileMetadata;
 }
 /** @internal **/
-export type TypeMetadataNames = "inputs"|"fieldGroups"|"files";
+export enum METADATA_NAMES {
+    INPUTS = "inputs",
+    FIELD_GROUPS = "fieldGroups",
+    FILES = "FILES",
+}
 /** @internal **/
-export type TypeFieldNames = "text"|"email"|"password"|"textArea"|"radio"|"checkbox"|"select"|"file";
+export type TypeMetadataNames = "inputs"|"fieldGroups"|"files";
 /**
  * @interface **IForm** Exported Form interface available to the caller. Contains all the properties required by
  * the Form *RBF* Form's component.
