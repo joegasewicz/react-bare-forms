@@ -1,8 +1,6 @@
 import {default as React} from "react";
 import {getFileFromRef} from "./uncrontrolled";
 
-// File Helper Functions
-
 
 /** @internal **/
 export interface IFile {

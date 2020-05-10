@@ -58,7 +58,6 @@ export const updateValidationMetadata = (context: any, update: any) => {
      */
     return (name: string, match: any, validations: Array<IValidation>, type: TypeMetadataNames = "inputs"): void => {
         const updateInput = _updateValidationContext<IInputFieldMetadata>(context, "inputs");
-        const updateFieldGroup = _updateValidationContext<IInputFieldMetadata>(context, "fieldGroups");
         const updateFiles = _updateValidationContext<IFileMetaData>(context, "files");
         validations = validations || null;
         switch(type) {
@@ -73,19 +72,6 @@ export const updateValidationMetadata = (context: any, update: any) => {
                         },
                     };
                     update(updateInput(inputs));
-                }
-                break;
-            }
-            case "fieldGroups": {
-                if(!("" in context.metadata.fieldGroups) || context.metadata.fieldGroups[name].validations !== validations) {
-                    let fieldGroups = {
-                        ...context.metadata.fieldGroups,
-                        [name]: {
-                            validations: validations,
-                            isTouched: true,
-                        }
-                    };
-                    update(updateFieldGroup(fieldGroups));
                 }
                 break;
             }
@@ -121,6 +107,7 @@ function _addFieldGroupToMetadata(radioProps: Array<{ props: IRadioField}>) {
                 name: radioVal.props.name,
                 isChecked: radioVal.props.checked,
                 disabled: radioVal.props.disabled || false,
+                validation: radioVal.props.validators
             }
         }
     }

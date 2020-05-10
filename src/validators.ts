@@ -1,22 +1,20 @@
-import {_FieldEmptyErrorMsg,  _isFieldEmptyErrorMsg} from "./_errors";
-import {default as React, ReactElement} from "react";
-import {FormConsumer, IFormContext} from "./form";
+import {_FieldEmptyErrorMsg} from "./_errors";
+import {IFormContext} from "./form";
 import {EMAIL_REGEX} from "./_regex";
 
+
+/** @internal */
 export interface IValidation {
     isValid: boolean;
     messages: Array<string>;
 }
-
-/** The inner returned function type that custom validators must implement */
+/** @internal The inner returned function type that custom validators must implement */
 export type IValidationFunction = (...args: Array<any>) => IValidation|_FieldEmptyErrorMsg;
-/** All custom validators must implement this type */
-export type IValidator = (t: any) => IValidationFunction;
-/** The expected validator's type that {@link IField} elements can consume */
+/** @internal The expected validator's type that {@link IField} elements can consume */
 export type IValidators = Array<IValidationFunction>;
-/** The custom validator type callback */
+/** @internal The custom validator type callback */
 export type ICustomValidatorCallback = (arg: any, fieldValue: any, context: IFormContext) => Array<string>|null;
-
+/** @internal */
 export type IValidationVariable = (arg?: any) => IValidationFunction;
 /**
  * The `passwordKey` is normally the first password form field the user fills in before
@@ -85,7 +83,6 @@ export const isEmailValid: IValidationVariable = customValidator((_ , fieldValue
 
 /**
  * @example
- * ... TODO chjeck the ref is not null and type blob / file
  */
 export const isFile: IValidationVariable = customValidator((_, name, context) => {
     if(!(name in context.metadata.files && context.metadata.files[name].file &&
@@ -95,9 +92,23 @@ export const isFile: IValidationVariable = customValidator((_, name, context) =>
 });
 
 /**
+ *
+ */
+export const isRadioChecked: IValidationVariable = customValidator((_ , [name, parent], context) => {
+    let fieldGroup = context.metadata.fieldGroups[parent];
+    if(fieldGroup) {
+        // @ts-ignore TODO
+        let radio = context.metadata.fieldGroups[parent][name];
+        if(radio && !radio.isChecked) {
+            return [`Radio ... must be selected`];
+        }
+    }
+});
+
+/**
  * Function that takes a callback which contains the callers own validation logic
  * & returns an array of string(s) which are the validation error message or *undefined*. Below is an
- * example of creatinga custom validator to test if a field has a string length of nth.
+ * example of creating a custom validator to test if a field has a string length of nth.
  *
  * There are 3 arguments available to your custom validation callback:
  *  - **arg** This is the your own value used to in the validation comparison

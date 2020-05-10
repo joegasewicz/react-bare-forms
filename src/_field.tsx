@@ -1,8 +1,8 @@
-import {FormContext, IFormContext, TypeFieldNames} from "./form";
+import {FormContext, IFormContext} from "./form";
 import {FormElementValidators, getMetadataNameType, mergeDefaultCssWithProps} from "./_helpers";
 import {default as React, ReactElement, useContext, useEffect} from "react";
 import {
-    FIELD_NAMES,
+    FIELD_NAMES, IRadioGroupParentContext,
     RadioGroupContext,
     TypeSelectCssSizeName
 } from "./elements";
@@ -28,8 +28,9 @@ function _genericFormGroup<T extends any>(props: T, children: any) {
 
 /** @internal */
 abstract class _field<PropsType extends any> {
-    type: FIELD_NAMES;
-    props: PropsType;
+    public type: FIELD_NAMES;
+    public props: PropsType;
+    public parent?: string;
 
     protected constructor(props: PropsType, type: FIELD_NAMES) {
         this.type = type;
@@ -44,6 +45,7 @@ abstract class _field<PropsType extends any> {
                 name={this.props.name}
                 value={this.props.value}
                 type={getMetadataNameType(this.type)}
+                parent={this.parent}
             /> :
             null;
         if(context.bare) {
@@ -181,6 +183,7 @@ export class TextAreaField<T extends any> extends _field<T> implements IFieldCla
 
 /** @internal */
 export class RadioField<T extends any> extends _field<T> implements IFieldClass<T> {
+    public parent: string;
     constructor(type: FIELD_NAMES, props: T) {
         super(props, type);
         this.type = type;
@@ -202,29 +205,30 @@ export class RadioField<T extends any> extends _field<T> implements IFieldClass<
     }
 
     public getField() {
-        const radioContext: any = useContext(RadioGroupContext); // TODO - any
+        const radioContext: IRadioGroupParentContext = useContext(RadioGroupContext);
+        this.parent = radioContext.parent.name;
         return (context: IFormContext) => {
-        const updateContexts = (e: React.ChangeEvent<any>, context: IFormContext) => {
-            context.updateRadioGroupStateFromPassedInContext(
-                this.overrideEvent(e, context.state[this.props.name]),
-                this.props.name,
-                radioGroup,
-            );
-            if(shouldUpdateRadioGroupContext(radioContext.children, context, radioContext.parent.name)) {
-                useEffect(() => {
-                    context.updateRadioGroupMetadata(radioContext.parent.name, radioContext.children);
-                }, [radioContext]);
+            const radioGroup = context.metadata.fieldGroups[radioContext.parent.name];
 
-            }
-        };
-        const radioGroup = context.metadata.fieldGroups[radioContext.parent.name];
-        return <input
-            type={this.type}
-            checked={context.state[this.props.name] || false}
-            name={this.props.name}
-            className={_field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
-        />
-
+            const updateContexts = (e: React.ChangeEvent<any>, context: IFormContext) => {
+                context.updateRadioGroupStateFromPassedInContext(
+                    this.overrideEvent(e, context.state[this.props.name]),
+                    this.props.name,
+                    radioGroup,
+                );
+                if(shouldUpdateRadioGroupContext(radioContext.children, context, radioContext.parent.name)) {
+                    useEffect(() => {
+                        context.updateRadioGroupMetadata(radioContext.parent.name, radioContext.children);
+                    }, [radioContext]);
+                }
+            };
+            return <input
+                type={this.type}
+                checked={context.state[this.props.name] || false}
+                name={this.props.name}
+                onChange={(e) => updateContexts(e, context)}
+                className={_field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
+            />
         }
     }
 
@@ -292,12 +296,9 @@ export class FileField<T extends any> extends _field<T> implements IFieldClass<T
     }
 
     public getField() {
-        const reader = new FileReader();
-
         const updateFieldValidation = (e: React.ChangeEvent<HTMLInputElement>, context: IFormContext) => {
             const file = createFileObject(this.props.ref);
             context.updateFieldValidation(this.props.name, file, null, "files")
-
         };
         return (context: IFormContext) => {
             return (<input

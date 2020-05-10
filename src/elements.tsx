@@ -243,12 +243,14 @@ export interface IRadioGroupProps {
     children: any;
 }
 
+export interface IRadioGroupParentContext {
+    parent?: { name: string };
+    children?: any;
+}
+
 export const RadioGroupContext = React.createContext({});
 
-export interface IRadioGroupParentContext {
-    parent: { name: string };
-    children: any;
-}
+
 
 /**
  *
