@@ -10,7 +10,7 @@ import {
     FileField as _FileField,
 } from "./_field";
 
-
+/** @internal */
 export enum FIELD_NAMES {
     TEXT = "text",
     EMAIL = "email",
