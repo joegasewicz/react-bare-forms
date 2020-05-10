@@ -1,6 +1,5 @@
 import {default as React} from "react";
 import {getFileFromRef} from "./uncrontrolled";
-import * as assert from "assert";
 
 // File Helper Functions
 
