@@ -32,11 +32,11 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
     if(context.metadata.inputs) {
         // Collect validators results before updating context
         let validationResults: Array<IValidation> = [];
-        validators.map((key: any, index: number) => {
-            validationResults = [...validationResults , validators[index](context.state[name], context)];
-        });
         switch(type) {
             case "inputs": {
+                validators.map((key: any, index: number) => {
+                    validationResults = [...validationResults , validators[index](context.state[name], context)];
+                });
                 useEffect(() => {
                     context.updateFieldValidation(name, context.state[name], validationResults)
                 }, [context.state]);
@@ -46,6 +46,9 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
                 return null;
             }
             case "files": {
+                validators.map((key: any, index: number) => {
+                    validationResults = [...validationResults , validators[index](name, context)];
+                });
                 useEffect(() => {
                     context.updateFieldValidation(name, context.state[name], validationResults, "files")
                 }, [context.state]);

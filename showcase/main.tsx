@@ -152,7 +152,6 @@ export class Main extends React.Component<IProps, IState> {
                                 <FormConsumer>
                                     {(context: any) => {
                                         // this.setState({...context});
-                                        console.log("file ref ----> ", this.myFileRef);
                                         return <div><code>Form State: {JSON.stringify(context)}</code></div>;
                                     }}
                                 </FormConsumer>
