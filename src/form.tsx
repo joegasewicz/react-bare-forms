@@ -43,8 +43,6 @@ export interface IMetadata {
 /** @internal **/
 export type TypeMetadataNames = "inputs"|"fieldGroups"|"files";
 /** @internal **/
-export type TypeMetadataTypes = TypeRadioGroup|TypeInputMetadata|TypeFileMetadata;
-/** @internal **/
 export type TypeFieldNames = "text"|"email"|"password"|"textArea"|"radio"|"checkbox"|"select"|"file";
 /**
  * @interface **IForm** Exported Form interface available to the caller. Contains all the properties required by
