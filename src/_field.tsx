@@ -2,7 +2,7 @@ import {FormContext, IFormContext, TypeFieldNames} from "./form";
 import {FormElementValidators, getMetadataNameType, mergeDefaultCssWithProps} from "./_helpers";
 import {default as React, ReactElement, useContext, useEffect} from "react";
 import {
-    FIELD_NAMES,
+    FIELD_NAMES, IRadioGroupParentContext,
     RadioGroupContext,
     TypeSelectCssSizeName
 } from "./elements";
@@ -202,7 +202,7 @@ export class RadioField<T extends any> extends _field<T> implements IFieldClass<
     }
 
     public getField() {
-        const radioContext: any = useContext(RadioGroupContext); // TODO - any
+        const radioContext: IRadioGroupParentContext = useContext(RadioGroupContext);
         return (context: IFormContext) => {
         const updateContexts = (e: React.ChangeEvent<any>, context: IFormContext) => {
             context.updateRadioGroupStateFromPassedInContext(
@@ -222,6 +222,7 @@ export class RadioField<T extends any> extends _field<T> implements IFieldClass<
             type={this.type}
             checked={context.state[this.props.name] || false}
             name={this.props.name}
+            onChange={(e) => updateContexts(e, context)}
             className={_field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
         />
 
