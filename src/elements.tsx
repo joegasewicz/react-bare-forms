@@ -11,6 +11,17 @@ import {
 } from "./_field";
 
 
+export enum FIELD_NAMES {
+    TEXT = "text",
+    EMAIL = "email",
+    PASSWORD = "password",
+    TEXTAREA = "textArea",
+    RADIO  = "radio",
+    CHECKBOX = "checkbox",
+    SELECT = "select",
+    FILE = "file",
+}
+
 export interface IField {
     /** The name of the form element (this should match the state property that you want be updated by this form element) */
     name: string;
@@ -88,7 +99,7 @@ export interface ISelectField extends IField {
  * @constructor
  */
 export const TextInputField = (props: ITextInputField) => {
-  const textInput = new InputField<ITextInputField>("text", props);
+  const textInput = new InputField<ITextInputField>(FIELD_NAMES.TEXTAREA, props);
   return textInput.create();
 };
 
@@ -138,7 +149,7 @@ export const TextInputField = (props: ITextInputField) => {
  * @constructor
  */
 export const PasswordField = (props: IPasswordField) => {
-  const passwordInput = new InputField<IPasswordField>("password", props);
+  const passwordInput = new InputField<IPasswordField>(FIELD_NAMES.PASSWORD, props);
   return passwordInput.create();
 };
 
@@ -164,7 +175,7 @@ export const PasswordField = (props: IPasswordField) => {
  * @constructor
  */
 export const EmailField = (props: IEmailField) => {
-  const emailInput = new InputField<IEmailField>("email", props);
+  const emailInput = new InputField<IEmailField>(FIELD_NAMES.EMAIL, props);
   return emailInput.create();
 };
 
@@ -192,7 +203,7 @@ export const EmailField = (props: IEmailField) => {
  * @constructor
  */
 export const CheckBoxField = (props: ICheckBoxField) => {
-  const checkBox = new _CheckBoxField<ICheckBoxField>("checkbox", props);
+  const checkBox = new _CheckBoxField<ICheckBoxField>(FIELD_NAMES.CHECKBOX, props);
   return checkBox.create();
 };
 
@@ -222,7 +233,7 @@ export const CheckBoxField = (props: ICheckBoxField) => {
  * @constructor
  */
 export const TextAreaField = (props: ITextAreaField) => {
-  const textArea = new _TextAreaField<ITextAreaField>("textArea", props);
+  const textArea = new _TextAreaField<ITextAreaField>(FIELD_NAMES.TEXTAREA, props);
   return textArea.create();
 };
 
@@ -257,7 +268,7 @@ export function RadioGroup(props: IRadioGroupProps) {
  * @constructor
  */
 export const RadioField = (props: IRadioField) => {
-    const radio = new _RadioField("radio", props);
+    const radio = new _RadioField(FIELD_NAMES.RADIO, props);
     return radio.create();
 };
 
@@ -267,7 +278,7 @@ export const RadioField = (props: IRadioField) => {
  * @constructor
  */
 export const SelectField = (props: ISelectField) => {
-    const select = new _SelectField("select", props);
+    const select = new _SelectField(FIELD_NAMES.SELECT, props);
     return select.create();
 };
 
@@ -278,6 +289,6 @@ export const SelectField = (props: ISelectField) => {
  */
 export const FileField = React.forwardRef((props: IFileField, ref: React.RefObject<HTMLFormElement>) => {
     let _props = {...props, ref };
-    const file = new _FileField<IFileField>("file", _props);
+    const file = new _FileField<IFileField>(FIELD_NAMES.FILE, _props);
     return file.create();
 });

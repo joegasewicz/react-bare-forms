@@ -2,6 +2,7 @@ import * as React from "react";
 import {ReactElement, useContext, useEffect} from "react";
 import {FormContext, IFormContext, TypeFieldNames, TypeMetadataNames} from "./form";
 import {IValidation, IValidators} from "./validators";
+import {FIELD_NAMES} from "./elements";
 
 
 /** @internal */
@@ -77,30 +78,30 @@ export function mergeDefaultCssWithProps(defaultValue: string, cssProps: any, ba
 }
 
 /** @internal */
-export function getMetadataNameType(type: TypeFieldNames): TypeMetadataNames {
+export function getMetadataNameType(type: FIELD_NAMES): TypeMetadataNames {
     switch(type) {
-        case "text": {
+        case FIELD_NAMES.TEXT: {
             return "inputs";
         }
-        case "email": {
+        case FIELD_NAMES.EMAIL: {
             return "inputs";
         }
-        case "password": {
+        case FIELD_NAMES.PASSWORD: {
             return "inputs";
         }
-        case "textArea": {
+        case FIELD_NAMES.TEXTAREA: {
             return "inputs";
         }
-        case "radio": {
+        case FIELD_NAMES.RADIO: {
             return "fieldGroups";
         }
-        case "checkbox": {
+        case FIELD_NAMES.CHECKBOX: {
             return "fieldGroups";
         }
-        case "select": {
+        case FIELD_NAMES.SELECT: {
             return "inputs";
         }
-        case "file": {
+        case FIELD_NAMES.FILE: {
             return "files";
         }
         default: {

@@ -1,8 +1,8 @@
 import {FormContext, IFormContext, TypeFieldNames} from "./form";
 import {FormElementValidators, getMetadataNameType, mergeDefaultCssWithProps} from "./_helpers";
-import {ChangeEvent, default as React, ReactElement, useContext, useEffect} from "react";
+import {default as React, ReactElement, useContext, useEffect} from "react";
 import {
-    IFileField,
+    FIELD_NAMES,
     RadioGroupContext,
     TypeSelectCssSizeName
 } from "./elements";
@@ -29,11 +29,11 @@ function _genericFormGroup<T extends any>(props: T, children: any) {
 /** @internal */
 abstract class _field<PropsType extends any> {
 
-    type: TypeFieldNames;
+    type: FIELD_NAMES;
 
     props: PropsType;
 
-    protected constructor(props: PropsType, type: TypeFieldNames) {
+    protected constructor(props: PropsType, type: FIELD_NAMES) {
         this.type = type;
         this.props = props;
     }
@@ -85,7 +85,7 @@ abstract class _field<PropsType extends any> {
 /** @internal */
 export class InputField<T extends any> extends _field<T> implements IFieldClass<T> {
 
-    constructor(type: TypeFieldNames, props: T) {
+    constructor(type: FIELD_NAMES, props: T) {
         super(props, type);
         this.type = type;
         this.props = props;
@@ -116,7 +116,7 @@ export class InputField<T extends any> extends _field<T> implements IFieldClass<
 /** @internal */
 export class CheckBoxField<T extends any> extends _field<T> implements IFieldClass<T> {
 
-    constructor(type: TypeFieldNames, props: T) {
+    constructor(type: FIELD_NAMES, props: T) {
         super(props, type);
         this.type = type;
         this.props = props;
@@ -151,7 +151,7 @@ export class CheckBoxField<T extends any> extends _field<T> implements IFieldCla
 
 /** @internal */
 export class TextAreaField<T extends any> extends _field<T> implements IFieldClass<T> {
-    constructor(type: TypeFieldNames, props: T) {
+    constructor(type: FIELD_NAMES, props: T) {
         super(props, type);
         this.type = type;
         this.props = props;
@@ -183,7 +183,7 @@ export class TextAreaField<T extends any> extends _field<T> implements IFieldCla
 
 /** @internal */
 export class RadioField<T extends any> extends _field<T> implements IFieldClass<T> {
-    constructor(type: TypeFieldNames, props: T) {
+    constructor(type: FIELD_NAMES, props: T) {
         super(props, type);
         this.type = type;
         this.props = props;
@@ -235,7 +235,7 @@ export class RadioField<T extends any> extends _field<T> implements IFieldClass<
 /** @internal */
 export class SelectField<T extends any> extends _field<T> implements IFieldClass<T> {
 
-    constructor(type: TypeFieldNames, props: T) {
+    constructor(type: FIELD_NAMES, props: T) {
         super(props, type);
         this.type = type;
         this.props = props;
@@ -279,7 +279,7 @@ export class SelectField<T extends any> extends _field<T> implements IFieldClass
 /** @internal */
 export class FileField<T extends any> extends _field<T> implements IFieldClass<T> {
 
-    constructor(type: TypeFieldNames, props: T) {
+    constructor(type: FIELD_NAMES, props: T) {
         super(props, type);
         this.type = type;
         this.props = props;
