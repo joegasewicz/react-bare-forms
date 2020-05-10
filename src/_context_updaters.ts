@@ -3,6 +3,7 @@
 import {IValidation} from "./validators";
 import {IRadioField} from "./elements";
 import {
+    ICheckBoxesMetadata,
     IFileMetaData,
     IFormContext, IInputFieldMetadata,
     TypeMetadataNames,
@@ -56,10 +57,12 @@ export const updateValidationMetadata = (context: any, update: any) => {
      * @param name
      *      - For inputs & file inputs this is the name passed by the caller
      */
-    return (name: string, match: any, validations: Array<IValidation>, type: TypeMetadataNames = "inputs"): void => {
+    return (name: string, match: any, validations: Array<IValidation>, type: TypeMetadataNames): void => {
+        // Metadata field update types
         const updateInput = _updateValidationContext<IInputFieldMetadata>(context, "inputs");
         const updateFiles = _updateValidationContext<IFileMetaData>(context, "files");
-        validations = validations || null;
+        const updateCheckboxes = _updateValidationContext<ICheckBoxesMetadata>(context, "checkboxes");
+
         switch(type) {
             case "inputs": {
                 if (!(name in context.metadata.inputs) || context.metadata.inputs[name].value !== match) {
@@ -87,6 +90,20 @@ export const updateValidationMetadata = (context: any, update: any) => {
                         }
                     };
                     update(updateFiles(files));
+                }
+                break;
+            }
+            case "checkboxes": {
+                if(!(name in context.metadata.checkboxes) || context.metadata.checkboxes[name].isChecked !== match) {
+                    let checkboxes = {
+                        ...context.metadata.checkboxes,
+                        [name]: {
+                            validations: validations,
+                            isTouched: name in context.metadata.checkboxes,
+                            isChecked: match,
+                        }
+                    };
+                    update(updateCheckboxes(checkboxes));
                 }
                 break;
             }

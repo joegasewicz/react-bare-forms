@@ -5,16 +5,7 @@ import {updateRadioGroupMetadata, updateValidationMetadata} from "./_context_upd
 import {IRadioField} from "./elements";
 import {getFileFromRef} from "./uncrontrolled";
 
-/** @internal */
-export interface IRadioGroupChildren {
-    name: string;
-    isChecked: boolean;
-    disabled: boolean; // TODO
-    messages: Array<string>;
-    isValid: boolean;
-    validation: Array<IValidation>;
-    parent: string;
-}
+
 /** @internal */
 export interface IInputFieldMetadata {
     messages: Array<string>;
@@ -33,25 +24,47 @@ export interface IFileMetaData {
     file: File;
 }
 /** @internal */
+export interface IRadioGroupChildren {
+    readonly name: string;
+    isChecked: boolean;
+    messages: Array<string>;
+    isValid: boolean;
+    validation: Array<IValidation>;
+    parent: string;
+}
+/** @internal */
+export interface ICheckBoxesMetadata {
+    readonly name: string;
+    isChecked: boolean;
+    isTouched: boolean;
+    messages: Array<string>;
+    isValid: boolean;
+    validation: Array<IValidation>;
+}
+/** @internal */
 export type TypeInputMetadata = { [k: string]: IInputFieldMetadata};
+/** @internal */
+export type TypeFileMetadata = {[k: string]: IFileMetaData};
 /** @internal */
 export type TypeRadioGroup = {[k: string]: IRadioGroupChildren};
 /** @internal */
-export type TypeFileMetadata = {[k: string]: IFileMetaData};
+export type TypeCheckboxesMetadata = {[k: string]: ICheckBoxesMetadata};
 /** @internal */
 export interface IMetadata {
     fieldGroups: TypeRadioGroup;
     inputs: TypeInputMetadata;
     files: TypeFileMetadata;
+    checkboxes: TypeCheckboxesMetadata;
 }
 /** @internal **/
 export enum METADATA_NAMES {
     INPUTS = "inputs",
     FIELD_GROUPS = "fieldGroups",
-    FILES = "FILES",
+    FILES = "files",
+    CHECKBOXES = "checkboxes",
 }
 /** @internal **/
-export type TypeMetadataNames = "inputs"|"fieldGroups"|"files";
+export type TypeMetadataNames = "inputs"|"fieldGroups"|"files"|"checkboxes";
 /**
  * @interface **IForm** Exported Form interface available to the caller. Contains all the properties required by
  * the Form *RBF* Form's component.
@@ -99,6 +112,7 @@ const providerContext: IFormContext = {
         inputs: {},
         fieldGroups: {},
         files: {},
+        checkboxes: {},
     },
 };
 

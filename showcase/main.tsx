@@ -8,7 +8,7 @@ import {
     TextAreaField,
     TextInputField
 } from "../src/elements";
-import {areFieldsEqual, isEmailValid, isFieldEmpty, isFile, isRadioChecked} from "../src/validators";
+import {areFieldsEqual, isChecked, isEmailValid, isFieldEmpty, isFile, isRadioChecked} from "../src/validators";
 import {SubmitButton} from "../src/buttons";
 import {createFileRef, getFileFromRef} from "../src/uncrontrolled";
 
@@ -105,6 +105,7 @@ export class Main extends React.Component<IProps, IState> {
                                     checked={this.state.terms}
                                     hint="Click to agree"
                                     labelText="Agree to terms & conditions"
+                                    validators={[isChecked()]}
                                 />
 
 

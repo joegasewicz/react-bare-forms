@@ -32,56 +32,67 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
     const {validators = null, name, parent, type} = props;
     const context: IFormContext = useContext(FormContext);
     const styles = !context.bare ? `alert mt-2 alert-danger ${props.className}` : props.className;
-    if(context.metadata.inputs) {
-        // Collect validators results before updating context
-        let validationResults: Array<IValidation> = [];
-        switch(type) {
-            case METADATA_NAMES.INPUTS: {
-                validators.map((key: any, index: number) => {
-                    validationResults = [...validationResults , validators[index](context.state[name], context)];
-                });
-                useEffect(() => {
-                    context.updateFieldValidation(name, context.state[name], validationResults)
-                }, [context.state]);
-                if(context.metadata.inputs[name] && context.metadata.inputs[name].isTouched) {
-                    return <ValidationResults results={validationResults} styles={styles} />;
-                }
-                return null;
+    // Collect validators results before updating context
+    let validationResults: Array<IValidation> = [];
+    switch(type) {
+        case METADATA_NAMES.INPUTS: {
+            validators.map((key: any, index: number) => {
+                validationResults = [...validationResults , validators[index](context.state[name], context)];
+            });
+            useEffect(() => {
+                context.updateFieldValidation(name, context.state[name], validationResults, "inputs")
+            }, [context.state]);
+            if(context.metadata.inputs[name] && context.metadata.inputs[name].isTouched) {
+                return <ValidationResults results={validationResults} styles={styles} />;
             }
-            case METADATA_NAMES.FILES: {
-                validators.map((key: any, index: number) => {
-                    validationResults = [...validationResults , validators[index](name, context)];
-                });
-                useEffect(() => {
-                    context.updateFieldValidation(name, context.state[name], validationResults, "files")
-                }, [context.state]);
-                if(context.metadata.files[name] && context.metadata.files[name].isTouched) {
-                    return <ValidationResults results={validationResults} styles={styles} />;
-                }
-                return null;
+            return null;
+        }
+        case METADATA_NAMES.FILES: {
+            validators.map((key: any, index: number) => {
+                validationResults = [...validationResults , validators[index](name, context)];
+            });
+            useEffect(() => {
+                context.updateFieldValidation(name, context.state[name], validationResults, "files")
+            }, [context.state]);
+            if(context.metadata.files[name] && context.metadata.files[name].isTouched) {
+                return <ValidationResults results={validationResults} styles={styles} />;
             }
-            case METADATA_NAMES.FIELD_GROUPS: {
-                validators.map((key: any, index: number) => {
-                    validationResults = [...validationResults , validators[index]([name, parent], context)];
-                });
-                useEffect(() => {
-                    context.updateFieldValidation(name, context.state[name], validationResults, "fieldGroups")
-                }, [context.state]);
+            return null;
+        }
+        case METADATA_NAMES.FIELD_GROUPS: {
+            validators.map((key: any, index: number) => {
+                validationResults = [...validationResults , validators[index]([name, parent], context)];
+            });
+            useEffect(() => {
+                context.updateFieldValidation(name, context.state[name], validationResults, "fieldGroups")
+            }, [context.state]);
 
-                const fieldGroups = context.metadata.fieldGroups[parent];
-                if(fieldGroups) {
-                    // @ts-ignore
-                    if(fieldGroups[name]) {
-                        return <ValidationResults results={validationResults} styles={styles} />;
-                    }
+            const fieldGroups = context.metadata.fieldGroups[parent];
+            if(fieldGroups) {
+                // @ts-ignore - TODO
+                if(fieldGroups[name]) {
+                    return <ValidationResults results={validationResults} styles={styles} />;
                 }
-                return null;
             }
-            default: {
-                return null;
+            return null;
+        }
+        case METADATA_NAMES.CHECKBOXES: {
+            validators.map((key: any, index: number) => {
+                validationResults = [...validationResults , validators[index](name, context)];
+            });
+            useEffect(() => {
+                context.updateFieldValidation(name, context.state[name], validationResults, "checkboxes")
+            }, [context.state]);
+            if(context.metadata.checkboxes[name] && context.metadata.checkboxes[name].isTouched) {
+                return <ValidationResults results={validationResults} styles={styles} />;
             }
+            return null;
+        }
+        default: {
+            return null;
         }
     }
+
 };
 
 /** @internal */
@@ -115,7 +126,7 @@ export function getMetadataNameType(type: FIELD_NAMES): METADATA_NAMES {
             return METADATA_NAMES.FIELD_GROUPS;
         }
         case FIELD_NAMES.CHECKBOX: {
-            return METADATA_NAMES.INPUTS;
+            return METADATA_NAMES.CHECKBOXES;
         }
         case FIELD_NAMES.SELECT: {
             return METADATA_NAMES.INPUTS;
