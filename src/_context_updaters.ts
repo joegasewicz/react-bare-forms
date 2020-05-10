@@ -60,10 +60,7 @@ export const updateValidationMetadata = (context: any, update: any) => {
         const updateInput = _updateValidationContext<IInputFieldMetadata>(context, "inputs");
         const updateFieldGroup = _updateValidationContext<IInputFieldMetadata>(context, "fieldGroups");
         const updateFiles = _updateValidationContext<IFileMetaData>(context, "files");
-
-
         validations = validations || null;
-
         switch(type) {
             case "inputs": {
                 if (!(name in context.metadata.inputs) || context.metadata.inputs[name].value !== match) {
