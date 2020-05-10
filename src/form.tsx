@@ -10,6 +10,10 @@ export interface IRadioGroupChildren {
     name: string;
     isChecked: boolean;
     disabled: boolean; // TODO
+    messages: Array<string>;
+    isValid: boolean;
+    validation: Array<IValidation>;
+    parent: string;
 }
 /** @internal */
 export interface IInputFieldMetadata {

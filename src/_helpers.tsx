@@ -1,6 +1,6 @@
 import * as React from "react";
 import {ReactElement, useContext, useEffect} from "react";
-import {FormContext, IFormContext, METADATA_NAMES} from "./form";
+import {FormContext, IFormContext, IRadioGroupChildren, METADATA_NAMES} from "./form";
 import {IValidation} from "./validators";
 import {FIELD_NAMES} from "./elements";
 
@@ -12,6 +12,8 @@ interface IFormElementValidators {
     value: any;
     type: METADATA_NAMES;
     className?: string;
+    /* If a field is part of a group e.g Radio buttons then this is the name of parent field **/
+    readonly parent?: string;
 }
 /** @internal */
 type TypeValidationElement = { results: Array<IValidation>, styles: string };
@@ -27,7 +29,7 @@ function ValidationResults(props: TypeValidationElement): ReactElement<TypeValid
 
 /** @internal */
 export const FormElementValidators = (props: IFormElementValidators): ReactElement => {
-    const {validators = null, name, value = null, type} = props;
+    const {validators = null, name, parent, type} = props;
     const context: IFormContext = useContext(FormContext);
     const styles = !context.bare ? `alert mt-2 alert-danger ${props.className}` : props.className;
     if(context.metadata.inputs) {
@@ -59,6 +61,20 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
                 return null;
             }
             case METADATA_NAMES.FIELD_GROUPS: {
+                validators.map((key: any, index: number) => {
+                    validationResults = [...validationResults , validators[index]([name, parent], context)];
+                });
+                useEffect(() => {
+                    context.updateFieldValidation(name, context.state[name], validationResults, "fieldGroups")
+                }, [context.state]);
+
+                const fieldGroups = context.metadata.fieldGroups[parent];
+                if(fieldGroups) {
+                    // @ts-ignore
+                    if(fieldGroups[name]) {
+                        return <ValidationResults results={validationResults} styles={styles} />;
+                    }
+                }
                 return null;
             }
             default: {

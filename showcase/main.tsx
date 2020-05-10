@@ -8,7 +8,7 @@ import {
     TextAreaField,
     TextInputField
 } from "../src/elements";
-import {areFieldsEqual, isEmailValid, isFieldEmpty, isFile} from "../src/validators";
+import {areFieldsEqual, isEmailValid, isFieldEmpty, isFile, isRadioChecked} from "../src/validators";
 import {SubmitButton} from "../src/buttons";
 import {createFileRef, getFileFromRef} from "../src/uncrontrolled";
 
@@ -114,6 +114,7 @@ export class Main extends React.Component<IProps, IState> {
                                         checked={this.state.radio1}
                                         hint="Click to agree"
                                         labelText="Agree to terms & conditions"
+                                        validators={[isRadioChecked()]}
                                     />
 
                                     <RadioField

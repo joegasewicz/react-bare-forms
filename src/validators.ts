@@ -92,9 +92,23 @@ export const isFile: IValidationVariable = customValidator((_, name, context) =>
 });
 
 /**
+ *
+ */
+export const isRadioChecked: IValidationVariable = customValidator((_ , [name, parent], context) => {
+    let fieldGroup = context.metadata.fieldGroups[parent];
+    if(fieldGroup) {
+        // @ts-ignore TODO
+        let radio = context.metadata.fieldGroups[parent][name];
+        if(radio && !radio.isChecked) {
+            return [`Radio ... must be selected`];
+        }
+    }
+});
+
+/**
  * Function that takes a callback which contains the callers own validation logic
  * & returns an array of string(s) which are the validation error message or *undefined*. Below is an
- * example of creatinga custom validator to test if a field has a string length of nth.
+ * example of creating a custom validator to test if a field has a string length of nth.
  *
  * There are 3 arguments available to your custom validation callback:
  *  - **arg** This is the your own value used to in the validation comparison
