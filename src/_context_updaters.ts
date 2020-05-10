@@ -85,7 +85,6 @@ export const updateValidationMetadata = (context: any, update: any) => {
                             isTouched: true,
                         }
                     };
-                    // update context
                     update(updateFieldGroup(fieldGroups));
                 }
                 break;
@@ -123,7 +122,6 @@ function _addFieldGroupToMetadata(radioProps: Array<{ props: IRadioField}>) {
                 isChecked: radioVal.props.checked,
                 disabled: radioVal.props.disabled || false,
             }
-
         }
     }
     return fieldGroups;
