@@ -1,21 +1,20 @@
-import {_FieldEmptyErrorMsg,  _isFieldEmptyErrorMsg} from "./_errors";
+import {_FieldEmptyErrorMsg} from "./_errors";
 import {IFormContext} from "./form";
 import {EMAIL_REGEX} from "./_regex";
 
+
+/** @internal */
 export interface IValidation {
     isValid: boolean;
     messages: Array<string>;
 }
-
-/** The inner returned function type that custom validators must implement */
+/** @internal The inner returned function type that custom validators must implement */
 export type IValidationFunction = (...args: Array<any>) => IValidation|_FieldEmptyErrorMsg;
-/** All custom validators must implement this type */
-export type IValidator = (t: any) => IValidationFunction;
-/** The expected validator's type that {@link IField} elements can consume */
+/** @internal The expected validator's type that {@link IField} elements can consume */
 export type IValidators = Array<IValidationFunction>;
-/** The custom validator type callback */
+/** @internal The custom validator type callback */
 export type ICustomValidatorCallback = (arg: any, fieldValue: any, context: IFormContext) => Array<string>|null;
-
+/** @internal */
 export type IValidationVariable = (arg?: any) => IValidationFunction;
 /**
  * The `passwordKey` is normally the first password form field the user fills in before
@@ -84,7 +83,6 @@ export const isEmailValid: IValidationVariable = customValidator((_ , fieldValue
 
 /**
  * @example
- * ... TODO chjeck the ref is not null and type blob / file
  */
 export const isFile: IValidationVariable = customValidator((_, name, context) => {
     if(!(name in context.metadata.files && context.metadata.files[name].file &&
