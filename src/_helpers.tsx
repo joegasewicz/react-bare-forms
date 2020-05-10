@@ -49,7 +49,7 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
                 useEffect(() => {
                     context.updateFieldValidation(name, context.state[name], validationResults, "files")
                 }, [context.state]);
-                if(context.metadata.inputs[name] && context.metadata.inputs[name].isTouched) {
+                if(context.metadata.files[name] && context.metadata.files[name].isTouched) {
                     return <ValidationResults results={validationResults} styles={styles} />;
                 }
                 return null;
