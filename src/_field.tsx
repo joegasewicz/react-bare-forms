@@ -28,9 +28,7 @@ function _genericFormGroup<T extends any>(props: T, children: any) {
 
 /** @internal */
 abstract class _field<PropsType extends any> {
-
     type: FIELD_NAMES;
-
     props: PropsType;
 
     protected constructor(props: PropsType, type: FIELD_NAMES) {
