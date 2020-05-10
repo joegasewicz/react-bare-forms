@@ -99,7 +99,7 @@ export const updateValidationMetadata = (context: any, update: any) => {
                         ...context.metadata.files,
                         [name]: {
                             validations: validations,
-                            isTouched: true,
+                            isTouched: name in context.metadata.files,
                             file: match,
                             refName: name,
                         }
