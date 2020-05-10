@@ -98,9 +98,21 @@ export const isRadioChecked: IValidationVariable = customValidator((_ , [name, p
     let fieldGroup = context.metadata.fieldGroups[parent];
     if(fieldGroup) {
         // @ts-ignore TODO
-        let radio = context.metadata.fieldGroups[parent][name];
+        let radio = fieldGroup[name];
         if(radio && !radio.isChecked) {
             return [`Radio ... must be selected`];
+        }
+    }
+});
+
+/**
+ *
+ */
+export const isChecked: IValidationVariable = customValidator((_, name, context) => {
+    let checkbox = context.metadata.checkboxes[name];
+    if(checkbox) {
+        if(!checkbox.isChecked) {
+            return [`Must be checked`];
         }
     }
 });

@@ -25,7 +25,7 @@ export interface IFileMetaData {
 }
 /** @internal */
 export interface IRadioGroupChildren {
-    name: string;
+    readonly name: string;
     isChecked: boolean;
     messages: Array<string>;
     isValid: boolean;
@@ -34,12 +34,12 @@ export interface IRadioGroupChildren {
 }
 /** @internal */
 export interface ICheckBoxesMetadata {
-    name: string;
+    readonly name: string;
     isChecked: boolean;
+    isTouched: boolean;
     messages: Array<string>;
     isValid: boolean;
     validation: Array<IValidation>;
-    parent: string;
 }
 /** @internal */
 export type TypeInputMetadata = { [k: string]: IInputFieldMetadata};
@@ -60,7 +60,8 @@ export interface IMetadata {
 export enum METADATA_NAMES {
     INPUTS = "inputs",
     FIELD_GROUPS = "fieldGroups",
-    FILES = "FILES",
+    FILES = "files",
+    CHECKBOXES = "checkboxes",
 }
 /** @internal **/
 export type TypeMetadataNames = "inputs"|"fieldGroups"|"files"|"checkboxes";
