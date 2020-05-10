@@ -47,13 +47,6 @@ function _isMatch(name: string, file: IFile, context: IFormContext): boolean {
     return false;
 }
 
-function _isFileTouched(name: string, file: IFile, fileContext: any): boolean {
-    if(fileContext) {
-
-    }
-    return Object.keys(file).length > 0;
-}
-
 /** @internal */
 export const updateValidationMetadata = (context: any, update: any) => {
     /**
@@ -106,7 +99,7 @@ export const updateValidationMetadata = (context: any, update: any) => {
                         ...context.metadata.files,
                         [name]: {
                             validations: validations,
-                            isTouched: match? _isFileTouched(name, match, context.metadata.files): false,
+                            isTouched: name in context.metadata.files,
                             file: match,
                             refName: name,
                         }
