@@ -1,6 +1,6 @@
 import * as React from "react";
 import {ReactElement, useContext, useEffect} from "react";
-import {FormContext, IFormContext, IRadioGroupChildren, METADATA_NAMES} from "./form";
+import {FormContext, IFormContext, IRadioGroupChildren, METADATA_NAMES, TypeRadioGroup} from "./form";
 import {IValidation} from "./validators";
 import {FIELD_NAMES} from "./elements";
 
@@ -41,7 +41,7 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
             });
             useEffect(() => {
                 context.updateFieldValidation(name, context.state[name], validationResults, "inputs")
-            }, [context.state]);
+            }, [context]);
             if(context.metadata.inputs[name] && context.metadata.inputs[name].isTouched) {
                 return <ValidationResults results={validationResults} styles={styles} />;
             }
@@ -53,7 +53,7 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
             });
             useEffect(() => {
                 context.updateFieldValidation(name, context.state[name], validationResults, "files")
-            }, [context.state]);
+            }, [context]);
             if(context.metadata.files[name] && context.metadata.files[name].isTouched) {
                 return <ValidationResults results={validationResults} styles={styles} />;
             }
@@ -65,11 +65,11 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
             });
             useEffect(() => {
                 context.updateFieldValidation(name, context.state[name], validationResults, "fieldGroups")
-            }, [context.state]);
+            }, [context]);
 
             const fieldGroups = context.metadata.fieldGroups[parent];
             if(fieldGroups) {
-                // @ts-ignore - TODO
+                // @ts-ignore TODO
                 if(fieldGroups[name]) {
                     return <ValidationResults results={validationResults} styles={styles} />;
                 }
@@ -82,7 +82,7 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
             });
             useEffect(() => {
                 context.updateFieldValidation(name, context.state[name], validationResults, "checkboxes")
-            }, [context.state]);
+            }, [context]);
             if(context.metadata.checkboxes[name] && context.metadata.checkboxes[name].isTouched) {
                 return <ValidationResults results={validationResults} styles={styles} />;
             }

@@ -2,12 +2,7 @@
 // Methods to update & track the state of all inputs, validators & general form metadata
 import {IValidation} from "./validators";
 import {IRadioField} from "./elements";
-import {
-    ICheckBoxesMetadata,
-    IFileMetaData,
-    IFormContext, IInputFieldMetadata,
-    TypeMetadataNames,
-} from "./form";
+import {ICheckBoxesMetadata, IFileMetaData, IFormContext, IInputFieldMetadata, TypeMetadataNames,} from "./form";
 import {IFile} from "./_file";
 
 
@@ -17,21 +12,22 @@ type TypeUpdateValidation<T> = (updateData: T) => IFormContext;
 /** @internal */
 function _updateValidationContext<T>(context: IFormContext, type: TypeMetadataNames): TypeUpdateValidation<T> {
     return function(updateData: T) {
-       return {
-            ...context,
-                metadata: {
-                ...context.metadata,
-                    [type]: {
-                    ...context.metadata[type],
-                    ...updateData,
-                }
-            },
-        };
+        return {
+           ...context,
+           metadata: {
+               ...context.metadata,
+               [type]: {
+                   ...context.metadata[type],
+                   ...updateData,
+               },
+           },
+       };
     }
 }
 
 /** @internal */
 function _isMatch(name: string, file: IFile, context: IFormContext): boolean {
+    // Theres a bug here that makes file update twice, the second time wipes our all the data ..
     let fileInMetadata = context.metadata.files[name].file;
     if(!fileInMetadata && file || fileInMetadata && !file) return true;
     if(fileInMetadata) {
@@ -74,7 +70,8 @@ export const updateValidationMetadata = (context: any, update: any) => {
                             isTouched: !!match,
                         },
                     };
-                    update(updateInput(inputs));
+                    const updatedData = updateInput(inputs);
+                    update(updatedData);
                 }
                 break;
             }
