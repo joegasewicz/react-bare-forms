@@ -1,12 +1,5 @@
-import {ReactElement, default as React, Consumer, useContext, useEffect} from "react";
-import {
-    FormConsumer, FormContext,
-    IFormContext,
-    IMetadata,
-    METADATA_NAMES,
-    TypeMetadataNames,
-    TypeRadioGroup
-} from "./form";
+import {ReactElement, default as React, useContext, useEffect} from "react";
+import {FormContext, METADATA_NAMES} from "./form";
 
 export interface IButton<T> {
     create(): (props: ISubmitButtonProps) => ReactElement<T>;
@@ -51,25 +44,51 @@ class _SubmitButton implements Button<ISubmitButtonProps> {
            // Check checkboxes
            let checkboxes = context.metadata[METADATA_NAMES.CHECKBOXES];
 
+           let inputsValid = true;
+           let filesValid = true;
+           let radiosValid = true;
+           let checkboxesValid = true;
 
            useEffect(() => {
                // Check all metadata on context
                // TODO
+               for (let input of Object.keys(inputs)){
+                   let _input = context.metadata[METADATA_NAMES.INPUTS][input];
+                   console.log("inputs", _input);
+                   // if(!_input.isTouched || _input.isTouched && !_input.isValid) {
+                   //     inputsValid = false;
+                   // }
+               }
 
                for (let input of Object.keys(files)){
                    let _input = context.metadata[METADATA_NAMES.FILES][input];
-               }
-
-               for (let input of Object.keys(inputs)){
-                   let _input = context.metadata[METADATA_NAMES.INPUTS][input];
+                   // if(!_input.isTouched || _input.isTouched && !_input.isValid) {
+                   //     inputsValid = false;
+                   // }
+                   console.log("files", _input);
                }
 
                for (let input of Object.keys(fieldGroups)){
                    let _input = context.metadata[METADATA_NAMES.FIELD_GROUPS][input];
+                   console.log("fieldGroups", _input);
+                   for(let radio of Object.keys(_input)) {
+                       // if(!_input.isValid) {
+                       //     inputsValid = false;
+                       // }
+                   }
+
                }
 
                for (let input of Object.keys(checkboxes)){
                    let _input = context.metadata[METADATA_NAMES.CHECKBOXES][input];
+                   console.log("checkboxes", _input);
+                   // if(!_input.isTouched || _input.isTouched && !_input.isValid) {
+                   //     inputsValid = false;
+                   // }
+               }
+
+               if(inputsValid && filesValid && radiosValid && checkboxesValid) {
+                   isDisabled = false;
                }
 
            }, [inputs, fieldGroups, files, checkboxes]);

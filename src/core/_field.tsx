@@ -231,7 +231,6 @@ export class RadioField<T extends any> extends _field<T> implements IFieldClass<
             />
         }
     }
-
 }
 
 /** @internal */

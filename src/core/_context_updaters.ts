@@ -53,7 +53,7 @@ export const updateValidationMetadata = (context: any, update: any) => {
      * @param name
      *      - For inputs & file inputs this is the name passed by the caller
      */
-    return (name: string, match: any, validations: Array<IValidation>, type: TypeMetadataNames): void => {
+    return (name: string, match: any, validation: Array<IValidation>, type: TypeMetadataNames): void => {
         // Metadata field update types
         const updateInput = _updateValidationContext<IInputFieldMetadata>(context, "inputs");
         const updateFiles = _updateValidationContext<IFileMetaData>(context, "files");
@@ -65,7 +65,7 @@ export const updateValidationMetadata = (context: any, update: any) => {
                     let inputs = {
                         ...context.metadata.inputs,
                         [name]: {
-                            validation: validations,
+                            validation,
                             value: match,
                             isTouched: !!match,
                         },
@@ -80,7 +80,7 @@ export const updateValidationMetadata = (context: any, update: any) => {
                     let files = {
                         ...context.metadata.files,
                         [name]: {
-                            validations: validations,
+                            validation,
                             isTouched: name in context.metadata.files,
                             file: match,
                             refName: name,
@@ -95,7 +95,7 @@ export const updateValidationMetadata = (context: any, update: any) => {
                     let checkboxes = {
                         ...context.metadata.checkboxes,
                         [name]: {
-                            validations: validations,
+                            validation,
                             isTouched: name in context.metadata.checkboxes,
                             isChecked: match,
                         }

@@ -7,39 +7,31 @@ import {getFileFromRef} from "./uncrontrolled";
 
 
 /** @internal */
-export interface IInputFieldMetadata {
-    messages: Array<string>;
-    isValid: boolean;
-    isTouched: boolean;
-    value: any;
+export interface IFieldValidation {
     validation: Array<IValidation>;
 }
 /** @internal */
-export interface IFileMetaData {
-    messages: Array<string>;
-    isValid: boolean;
+export interface IInputFieldMetadata extends IFieldValidation {
     isTouched: boolean;
-    validation: Array<IValidation>;
+    value: any;
+}
+/** @internal */
+export interface IFileMetaData extends IFieldValidation {
+    isTouched: boolean;
     refName: string;
     file: File;
 }
 /** @internal */
-export interface IRadioGroupChildren {
+export interface IRadioGroupChildren extends IFieldValidation {
     readonly name: string;
     isChecked: boolean;
-    messages: Array<string>;
-    isValid: boolean;
-    validation: Array<IValidation>;
     parent: string;
 }
 /** @internal */
-export interface ICheckBoxesMetadata {
+export interface ICheckBoxesMetadata extends IFieldValidation {
     readonly name: string;
     isChecked: boolean;
     isTouched: boolean;
-    messages: Array<string>;
-    isValid: boolean;
-    validation: Array<IValidation>;
 }
 /** @internal **/
 export type TypeMetadataNames = "inputs"|"fieldGroups"|"files"|"checkboxes";
