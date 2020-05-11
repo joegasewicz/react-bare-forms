@@ -7,7 +7,7 @@ import {
 } from "../src/elements";
 import {FormConsumer, FormProvider} from "../src/form";
 import {isEmailValid, isFieldEmpty} from "../src/validators";
-import {updateValidationMetadata} from "../src/core/_context_updaters";
+import {updateMetadata} from "../src/core/_context_updaters";
 import {FormElementValidators} from "../src/core/_helpers";
 
 
@@ -98,7 +98,7 @@ describe("#TextInputField()", () => {
 
         let contextDefault = {
             ..._contextDefault,
-            updateFieldValidation: updateValidationMetadata(_contextDefault, (t: any) => {})
+            updateFieldValidation: updateMetadata(_contextDefault, (t: any) => {})
         };
 
         let component = renderer.create(
@@ -132,7 +132,7 @@ describe("#TextInputField()", () => {
 
         let contextDefault = {
             ..._contextDefault,
-            updateFieldValidation: updateValidationMetadata(_contextDefault, updateMetadata)
+            updateFieldValidation: updateMetadata(_contextDefault, updateMetadata)
         };
 
         function updateMetadata(t: any) {
@@ -261,7 +261,7 @@ describe("#EmailField()", () => {
 
         let contextDefault = {
             ..._contextDefault,
-            updateFieldValidation: updateValidationMetadata(_contextDefault, (t: any) => {})
+            updateFieldValidation: updateMetadata(_contextDefault, (t: any) => {})
         };
 
         let component = renderer.create(
@@ -295,7 +295,7 @@ describe("#EmailField()", () => {
 
         let contextDefault = {
             ..._contextDefault,
-            updateFieldValidation: updateValidationMetadata(_contextDefault, updateMetadata)
+            updateFieldValidation: updateMetadata(_contextDefault, updateMetadata)
         };
 
         function updateMetadata(t: any) {
@@ -423,7 +423,7 @@ describe("#PasswordField()", () => {
 
         let contextDefault = {
             ..._contextDefault,
-            updateFieldValidation: updateValidationMetadata(_contextDefault, (t: any) => {})
+            updateFieldValidation: updateMetadata(_contextDefault, (t: any) => {})
         };
 
         let component = renderer.create(
@@ -457,7 +457,7 @@ describe("#PasswordField()", () => {
 
         let contextDefault = {
             ..._contextDefault,
-            updateFieldValidation: updateValidationMetadata(_contextDefault, updateMetadata)
+            updateFieldValidation: updateMetadata(_contextDefault, updateMetadata)
         };
 
         function updateMetadata(t: any) {
@@ -585,7 +585,7 @@ describe("#<TextAreaField />", () => {
 
         let contextDefault = {
             ..._contextDefault,
-            updateFieldValidation: updateValidationMetadata(_contextDefault, (t: any) => {})
+            updateFieldValidation: updateMetadata(_contextDefault, (t: any) => {})
         };
 
         let component = renderer.create(
@@ -620,7 +620,7 @@ describe("#<TextAreaField />", () => {
 
         let contextDefault = {
             ..._contextDefault,
-            updateFieldValidation: updateValidationMetadata(_contextDefault, updateMetadata)
+            updateFieldValidation: updateMetadata(_contextDefault, updateMetadata)
         };
 
         function updateMetadata(t: any) {

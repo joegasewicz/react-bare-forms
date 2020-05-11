@@ -45,7 +45,7 @@ function _isMatch(name: string, file: IFile, context: IFormContext): boolean {
 }
 
 /** @internal */
-export const updateValidationMetadata = (context: any, update: any) => {
+export const updateMetadata = (context: any, update: any) => {
     /**
      * @param match
      *      - For input fields this is the passed value.

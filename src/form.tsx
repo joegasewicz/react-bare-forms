@@ -1,7 +1,7 @@
-import {default as React, useEffect, useState} from "react";
-import {updateRadioGroupStateFromPassedInContext, updateStateFromPassedInContext} from "./core/_handlers";
+import {default as React, Provider, useEffect, useState} from "react";
+import {updateRadioGroupStateFromPassedInContext, updateParentState} from "./core/_handlers";
 import {IValidation} from "./validators";
-import {updateValidationMetadata} from "./core/_context_updaters";
+import {updateMetadata} from "./core/_context_updaters";
 import {IRadioField} from "./elements";
 import {getFileFromRef} from "./uncrontrolled";
 
@@ -88,9 +88,12 @@ export interface IFormContext {
     metadata: IMetadata;
     state: any;
     updateParentState?: (e: React.ChangeEvent<any>, name: string) => void;
-    updateRadioGroupStateFromPassedInContext?: (e: React.ChangeEvent<any>, name: string, radioGroup: any) => void;
-    updateFieldValidation?: (fieldName: string, fieldValue: any, validation: Array<IValidation>, type?: TypeMetadataNames) => void;
-    updateRadioGroupMetadata?: (fieldGroupKey: string, radioProps: Array<{ props: IRadioField}>) => void;
+    updateMetadata?: (fieldName: string, fieldValue: any, validation: Array<IValidation>, type?: TypeMetadataNames) => void;
+
+    updateInputsContext?: (fieldName: string, fieldValue: any, validation: Array<IValidation>, type?: TypeMetadataNames) => void;
+    updateRadioGroupsContext?: (fieldName: string, fieldValue: any, validation: Array<IValidation>, type?: TypeMetadataNames) => void;
+    updateCheckboxesContext?: (fieldName: string, fieldValue: any, validation: Array<IValidation>, type?: TypeMetadataNames) => void;
+    updateFilesContext?: (fieldName: string, fieldValue: any, validation: Array<IValidation>, type?: TypeMetadataNames) => void;
 }
 /** @internal */
 const INPUTS_STATE: TypeInputMetadata = {};
@@ -215,9 +218,8 @@ export const Form = (props: IForm) => {
         debug: props.debug || context.debug,
         dynamic: props.dynamic || context.dynamic,
         metadata: context.metadata,
-        updateParentState: updateStateFromPassedInContext(parentState, setParentState),
-        updateRadioGroupStateFromPassedInContext: updateRadioGroupStateFromPassedInContext(parentState, setParentState),
-        updateFieldValidation: updateValidationMetadata(context, updateContext),
+        updateParentState: updateParentState(parentState, setParentState),
+        updateMetadata: updateMetadata(context, updateContext),
     };
     
     return (

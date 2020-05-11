@@ -49,6 +49,7 @@ abstract class _field<PropsType extends any> {
 
     public createField(fieldCallback: Function) {
         const context: IFormContext = useContext(FormContext);
+
         const _validate = this.props.validators ?
             <FormElementValidators
                 validators={this.props.validators}
@@ -293,7 +294,7 @@ export class FileField<T extends any> extends _field<T> implements IFieldClass<T
     public getField() {
         const updateFieldValidation = (e: React.ChangeEvent<HTMLInputElement>, context: IFormContext) => {
             const file = createFileObject(this.props.ref);
-            context.updateFieldValidation(this.props.name, file, null, "files")
+            context.updateMetadata(this.props.name, file, null, "files")
         };
         return (context: IFormContext) => {
             return (<input

@@ -40,7 +40,7 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
                 validationResults = [...validationResults , validators[index](context.state[name], context)];
             });
             useEffect(() => {
-                context.updateFieldValidation(name, context.state[name], validationResults, "inputs")
+                context.updateMetadata(name, context.state[name], validationResults, "inputs")
             }, [context]);
             if(context.metadata.inputs[name] && context.metadata.inputs[name].isTouched) {
                 return <ValidationResults results={validationResults} styles={styles} />;
@@ -52,7 +52,7 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
                 validationResults = [...validationResults , validators[index](name, context)];
             });
             useEffect(() => {
-                context.updateFieldValidation(name, context.state[name], validationResults, "files")
+                context.updateMetadata(name, context.state[name], validationResults, "files")
             }, [context]);
             if(context.metadata.files[name] && context.metadata.files[name].isTouched) {
                 return <ValidationResults results={validationResults} styles={styles} />;
@@ -64,7 +64,7 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
                 validationResults = [...validationResults , validators[index]([name, parent], context)];
             });
             useEffect(() => {
-                context.updateFieldValidation(name, context.state[name], validationResults, "radioGroups")
+                context.updateMetadata(name, context.state[name], validationResults, "radioGroups")
             }, [context]);
 
             const fieldGroups = context.metadata.radioGroups[parent];
@@ -81,7 +81,7 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
                 validationResults = [...validationResults , validators[index](name, context)];
             });
             useEffect(() => {
-                context.updateFieldValidation(name, context.state[name], validationResults, "checkboxes")
+                context.updateMetadata(name, context.state[name], validationResults, "checkboxes")
             }, [context]);
             if(context.metadata.checkboxes[name] && context.metadata.checkboxes[name].isTouched) {
                 return <ValidationResults results={validationResults} styles={styles} />;
