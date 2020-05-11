@@ -1,5 +1,5 @@
 import {areFieldsEqual, customValidator, isEmailValid, isFieldEmpty, IValidationVariable} from "../src/validators";
-import {_FieldEmptyErrorMsg,  _isFieldEmptyErrorMsg} from "../src/_errors";
+import {_FieldEmptyErrorMsg,  _isFieldEmptyErrorMsg} from "../src/core/_errors";
 
 const isFieldEmptyResult = (limit: number) => ({
     isValid: false,

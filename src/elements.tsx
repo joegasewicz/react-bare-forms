@@ -8,7 +8,7 @@ import {
     RadioField as _RadioField,
     SelectField as _SelectField,
     FileField as _FileField,
-} from "./_field";
+} from "./core/_field";
 
 
 /** @internal */

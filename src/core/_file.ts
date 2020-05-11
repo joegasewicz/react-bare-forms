@@ -1,5 +1,5 @@
 import {default as React} from "react";
-import {getFileFromRef} from "./uncrontrolled";
+import {getFileFromRef} from "../uncrontrolled";
 
 
 /** @internal **/

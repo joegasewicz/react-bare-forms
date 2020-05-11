@@ -1,7 +1,7 @@
 import {default as React, useEffect, useState} from "react";
-import {updateRadioGroupStateFromPassedInContext, updateStateFromPassedInContext} from "./_handlers";
+import {updateRadioGroupStateFromPassedInContext, updateStateFromPassedInContext} from "./core/_handlers";
 import {IValidation} from "./validators";
-import {updateRadioGroupMetadata, updateValidationMetadata} from "./_context_updaters";
+import {updateRadioGroupMetadata, updateValidationMetadata} from "./core/_context_updaters";
 import {IRadioField} from "./elements";
 import {getFileFromRef} from "./uncrontrolled";
 

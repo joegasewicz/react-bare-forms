@@ -1,6 +1,6 @@
-import {_FieldEmptyErrorMsg} from "./_errors";
+import {_FieldEmptyErrorMsg} from "./core/_errors";
 import {IFormContext} from "./form";
-import {EMAIL_REGEX} from "./_regex";
+import {EMAIL_REGEX} from "./core/_regex";
 
 
 /** @internal */

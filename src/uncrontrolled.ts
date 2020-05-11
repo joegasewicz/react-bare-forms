@@ -2,7 +2,7 @@
 // Public uncontrolled React Component Helper functions
 /////////////////////////////////////////////////////////
 import {default as React} from "react";
-import {IFile} from "./_file";
+import {IFile} from "./core/_file";
 
 /**
  * @returns a React Ref
