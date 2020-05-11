@@ -54,25 +54,22 @@ class _SubmitButton implements Button<ISubmitButtonProps> {
 
            useEffect(() => {
                // Check all metadata on context
+               // TODO
 
                for (let input of Object.keys(files)){
                    let _input = context.metadata[METADATA_NAMES.FILES][input];
-                   console.log("File ----> ", _input);
                }
 
                for (let input of Object.keys(inputs)){
                    let _input = context.metadata[METADATA_NAMES.INPUTS][input];
-                   console.log("Input ----> ", _input);
                }
 
                for (let input of Object.keys(fieldGroups)){
                    let _input = context.metadata[METADATA_NAMES.FIELD_GROUPS][input];
-                   console.log("fieldGroups ----> ", _input);
                }
 
                for (let input of Object.keys(checkboxes)){
                    let _input = context.metadata[METADATA_NAMES.CHECKBOXES][input];
-                   console.log("checkboxes ----> ", _input);
                }
 
            }, [inputs, fieldGroups, files, checkboxes]);

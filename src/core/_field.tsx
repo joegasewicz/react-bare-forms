@@ -1,11 +1,11 @@
-import {FormContext, IFormContext} from "./form";
+import {FormContext, IFormContext} from "../form";
 import {FormElementValidators, getMetadataNameType, mergeDefaultCssWithProps} from "./_helpers";
 import {default as React, ReactElement, useContext, useEffect} from "react";
 import {
     FIELD_NAMES, IRadioGroupParentContext,
     RadioGroupContext,
     TypeSelectCssSizeName
-} from "./elements";
+} from "../elements";
 import {shouldUpdateRadioGroupContext} from "./_context_updaters";
 import {createFileObject} from "./_file";
 

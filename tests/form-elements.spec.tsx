@@ -7,8 +7,8 @@ import {
 } from "../src/elements";
 import {FormConsumer, FormProvider} from "../src/form";
 import {isEmailValid, isFieldEmpty} from "../src/validators";
-import {updateValidationMetadata} from "../src/_context_updaters";
-import {FormElementValidators} from "../src/_helpers";
+import {updateValidationMetadata} from "../src/core/_context_updaters";
+import {FormElementValidators} from "../src/core/_helpers";
 
 
 describe("#TextInputField()", () => {
