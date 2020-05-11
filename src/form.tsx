@@ -93,13 +93,13 @@ export interface IFormContext {
     updateRadioGroupMetadata?: (fieldGroupKey: string, radioProps: Array<{ props: IRadioField}>) => void;
 }
 /** @internal */
-const inputs: TypeInputMetadata = {};
+const INPUTS_STATE: TypeInputMetadata = {};
 /** @internal */
-const radioGroups: TypeRadioGroupMetadata = {};
+const RADIO_GROUPS_STATE: TypeRadioGroupMetadata = {};
 /** @internal */
-const files: TypeFileMetadata = {};
+const FILES_STATE: TypeFileMetadata = {};
 /** @internal */
-const checkboxes: TypeCheckboxesMetadata = {};
+const CHECKBOXES_STATE: TypeCheckboxesMetadata = {};
 /** @internal */
 const providerContext: IFormContext = {
     bare: false,
@@ -108,10 +108,10 @@ const providerContext: IFormContext = {
     debug: false,
     dynamic: true,
     metadata: {
-        inputs,
-        radioGroups,
-        files,
-        checkboxes,
+        inputs: INPUTS_STATE,
+        radioGroups: RADIO_GROUPS_STATE,
+        files: FILES_STATE,
+        checkboxes: CHECKBOXES_STATE,
     },
 };
 /** @internal */
@@ -120,13 +120,13 @@ export interface IRadioGroupParentContext {
     children?: any;
 }
 /** @internal */
-export const InputsContext = React.createContext(inputs);
+export const InputsContext = React.createContext(INPUTS_STATE);
 /** @internal */
-export const CheckBoxesContext = React.createContext(checkboxes);
+export const CheckBoxesContext = React.createContext(CHECKBOXES_STATE);
 /** @internal */
-export const FilesContext = React.createContext(files);
+export const FilesContext = React.createContext(FILES_STATE);
 /** @internal */
-export const RadioGroupContext = React.createContext(radioGroups);
+export const RadioGroupContext = React.createContext(RADIO_GROUPS_STATE);
 
 /** @internal */
 export const FormContext = React.createContext(providerContext);
@@ -200,7 +200,14 @@ export const Form = (props: IForm) => {
             });
         }, [parentState]);
     }
+
     const [context, updateContext] = useState(providerContext);
+
+    const [inputContext, updateInputContext] = useState(INPUTS_STATE);
+    const [filesContext, updateFilesContext] = useState(FILES_STATE);
+    const [radioGroupsContext, updateRadioGroupsContext] = useState(RADIO_GROUPS_STATE);
+    const [checkboxesContext, updateCheckboxes] = useState(CHECKBOXES_STATE);
+
     const _providerContext: IFormContext = {
         bare: props.bare || context.bare,
         state: props.state,
@@ -212,6 +219,7 @@ export const Form = (props: IForm) => {
         updateRadioGroupStateFromPassedInContext: updateRadioGroupStateFromPassedInContext(parentState, setParentState),
         updateFieldValidation: updateValidationMetadata(context, updateContext),
     };
+    
     return (
         <FormProvider value={_providerContext}>
             <form onSubmit={handleSubmit(props)} {...props}>{props.children}</form>
