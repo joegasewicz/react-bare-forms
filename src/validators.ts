@@ -85,9 +85,10 @@ export const isEmailValid: IValidationVariable = customValidator((_ , fieldValue
  * @example
  */
 export const isFile: IValidationVariable = customValidator((_, name, context) => {
-    if(!(name in context.metadata.files && context.metadata.files[name].file &&
-        Object.keys(context.metadata.files[name].file).length > 0)) {
-        return [`Must be a file type`];
+    if(name in context.metadata.files) {
+        if(!context.metadata.files[name].file || Object.keys(context.metadata.files[name].file).length === 0) {
+            return [`Must be a file type`];
+        }
     }
 });
 

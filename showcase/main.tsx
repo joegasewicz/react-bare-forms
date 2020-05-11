@@ -15,7 +15,7 @@ import {createFileRef, getFileFromRef} from "../src/uncrontrolled";
 interface IProps{}
 
 interface IState{
-    // username: string;
+    username: string;
     password: string;
     confirmPassword: string;
     email: string;
@@ -34,7 +34,7 @@ export class Main extends React.Component<IProps, IState> {
     myFileRef = createFileRef();
 
     state = {
-        // username: "",
+        username: "",
         password: "",
         confirmPassword: "",
         email: "",
@@ -63,10 +63,11 @@ export class Main extends React.Component<IProps, IState> {
                                 callback={() => console.log("Form submitted ----> ", getFileFromRef(this.myFileRef))}>
 
                                 <TextInputField
-                                    value={this.state.password}
-                                    name="password"
+                                    value={this.state.username}
+                                    name="username"
                                     hint="Enter your username"
                                     labelText="Username"
+                                    validators={[isFieldEmpty(5)]}
                                 />
 
                                 <PasswordField

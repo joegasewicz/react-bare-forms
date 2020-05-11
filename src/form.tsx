@@ -41,6 +41,8 @@ export interface ICheckBoxesMetadata {
     isValid: boolean;
     validation: Array<IValidation>;
 }
+/** @internal **/
+export type TypeMetadataNames = "inputs"|"fieldGroups"|"files"|"checkboxes";
 /** @internal */
 export type TypeInputMetadata = { [k: string]: IInputFieldMetadata};
 /** @internal */
@@ -63,8 +65,6 @@ export enum METADATA_NAMES {
     FILES = "files",
     CHECKBOXES = "checkboxes",
 }
-/** @internal **/
-export type TypeMetadataNames = "inputs"|"fieldGroups"|"files"|"checkboxes";
 /**
  * @interface **IForm** Exported Form interface available to the caller. Contains all the properties required by
  * the Form *RBF* Form's component.
