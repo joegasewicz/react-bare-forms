@@ -9,7 +9,7 @@ import {
     TextInputField
 } from "../src/elements";
 import {areFieldsEqual, isChecked, isEmailValid, isFieldEmpty, isFile, isRadioChecked} from "../src/validators";
-import {SubmitButton} from "../src/buttons";
+import {SubmitButton} from "../src/submit_button";
 import {createFileRef, getFileFromRef} from "../src/uncrontrolled";
 
 interface IProps{}
