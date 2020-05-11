@@ -259,9 +259,6 @@ export const RadioGroupContext = React.createContext({});
  */
 export function RadioGroup(props: IRadioGroupProps) {
     const contextValue: IRadioGroupParentContext = {parent: {name: props.name}, children: props.children};
-    const context = useContext(FormContext);
-    // update state on next cycle tick - TODO use useEffect
-    useEffect(() => context.updateRadioGroupMetadata(props.name, props.children), [props]);
     return <RadioGroupContext.Provider value={contextValue}>{props.children}</RadioGroupContext.Provider>;
 }
 

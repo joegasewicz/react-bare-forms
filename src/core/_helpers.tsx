@@ -59,15 +59,15 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
             }
             return null;
         }
-        case METADATA_NAMES.FIELD_GROUPS: {
+        case METADATA_NAMES.RADIO_GROUPS: {
             validators.map((key: any, index: number) => {
                 validationResults = [...validationResults , validators[index]([name, parent], context)];
             });
             useEffect(() => {
-                context.updateFieldValidation(name, context.state[name], validationResults, "fieldGroups")
+                context.updateFieldValidation(name, context.state[name], validationResults, "radioGroups")
             }, [context]);
 
-            const fieldGroups = context.metadata.fieldGroups[parent];
+            const fieldGroups = context.metadata.radioGroups[parent];
             if(fieldGroups) {
                 // @ts-ignore TODO
                 if(fieldGroups[name]) {
@@ -123,7 +123,7 @@ export function getMetadataNameType(type: FIELD_NAMES): METADATA_NAMES {
             return METADATA_NAMES.INPUTS;
         }
         case FIELD_NAMES.RADIO: {
-            return METADATA_NAMES.FIELD_GROUPS;
+            return METADATA_NAMES.RADIO_GROUPS;
         }
         case FIELD_NAMES.CHECKBOX: {
             return METADATA_NAMES.CHECKBOXES;

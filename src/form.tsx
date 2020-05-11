@@ -1,7 +1,7 @@
 import {default as React, useEffect, useState} from "react";
 import {updateRadioGroupStateFromPassedInContext, updateStateFromPassedInContext} from "./core/_handlers";
 import {IValidation} from "./validators";
-import {updateRadioGroupMetadata, updateValidationMetadata} from "./core/_context_updaters";
+import {updateValidationMetadata} from "./core/_context_updaters";
 import {IRadioField} from "./elements";
 import {getFileFromRef} from "./uncrontrolled";
 
@@ -34,7 +34,7 @@ export interface ICheckBoxesMetadata extends IFieldValidation {
     isTouched: boolean;
 }
 /** @internal **/
-export type TypeMetadataNames = "inputs"|"fieldGroups"|"files"|"checkboxes";
+export type TypeMetadataNames = "inputs"|"radioGroups"|"files"|"checkboxes";
 /** @internal */
 export type TypeInputMetadata = { [k: string]: IInputFieldMetadata};
 /** @internal */
@@ -45,7 +45,7 @@ export type TypeRadioGroup = {[k: string]: IRadioGroupChildren};
 export type TypeCheckboxesMetadata = {[k: string]: ICheckBoxesMetadata};
 /** @internal */
 export interface IMetadata {
-    fieldGroups: TypeRadioGroup;
+    radioGroups: TypeRadioGroup;
     inputs: TypeInputMetadata;
     files: TypeFileMetadata;
     checkboxes: TypeCheckboxesMetadata;
@@ -53,7 +53,7 @@ export interface IMetadata {
 /** @internal **/
 export enum METADATA_NAMES {
     INPUTS = "inputs",
-    FIELD_GROUPS = "fieldGroups",
+    RADIO_GROUPS = "radioGroups",
     FILES = "files",
     CHECKBOXES = "checkboxes",
 }
@@ -102,7 +102,7 @@ const providerContext: IFormContext = {
     dynamic: true,
     metadata: {
         inputs: {},
-        fieldGroups: {},
+        radioGroups: {},
         files: {},
         checkboxes: {},
     },
@@ -191,7 +191,6 @@ export const Form = (props: IForm) => {
         updateParentState: updateStateFromPassedInContext(parentState, setParentState),
         updateRadioGroupStateFromPassedInContext: updateRadioGroupStateFromPassedInContext(parentState, setParentState),
         updateFieldValidation: updateValidationMetadata(context, updateContext),
-        updateRadioGroupMetadata: updateRadioGroupMetadata(context, updateContext),
     };
     return (
         <FormProvider value={_providerContext}>

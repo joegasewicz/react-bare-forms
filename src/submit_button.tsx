@@ -38,8 +38,8 @@ class _SubmitButton implements Button<ISubmitButtonProps> {
            // Check inputs
            let inputs = context.metadata[METADATA_NAMES.INPUTS];
            // Check files
-           let fieldGroups = context.metadata[METADATA_NAMES.FIELD_GROUPS];
-           // Check fieldGroups
+           let fieldGroups = context.metadata[METADATA_NAMES.RADIO_GROUPS];
+           // Check radioGroups
            let files = context.metadata[METADATA_NAMES.FILES];
            // Check checkboxes
            let checkboxes = context.metadata[METADATA_NAMES.CHECKBOXES];
@@ -69,8 +69,8 @@ class _SubmitButton implements Button<ISubmitButtonProps> {
                }
 
                for (let input of Object.keys(fieldGroups)){
-                   let _input = context.metadata[METADATA_NAMES.FIELD_GROUPS][input];
-                   console.log("fieldGroups", _input);
+                   let _input = context.metadata[METADATA_NAMES.RADIO_GROUPS][input];
+                   console.log("radioGroups", _input);
                    for(let radio of Object.keys(_input)) {
                        // if(!_input.isValid) {
                        //     inputsValid = false;

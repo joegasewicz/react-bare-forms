@@ -96,7 +96,7 @@ export const isFile: IValidationVariable = customValidator((_, name, context) =>
  *
  */
 export const isRadioChecked: IValidationVariable = customValidator((_ , [name, parent], context) => {
-    let fieldGroup = context.metadata.fieldGroups[parent];
+    let fieldGroup = context.metadata.radioGroups[parent];
     if(fieldGroup) {
         // @ts-ignore TODO
         let radio = fieldGroup[name];

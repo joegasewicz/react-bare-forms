@@ -6,7 +6,6 @@ import {
     RadioGroupContext,
     TypeSelectCssSizeName
 } from "../elements";
-import {shouldUpdateRadioGroupContext} from "./_context_updaters";
 import {createFileObject} from "./_file";
 
 interface IFieldClass<T> {
@@ -208,25 +207,11 @@ export class RadioField<T extends any> extends _field<T> implements IFieldClass<
         const radioContext: IRadioGroupParentContext = useContext(RadioGroupContext);
         this.parent = radioContext.parent.name;
         return (context: IFormContext) => {
-            const radioGroup = context.metadata.fieldGroups[radioContext.parent.name];
-
-            const updateContexts = (e: React.ChangeEvent<any>, context: IFormContext) => {
-                context.updateRadioGroupStateFromPassedInContext(
-                    this.overrideEvent(e, context.state[this.props.name]),
-                    this.props.name,
-                    radioGroup,
-                );
-                if(shouldUpdateRadioGroupContext(radioContext.children, context, radioContext.parent.name)) {
-                    useEffect(() => {
-                        context.updateRadioGroupMetadata(radioContext.parent.name, radioContext.children);
-                    }, [radioContext]);
-                }
-            };
             return <input
                 type={this.type}
                 checked={context.state[this.props.name] || false}
                 name={this.props.name}
-                onChange={(e) => updateContexts(e, context)}
+                onChange={(e) => context.updateParentState(e, this.props.name)}
                 className={_field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
             />
         }
