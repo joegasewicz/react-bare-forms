@@ -1,6 +1,6 @@
 import * as React from "react";
 import {ReactElement, useContext, useEffect} from "react";
-import {FormContext, IFormContext, IRadioGroupChildren, METADATA_NAMES, TypeRadioGroup} from "../form";
+import {FormContext, IFormContext, IRadioGroupChildren, METADATA_NAMES, TypeRadioGroupMetadata} from "../form";
 import {IValidation} from "../validators";
 import {FIELD_NAMES} from "../elements";
 

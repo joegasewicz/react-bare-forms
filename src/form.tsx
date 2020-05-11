@@ -40,12 +40,12 @@ export type TypeInputMetadata = { [k: string]: IInputFieldMetadata};
 /** @internal */
 export type TypeFileMetadata = {[k: string]: IFileMetaData};
 /** @internal */
-export type TypeRadioGroup = {[k: string]: IRadioGroupChildren};
+export type TypeRadioGroupMetadata = {[k: string]: IRadioGroupChildren};
 /** @internal */
 export type TypeCheckboxesMetadata = {[k: string]: ICheckBoxesMetadata};
 /** @internal */
 export interface IMetadata {
-    radioGroups: TypeRadioGroup;
+    radioGroups: TypeRadioGroupMetadata;
     inputs: TypeInputMetadata;
     files: TypeFileMetadata;
     checkboxes: TypeCheckboxesMetadata;
@@ -92,7 +92,14 @@ export interface IFormContext {
     updateFieldValidation?: (fieldName: string, fieldValue: any, validation: Array<IValidation>, type?: TypeMetadataNames) => void;
     updateRadioGroupMetadata?: (fieldGroupKey: string, radioProps: Array<{ props: IRadioField}>) => void;
 }
-
+/** @internal */
+const inputs: TypeInputMetadata = {};
+/** @internal */
+const radioGroups: TypeRadioGroupMetadata = {};
+/** @internal */
+const files: TypeFileMetadata = {};
+/** @internal */
+const checkboxes: TypeCheckboxesMetadata = {};
 /** @internal */
 const providerContext: IFormContext = {
     bare: false,
@@ -101,12 +108,25 @@ const providerContext: IFormContext = {
     debug: false,
     dynamic: true,
     metadata: {
-        inputs: {},
-        radioGroups: {},
-        files: {},
-        checkboxes: {},
+        inputs,
+        radioGroups,
+        files,
+        checkboxes,
     },
 };
+/** @internal */
+export interface IRadioGroupParentContext {
+    parent?: { name: string };
+    children?: any;
+}
+/** @internal */
+export const InputsContext = React.createContext(inputs);
+/** @internal */
+export const CheckBoxesContext = React.createContext(checkboxes);
+/** @internal */
+export const FilesContext = React.createContext(files);
+/** @internal */
+export const RadioGroupContext = React.createContext(radioGroups);
 
 /** @internal */
 export const FormContext = React.createContext(providerContext);

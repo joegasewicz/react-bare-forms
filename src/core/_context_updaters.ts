@@ -104,6 +104,9 @@ export const updateValidationMetadata = (context: any, update: any) => {
                 }
                 break;
             }
+            case "radioGroups": {
+                break;
+            }
             default: {
                 return null;
             }

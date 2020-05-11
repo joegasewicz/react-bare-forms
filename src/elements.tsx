@@ -1,6 +1,10 @@
-import {default as React, useContext, useEffect} from "react";
-import {FormContext, IForm} from "./form";
+import {default as React} from "react";
 import {IValidators} from "./validators";
+import {
+    IForm,
+    IRadioGroupParentContext,
+    RadioGroupContext, TypeRadioGroupMetadata
+} from "./form";
 import {
     InputField,
     TextAreaField as _TextAreaField,
@@ -243,15 +247,6 @@ export interface IRadioGroupProps {
     children: any;
 }
 
-export interface IRadioGroupParentContext {
-    parent?: { name: string };
-    children?: any;
-}
-
-export const RadioGroupContext = React.createContext({});
-
-
-
 /**
  *
  * @param props
@@ -259,7 +254,7 @@ export const RadioGroupContext = React.createContext({});
  */
 export function RadioGroup(props: IRadioGroupProps) {
     const contextValue: IRadioGroupParentContext = {parent: {name: props.name}, children: props.children};
-    return <RadioGroupContext.Provider value={contextValue}>{props.children}</RadioGroupContext.Provider>;
+    return <RadioGroupContext.Provider value={contextValue as TypeRadioGroupMetadata}>{props.children}</RadioGroupContext.Provider>;
 }
 
 /**

@@ -1,13 +1,24 @@
-import {FormContext, IFormContext} from "../form";
-import {FormElementValidators, getMetadataNameType, mergeDefaultCssWithProps} from "./_helpers";
-import {default as React, ReactElement, useContext, useEffect} from "react";
+import {default as React, ReactElement, useContext} from "react";
+
 import {
-    FIELD_NAMES, IRadioGroupParentContext,
+    FormElementValidators,
+    getMetadataNameType,
+    mergeDefaultCssWithProps
+} from "./_helpers";
+import {
+    FormContext,
+    IFormContext,
+    IRadioGroupParentContext,
     RadioGroupContext,
+} from "../form";
+import {
+    FIELD_NAMES,
     TypeSelectCssSizeName
 } from "../elements";
 import {createFileObject} from "./_file";
 
+
+/** @internal */
 interface IFieldClass<T> {
     create: (context: IFormContext) => ReactElement<T>;
     type: string;
