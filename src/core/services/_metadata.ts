@@ -14,12 +14,12 @@ import {IValidation} from "../../validators";
 
 /** @internal **/
 interface IMetadata<T> {
-    state: any;
-    type: string;
-    parentName?: string;
-    name: string;
+    readonly state: any;
+    readonly updateState: Function;
+    readonly type: string;
+    readonly parentName?: string;
+    readonly name: string;
     defaultState: {};
-    updateState: Function;
     init: () => void;
     update: (props: T, validation: Array<IValidation>) => void;
 }
