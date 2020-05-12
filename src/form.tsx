@@ -1,9 +1,10 @@
 import {default as React, Provider, useEffect, useState} from "react";
 import {updateRadioGroupStateFromPassedInContext, updateParentState} from "./core/_handlers";
 import {IValidation} from "./validators";
-import {updateMetadata} from "./core/_context_updaters";
+// import {updateMetadata} from "./core/_context_updaters";
 import {IRadioField} from "./elements";
 import {getFileFromRef} from "./uncrontrolled";
+import {AbstractMetadata, Metadata} from "./core/services/_metadata";
 
 
 /** @internal */
@@ -33,29 +34,39 @@ export interface ICheckBoxesMetadata extends IFieldValidation {
     isChecked: boolean;
     isTouched: boolean;
 }
+/** @internal */
+export type TypeInputMetadata = AbstractMetadata<TypeFormMetadata>;
+/** @internal */
+export type TypeFileMetadata = AbstractMetadata<TypeFormMetadata>;
+/** @internal */
+export type TypeRadioGroupMetadata = AbstractMetadata<TypeFormMetadata>;
+/** @internal */
+export type TypeCheckboxesMetadata = AbstractMetadata<TypeFormMetadata>;
+/** @internal */
+export type TypeFormMetadata =
+    | TypeInputMetadata
+    | TypeRadioGroupMetadata
+    | TypeFileMetadata
+    | TypeCheckboxesMetadata;
 /** @internal **/
-export type TypeMetadataNames = "inputs"|"radioGroups"|"files"|"checkboxes";
-/** @internal */
-export type TypeInputMetadata = { [k: string]: IInputFieldMetadata};
-/** @internal */
-export type TypeFileMetadata = {[k: string]: IFileMetaData};
-/** @internal */
-export type TypeRadioGroupMetadata = {[k: string]: IRadioGroupChildren};
-/** @internal */
-export type TypeCheckboxesMetadata = {[k: string]: ICheckBoxesMetadata};
+export type TypeMetadataNames =
+    | "inputs"
+    | "radioGroups"
+    | "files"
+    | "checkboxes";
 /** @internal */
 export interface IMetadata {
-    radioGroups: TypeRadioGroupMetadata;
+    // radioGroups: TypeRadioGroupMetadata;
     inputs: TypeInputMetadata;
-    files: TypeFileMetadata;
-    checkboxes: TypeCheckboxesMetadata;
+    // files: TypeInputMetadata;
+    // checkboxes: TypeCheckboxesMetadata;
 }
 /** @internal **/
 export enum METADATA_NAMES {
     INPUTS = "inputs",
-    RADIO_GROUPS = "radioGroups",
-    FILES = "files",
-    CHECKBOXES = "checkboxes",
+    // RADIO_GROUPS = "radioGroups",
+    // FILES = "files",
+    // CHECKBOXES = "checkboxes",
 }
 /**
  * @interface **IForm** Exported Form interface available to the caller. Contains all the properties required by
@@ -88,21 +99,17 @@ export interface IFormContext {
     metadata: IMetadata;
     state: any;
     updateParentState?: (e: React.ChangeEvent<any>, name: string) => void;
-    updateMetadata?: (fieldName: string, fieldValue: any, validation: Array<IValidation>, type?: TypeMetadataNames) => void;
-
-    updateInputsContext?: (fieldName: string, fieldValue: any, validation: Array<IValidation>, type?: TypeMetadataNames) => void;
-    updateRadioGroupsContext?: (fieldName: string, fieldValue: any, validation: Array<IValidation>, type?: TypeMetadataNames) => void;
-    updateCheckboxesContext?: (fieldName: string, fieldValue: any, validation: Array<IValidation>, type?: TypeMetadataNames) => void;
-    updateFilesContext?: (fieldName: string, fieldValue: any, validation: Array<IValidation>, type?: TypeMetadataNames) => void;
+    //updateMetadata?: (fieldName: string, fieldValue: any, validation: Array<IValidation>, type?: TypeMetadataNames) => void;
+    // inputsMetadata?: AbstractMetadata<TypeInputMetadata>;
 }
 /** @internal */
-const INPUTS_STATE: TypeInputMetadata = {};
+// const INPUTS_STATE: TypeInputMetadata = {};
 /** @internal */
-const RADIO_GROUPS_STATE: TypeRadioGroupMetadata = {};
+// const RADIO_GROUPS_STATE: TypeRadioGroupMetadata = {};
 /** @internal */
-const FILES_STATE: TypeFileMetadata = {};
+// const FILES_STATE: TypeFileMetadata = {};
 /** @internal */
-const CHECKBOXES_STATE: TypeCheckboxesMetadata = {};
+// const CHECKBOXES_STATE: TypeCheckboxesMetadata = {};
 /** @internal */
 const providerContext: IFormContext = {
     bare: false,
@@ -111,10 +118,10 @@ const providerContext: IFormContext = {
     debug: false,
     dynamic: true,
     metadata: {
-        inputs: INPUTS_STATE,
-        radioGroups: RADIO_GROUPS_STATE,
-        files: FILES_STATE,
-        checkboxes: CHECKBOXES_STATE,
+        inputs: null,
+        // radioGroups: null,
+        // files: null,
+        // checkboxes: null,
     },
 };
 /** @internal */
@@ -123,16 +130,9 @@ export interface IRadioGroupParentContext {
     children?: any;
 }
 /** @internal */
-export const InputsContext = React.createContext(INPUTS_STATE);
+// export const RadioGroupContext = React.createContext<TypeRadioGroupMetadata>(RADIO_GROUPS_STATE);
 /** @internal */
-export const CheckBoxesContext = React.createContext(CHECKBOXES_STATE);
-/** @internal */
-export const FilesContext = React.createContext(FILES_STATE);
-/** @internal */
-export const RadioGroupContext = React.createContext(RADIO_GROUPS_STATE);
-
-/** @internal */
-export const FormContext = React.createContext(providerContext);
+export const FormContext = React.createContext<IFormContext>(providerContext);
 /** @internal */
 export const FormProvider = FormContext.Provider;
 /**
@@ -206,10 +206,8 @@ export const Form = (props: IForm) => {
 
     const [context, updateContext] = useState(providerContext);
 
-    const [inputContext, updateInputContext] = useState(INPUTS_STATE);
-    const [filesContext, updateFilesContext] = useState(FILES_STATE);
-    const [radioGroupsContext, updateRadioGroupsContext] = useState(RADIO_GROUPS_STATE);
-    const [checkboxesContext, updateCheckboxes] = useState(CHECKBOXES_STATE);
+    const [inputState, updateInputState] = useState(undefined);
+
 
     const _providerContext: IFormContext = {
         bare: props.bare || context.bare,
@@ -217,9 +215,13 @@ export const Form = (props: IForm) => {
         formKey: props.formKey,
         debug: props.debug || context.debug,
         dynamic: props.dynamic || context.dynamic,
-        metadata: context.metadata,
         updateParentState: updateParentState(parentState, setParentState),
-        updateMetadata: updateMetadata(context, updateContext),
+        //updateMetadata: updateMetadata(context, updateContext),
+        metadata: {
+            inputs: new Metadata<TypeInputMetadata>(inputState, updateInputState, METADATA_NAMES.INPUTS)
+        },
+
+
     };
     
     return (

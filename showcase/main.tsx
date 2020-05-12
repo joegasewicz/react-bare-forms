@@ -1,16 +1,19 @@
 import * as React from "react";
 import {FormConsumer, Form} from "../src/form";
 import {
-    CheckBoxField,
-    EmailField, FileField,
-    PasswordField,
-    RadioField, RadioGroup, SelectField,
-    TextAreaField,
+    // CheckBoxField,
+    // EmailField, FileField,
+    // PasswordField,
+    // RadioField, RadioGroup, SelectField,
+    // TextAreaField,
     TextInputField
 } from "../src/elements";
-import {areFieldsEqual, isChecked, isEmailValid, isFieldEmpty, isFile, isRadioChecked} from "../src/validators";
+import {isFieldEmpty} from "../src/validators";
 import {SubmitButton} from "../src/submit_button";
 import {createFileRef, getFileFromRef} from "../src/uncrontrolled";
+import {areFieldsEqual} from "../src/validators";
+import {doc} from "prettier";
+
 
 interface IProps{}
 
@@ -70,84 +73,84 @@ export class Main extends React.Component<IProps, IState> {
                                     validators={[isFieldEmpty(5)]}
                                 />
 
-                                <PasswordField
-                                    name="password"
-                                    value={this.state.password}
-                                    labelText="Pasword"
-                                    validators={[isFieldEmpty(5)]}
-                                />
+                            {/*    <PasswordField*/}
+                            {/*        name="password"*/}
+                            {/*        value={this.state.password}*/}
+                            {/*        labelText="Pasword"*/}
+                            {/*        validators={[isFieldEmpty(5)]}*/}
+                            {/*    />*/}
 
-                                <PasswordField
-                                name="confirmPassword"
-                                value={this.state.confirmPassword}
-                                hint="Password must match"
-                                labelText="Confirm Password"
-                                validators={[isFieldEmpty(5), areFieldsEqual("password")]}
-                            />
+                            {/*    <PasswordField*/}
+                            {/*    name="confirmPassword"*/}
+                            {/*    value={this.state.confirmPassword}*/}
+                            {/*    hint="Password must match"*/}
+                            {/*    labelText="Confirm Password"*/}
+                            {/*    validators={[isFieldEmpty(5), areFieldsEqual("password")]}*/}
+                            {/*/>*/}
 
-                                <EmailField
-                                    name="email"
-                                    value={this.state.email}
-                                    hint="Your email"
-                                    labelText="Please enter your email"
-                                    validators={[isEmailValid()]}
-                                />
+                            {/*    <EmailField*/}
+                            {/*        name="email"*/}
+                            {/*        value={this.state.email}*/}
+                            {/*        hint="Your email"*/}
+                            {/*        labelText="Please enter your email"*/}
+                            {/*        validators={[isEmailValid()]}*/}
+                            {/*    />*/}
 
-                                <TextAreaField
-                                    name="about"
-                                    value={this.state.about}
-                                    hint="Your email"
-                                    labelText="Must be at least 20 characters"
-                                    validators={[isFieldEmpty(20)]}
-                                />
+                            {/*    <TextAreaField*/}
+                            {/*        name="about"*/}
+                            {/*        value={this.state.about}*/}
+                            {/*        hint="Your email"*/}
+                            {/*        labelText="Must be at least 20 characters"*/}
+                            {/*        validators={[isFieldEmpty(20)]}*/}
+                            {/*    />*/}
 
-                                <CheckBoxField
-                                    name="terms"
-                                    checked={this.state.terms}
-                                    hint="Click to agree"
-                                    labelText="Agree to terms & conditions"
-                                    validators={[isChecked()]}
-                                />
+                            {/*    <CheckBoxField*/}
+                            {/*        name="terms"*/}
+                            {/*        checked={this.state.terms}*/}
+                            {/*        hint="Click to agree"*/}
+                            {/*        labelText="Agree to terms & conditions"*/}
+                            {/*        validators={[isChecked()]}*/}
+                            {/*    />*/}
 
 
-                                <RadioGroup name="group1">
-                                    <RadioField
-                                        name="radio1"
-                                        checked={this.state.radio1}
-                                        hint="Click to agree"
-                                        labelText="Agree to terms & conditions"
-                                        validators={[isRadioChecked()]}
-                                    />
+                            {/*    <RadioGroup name="group1">*/}
+                            {/*        <RadioField*/}
+                            {/*            name="radio1"*/}
+                            {/*            checked={this.state.radio1}*/}
+                            {/*            hint="Click to agree"*/}
+                            {/*            labelText="Agree to terms & conditions"*/}
+                            {/*            validators={[isRadioChecked()]}*/}
+                            {/*        />*/}
 
-                                    <RadioField
-                                        name="radio2"
-                                        checked={this.state.radio2}
-                                        hint="Click to agree"
-                                        labelText="Agree to terms & conditions"
-                                    />
+                            {/*        <RadioField*/}
+                            {/*            name="radio2"*/}
+                            {/*            checked={this.state.radio2}*/}
+                            {/*            hint="Click to agree"*/}
+                            {/*            labelText="Agree to terms & conditions"*/}
+                            {/*        />*/}
 
-                                    <RadioField
-                                        name="radio3"
-                                        checked={this.state.radio3}
-                                        hint="Click to agree"
-                                        labelText="Agree to terms & conditions"
-                                    />
-                                </RadioGroup>
+                            {/*        <RadioField*/}
+                            {/*            name="radio3"*/}
+                            {/*            checked={this.state.radio3}*/}
+                            {/*            hint="Click to agree"*/}
+                            {/*            labelText="Agree to terms & conditions"*/}
+                            {/*        />*/}
+                            {/*    </RadioGroup>*/}
 
-                                <SelectField
-                                    size="lg"
-                                    value={this.state.fruitChoice}
-                                    name="fruitChoice"
-                                    options={["banana", "apple", "orange"]}
-                                />
+                            {/*    <SelectField*/}
+                            {/*        size="lg"*/}
+                            {/*        value={this.state.fruitChoice}*/}
+                            {/*        name="fruitChoice"*/}
+                            {/*        options={["banana", "apple", "orange"]}*/}
+                            {/*    />*/}
 
-                                <FileField
-                                    ref={this.myFileRef}
-                                    hint="Must be a file"
-                                    labelText="Upload your file"
-                                    name="myFileTest"
-                                    validators={[isFile()]}
-                                />
+                            {/*    <FileField*/}
+                            {/*        ref={this.myFileRef}*/}
+                            {/*        hint="Must be a file"*/}
+                            {/*        labelText="Upload your file"*/}
+                            {/*        name="myFileTest"*/}
+                            {/*        validators={[isFile()]}*/}
+                            {/*    />*/}
 
                                 <SubmitButton>Submit Form</SubmitButton>
 
@@ -155,14 +158,25 @@ export class Main extends React.Component<IProps, IState> {
                                 <FormConsumer>
                                     {(context: any) => {
                                         // this.setState({...context});
-                                        return <div><code>Form State: {JSON.stringify(context)}</code></div>;
+                                        return <div className="container"><code><var>state</var>: {JSON.stringify(context.state)}</code></div>;
+                                    }}
+                                </FormConsumer>
+                                <br />
+                                <br />
+                                <FormConsumer>
+                                    {(context: any) => {
+                                        // this.setState({...context});
+                                        return <div className="container"><code><var>metadata</var>: {JSON.stringify(context.metadata)}</code></div>;
                                     }}
                                 </FormConsumer>
                             </Form>
 
                         </div>
+                        <br />
+                        <div className="container">
+                            <code><var>State</var>: {JSON.stringify(this.state)}</code>
+                        </div>
 
-                        <code>State: {JSON.stringify(this.state)}</code>
 
                     </div>
                 </div>

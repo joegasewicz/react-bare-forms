@@ -57,7 +57,7 @@ export const areFieldsEqual: IValidationVariable = customValidator((passwordKey,
  * @param minLength The minimum length of the form field value
  */
 export const isFieldEmpty: IValidationVariable = customValidator((minLength, fieldValue, _) => {
-    const isValid = (fieldValue.length >= minLength);
+    const isValid = (fieldValue && fieldValue.length >= minLength);
     if(!isValid) {
         return [`Must be at least ${minLength} characters`];
     }
@@ -74,49 +74,49 @@ export const isFieldEmpty: IValidationVariable = customValidator((minLength, fie
  *  // message: Must be a valid email
  * ```
  */
-export const isEmailValid: IValidationVariable = customValidator((_ , fieldValue, context) => {
-    const isValid = EMAIL_REGEX.test(String(fieldValue).toLowerCase());
-    if(!isValid) {
-        return [`Must be a valid email`];
-    }
-});
+// export const isEmailValid: IValidationVariable = customValidator((_ , fieldValue, context) => {
+//     const isValid = EMAIL_REGEX.test(String(fieldValue).toLowerCase());
+//     if(!isValid) {
+//         return [`Must be a valid email`];
+//     }
+// });
 
 /**
  * @example
  */
-export const isFile: IValidationVariable = customValidator((_, name, context) => {
-    if(name in context.metadata.files) {
-        if(!context.metadata.files[name].file || Object.keys(context.metadata.files[name].file).length === 0) {
-            return [`Must be a file type`];
-        }
-    }
-});
+// export const isFile: IValidationVariable = customValidator((_, name, context) => {
+//     if(name in context.metadata.files) {
+//         if(!context.metadata.files[name].file || Object.keys(context.metadata.files[name].file).length === 0) {
+//             return [`Must be a file type`];
+//         }
+//     }
+// });
 
 /**
  *
  */
-export const isRadioChecked: IValidationVariable = customValidator((_ , [name, parent], context) => {
-    let fieldGroup = context.metadata.radioGroups[parent];
-    if(fieldGroup) {
-        // @ts-ignore TODO
-        let radio = fieldGroup[name];
-        if(radio && !radio.isChecked) {
-            return [`Radio ... must be selected`];
-        }
-    }
-});
+// export const isRadioChecked: IValidationVariable = customValidator((_ , [name, parent], context) => {
+//     let fieldGroup = context.metadata.radioGroups[parent];
+//     if(fieldGroup) {
+//         // @ts-ignore TODO
+//         let radio = fieldGroup[name];
+//         if(radio && !radio.isChecked) {
+//             return [`Radio ... must be selected`];
+//         }
+//     }
+// });
 
 /**
  *
  */
-export const isChecked: IValidationVariable = customValidator((_, name, context) => {
-    let checkbox = context.metadata.checkboxes[name];
-    if(checkbox) {
-        if(!checkbox.isChecked) {
-            return [`Must be checked`];
-        }
-    }
-});
+// export const isChecked: IValidationVariable = customValidator((_, name, context) => {
+//     let checkbox = context.metadata.checkboxes[name];
+//     if(checkbox) {
+//         if(!checkbox.isChecked) {
+//             return [`Must be checked`];
+//         }
+//     }
+// });
 
 /**
  * Function that takes a callback which contains the callers own validation logic

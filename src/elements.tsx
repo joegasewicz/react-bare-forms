@@ -3,16 +3,18 @@ import {IValidators} from "./validators";
 import {
     IForm,
     IRadioGroupParentContext,
-    RadioGroupContext, TypeRadioGroupMetadata
+    // RadioGroupContext,
+    TypeRadioGroupMetadata,
 } from "./form";
 import {
     InputField,
-    TextAreaField as _TextAreaField,
-    CheckBoxField as _CheckBoxField,
-    RadioField as _RadioField,
-    SelectField as _SelectField,
-    FileField as _FileField,
+    // TextAreaField as _TextAreaField,
+    // CheckBoxField as _CheckBoxField,
+    // RadioField as _RadioField,
+    // SelectField as _SelectField,
+    // FileField as _FileField,
 } from "./core/_field";
+import {Metadata} from "./core/services/_metadata";
 
 
 /** @internal */
@@ -153,10 +155,10 @@ export const TextInputField = (props: ITextInputField) => {
  *
  * @constructor
  */
-export const PasswordField = (props: IPasswordField) => {
-  const passwordInput = new InputField<IPasswordField>(FIELD_NAMES.PASSWORD, props);
-  return passwordInput.create();
-};
+// export const PasswordField = (props: IPasswordField) => {
+//   const passwordInput = new InputField<IPasswordField>(FIELD_NAMES.PASSWORD, props);
+//   return passwordInput.create();
+// };
 
 /**
  *
@@ -179,10 +181,10 @@ export const PasswordField = (props: IPasswordField) => {
  * ```
  * @constructor
  */
-export const EmailField = (props: IEmailField) => {
-  const emailInput = new InputField<IEmailField>(FIELD_NAMES.EMAIL, props);
-  return emailInput.create();
-};
+// export const EmailField = (props: IEmailField) => {
+//   const emailInput = new InputField<IEmailField>(FIELD_NAMES.EMAIL, props);
+//   return emailInput.create();
+// };
 
 
 /**
@@ -207,10 +209,10 @@ export const EmailField = (props: IEmailField) => {
  * @param props
  * @constructor
  */
-export const CheckBoxField = (props: ICheckBoxField) => {
-  const checkBox = new _CheckBoxField<ICheckBoxField>(FIELD_NAMES.CHECKBOX, props);
-  return checkBox.create();
-};
+// export const CheckBoxField = (props: ICheckBoxField) => {
+//   const checkBox = new _CheckBoxField<ICheckBoxField>(FIELD_NAMES.CHECKBOX, props);
+//   return checkBox.create();
+// };
 
 /**
  * The TextAreaField takes in an extra prop of *row* which is a number & declares
@@ -237,10 +239,10 @@ export const CheckBoxField = (props: ICheckBoxField) => {
  * @param props
  * @constructor
  */
-export const TextAreaField = (props: ITextAreaField) => {
-  const textArea = new _TextAreaField<ITextAreaField>(FIELD_NAMES.TEXTAREA, props);
-  return textArea.create();
-};
+// export const TextAreaField = (props: ITextAreaField) => {
+//   const textArea = new _TextAreaField<ITextAreaField>(FIELD_NAMES.TEXTAREA, props);
+//   return textArea.create();
+// };
 
 export interface IRadioGroupProps {
     name: string;
@@ -252,38 +254,38 @@ export interface IRadioGroupProps {
  * @param props
  * @constructor
  */
-export function RadioGroup(props: IRadioGroupProps) {
-    const contextValue: IRadioGroupParentContext = {parent: {name: props.name}, children: props.children};
-    return <RadioGroupContext.Provider value={contextValue as TypeRadioGroupMetadata}>{props.children}</RadioGroupContext.Provider>;
-}
+// export function RadioGroup(props: IRadioGroupProps) {
+//     const contextValue: IRadioGroupParentContext = {parent: {name: props.name}, children: props.children};
+//     return <RadioGroupContext.Provider value={contextValue as TypeRadioGroupMetadata}>{props.children}</RadioGroupContext.Provider>;
+// }
 
 /**
  *
  * @param props
  * @constructor
  */
-export const RadioField = (props: IRadioField) => {
-    const radio = new _RadioField(FIELD_NAMES.RADIO, props);
-    return radio.create();
-};
+// export const RadioField = (props: IRadioField) => {
+//     const radio = new _RadioField(FIELD_NAMES.RADIO, props);
+//     return radio.create();
+// };
 
 /**
  *
  * @param props
  * @constructor
  */
-export const SelectField = (props: ISelectField) => {
-    const select = new _SelectField(FIELD_NAMES.SELECT, props);
-    return select.create();
-};
+// export const SelectField = (props: ISelectField) => {
+//     const select = new _SelectField(FIELD_NAMES.SELECT, props);
+//     return select.create();
+// };
 
 /**
  *
  * @param props
  * @constructor
  */
-export const FileField = React.forwardRef((props: IFileField, ref: React.RefObject<HTMLFormElement>) => {
-    let _props = {...props, ref };
-    const file = new _FileField<IFileField>(FIELD_NAMES.FILE, _props);
-    return file.create();
-});
+// export const FileField = React.forwardRef((props: IFileField, ref: React.RefObject<HTMLFormElement>) => {
+//     let _props = {...props, ref };
+//     const file = new _FileField<IFileField>(FIELD_NAMES.FILE, _props);
+//     return file.create();
+// });

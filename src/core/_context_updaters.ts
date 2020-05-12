@@ -10,39 +10,39 @@ import {IFile} from "./_file";
 type TypeUpdateValidation<T> = (updateData: T) => IFormContext;
 
 /** @internal */
-function _updateValidationContext<T>(context: IFormContext, type: TypeMetadataNames): TypeUpdateValidation<T> {
-    return function(updateData: T) {
-        return {
-           ...context,
-           metadata: {
-               ...context.metadata,
-               [type]: {
-                   ...context.metadata[type],
-                   ...updateData,
-               },
-           },
-       };
-    }
-}
+// function _updateValidationContext<T>(context: IFormContext, type: TypeMetadataNames): TypeUpdateValidation<T> {
+//     return function(updateData: T) {
+//         return {
+//            ...context,
+//            metadata: {
+//                ...context.metadata,
+//                [type]: {
+//                    ...context.metadata[type],
+//                    ...updateData,
+//                },
+//            },
+//        };
+//     }
+// }
 
 /** @internal */
-function _isMatch(name: string, file: IFile, context: IFormContext): boolean {
-    // Theres a bug here that makes file update twice, the second time wipes our all the data ..
-    let fileInMetadata = context.metadata.files[name].file;
-    if(!fileInMetadata && file || fileInMetadata && !file) return true;
-    if(fileInMetadata) {
-        if(fileInMetadata.name !== file.name) {
-            return true;
-        }
-        // In case the user has duplicate filenames in different directories
-        // we also coerce against the lastModified values.
-        // @ts-ignore
-        if(fileInMetadata.lastModified !== file.lastModified) {
-            return true;
-        }
-    }
-    return false;
-}
+// function _isMatch(name: string, file: IFile, context: IFormContext): boolean {
+//     // Theres a bug here that makes file update twice, the second time wipes our all the data ..
+//     let fileInMetadata = context.metadata.files[name].file;
+//     if(!fileInMetadata && file || fileInMetadata && !file) return true;
+//     if(fileInMetadata) {
+//         if(fileInMetadata.name !== file.name) {
+//             return true;
+//         }
+//         // In case the user has duplicate filenames in different directories
+//         // we also coerce against the lastModified values.
+//         // @ts-ignore
+//         if(fileInMetadata.lastModified !== file.lastModified) {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
 
 /** @internal */
 export const updateMetadata = (context: any, update: any) => {
@@ -55,9 +55,9 @@ export const updateMetadata = (context: any, update: any) => {
      */
     return (name: string, match: any, validation: Array<IValidation>, type: TypeMetadataNames): void => {
         // Metadata field update types
-        const updateInput = _updateValidationContext<IInputFieldMetadata>(context, "inputs");
-        const updateFiles = _updateValidationContext<IFileMetaData>(context, "files");
-        const updateCheckboxes = _updateValidationContext<ICheckBoxesMetadata>(context, "checkboxes");
+        // const updateInput = _updateValidationContext<IInputFieldMetadata>(context, "inputs");
+        // const updateFiles = _updateValidationContext<IFileMetaData>(context, "files");
+        // const updateCheckboxes = _updateValidationContext<ICheckBoxesMetadata>(context, "checkboxes");
 
         switch(type) {
             case "inputs": {
@@ -70,13 +70,13 @@ export const updateMetadata = (context: any, update: any) => {
                             isTouched: !!match,
                         },
                     };
-                    const updatedData = updateInput(inputs);
-                    update(updatedData);
+                    // const updatedData = updateInput(inputs);
+                    // update(updatedData);
                 }
                 break;
             }
             case "files": {
-                if(!(name in context.metadata.files) || _isMatch(name, match, context)) {
+                if(!(name in context.metadata.files) || true) {
                     let files = {
                         ...context.metadata.files,
                         [name]: {
@@ -86,7 +86,7 @@ export const updateMetadata = (context: any, update: any) => {
                             refName: name,
                         }
                     };
-                    update(updateFiles(files));
+                    // update(updateFiles(files));
                 }
                 break;
             }
@@ -100,7 +100,7 @@ export const updateMetadata = (context: any, update: any) => {
                             isChecked: match,
                         }
                     };
-                    update(updateCheckboxes(checkboxes));
+                    // update(updateCheckboxes(checkboxes));
                 }
                 break;
             }
