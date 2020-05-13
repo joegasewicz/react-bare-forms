@@ -13,7 +13,7 @@ import {getFieldValueType} from "../core/_helpers";
 import {FIELD_NAMES} from "../elements";
 
 /** @internal **/
-interface IMetadata<T> {
+export interface IMetadata<T> {
     state: {[k: string]: T};
     readonly updateState: Function;
     readonly metaType: string;
