@@ -6,7 +6,7 @@ import {AbstractMetadata} from "./_AbstractMetadata";
 
 
 /** @internal **/
-export class MetadataGroup<T> extends AbstractMetadata<T> {
+export class _MetadataGroup<T> extends AbstractMetadata<T> {
     public defaultState = {} as T;
     public readonly parentName: string;
 
