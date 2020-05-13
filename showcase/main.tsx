@@ -7,10 +7,11 @@ import {
     // PasswordField,
     // RadioField, RadioGroup, SelectField,
     // TextAreaField,
-    TextInputField
+    TextInputField,
+    SubmitButton
 } from "../src/elements";
 import {isEmailValid, isFieldEmpty} from "../src/validators";
-import {SubmitButton} from "../src/submit_button";
+
 import {createFileRef, getFileFromRef} from "../src/uncrontrolled";
 import {areFieldsEqual} from "../src/validators";
 import {doc} from "prettier";

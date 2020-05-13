@@ -1,5 +1,5 @@
 import {ReactElement, default as React, useContext, useEffect} from "react";
-import {FormContext, METADATA_NAMES} from "./form";
+import {FormContext, METADATA_NAMES} from "../form";
 
 export interface IButton<T> {
     create(): (props: ISubmitButtonProps) => ReactElement<T>;
@@ -23,7 +23,7 @@ export interface ISubmitButtonProps {
  * SubmitButton is the main component for submitting forms.
  *
  */
-class _SubmitButton implements Button<ISubmitButtonProps> {
+export class SubmitButton implements Button<ISubmitButtonProps> {
 
     create() {
        return (props: ISubmitButtonProps) => {
@@ -102,4 +102,3 @@ class _SubmitButton implements Button<ISubmitButtonProps> {
     }
 }
 
-export const SubmitButton = new _SubmitButton().create();

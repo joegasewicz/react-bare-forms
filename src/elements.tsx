@@ -15,7 +15,7 @@ import {
 } from "./classes/_AbstractField";
 import {Metadata} from "./classes/_Metadata";
 import {InputField} from "./classes/_InputField";
-
+import {SubmitButton as _SubmitButton} from "./classes/_SubmitButton";
 
 /** @internal */
 export enum FIELD_NAMES {
@@ -290,3 +290,6 @@ export interface IRadioGroupProps {
 //     const file = new _FileField<IFileField>(FIELD_NAMES.FILE, _props);
 //     return file.create();
 // });
+
+
+export const SubmitButton = new _SubmitButton().create();
