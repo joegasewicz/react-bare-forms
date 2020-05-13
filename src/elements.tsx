@@ -106,7 +106,7 @@ export interface ISelectField extends IField {
  * @constructor
  */
 export const TextInputField = (props: ITextInputField) => {
-  const textInput = new InputField<ITextInputField>(FIELD_NAMES.TEXTAREA, props);
+  const textInput = new InputField<ITextInputField>(FIELD_NAMES.TEXT, props);
   return textInput.create();
 };
 

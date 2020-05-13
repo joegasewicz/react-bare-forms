@@ -8,33 +8,34 @@
 //  IMPORTANT: Metadata objects only care about their own IMetadata state type (see METADATA_NAMES).
 //  IMPORTANT: Children objects of MetadataGroup care about their parent & their own state type only.
 import {
+    IFieldValidation,
     IInputFieldMetadata,
-    METADATA_NAMES, TypeFormMetadata, TypeInputMetadata,
+    METADATA_NAMES, TypeFormMetadata, TypeIFieldMetadata, TypeInputMetadata,
 } from "../../form";
 import {IValidation} from "../../validators";
 
 /** @internal **/
 interface IMetadata<T> {
-    readonly state: any;
+    state: {[k: string]: T};
     readonly updateState: Function;
     readonly type: string;
     readonly parentName?: string;
     readonly name: string;
     defaultState: {};
     init: () => void;
-    update: (props: T, validation: Array<IValidation>) => void;
+    update: (props: any, validation: Array<IValidation>) => void;
 }
 
 /** @internal **/
 export abstract class AbstractMetadata<T> implements IMetadata<T> {
-    public readonly state: T;
+    public state: {[k: string]: T};
     public readonly updateState: Function;
     public readonly type: METADATA_NAMES;
     public readonly parentName?: string;
     public _name: string;
     public abstract defaultState: T;
 
-    protected constructor(state: T, updateState: Function, type: METADATA_NAMES) {
+    protected constructor(state: {[k: string]: T}, updateState: Function, type: METADATA_NAMES) {
         this.state = state;
         this.updateState = updateState;
         this.type = type;
@@ -50,32 +51,32 @@ export abstract class AbstractMetadata<T> implements IMetadata<T> {
 
     abstract init(): void
 
-    abstract update(props: T, validation: Array<IValidation>): void;
+    abstract update(props: any, validation: Array<IValidation>): void;
 
 }
 
 /** @internal **/
-export class Metadata<T extends TypeFormMetadata, U extends keyof T> extends AbstractMetadata<T> {
+export class Metadata<T extends IFieldValidation> extends AbstractMetadata<T> {
     public defaultState: T;
 
-    constructor(state: T, updateState: Function, type: METADATA_NAMES) {
+    constructor(state: {[k: string]: T}, updateState: Function, type: METADATA_NAMES) {
        super(state, updateState, type);
     }
 
     public init(): void {
-        if(!this.state) {
-            this.updateState(this.defaultState);
-        }
+        // if(!this.state) {
+        //     this.updateState(this.defaultState);
+        // }
     }
 
     public update(value: any, validation: Array<IValidation>): void {
-        if(this.state && this.name && !(this.name in this.state) ||
-            value !== this.state[this.name as U]) {
+        if(!(this.name in this.state) ||
+            this.state[this.name] && value !== this.state[this.name].fieldValues.currentValue) {
             let state = {
                 ...this.state,
                 [this.name]: {
                     validation,
-                    value: value,
+                    [this.state[this.name].fieldValues.type]: this.state[this.name].fieldValues.currentValue,
                     isTouched: false,
                 },
             };
@@ -89,7 +90,7 @@ export class MetadataGroup<T> extends AbstractMetadata<T> {
     public defaultState = {} as T;
     public readonly parentName: string;
 
-    constructor(state: T, updateState: Function, type: METADATA_NAMES) {
+    constructor(state: {[k: string]: T}, updateState: Function, type: METADATA_NAMES) {
         super(state, updateState, type);
     }
 
@@ -99,7 +100,7 @@ export class MetadataGroup<T> extends AbstractMetadata<T> {
         }
     }
 
-    public update(props: T, validation: Array<IValidation>): void {
+    public update(props: any, validation: Array<IValidation>): void {
 
     }
 }

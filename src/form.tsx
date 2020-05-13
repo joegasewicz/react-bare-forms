@@ -6,36 +6,37 @@ import {IRadioField, ITextInputField} from "./elements";
 import {getFileFromRef} from "./uncrontrolled";
 import {AbstractMetadata, Metadata} from "./core/services/_metadata";
 
-
+export interface IFieldValues {
+    currentValue: any;
+    readonly type: "value"|"checked"|"file";
+}
 /** @internal */
 export interface IFieldValidation {
+    readonly name: string;
     validation: Array<IValidation>;
+    fieldValues: IFieldValues;
+    isTouched: boolean;
 }
 /** @internal */
-export interface IInputFieldMetadata extends IFieldValidation {
-    isTouched: boolean;
-    value: any;
-}
+export interface IInputFieldMetadata extends IFieldValidation {}
 /** @internal */
 export interface IFileMetaData extends IFieldValidation {
-    isTouched: boolean;
-    refName: string;
-    file: File;
+    // readonly refName: string;
 }
 /** @internal */
 export interface IRadioGroupChildren extends IFieldValidation {
-    readonly name: string;
-    isChecked: boolean;
-    parent: string;
+    // readonly parent: string;
 }
 /** @internal */
-export interface ICheckBoxesMetadata extends IFieldValidation {
-    readonly name: string;
-    isChecked: boolean;
-    isTouched: boolean;
-}
+export interface ICheckBoxesMetadata extends IFieldValidation {}
 /** @internal */
-export type TypeInputMetadata = AbstractMetadata<TypeFormMetadata>;
+export type TypeIFieldMetadata =
+    | IInputFieldMetadata
+    | IFileMetaData
+    | IRadioGroupChildren
+    | ICheckBoxesMetadata;
+/** @internal */
+export type TypeInputMetadata = AbstractMetadata<IInputFieldMetadata>;
 /** @internal */
 export type TypeFileMetadata = AbstractMetadata<TypeFormMetadata>;
 /** @internal */
@@ -103,7 +104,7 @@ export interface IFormContext {
     // inputsMetadata?: AbstractMetadata<TypeInputMetadata>;
 }
 /** @internal */
-// const INPUTS_STATE: TypeInputMetadata = {};
+const INPUTS_STATE = {};
 /** @internal */
 // const RADIO_GROUPS_STATE: TypeRadioGroupMetadata = {};
 /** @internal */
@@ -206,7 +207,7 @@ export const Form = (props: IForm) => {
 
     const [context, updateContext] = useState(providerContext);
 
-    const [inputState, updateInputState] = useState(undefined);
+    const [inputState, updateInputState] = useState(INPUTS_STATE);
 
 
     const _providerContext: IFormContext = {
@@ -218,10 +219,8 @@ export const Form = (props: IForm) => {
         updateParentState: updateParentState(parentState, setParentState),
         //updateMetadata: updateMetadata(context, updateContext),
         metadata: {
-            [METADATA_NAMES.INPUTS]: new Metadata<TypeInputMetadata, "name">(inputState, updateInputState, METADATA_NAMES.INPUTS)
+            [METADATA_NAMES.INPUTS]: new Metadata<IInputFieldMetadata>(inputState, updateInputState, METADATA_NAMES.INPUTS)
         },
-
-
     };
     
     return (

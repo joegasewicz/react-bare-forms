@@ -70,14 +70,14 @@ abstract class _Field<PropsType extends any> {
 
     private init(): void {
         this.context = useContext<IFormContext>(FormContext);
-        this.metadata =this.context.metadata[getMetadataNameType(this.type)];
+        this.metadata = this.context.metadata[getMetadataNameType(this.type)];
         this.metadata.name = this.props.name;
-        this.bare = this.context.bare;
         this.metadata.init();
+        this.bare = this.context.bare;
     }
 
     public createField(fieldCallback: Function) {
-        const _validate = this.metadata.state && this.props.validators ?
+        const _validate = this.props.validators ?
             <FormElementValidators
                 results={this.validate()}
                 name={this.props.name}
@@ -108,7 +108,7 @@ abstract class _Field<PropsType extends any> {
             ];
         }
         // Update the metadata type state
-       // this.metadata.update(fieldValue, validation);
+        this.metadata.update(fieldValue, validation);
         return validation;
     }
 
