@@ -2,13 +2,14 @@ import * as React from "react";
 import {FormConsumer, Form} from "../src/form";
 import {
     // CheckBoxField,
-    // EmailField, FileField,
+    EmailField,
+    // FileField,
     // PasswordField,
     // RadioField, RadioGroup, SelectField,
     // TextAreaField,
     TextInputField
 } from "../src/elements";
-import {isFieldEmpty} from "../src/validators";
+import {isEmailValid, isFieldEmpty} from "../src/validators";
 import {SubmitButton} from "../src/submit_button";
 import {createFileRef, getFileFromRef} from "../src/uncrontrolled";
 import {areFieldsEqual} from "../src/validators";
@@ -88,13 +89,13 @@ export class Main extends React.Component<IProps, IState> {
                             {/*    validators={[isFieldEmpty(5), areFieldsEqual("password")]}*/}
                             {/*/>*/}
 
-                            {/*    <EmailField*/}
-                            {/*        name="email"*/}
-                            {/*        value={this.state.email}*/}
-                            {/*        hint="Your email"*/}
-                            {/*        labelText="Please enter your email"*/}
-                            {/*        validators={[isEmailValid()]}*/}
-                            {/*    />*/}
+                                <EmailField
+                                    name="email"
+                                    value={this.state.email}
+                                    hint="Your email"
+                                    labelText="Please enter your email"
+                                    validators={[isEmailValid()]}
+                                />
 
                             {/*    <TextAreaField*/}
                             {/*        name="about"*/}

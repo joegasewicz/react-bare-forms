@@ -115,6 +115,32 @@ export const TextInputField = (props: ITextInputField) => {
  * @param props
  * ```
  * // A bare form example ... remember to set the {@link Form.bare} property to `true`
+ * <TextInputField
+ *    value={this.state.username}
+ *    name="username"
+ * />
+ *
+ * // Example with Bootstrap styling (Bootstrap styling comes as default)
+ *
+ * <TextInputField
+ *    value={this.state.username}
+ *    name="username"
+ *    hint="Needs to be at least 50 characters long"
+ *    labelText="Username"
+ *  />
+ * ```
+ * @constructor
+ */
+export const EmailField = (props: IEmailField) => {
+    const emailInput = new InputField<IEmailField>(FIELD_NAMES.EMAIL, props);
+    return emailInput.create();
+};
+
+/**
+ *
+ * @param props
+ * ```
+ * // A bare form example ... remember to set the {@link Form.bare} property to `true`
  * <PasswordField
  *    value={this.state.username}
  *    name="username"
@@ -160,31 +186,6 @@ export const TextInputField = (props: ITextInputField) => {
 //   return passwordInput.create();
 // };
 
-/**
- *
- * @param props
- * ```
- * // A bare form example ... remember to set the {@link Form.bare} property to `true`
- * <TextInputField
- *    value={this.state.username}
- *    name="username"
- * />
- *
- * // Example with Bootstrap styling (Bootstrap styling comes as default)
- *
- * <TextInputField
- *    value={this.state.username}
- *    name="username"
- *    hint="Needs to be at least 50 characters long"
- *    labelText="Username"
- *  />
- * ```
- * @constructor
- */
-// export const EmailField = (props: IEmailField) => {
-//   const emailInput = new InputField<IEmailField>(FIELD_NAMES.EMAIL, props);
-//   return emailInput.create();
-// };
 
 
 /**

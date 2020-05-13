@@ -74,12 +74,12 @@ export const isFieldEmpty: IValidationVariable = customValidator((minLength, fie
  *  // message: Must be a valid email
  * ```
  */
-// export const isEmailValid: IValidationVariable = customValidator((_ , fieldValue, context) => {
-//     const isValid = EMAIL_REGEX.test(String(fieldValue).toLowerCase());
-//     if(!isValid) {
-//         return [`Must be a valid email`];
-//     }
-// });
+export const isEmailValid: IValidationVariable = customValidator((_ , fieldValue, context) => {
+    const isValid = EMAIL_REGEX.test(String(fieldValue).toLowerCase());
+    if(!isValid) {
+        return [`Must be a valid email`];
+    }
+});
 
 /**
  * @example
