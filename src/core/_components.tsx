@@ -3,7 +3,7 @@ import {default as React, useContext} from "react";
 import {IValidation} from "../validators";
 import {ReactElement} from "react";
 import {FormContext, IFormContext, METADATA_NAMES} from "../form";
-import {AbstractMetadata} from "../classes/_Metadata";
+
 
 
 /** @internal */

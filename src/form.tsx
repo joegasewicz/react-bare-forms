@@ -4,7 +4,9 @@ import {IValidation} from "./validators";
 // import {updateMetadata} from "./core/_context_updaters";
 import {IRadioField, ITextInputField} from "./elements";
 import {getFileFromRef} from "./uncrontrolled";
-import {AbstractMetadata, Metadata} from "./classes/_Metadata";
+import {AbstractMetadata} from "./classes/_AbstractMetadata";
+import {Metadata} from "./classes/_Metadata";
+
 
 
 /** @internal */
