@@ -6,9 +6,13 @@ import {IRadioField, ITextInputField} from "./elements";
 import {getFileFromRef} from "./uncrontrolled";
 import {AbstractMetadata, Metadata} from "./core/services/_metadata";
 
+
+/** @internal */
+export type TypeFieldValueTypes = "value"|"checked"|"file";
+/** @internal */
 export interface IFieldValues {
     currentValue: any;
-    readonly type: "value"|"checked"|"file";
+    readonly type: TypeFieldValueTypes;
 }
 /** @internal */
 export interface IFieldValidation {

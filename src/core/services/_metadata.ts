@@ -10,15 +10,18 @@
 import {
     IFieldValidation,
     IInputFieldMetadata,
-    METADATA_NAMES, TypeFormMetadata, TypeIFieldMetadata, TypeInputMetadata,
+    METADATA_NAMES, TypeFieldValueTypes, TypeFormMetadata, TypeIFieldMetadata, TypeInputMetadata,
 } from "../../form";
 import {IValidation} from "../../validators";
+import {getFieldValueType} from "../_helpers";
+import {FIELD_NAMES} from "../../elements";
 
 /** @internal **/
 interface IMetadata<T> {
     state: {[k: string]: T};
     readonly updateState: Function;
-    readonly type: string;
+    readonly metaType: string;
+    fieldType: FIELD_NAMES;
     readonly parentName?: string;
     readonly name: string;
     defaultState: {};
@@ -30,15 +33,16 @@ interface IMetadata<T> {
 export abstract class AbstractMetadata<T> implements IMetadata<T> {
     public state: {[k: string]: T};
     public readonly updateState: Function;
-    public readonly type: METADATA_NAMES;
+    public readonly metaType: METADATA_NAMES;
+    private _fieldType: FIELD_NAMES;
     public readonly parentName?: string;
-    public _name: string;
+    private _name: string;
     public abstract defaultState: T;
 
-    protected constructor(state: {[k: string]: T}, updateState: Function, type: METADATA_NAMES) {
+    protected constructor(state: {[k: string]: T}, updateState: Function, metaType: METADATA_NAMES) {
         this.state = state;
         this.updateState = updateState;
-        this.type = type;
+        this.metaType = metaType;
     }
 
     get name() {
@@ -47,6 +51,14 @@ export abstract class AbstractMetadata<T> implements IMetadata<T> {
 
     set name(val: string) {
         this._name = val;
+    }
+
+    get fieldType() {
+        return this._fieldType;
+    }
+
+    set fieldType(val: FIELD_NAMES) {
+        this._fieldType = val;
     }
 
     abstract init(): void
@@ -70,13 +82,31 @@ export class Metadata<T extends IFieldValidation> extends AbstractMetadata<T> {
     }
 
     public update(value: any, validation: Array<IValidation>): void {
-        if(!(this.name in this.state) ||
-            this.state[this.name] && value !== this.state[this.name].fieldValues.currentValue) {
-            let state = {
+        let state: IFieldValidation;
+        if(!(this.name in this.state)){
+            state = {
                 ...this.state,
                 [this.name]: {
+                    name: this.name,
                     validation,
-                    [this.state[this.name].fieldValues.type]: this.state[this.name].fieldValues.currentValue,
+                    isTouched: false,
+                    fieldValues: {
+                        type: getFieldValueType(this.fieldType),
+                        currentValue: this.state[this.name].fieldValues.currentValue,
+                    },
+                },
+            };
+            this.updateState(state);
+        } else if(this.state[this.name] && value !== this.state[this.name].fieldValues.currentValue) {
+            state = {
+                ...this.state,
+                [this.name]: {
+                    name: this.name,
+                    validation,
+                    fieldValues: {
+                        type: getFieldValueType(this.fieldType),
+                        currentValue: this.state[this.name].fieldValues.currentValue,
+                    },
                     isTouched: false,
                 },
             };

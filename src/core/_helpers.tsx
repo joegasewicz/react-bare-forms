@@ -4,7 +4,7 @@ import {
     FormContext,
     IFormContext,
     IRadioGroupChildren,
-    METADATA_NAMES,
+    METADATA_NAMES, TypeFieldValueTypes,
     TypeFormMetadata,
     TypeRadioGroupMetadata
 } from "../form";
@@ -145,6 +145,24 @@ export function getMetadataNameType(type: FIELD_NAMES): METADATA_NAMES {
         // }
         default: {
             return METADATA_NAMES.INPUTS;
+        }
+    }
+}
+
+/** @internal */
+export function getFieldValueType(type: FIELD_NAMES): TypeFieldValueTypes {
+    switch(type) {
+        case FIELD_NAMES.TEXT: {
+            return "value";
+        }
+        case FIELD_NAMES.EMAIL: {
+            return "value";
+        }
+        case FIELD_NAMES.PASSWORD: {
+            return "value";
+        }
+        default: {
+            return "value";
         }
     }
 }

@@ -72,6 +72,7 @@ abstract class _Field<PropsType extends any> {
         this.context = useContext<IFormContext>(FormContext);
         this.metadata = this.context.metadata[getMetadataNameType(this.type)];
         this.metadata.name = this.props.name;
+        this.metadata.fieldType = this.type;
         this.metadata.init();
         this.bare = this.context.bare;
     }
