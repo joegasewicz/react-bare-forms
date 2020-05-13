@@ -30,8 +30,8 @@ export abstract class AbstractMetadata<T> implements IMetadata<T> {
     public state: {[k: string]: T};
     public readonly updateState: Function;
     public readonly metaType: METADATA_NAMES;
-    private _fieldType: FIELD_NAMES;
     public readonly parentName?: string;
+    private _fieldType: FIELD_NAMES;
     private _name: string;
     public abstract defaultState: T;
 
@@ -78,7 +78,7 @@ export class Metadata<T extends IFieldValidation> extends AbstractMetadata<T> {
     }
 
     public update(value: any, validation: Array<IValidation>): void {
-        let state: IFieldValidation;
+        let state: {[k: string]: IFieldValidation};
         if(!(this.name in this.state)){
             state = {
                 ...this.state,
@@ -88,12 +88,12 @@ export class Metadata<T extends IFieldValidation> extends AbstractMetadata<T> {
                     isTouched: false,
                     fieldValues: {
                         type: getFieldValueType(this.fieldType),
-                        currentValue: this.state[this.name].fieldValues.currentValue,
+                        currentValue: null,
                     },
                 },
             };
             this.updateState(state);
-        } else if(this.state[this.name] && value !== this.state[this.name].fieldValues.currentValue) {
+        } else if(value && this.state[this.name] && value !== this.state[this.name].fieldValues.currentValue) {
             state = {
                 ...this.state,
                 [this.name]: {
@@ -101,9 +101,9 @@ export class Metadata<T extends IFieldValidation> extends AbstractMetadata<T> {
                     validation,
                     fieldValues: {
                         type: getFieldValueType(this.fieldType),
-                        currentValue: this.state[this.name].fieldValues.currentValue,
+                        currentValue: value,
                     },
-                    isTouched: false,
+                    isTouched: true,
                 },
             };
             this.updateState(state);
