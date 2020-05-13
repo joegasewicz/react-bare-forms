@@ -2,7 +2,7 @@ import {default as React, Provider, useEffect, useState} from "react";
 import {updateRadioGroupStateFromPassedInContext, updateParentState} from "./core/_handlers";
 import {IValidation} from "./validators";
 // import {updateMetadata} from "./core/_context_updaters";
-import {IRadioField} from "./elements";
+import {IRadioField, ITextInputField} from "./elements";
 import {getFileFromRef} from "./uncrontrolled";
 import {AbstractMetadata, Metadata} from "./core/services/_metadata";
 
@@ -218,7 +218,7 @@ export const Form = (props: IForm) => {
         updateParentState: updateParentState(parentState, setParentState),
         //updateMetadata: updateMetadata(context, updateContext),
         metadata: {
-            inputs: new Metadata<TypeInputMetadata>(inputState, updateInputState, METADATA_NAMES.INPUTS)
+            [METADATA_NAMES.INPUTS]: new Metadata<TypeInputMetadata, "name">(inputState, updateInputState, METADATA_NAMES.INPUTS)
         },
 
 

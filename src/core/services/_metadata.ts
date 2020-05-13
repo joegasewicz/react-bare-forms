@@ -8,7 +8,8 @@
 //  IMPORTANT: Metadata objects only care about their own IMetadata state type (see METADATA_NAMES).
 //  IMPORTANT: Children objects of MetadataGroup care about their parent & their own state type only.
 import {
-    METADATA_NAMES,
+    IInputFieldMetadata,
+    METADATA_NAMES, TypeFormMetadata, TypeInputMetadata,
 } from "../../form";
 import {IValidation} from "../../validators";
 
@@ -31,7 +32,7 @@ export abstract class AbstractMetadata<T> implements IMetadata<T> {
     public readonly type: METADATA_NAMES;
     public readonly parentName?: string;
     public _name: string;
-    public abstract defaultState: {};
+    public abstract defaultState: T;
 
     protected constructor(state: T, updateState: Function, type: METADATA_NAMES) {
         this.state = state;
@@ -54,8 +55,8 @@ export abstract class AbstractMetadata<T> implements IMetadata<T> {
 }
 
 /** @internal **/
-export class Metadata<T> extends AbstractMetadata<T> {
-    public defaultState: {} = {};
+export class Metadata<T extends TypeFormMetadata, U extends keyof T> extends AbstractMetadata<T> {
+    public defaultState: T;
 
     constructor(state: T, updateState: Function, type: METADATA_NAMES) {
        super(state, updateState, type);
@@ -67,14 +68,14 @@ export class Metadata<T> extends AbstractMetadata<T> {
         }
     }
 
-    public update(props: T, validation: Array<IValidation>): void {
-        if(this.state && this.name && !(this.name in this.state)) {
-
+    public update(value: any, validation: Array<IValidation>): void {
+        if(this.state && this.name && !(this.name in this.state) ||
+            value !== this.state[this.name as U]) {
             let state = {
                 ...this.state,
                 [this.name]: {
                     validation,
-                    value: "",
+                    value: value,
                     isTouched: false,
                 },
             };
@@ -85,7 +86,7 @@ export class Metadata<T> extends AbstractMetadata<T> {
 
 /** @internal **/
 export class MetadataGroup<T> extends AbstractMetadata<T> {
-    public defaultState: {} = {};
+    public defaultState = {} as T;
     public readonly parentName: string;
 
     constructor(state: T, updateState: Function, type: METADATA_NAMES) {

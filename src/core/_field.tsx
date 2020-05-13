@@ -37,7 +37,6 @@ function _genericFormGroup<T extends any>(props: T, children: any) {
     );
 }
 
-
 /** @internal */
 abstract class _Field<PropsType extends any> {
     public type: FIELD_NAMES;
@@ -80,7 +79,7 @@ abstract class _Field<PropsType extends any> {
     public createField(fieldCallback: Function) {
         const _validate = this.metadata.state && this.props.validators ?
             <FormElementValidators
-                results={this.doValidation()}
+                results={this.validate()}
                 name={this.props.name}
                 value={this.props.value}
                 type={getMetadataNameType(this.type)}
@@ -95,14 +94,21 @@ abstract class _Field<PropsType extends any> {
         }
     }
 
-    private doValidation(): Array<IValidation> {
+    private validate(): Array<IValidation> {
         let validation: Array<IValidation> = [];
-        this.props.validators.map((key: any, index: number) => {
-            validation = [...validation , this.props.validators[index](this.props.value, this.context)];
-        });
 
+        // Carry out the validation
+        let validators = this.props.validators;
+        let fieldValue = this.props.value;
+
+        for(let index in validators) {
+            validation = [
+                ...validation,
+                validators[index](fieldValue, this.context),
+            ];
+        }
         // Update the metadata type state
-        this.metadata.update(this.props, validation);
+       // this.metadata.update(fieldValue, validation);
         return validation;
     }
 
@@ -152,12 +158,12 @@ export class InputField<T extends any> extends _Field<T> implements IFieldClass<
     public getField() {
 
         return (context: IFormContext) => {
-            return <>{this.metadata.state && <input
+            return <>{<input
                 type={this.type}
                 value={this.context.state[this.props.name as T]|| ""}
                 onChange={(e) => this.context.updateParentState(e, this.props.name)}
                 name={this.props.name}
-                className={_Field.mergeDefaultCssWithProps("form-control", this.props.className, context.bare)}
+                className={_Field.mergeDefaultCssWithProps("form-control", this.props.className, this.bare)}
             />}</>;
         }
     }
