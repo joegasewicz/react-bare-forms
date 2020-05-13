@@ -7,10 +7,10 @@
 //  IMPORTANT: Objects that implement AbstractMetadata DO NOT care about the IFormContext.
 //  IMPORTANT: Metadata objects only care about their own IMetadata state type (see METADATA_NAMES).
 //  IMPORTANT: Children objects of MetadataGroup care about their parent & their own state type only.
-import {IFieldValidation, METADATA_NAMES} from "../../form";
-import {IValidation} from "../../validators";
-import {getFieldValueType} from "../_helpers";
-import {FIELD_NAMES} from "../../elements";
+import {IFieldValidation, METADATA_NAMES} from "../form";
+import {IValidation} from "../validators";
+import {getFieldValueType} from "../core/_helpers";
+import {FIELD_NAMES} from "../elements";
 
 /** @internal **/
 interface IMetadata<T> {

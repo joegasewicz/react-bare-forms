@@ -2,7 +2,7 @@ import {Context, default as React, ReactElement, useContext} from "react";
 
 import {
     getMetadataNameType,
-} from "./_helpers";
+} from "../core/_helpers";
 import {
     FormContext,
     IFormContext,
@@ -13,12 +13,12 @@ import {
     FIELD_NAMES,
 } from "../elements";
 import {IValidation} from "../validators";
-import {FormElementValidators} from "./_components";
+import {FormElementValidators} from "../core/_components";
 
 
 
 /** @internal */
-interface IFieldClass<T> {
+export interface IAbstractField<T> {
     create: (context: IFormContext) => ReactElement<T>;
     type: string;
     props: T;
@@ -27,7 +27,7 @@ interface IFieldClass<T> {
 }
 
 /** @internal */
-function _genericFormGroup<T extends any>(props: T, children: any) {
+export function _genericFormGroup<T extends any>(props: T, children: any) {
     return (
         <div className="form-group">
             {props.labelText && <label>{props.labelText}</label>}
@@ -38,7 +38,7 @@ function _genericFormGroup<T extends any>(props: T, children: any) {
 }
 
 /** @internal */
-abstract class _Field<PropsType extends any> {
+export abstract class AbstractField<PropsType extends any> {
     public type: FIELD_NAMES;
     public props: PropsType;
     public parent?: string;
@@ -137,39 +137,10 @@ abstract class _Field<PropsType extends any> {
     }
 }
 
-/** @internal */
-export class InputField<T extends any> extends _Field<T> implements IFieldClass<T> {
 
-    constructor(type: FIELD_NAMES, props: T) {
-        super(props, type);
-        this.type = type;
-        this.props = props;
-    }
-
-    public create() {
-        return this.createField(this.getField());
-    }
-
-    public formGroup(children: any): ReactElement {
-        return _genericFormGroup<T>(this.props, children);
-    }
-
-    public getField() {
-
-        return (context: IFormContext) => {
-            return <>{<input
-                type={this.type}
-                value={this.context.state[this.props.name as T]|| ""}
-                onChange={(e) => this.context.updateParentState(e, this.props.name)}
-                name={this.props.name}
-                className={_Field.mergeDefaultCssWithProps("form-control", this.props.className, this.bare)}
-            />}</>;
-        }
-    }
-}
 
 // /** @internal */
-// export class CheckBoxField<T extends any> extends _Field<T> implements IFieldClass<T> {
+// export class CheckBoxField<T extends any> extends AbstractField<T> implements IAbstractField<T> {
 //
 //     constructor(type: FIELD_NAMES, props: T) {
 //         super(props, type);
@@ -198,14 +169,14 @@ export class InputField<T extends any> extends _Field<T> implements IFieldClass<
 //                 checked={context.state[this.props.name] || false}
 //                 onChange={(e) => context.updateParentState(this.overrideEvent(e, context.state[this.props.name]), this.props.name)}
 //                 name={this.props.name}
-//                 className={_Field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
+//                 className={AbstractField.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
 //             />;
 //         }
 //     }
 // }
 //
 // /** @internal */
-// export class TextAreaField<T extends any> extends _Field<T> implements IFieldClass<T> {
+// export class TextAreaField<T extends any> extends AbstractField<T> implements IAbstractField<T> {
 //     constructor(type: FIELD_NAMES, props: T) {
 //         super(props, type);
 //         this.type = type;
@@ -237,7 +208,7 @@ export class InputField<T extends any> extends _Field<T> implements IFieldClass<
 // }
 //
 // /** @internal */
-// export class RadioField<T extends any> extends _Field<T> implements IFieldClass<T> {
+// export class RadioField<T extends any> extends AbstractField<T> implements IAbstractField<T> {
 //     public parent: string;
 //     constructor(type: FIELD_NAMES, props: T) {
 //         super(props, type);
@@ -271,14 +242,14 @@ export class InputField<T extends any> extends _Field<T> implements IFieldClass<
 //                 checked={context.state[this.props.name] || false}
 //                 name={this.props.name}
 //                 onChange={test}
-//                 className={_Field.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
+//                 className={AbstractField.mergeDefaultCssWithProps("form-check-input", this.props.className, context.bare)}
 //             />
 //         }
 //     }
 // }
 //
 // /** @internal */
-// export class SelectField<T extends any> extends _Field<T> implements IFieldClass<T> {
+// export class SelectField<T extends any> extends AbstractField<T> implements IAbstractField<T> {
 //
 //     constructor(type: FIELD_NAMES, props: T) {
 //         super(props, type);
@@ -302,7 +273,7 @@ export class InputField<T extends any> extends _Field<T> implements IFieldClass<
 //                 <select
 //                     onChange={(e) => context.updateParentState(e, this.props.name)}
 //                     name={this.props.name}
-//                     className={_Field.mergeDefaultCssWithProps(this.getSelectCssName(this.props.size), this.props.className, context.bare)}
+//                     className={AbstractField.mergeDefaultCssWithProps(this.getSelectCssName(this.props.size), this.props.className, context.bare)}
 //                 >
 //                     {options.map((optVal: string, i: number) => {
 //                         return <option value={optVal} key={i}>{optVal}</option>
@@ -322,7 +293,7 @@ export class InputField<T extends any> extends _Field<T> implements IFieldClass<
 // }
 //
 // /** @internal */
-// export class FileField<T extends any> extends _Field<T> implements IFieldClass<T> {
+// export class FileField<T extends any> extends AbstractField<T> implements IAbstractField<T> {
 //
 //     constructor(type: FIELD_NAMES, props: T) {
 //         super(props, type);
@@ -348,7 +319,7 @@ export class InputField<T extends any> extends _Field<T> implements IFieldClass<
 //                 ref={this.props.ref}
 //                 type="file"
 //                 onChange={(e) => updateFieldValidation(e, context)}
-//                 className={_Field.mergeDefaultCssWithProps("form-control-file", this.props.className, context.bare)}
+//                 className={AbstractField.mergeDefaultCssWithProps("form-control-file", this.props.className, context.bare)}
 //             />);
 //         }
 //     }

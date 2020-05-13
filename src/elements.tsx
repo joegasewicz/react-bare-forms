@@ -7,14 +7,14 @@ import {
     TypeRadioGroupMetadata,
 } from "./form";
 import {
-    InputField,
     // TextAreaField as _TextAreaField,
     // CheckBoxField as _CheckBoxField,
     // RadioField as _RadioField,
     // SelectField as _SelectField,
     // FileField as _FileField,
-} from "./core/_field";
-import {Metadata} from "./core/services/_metadata";
+} from "./classes/_AbstractField";
+import {Metadata} from "./classes/_Metadata";
+import {InputField} from "./classes/_InputField";
 
 
 /** @internal */

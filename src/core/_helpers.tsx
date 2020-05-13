@@ -10,7 +10,7 @@ import {
 } from "../form";
 import {IValidation} from "../validators";
 import {FIELD_NAMES} from "../elements";
-import {AbstractMetadata} from "./services/_metadata";
+import {AbstractMetadata} from "../classes/_Metadata";
 
 
 /** @internal */
