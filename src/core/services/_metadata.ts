@@ -1,5 +1,5 @@
 //=================================================================
-// PRIVATE CLASSES TO CREATE METADATA OBJECTS
+// PRIVATE SERVICE CLASSES TO CREATE METADATA OBJECTS
 //  1. AbstractMetadata
 //  2. Metadata
 //  3. MetadataGroup
@@ -21,7 +21,7 @@ interface IMetadata<T> {
     readonly parentName?: string;
     readonly name: string;
     defaultState: {};
-    init: () => void;
+    init: (name: string, fieldType: FIELD_NAMES) => void;
     update: (props: any, validation: Array<IValidation>) => void;
 }
 
@@ -57,7 +57,7 @@ export abstract class AbstractMetadata<T> implements IMetadata<T> {
         this._fieldType = val;
     }
 
-    abstract init(): void
+    abstract init(name: string, fieldType: FIELD_NAMES): void
 
     abstract update(props: any, validation: Array<IValidation>): void;
 
@@ -71,10 +71,9 @@ export class Metadata<T extends IFieldValidation> extends AbstractMetadata<T> {
        super(state, updateState, type);
     }
 
-    public init(): void {
-        // if(!this.state) {
-        //     this.updateState(this.defaultState);
-        // }
+    public init(name: string, fieldType: FIELD_NAMES): void {
+        this.name = name;
+        this.fieldType = fieldType;
     }
 
     public update(value: any, validation: Array<IValidation>): void {
@@ -120,10 +119,9 @@ export class MetadataGroup<T> extends AbstractMetadata<T> {
         super(state, updateState, type);
     }
 
-    public init(): void {
-        if(!this.state) {
-            this.updateState(this.defaultState);
-        }
+    public init(name: string, fieldType: FIELD_NAMES): void {
+        this.name = name;
+        this.fieldType = fieldType;
     }
 
     public update(props: any, validation: Array<IValidation>): void {
