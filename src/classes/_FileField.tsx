@@ -3,14 +3,12 @@ import {_genericFormGroup, AbstractField, IAbstractField} from "./_AbstractField
 import {FIELD_NAMES} from "../elements";
 import {createFileObject, IFile} from "../core/_file";
 import {IFormContext} from "../form";
-import {getFieldValueType} from "../core/_helpers";
 
 
 /**
  * @internal
  * The main difference of this class is that the onChange event is used only
  * to carry out the validation (which is set manually in FileField._updateFieldValidation).
- * This then updates the *files* metadata state only. See src/uncrontrolled.ts
  */
 export class FileField<T extends any> extends AbstractField<T> implements IAbstractField<T> {
 
@@ -50,7 +48,7 @@ export class FileField<T extends any> extends AbstractField<T> implements IAbstr
     private _updateFieldValidation = (): void => {
         this.file = createFileObject(this.props.ref);
         if(typeof this.file !== "undefined") {
-            this.metadata.update(this.file, (this.context as IFormContext).metadata.files.state[this.props.name].validation);
+            this.validate();
         }
     };
 

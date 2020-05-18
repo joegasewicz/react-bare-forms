@@ -29,6 +29,7 @@ export interface IAbstractField<T> {
     bare: boolean;
     overrideEvent: (e: any, value: any) => React.ChangeEvent<any>;
     getFieldValue: (props: any) => any
+    validate: () => Array<IValidation>;
 }
 
 /** @internal */
@@ -98,7 +99,12 @@ export abstract class AbstractField<PropsType extends any> {
         }
     }
 
-    private validate(): Array<IValidation> {
+    /**
+     * @internal
+     * @description Normally, this method will be called from this super class. But it is public as
+     * there are some edge cases where it needs to be called by a child class that extends AbstractField.
+     */
+    public validate(): Array<IValidation> {
         let validation: Array<IValidation> = [];
         let value = this.getFieldValue(this.props);
         // Carry out the validation
