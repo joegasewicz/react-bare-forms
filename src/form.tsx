@@ -53,8 +53,8 @@ export type TypeCheckboxesMetadata = AbstractMetadata<TypeFormMetadata>;
 export type TypeFormMetadata =
     | TypeInputMetadata
     | TypeRadioGroupMetadata
-    | TypeFileMetadata
-    | TypeCheckboxesMetadata;
+    | TypeCheckboxesMetadata
+    | TypeFileMetadata;
 /** @internal **/
 export type TypeMetadataNames =
     | "inputs"

@@ -7,7 +7,7 @@ import {
     FormContext,
     IFormContext,
     METADATA_NAMES,
-    TypeFormMetadata,
+    TypeFormMetadata, TypeIFieldMetadata,
 } from "../form";
 import {
     FIELD_NAMES,
@@ -79,9 +79,9 @@ export abstract class AbstractField<PropsType extends any> {
     public createField(fieldCallback: Function) {
         const _validate = this.props.validators ?
             <FormElementValidators
+                isTouched={this.metadata.isFieldTouched()}
                 results={this.validate()}
                 name={this.props.name}
-                value={this.props.value}
                 type={getMetadataNameType(this.type)}
                 parent={this.parent}
             /> :
@@ -98,17 +98,14 @@ export abstract class AbstractField<PropsType extends any> {
         let validation: Array<IValidation> = [];
 
         // Carry out the validation
-        let validators = this.props.validators;
-        let fieldValue = this.props.value;
-
-        for(let index in validators) {
+        for(let index in this.props.validators) {
             validation = [
                 ...validation,
-                validators[index](fieldValue, this.context),
+                this.props.validators[index](this.props.value, this.context),
             ];
         }
         // Update the metadata type state
-        this.metadata.update(fieldValue, validation);
+        this.metadata.update(this.props.value, validation);
         return validation;
     }
 

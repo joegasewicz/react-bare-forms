@@ -10,10 +10,10 @@ import {FormContext, IFormContext, METADATA_NAMES} from "../form";
 interface IFormElementValidators {
     readonly results: Array<IValidation>;
     readonly name: string;
-    readonly value: any;
     readonly type: METADATA_NAMES;
     readonly className?: string;
     readonly parent?: string;
+    readonly isTouched: boolean;
 }
 /** @internal */
 type TypeValidationElement = { results: Array<IValidation>, styles: string };
@@ -28,9 +28,11 @@ export function ValidationResults(props: TypeValidationElement): ReactElement<Ty
 }
 
 /** @internal */
-export const FormElementValidators = (props: IFormElementValidators): ReactElement => {
-    const {results, name, parent, type} = props;
+export const FormElementValidators = (props: IFormElementValidators): ReactElement|null => {
     const context: IFormContext = useContext(FormContext);
     const styles = !context.bare ? `alert mt-2 alert-danger ${props.className}` : props.className;
-    return <ValidationResults results={results} styles={styles || ""} />;
+    if(props.isTouched){
+        return <ValidationResults results={props.results} styles={styles || ""} />
+    }
+    return null;
 };

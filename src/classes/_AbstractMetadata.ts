@@ -7,7 +7,14 @@
 //  IMPORTANT: Objects that implement AbstractMetadata DO NOT care about the IFormContext.
 //  IMPORTANT: Metadata objects only care about their own IMetadata state type (see METADATA_NAMES).
 //  IMPORTANT: Children objects of MetadataGroup care about their parent & their own state type only.
-import {IFieldValidation, METADATA_NAMES} from "../form";
+import {
+    IFieldValidation,
+    IInputFieldMetadata,
+    METADATA_NAMES,
+    TypeFormMetadata,
+    TypeIFieldMetadata,
+    TypeInputMetadata
+} from "../form";
 import {IValidation} from "../validators";
 import {getFieldValueType} from "../core/_helpers";
 import {FIELD_NAMES} from "../elements";
@@ -60,5 +67,12 @@ export abstract class AbstractMetadata<T> implements IMetadata<T> {
     abstract init(name: string, fieldType: FIELD_NAMES): void
 
     abstract update(props: any, validation: Array<IValidation>): void;
+
+    public isFieldTouched(): boolean {
+        if(this.state[this.name]) {
+            return (this.state[this.name] as any).isTouched as boolean // TODO fix type
+        }
+        return false;
+    }
 
 }
