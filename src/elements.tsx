@@ -11,6 +11,7 @@ import {Metadata} from "./classes/_Metadata";
 import {InputField} from "./classes/_InputField";
 import {CheckBoxField as _CheckBoxField} from "./classes/_CheckBoxField";
 import {SubmitButton as _SubmitButton} from "./classes/_SubmitButton";
+import {SelectField as _SelectField} from "./classes/_SelectField";
 
 /** @internal */
 export enum FIELD_NAMES {
@@ -270,10 +271,10 @@ export interface IRadioGroupProps {
  * @param props
  * @constructor
  */
-// export const SelectField = (props: ISelectField) => {
-//     const select = new _SelectField(FIELD_NAMES.SELECT, props);
-//     return select.create();
-// };
+export const SelectField = (props: ISelectField) => {
+    const select = new _SelectField(FIELD_NAMES.SELECT, props);
+    return select.create();
+};
 
 /**
  *

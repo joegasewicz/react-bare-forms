@@ -5,7 +5,7 @@ import {
     TextInputField,
     EmailField,
     PasswordField,
-    TextAreaField, CheckBoxField,
+    TextAreaField, CheckBoxField, SelectField,
     // SelectField,
     // CheckBoxField,
     // FileField,
@@ -117,6 +117,20 @@ export class Main extends React.Component<IProps, IState> {
                                     validators={[isChecked()]}
                                 />
 
+                                    <SelectField
+                                        size="lg"
+                                        value={this.state.fruitChoice}
+                                        name="fruitChoice"
+                                        options={["banana", "apple", "orange"]}
+                                    />
+
+                                {/*    <FileField*/}
+                                {/*        ref={this.myFileRef}*/}
+                                {/*        hint="Must be a file"*/}
+                                {/*        labelText="Upload your file"*/}
+                                {/*        name="myFileTest"*/}
+                                {/*        validators={[isFile()]}*/}
+                                {/*    />*/}
 
                             {/*    <RadioGroup name="group1">*/}
                             {/*        <RadioField*/}
@@ -142,20 +156,7 @@ export class Main extends React.Component<IProps, IState> {
                             {/*        />*/}
                             {/*    </RadioGroup>*/}
 
-                            {/*    <SelectField*/}
-                            {/*        size="lg"*/}
-                            {/*        value={this.state.fruitChoice}*/}
-                            {/*        name="fruitChoice"*/}
-                            {/*        options={["banana", "apple", "orange"]}*/}
-                            {/*    />*/}
 
-                            {/*    <FileField*/}
-                            {/*        ref={this.myFileRef}*/}
-                            {/*        hint="Must be a file"*/}
-                            {/*        labelText="Upload your file"*/}
-                            {/*        name="myFileTest"*/}
-                            {/*        validators={[isFile()]}*/}
-                            {/*    />*/}
 
                                 <SubmitButton>Submit Form</SubmitButton>
 

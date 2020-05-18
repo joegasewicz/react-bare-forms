@@ -92,6 +92,9 @@ export function getFieldValueType(type: FIELD_NAMES): TypeFieldValueTypes {
         case FIELD_NAMES.CHECKBOX: {
             return "checked";
         }
+        case FIELD_NAMES.SELECT: {
+            return "value";
+        }
         default: {
             return "value";
         }

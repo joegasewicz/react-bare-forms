@@ -183,49 +183,7 @@ export abstract class AbstractField<PropsType extends any> {
 //     }
 // }
 //
-// /** @internal */
-// export class SelectField<T extends any> extends AbstractField<T> implements IAbstractField<T> {
-//
-//     constructor(type: FIELD_NAMES, props: T) {
-//         super(props, type);
-//         this.type = type;
-//         this.props = props;
-//     }
-//
-//     public create() {
-//         return this.createField(this.getField());
-//     }
-//
-//     public formGroup(children: any): ReactElement {
-//         return _genericFormGroup<T>(this.props, children);
-//     }
-//
-//     public getField() {
-//         const {options = [], size = "default"} = this.props;
-//         return (context: IFormContext) => {
-//
-//             return (
-//                 <select
-//                     onChange={(e) => context.updateParentState(e, this.props.name)}
-//                     name={this.props.name}
-//                     className={AbstractField.mergeDefaultCssWithProps(this.getSelectCssName(this.props.size), this.props.className, context.bare)}
-//                 >
-//                     {options.map((optVal: string, i: number) => {
-//                         return <option value={optVal} key={i}>{optVal}</option>
-//                     })}
-//                 </select>
-//             );
-//         }
-//     }
-//
-//     private getSelectCssName(name: TypeSelectCssSizeName) {
-//         if(name === "default") {
-//             return "form-control"
-//         } else {
-//             return `form-control form-control-${name}`;
-//         }
-//     }
-// }
+
 //
 // /** @internal */
 // export class FileField<T extends any> extends AbstractField<T> implements IAbstractField<T> {
