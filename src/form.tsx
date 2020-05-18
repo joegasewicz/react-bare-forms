@@ -6,6 +6,7 @@ import {IRadioField, ITextInputField} from "./elements";
 import {getFileFromRef} from "./uncrontrolled";
 import {AbstractMetadata} from "./classes/_AbstractMetadata";
 import {Metadata} from "./classes/_Metadata";
+import {MetadataFile} from "./classes/_MetadataFile";
 
 
 
@@ -27,7 +28,7 @@ export interface IFieldValidation {
 export interface IInputFieldMetadata extends IFieldValidation {}
 /** @internal */
 export interface IFileMetaData extends IFieldValidation {
-    // readonly refName: string;
+    readonly refName: string;
 }
 /** @internal */
 export interface IRadioGroupChildren extends IFieldValidation {
@@ -59,14 +60,14 @@ export type TypeFormMetadata =
 export interface IMetadata {
     // radioGroups: TypeRadioGroupMetadata;
     inputs: TypeInputMetadata;
-    // files: TypeInputMetadata;
+    files: TypeInputMetadata;
     checkboxes: TypeCheckboxesMetadata;
 }
 /** @internal **/
 export enum METADATA_NAMES {
     INPUTS = "inputs",
     // RADIO_GROUPS = "radioGroups",
-    // FILES = "files",
+    FILES = "files",
     CHECKBOXES = "checkboxes",
 }
 /**
@@ -106,7 +107,7 @@ const INPUTS_STATE = {};
 /** @internal */
 // const RADIO_GROUPS_STATE: TypeRadioGroupMetadata = {};
 /** @internal */
-// const FILES_STATE: TypeFileMetadata = {};
+const FILES_STATE = {};
 /** @internal */
 const CHECKBOXES_STATE = {};
 /** @internal */
@@ -119,7 +120,7 @@ const providerContext: IFormContext = {
     metadata: {
         inputs: null as any,
         // radioGroups: null,
-        // files: null,
+        files: null as any,
         checkboxes: null as any,
     },
 };
@@ -203,9 +204,10 @@ export const Form = (props: IForm) => {
         }, [parentState]);
     }
     // State Hooks
-    const [context, updateContext] = useState(providerContext);
+    const [context, _] = useState(providerContext);
     const [inputState, updateInputState] = useState(INPUTS_STATE);
     const [checkboxesState, updateCheckboxesState] = useState(CHECKBOXES_STATE);
+    const [fileState, updateFileState] = useState(FILES_STATE);
 
 
     const _providerContext: IFormContext = {
@@ -217,7 +219,8 @@ export const Form = (props: IForm) => {
         updateParentState: updateParentState(parentState, setParentState),
         metadata: {
             [METADATA_NAMES.INPUTS]: new Metadata<IInputFieldMetadata>(inputState, updateInputState, METADATA_NAMES.INPUTS),
-            [METADATA_NAMES.CHECKBOXES]: new Metadata<ICheckBoxesMetadata>(checkboxesState, updateCheckboxesState, METADATA_NAMES.CHECKBOXES)
+            [METADATA_NAMES.CHECKBOXES]: new Metadata<ICheckBoxesMetadata>(checkboxesState, updateCheckboxesState, METADATA_NAMES.CHECKBOXES),
+            [METADATA_NAMES.FILES]: new MetadataFile<IFileMetaData>(fileState, updateFileState, METADATA_NAMES.FILES),
         },
     };
 

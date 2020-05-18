@@ -65,9 +65,9 @@ export function getMetadataNameType(type: FIELD_NAMES): METADATA_NAMES {
         case FIELD_NAMES.SELECT: {
             return METADATA_NAMES.INPUTS;
         }
-        // case FIELD_NAMES.FILE: {
-        //     return METADATA_NAMES.FILES;
-        // }
+        case FIELD_NAMES.FILE: {
+            return METADATA_NAMES.FILES;
+        }
         default: {
             return METADATA_NAMES.INPUTS;
         }
@@ -94,6 +94,9 @@ export function getFieldValueType(type: FIELD_NAMES): TypeFieldValueTypes {
         }
         case FIELD_NAMES.SELECT: {
             return "value";
+        }
+        case FIELD_NAMES.FILE: {
+            return "file";
         }
         default: {
             return "value";

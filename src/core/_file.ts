@@ -13,8 +13,9 @@ export interface IFile {
 
 /** @internal */
 export function createFileObject(ref: React.RefObject<HTMLFormElement>): IFile|null {
-    try {
-        let {name, lastModified, lastModifiedDate, size, type} = getFileFromRef(ref) as any;
+    let fileData = getFileFromRef(ref);
+    if(fileData) {
+        let {name, lastModified, lastModifiedDate, size, type} = fileData;
         return {
             name,
             lastModified,
@@ -22,7 +23,6 @@ export function createFileObject(ref: React.RefObject<HTMLFormElement>): IFile|n
             size,
             type,
         };
-    } catch (err) {
-          return null;
     }
+    return null;
 }

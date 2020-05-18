@@ -16,7 +16,7 @@ export function createFileRef(): React.RefObject<HTMLFormElement> {
  * @param fileRef
  */
 export function getFileFromRef(fileRef: React.RefObject<HTMLFormElement>): IFile|null {
-    if(fileRef) {
+    if(fileRef && Object.keys((fileRef as any).current.files).length) {
         return (fileRef as any).current.files[0];
     } else {
         return null;

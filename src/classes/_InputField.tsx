@@ -35,15 +35,12 @@ export class InputField<T extends any> extends AbstractField<T> implements IAbst
     }
 
     public getField() {
-
-        return () => {
-            return <>{<input
-                type={this.type}
-                value={(this.context as IFormContext).state[this.props.name as T]|| ""}
-                onChange={(e) => (this.context as any).updateParentState(e, this.props.name)}
-                name={this.props.name}
-                className={AbstractField.mergeDefaultCssWithProps("form-control", this.props.className, this.bare)}
-            />}</>;
-        }
+        return () => <>{<input
+            type={this.type}
+            value={(this.context as IFormContext).state[this.props.name as T]|| ""}
+            onChange={(e) => (this.context as any).updateParentState(e, this.props.name)}
+            name={this.props.name}
+            className={AbstractField.mergeDefaultCssWithProps("form-control", this.props.className, this.bare)}
+        />}</>;
     }
 }

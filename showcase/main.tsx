@@ -5,19 +5,18 @@ import {
     TextInputField,
     EmailField,
     PasswordField,
-    TextAreaField, CheckBoxField, SelectField,
-    // SelectField,
-    // CheckBoxField,
-    // FileField,
+    TextAreaField,
+    CheckBoxField,
+    SelectField,
+    FileField,
     // RadioField,
     // RadioGroup,
 
 } from "../src/elements";
-import {isChecked, isEmailValid, isFieldEmpty} from "../src/validators";
+import {isChecked, isEmailValid, isFieldEmpty, isFile} from "../src/validators";
 
 import {createFileRef, getFileFromRef} from "../src/uncrontrolled";
 import {areFieldsEqual} from "../src/validators";
-import {doc} from "prettier";
 
 
 interface IProps{}
@@ -70,67 +69,67 @@ export class Main extends React.Component<IProps, IState> {
                                 autoComplete="off"
                                 callback={() => console.log("Form submitted ----> ", getFileFromRef(this.myFileRef))}>
 
-                                <TextInputField
-                                    value={this.state.username}
-                                    name="username"
-                                    hint="Enter your username"
-                                    labelText="Username"
-                                    validators={[isFieldEmpty(5)]}
+                            {/*    <TextInputField*/}
+                            {/*        value={this.state.username}*/}
+                            {/*        name="username"*/}
+                            {/*        hint="Enter your username"*/}
+                            {/*        labelText="Username"*/}
+                            {/*        validators={[isFieldEmpty(5)]}*/}
+                            {/*    />*/}
+
+                            {/*    <PasswordField*/}
+                            {/*        name="password"*/}
+                            {/*        value={this.state.password}*/}
+                            {/*        labelText="Pasword"*/}
+                            {/*        validators={[isFieldEmpty(5)]}*/}
+                            {/*    />*/}
+
+                            {/*    <PasswordField*/}
+                            {/*    name="confirmPassword"*/}
+                            {/*    value={this.state.confirmPassword}*/}
+                            {/*    hint="Password must match"*/}
+                            {/*    labelText="Confirm Password"*/}
+                            {/*    validators={[isFieldEmpty(5), areFieldsEqual("password")]}*/}
+                            {/*/>*/}
+
+                            {/*    <EmailField*/}
+                            {/*        name="email"*/}
+                            {/*        value={this.state.email}*/}
+                            {/*        hint="Your email"*/}
+                            {/*        labelText="Please enter your email"*/}
+                            {/*        validators={[isEmailValid()]}*/}
+                            {/*    />*/}
+
+                            {/*    <TextAreaField*/}
+                            {/*        name="about"*/}
+                            {/*        value={this.state.about}*/}
+                            {/*        hint="Your email"*/}
+                            {/*        labelText="Must be at least 20 characters"*/}
+                            {/*        validators={[isFieldEmpty(20)]}*/}
+                            {/*    />*/}
+
+                            {/*    <CheckBoxField*/}
+                            {/*        name="terms"*/}
+                            {/*        checked={this.state.terms}*/}
+                            {/*        hint="Click to agree"*/}
+                            {/*        labelText="Agree to terms & conditions"*/}
+                            {/*        validators={[isChecked()]}*/}
+                            {/*    />*/}
+
+                            {/*    <SelectField*/}
+                            {/*        size="lg"*/}
+                            {/*        value={this.state.fruitChoice}*/}
+                            {/*        name="fruitChoice"*/}
+                            {/*        options={["banana", "apple", "orange"]}*/}
+                            {/*    />*/}
+
+                                <FileField
+                                    ref={this.myFileRef}
+                                    hint="Must be a file"
+                                    labelText="Upload your file"
+                                    name="myFileTest"
+                                    validators={[isFile()]}
                                 />
-
-                                <PasswordField
-                                    name="password"
-                                    value={this.state.password}
-                                    labelText="Pasword"
-                                    validators={[isFieldEmpty(5)]}
-                                />
-
-                                <PasswordField
-                                name="confirmPassword"
-                                value={this.state.confirmPassword}
-                                hint="Password must match"
-                                labelText="Confirm Password"
-                                validators={[isFieldEmpty(5), areFieldsEqual("password")]}
-                            />
-
-                                <EmailField
-                                    name="email"
-                                    value={this.state.email}
-                                    hint="Your email"
-                                    labelText="Please enter your email"
-                                    validators={[isEmailValid()]}
-                                />
-
-                                <TextAreaField
-                                    name="about"
-                                    value={this.state.about}
-                                    hint="Your email"
-                                    labelText="Must be at least 20 characters"
-                                    validators={[isFieldEmpty(20)]}
-                                />
-
-                                <CheckBoxField
-                                    name="terms"
-                                    checked={this.state.terms}
-                                    hint="Click to agree"
-                                    labelText="Agree to terms & conditions"
-                                    validators={[isChecked()]}
-                                />
-
-                                    <SelectField
-                                        size="lg"
-                                        value={this.state.fruitChoice}
-                                        name="fruitChoice"
-                                        options={["banana", "apple", "orange"]}
-                                    />
-
-                                {/*    <FileField*/}
-                                {/*        ref={this.myFileRef}*/}
-                                {/*        hint="Must be a file"*/}
-                                {/*        labelText="Upload your file"*/}
-                                {/*        name="myFileTest"*/}
-                                {/*        validators={[isFile()]}*/}
-                                {/*    />*/}
 
                             {/*    <RadioGroup name="group1">*/}
                             {/*        <RadioField*/}

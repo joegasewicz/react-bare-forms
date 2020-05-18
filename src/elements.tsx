@@ -12,6 +12,7 @@ import {InputField} from "./classes/_InputField";
 import {CheckBoxField as _CheckBoxField} from "./classes/_CheckBoxField";
 import {SubmitButton as _SubmitButton} from "./classes/_SubmitButton";
 import {SelectField as _SelectField} from "./classes/_SelectField";
+import {FileField as _FileField} from "./classes/_FileField";
 
 /** @internal */
 export enum FIELD_NAMES {
@@ -281,11 +282,11 @@ export const SelectField = (props: ISelectField) => {
  * @param props
  * @constructor
  */
-// export const FileField = React.forwardRef((props: IFileField, ref: React.RefObject<HTMLFormElement>) => {
-//     let _props = {...props, ref };
-//     const file = new _FileField<IFileField>(FIELD_NAMES.FILE, _props);
-//     return file.create();
-// });
+export const FileField = React.forwardRef((props: IFileField, ref: React.RefObject<HTMLFormElement>|any) => {
+    let _props = {...props, ref };
+    const file = new _FileField<IFileField>(FIELD_NAMES.FILE, _props);
+    return file.create();
+});
 
 
 export const SubmitButton = new _SubmitButton().create();

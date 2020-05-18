@@ -17,7 +17,10 @@ import {FormElementValidators} from "../core/_components";
 
 
 
-/** @internal */
+/**
+ * @internal
+ * @child class InputField class has a *file* member
+ */
 export interface IAbstractField<T> {
     create: (context: IFormContext) => ReactElement<T>;
     type: string;
@@ -25,6 +28,7 @@ export interface IAbstractField<T> {
     metadata: TypeFormMetadata;
     bare: boolean;
     overrideEvent: (e: any, value: any) => React.ChangeEvent<any>;
+    getFieldValue: (props: any) => any
 }
 
 /** @internal */
@@ -184,36 +188,4 @@ export abstract class AbstractField<PropsType extends any> {
 // }
 //
 
-//
-// /** @internal */
-// export class FileField<T extends any> extends AbstractField<T> implements IAbstractField<T> {
-//
-//     constructor(type: FIELD_NAMES, props: T) {
-//         super(props, type);
-//         this.type = type;
-//         this.props = props;
-//     }
-//
-//     public create() {
-//         return this.createField(this.getField());
-//     }
-//
-//     public formGroup(children: any): ReactElement {
-//         return _genericFormGroup<T>(this.props, children);
-//     }
-//
-//     public getField() {
-//         const updateFieldValidation = (e: React.ChangeEvent<HTMLInputElement>, context: IFormContext) => {
-//             const file = createFileObject(this.props.ref);
-//             context.updateMetadata(this.props.name, file, null, "files")
-//         };
-//         return (context: IFormContext) => {
-//             return (<input
-//                 ref={this.props.ref}
-//                 type="file"
-//                 onChange={(e) => updateFieldValidation(e, context)}
-//                 className={AbstractField.mergeDefaultCssWithProps("form-control-file", this.props.className, context.bare)}
-//             />);
-//         }
-//     }
-// }
+

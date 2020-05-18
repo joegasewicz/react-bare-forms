@@ -1,5 +1,5 @@
 import {_FieldEmptyErrorMsg} from "./core/_errors";
-import {IFormContext} from "./form";
+import {IFileMetaData, IFormContext, IInputFieldMetadata} from "./form";
 import {EMAIL_REGEX} from "./core/_regex";
 
 
@@ -84,13 +84,11 @@ export const isEmailValid: IValidationVariable = customValidator((_ , fieldValue
 /**
  * @example
  */
-// export const isFile: IValidationVariable = customValidator((_, name, context) => {
-//     if(name in context.metadata.files) {
-//         if(!context.metadata.files[name].file || Object.keys(context.metadata.files[name].file).length === 0) {
-//             return [`Must be a file type`];
-//         }
-//     }
-// });
+export const isFile: IValidationVariable = customValidator((_, name, context) => {
+    if(!name) {
+        return [`Must be a file type`];
+    }
+});
 
 /**
  *

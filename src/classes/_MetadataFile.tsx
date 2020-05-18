@@ -3,14 +3,15 @@ import {IValidation} from "../validators";
 import {getFieldValueType} from "../core/_helpers";
 import {FIELD_NAMES} from "../elements";
 import {AbstractMetadata} from "./_AbstractMetadata";
+import {IFile} from "../core/_file";
 
 
 /** @internal **/
-export class Metadata<T extends IFieldValidation> extends AbstractMetadata<T> {
+export class MetadataFile<T extends IFieldValidation> extends AbstractMetadata<T> {
     public defaultState = {} as any;
 
     constructor(state: {[k: string]: T}, updateState: Function, type: METADATA_NAMES) {
-       super(state, updateState, type);
+        super(state, updateState, type);
     }
 
     public init(name: string, fieldType: FIELD_NAMES): void {
@@ -29,26 +30,30 @@ export class Metadata<T extends IFieldValidation> extends AbstractMetadata<T> {
                     isTouched: false,
                     fieldValues: {
                         type: getFieldValueType(this.fieldType),
-                        currentValue: value,
+                        currentValue: {},
                     },
                 },
             };
             this.updateState(state);
-        } else if(this.state[this.name] && value !== this.state[this.name].fieldValues.currentValue) {
-            state = {
-                ...this.state,
-                [this.name]: {
-                    name: this.name,
-                    validation,
-                    fieldValues: {
-                        type: getFieldValueType(this.fieldType),
-                        currentValue: value,
+            return;
+        }
+        if(this.state[this.name]) {
+            let currentValue: IFile = this.state[this.name].fieldValues.currentValue;
+            if(value === null && Object.keys(currentValue).length || value && value.name !== currentValue.name) {
+                state = {
+                    ...this.state,
+                    [this.name]: {
+                        name: this.name,
+                        validation,
+                        fieldValues: {
+                            type: getFieldValueType(this.fieldType),
+                            currentValue: value || {},
+                        },
+                        isTouched: true,
                     },
-                    isTouched: true,
-                },
-            };
-            console.log("INSIDE ", value)
-            this.updateState(state);
+                };
+                this.updateState(state);
+            }
         }
     }
 }
