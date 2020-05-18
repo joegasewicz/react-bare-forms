@@ -1,13 +1,6 @@
 import * as React from "react";
-import {ReactElement, useContext, useEffect} from "react";
-import {
-    FormContext,
-    IFormContext,
-    IRadioGroupChildren,
-    METADATA_NAMES, TypeFieldValueTypes,
-    TypeFormMetadata,
-    TypeRadioGroupMetadata
-} from "../form";
+import {ReactElement} from "react";
+import {METADATA_NAMES, TypeFieldValueTypes, TypeFormMetadata} from "../form";
 import {IValidation} from "../validators";
 import {FIELD_NAMES} from "../elements";
 import {AbstractMetadata} from "../classes/_AbstractMetadata";
@@ -91,6 +84,9 @@ export function getFieldValueType(type: FIELD_NAMES): TypeFieldValueTypes {
             return "value";
         }
         case FIELD_NAMES.PASSWORD: {
+            return "value";
+        }
+        case FIELD_NAMES.TEXTAREA: {
             return "value";
         }
         default: {

@@ -36,7 +36,7 @@ export class InputField<T extends any> extends AbstractField<T> implements IAbst
 
     public getField() {
 
-        return (context: IFormContext) => {
+        return () => {
             return <>{<input
                 type={this.type}
                 value={(this.context as IFormContext).state[this.props.name as T]|| ""}

@@ -6,13 +6,7 @@ import {
     // RadioGroupContext,
     TypeRadioGroupMetadata,
 } from "./form";
-import {
-    // TextAreaField as _TextAreaField,
-    // CheckBoxField as _CheckBoxField,
-    // RadioField as _RadioField,
-    // SelectField as _SelectField,
-    // FileField as _FileField,
-} from "./classes/_AbstractField";
+import {TextAreaField as _TextAreaField} from "./classes/_TextAreaField";
 import {Metadata} from "./classes/_Metadata";
 import {InputField} from "./classes/_InputField";
 import {SubmitButton as _SubmitButton} from "./classes/_SubmitButton";
@@ -240,10 +234,10 @@ export const PasswordField = (props: IPasswordField) => {
  * @param props
  * @constructor
  */
-// export const TextAreaField = (props: ITextAreaField) => {
-//   const textArea = new _TextAreaField<ITextAreaField>(FIELD_NAMES.TEXTAREA, props);
-//   return textArea.create();
-// };
+export const TextAreaField = (props: ITextAreaField) => {
+  const textArea = new _TextAreaField<ITextAreaField>(FIELD_NAMES.TEXTAREA, props);
+  return textArea.create();
+};
 
 export interface IRadioGroupProps {
     name: string;

@@ -223,7 +223,6 @@ export const Form = (props: IForm) => {
         debug: props.debug || context.debug,
         dynamic: props.dynamic || context.dynamic,
         updateParentState: updateParentState(parentState, setParentState),
-        //updateMetadata: updateMetadata(context, updateContext),
         metadata: {
             [METADATA_NAMES.INPUTS]: new Metadata<IInputFieldMetadata>(inputState, updateInputState, METADATA_NAMES.INPUTS)
         },

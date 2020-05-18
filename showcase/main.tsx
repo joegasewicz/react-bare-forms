@@ -5,7 +5,7 @@ import {
     TextInputField,
     EmailField,
     PasswordField,
-    // TextAreaField,
+    TextAreaField,
     // SelectField,
     // CheckBoxField,
     // FileField,
@@ -101,13 +101,13 @@ export class Main extends React.Component<IProps, IState> {
                                     validators={[isEmailValid()]}
                                 />
 
-                                {/*<TextAreaField*/}
-                                {/*    name="about"*/}
-                                {/*    value={this.state.about}*/}
-                                {/*    hint="Your email"*/}
-                                {/*    labelText="Must be at least 20 characters"*/}
-                                {/*    validators={[isFieldEmpty(20)]}*/}
-                                {/*/>*/}
+                                <TextAreaField
+                                    name="about"
+                                    value={this.state.about}
+                                    hint="Your email"
+                                    labelText="Must be at least 20 characters"
+                                    validators={[isFieldEmpty(20)]}
+                                />
 
                             {/*    <CheckBoxField*/}
                             {/*        name="terms"*/}
