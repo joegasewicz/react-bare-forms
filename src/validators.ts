@@ -13,7 +13,7 @@ export type IValidationFunction = (...args: Array<any>) => IValidation|_FieldEmp
 /** @internal The expected validator's type that {@link IField} elements can consume */
 export type IValidators = Array<IValidationFunction>;
 /** @internal The custom validator type callback */
-export type ICustomValidatorCallback = (arg: any, fieldValue: any, context: IFormContext) => Array<string>|null;
+export type ICustomValidatorCallback = (arg: any, fieldValue: any, context: IFormContext) => Array<string>|undefined;
 /** @internal */
 export type IValidationVariable = (arg?: any) => IValidationFunction;
 /**

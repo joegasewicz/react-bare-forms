@@ -32,5 +32,5 @@ export const FormElementValidators = (props: IFormElementValidators): ReactEleme
     const {results, name, parent, type} = props;
     const context: IFormContext = useContext(FormContext);
     const styles = !context.bare ? `alert mt-2 alert-danger ${props.className}` : props.className;
-    return <ValidationResults results={results} styles={styles} />;
+    return <ValidationResults results={results} styles={styles || ""} />;
 };

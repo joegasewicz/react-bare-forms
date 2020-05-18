@@ -1,8 +1,8 @@
 import {ReactElement, default as React, useContext, useEffect} from "react";
-import {FormContext, METADATA_NAMES} from "../form";
+import {FormContext, IInputFieldMetadata, METADATA_NAMES} from "../form";
 
 export interface IButton<T> {
-    create(): (props: ISubmitButtonProps) => ReactElement<T>;
+    create(): (props: T) => ReactElement<T>;
 }
 
 
@@ -33,66 +33,16 @@ export class SubmitButton implements Button<ISubmitButtonProps> {
            // Styles
            const { className = "btn btn-success btn-lg", disabled = true} = props;
 
-           let isDisabled = true;
-
-           // Check inputs
-           // let inputs = context.metadata[METADATA_NAMES.INPUTS];
-           // Check files
-           // let fieldGroups = context.metadata[METADATA_NAMES.RADIO_GROUPS];
-           // Check radioGroups
-           // let files = context.metadata[METADATA_NAMES.FILES];
-           // Check checkboxes
-           // let checkboxes = context.metadata[METADATA_NAMES.CHECKBOXES];
-
-           let inputsValid = true;
-           let filesValid = true;
-           let radiosValid = true;
-           let checkboxesValid = true;
-
-           // useEffect(() => {
-           //     // Check all metadata on context
-           //     // TODO
-           //     for (let input of Object.keys(inputs)){
-           //         // let _input = context.metadata[METADATA_NAMES.INPUTS][input];
-           //         // console.log("inputs", _input);
-           //         // if(!_input.isTouched || _input.isTouched && !_input.isValid) {
-           //         //     inputsValid = false;
-           //         // }
-           //     }
-           //
-           //     for (let input of Object.keys(files)){
-           //         let _input = context.metadata[METADATA_NAMES.FILES][input];
-           //         // if(!_input.isTouched || _input.isTouched && !_input.isValid) {
-           //         //     inputsValid = false;
-           //         // }
-           //         console.log("files", _input);
-           //     }
-           //
-           //     for (let input of Object.keys(fieldGroups)){
-           //         let _input = context.metadata[METADATA_NAMES.RADIO_GROUPS][input];
-           //         console.log("radioGroups", _input);
-           //         for(let radio of Object.keys(_input)) {
-           //             // if(!_input.isValid) {
-           //             //     inputsValid = false;
-           //             // }
-           //         }
-           //
-           //     }
-           //
-           //     for (let input of Object.keys(checkboxes)){
-           //         let _input = context.metadata[METADATA_NAMES.CHECKBOXES][input];
-           //         console.log("checkboxes", _input);
-           //         // if(!_input.isTouched || _input.isTouched && !_input.isValid) {
-           //         //     inputsValid = false;
-           //         // }
-           //     }
-           //
-           //     if(inputsValid && filesValid && radiosValid && checkboxesValid) {
-           //         isDisabled = false;
-           //     }
-           //
-           // }, [inputs, fieldGroups, files, checkboxes]);
-
+           let isDisabled = false;
+           const inputState = context.metadata.inputs.state;
+           // If all all fields are valid then pass through the default isDisabled value
+           for(let field of Object.keys(inputState)) {
+               for(let validation of inputState[field].validation) {
+                   if(!validation.isValid) {
+                       isDisabled = true;
+                   }
+               }
+           }
 
            return (<button
                disabled={isDisabled}
@@ -101,4 +51,3 @@ export class SubmitButton implements Button<ISubmitButtonProps> {
        }
     }
 }
-

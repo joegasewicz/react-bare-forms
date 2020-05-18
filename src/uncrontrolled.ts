@@ -15,9 +15,9 @@ export function createFileRef(): React.RefObject<HTMLFormElement> {
  *
  * @param fileRef
  */
-export function getFileFromRef(fileRef: React.RefObject<HTMLFormElement>): IFile {
+export function getFileFromRef(fileRef: React.RefObject<HTMLFormElement>): IFile|null {
     if(fileRef) {
-        return fileRef.current.files[0];
+        return (fileRef as any).current.files[0];
     } else {
         return null;
     }

@@ -121,11 +121,11 @@ const INPUTS_STATE = {};
 const providerContext: IFormContext = {
     bare: false,
     state: {},
-    formKey: null,
+    formKey: null as any,
     debug: false,
     dynamic: true,
     metadata: {
-        inputs: null,
+        inputs: null as any,
         // radioGroups: null,
         // files: null,
         // checkboxes: null,

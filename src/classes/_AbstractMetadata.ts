@@ -31,8 +31,8 @@ export abstract class AbstractMetadata<T> implements IMetadata<T> {
     public readonly updateState: Function;
     public readonly metaType: METADATA_NAMES;
     public readonly parentName?: string;
-    private _fieldType: FIELD_NAMES;
-    private _name: string;
+    private _fieldType?: FIELD_NAMES;
+    private _name?: string;
     public abstract defaultState: T;
 
     protected constructor(state: {[k: string]: T}, updateState: Function, metaType: METADATA_NAMES) {
@@ -42,7 +42,7 @@ export abstract class AbstractMetadata<T> implements IMetadata<T> {
     }
 
     get name() {
-        return this._name;
+        return this._name as string;
     }
 
     set name(val: string) {
@@ -50,7 +50,7 @@ export abstract class AbstractMetadata<T> implements IMetadata<T> {
     }
 
     get fieldType() {
-        return this._fieldType;
+        return this._fieldType as any;
     }
 
     set fieldType(val: FIELD_NAMES) {

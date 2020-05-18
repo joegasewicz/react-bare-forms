@@ -7,7 +7,7 @@ import {AbstractMetadata} from "./_AbstractMetadata";
 
 /** @internal **/
 export class Metadata<T extends IFieldValidation> extends AbstractMetadata<T> {
-    public defaultState: T;
+    public defaultState = {} as any;
 
     constructor(state: {[k: string]: T}, updateState: Function, type: METADATA_NAMES) {
        super(state, updateState, type);

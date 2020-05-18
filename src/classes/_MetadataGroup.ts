@@ -8,7 +8,7 @@ import {AbstractMetadata} from "./_AbstractMetadata";
 /** @internal **/
 export class _MetadataGroup<T> extends AbstractMetadata<T> {
     public defaultState = {} as T;
-    public readonly parentName: string;
+    public readonly parentName?: string;
 
     constructor(state: {[k: string]: T}, updateState: Function, type: METADATA_NAMES) {
         super(state, updateState, type);

@@ -24,6 +24,7 @@ export interface IAbstractField<T> {
     props: T;
     metadata: TypeFormMetadata;
     bare: boolean;
+    overrideEvent: (e: any, value: any) => React.ChangeEvent<any>;
 }
 
 /** @internal */
@@ -42,9 +43,9 @@ export abstract class AbstractField<PropsType extends any> {
     public type: FIELD_NAMES;
     public props: PropsType;
     public parent?: string;
-    public _metadata: TypeFormMetadata;
-    public _bare: boolean;
-    public context: IFormContext;
+    public _metadata?: TypeFormMetadata;
+    public _bare?: boolean;
+    public context?: IFormContext;
 
     protected constructor(props: PropsType, type: FIELD_NAMES) {
         this.type = type;
@@ -53,7 +54,7 @@ export abstract class AbstractField<PropsType extends any> {
     }
 
     get bare() {
-        return this._bare;
+        return Boolean(this._bare);
     }
 
     set bare(val: boolean) {
@@ -61,7 +62,7 @@ export abstract class AbstractField<PropsType extends any> {
     }
 
     get metadata() {
-        return this._metadata;
+        return (this._metadata as TypeFormMetadata);
     }
 
     set metadata(val: TypeFormMetadata) {
@@ -72,7 +73,7 @@ export abstract class AbstractField<PropsType extends any> {
         this.context = useContext<IFormContext>(FormContext);
         this.metadata = this.context.metadata[getMetadataNameType(this.type)];
         this.metadata.init(this.props.name, this.type);
-        this.bare = this.context.bare;
+        this.bare = Boolean(this.context.bare);
     }
 
     public createField(fieldCallback: Function) {
@@ -126,7 +127,7 @@ export abstract class AbstractField<PropsType extends any> {
         return cssStr;
     }
 
-    public overrideEvent(e: any, value: any) {
+    public overrideEvent(e: any, value: any): React.ChangeEvent<any> {
         return {
             ...e,
             target: {
