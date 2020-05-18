@@ -1,14 +1,17 @@
 import * as React from "react";
 import {FormConsumer, Form} from "../src/form";
 import {
-    // CheckBoxField,
-    EmailField,
-    // FileField,
-    // PasswordField,
-    // RadioField, RadioGroup, SelectField,
-    // TextAreaField,
+    SubmitButton,
     TextInputField,
-    SubmitButton
+    EmailField,
+    PasswordField,
+    // TextAreaField,
+    // SelectField,
+    // CheckBoxField,
+    // FileField,
+    // RadioField,
+    // RadioGroup,
+
 } from "../src/elements";
 import {isEmailValid, isFieldEmpty} from "../src/validators";
 
@@ -75,20 +78,20 @@ export class Main extends React.Component<IProps, IState> {
                                     validators={[isFieldEmpty(5)]}
                                 />
 
-                            {/*    <PasswordField*/}
-                            {/*        name="password"*/}
-                            {/*        value={this.state.password}*/}
-                            {/*        labelText="Pasword"*/}
-                            {/*        validators={[isFieldEmpty(5)]}*/}
-                            {/*    />*/}
+                                <PasswordField
+                                    name="password"
+                                    value={this.state.password}
+                                    labelText="Pasword"
+                                    validators={[isFieldEmpty(5)]}
+                                />
 
-                            {/*    <PasswordField*/}
-                            {/*    name="confirmPassword"*/}
-                            {/*    value={this.state.confirmPassword}*/}
-                            {/*    hint="Password must match"*/}
-                            {/*    labelText="Confirm Password"*/}
-                            {/*    validators={[isFieldEmpty(5), areFieldsEqual("password")]}*/}
-                            {/*/>*/}
+                                <PasswordField
+                                name="confirmPassword"
+                                value={this.state.confirmPassword}
+                                hint="Password must match"
+                                labelText="Confirm Password"
+                                validators={[isFieldEmpty(5), areFieldsEqual("password")]}
+                            />
 
                                 <EmailField
                                     name="email"
@@ -98,13 +101,13 @@ export class Main extends React.Component<IProps, IState> {
                                     validators={[isEmailValid()]}
                                 />
 
-                            {/*    <TextAreaField*/}
-                            {/*        name="about"*/}
-                            {/*        value={this.state.about}*/}
-                            {/*        hint="Your email"*/}
-                            {/*        labelText="Must be at least 20 characters"*/}
-                            {/*        validators={[isFieldEmpty(20)]}*/}
-                            {/*    />*/}
+                                {/*<TextAreaField*/}
+                                {/*    name="about"*/}
+                                {/*    value={this.state.about}*/}
+                                {/*    hint="Your email"*/}
+                                {/*    labelText="Must be at least 20 characters"*/}
+                                {/*    validators={[isFieldEmpty(20)]}*/}
+                                {/*/>*/}
 
                             {/*    <CheckBoxField*/}
                             {/*        name="terms"*/}

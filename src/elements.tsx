@@ -181,10 +181,10 @@ export const EmailField = (props: IEmailField) => {
  *
  * @constructor
  */
-// export const PasswordField = (props: IPasswordField) => {
-//   const passwordInput = new InputField<IPasswordField>(FIELD_NAMES.PASSWORD, props);
-//   return passwordInput.create();
-// };
+export const PasswordField = (props: IPasswordField) => {
+  const passwordInput = new InputField<IPasswordField>(FIELD_NAMES.PASSWORD, props);
+  return passwordInput.create();
+};
 
 
 
