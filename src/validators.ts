@@ -109,14 +109,11 @@ export const isEmailValid: IValidationVariable = customValidator((_ , fieldValue
 /**
  *
  */
-// export const isChecked: IValidationVariable = customValidator((_, name, context) => {
-//     let checkbox = context.metadata.checkboxes[name];
-//     if(checkbox) {
-//         if(!checkbox.isChecked) {
-//             return [`Must be checked`];
-//         }
-//     }
-// });
+export const isChecked: IValidationVariable = customValidator((_, fieldValue, context) => {
+    if(fieldValue === false) {
+        return [`Must be checked`];
+    }
+});
 
 /**
  * Function that takes a callback which contains the callers own validation logic

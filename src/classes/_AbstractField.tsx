@@ -1,6 +1,7 @@
 import {default as React, ReactElement, useContext} from "react";
 
 import {
+    getFieldValueType,
     getMetadataNameType,
 } from "../core/_helpers";
 import {
@@ -95,17 +96,22 @@ export abstract class AbstractField<PropsType extends any> {
 
     private validate(): Array<IValidation> {
         let validation: Array<IValidation> = [];
-
+        let value = this.getFieldValue(this.props);
         // Carry out the validation
         for(let index in this.props.validators) {
             validation = [
                 ...validation,
-                this.props.validators[index](this.props.value, this.context),
+                this.props.validators[index](value, this.context),
             ];
         }
         // Update the metadata type state
-        this.metadata.update(this.props.value, validation);
+        this.metadata.update(value, validation);
         return validation;
+    }
+
+    public getFieldValue(props: PropsType): any {
+        let type = getFieldValueType(this.type);
+        return this.props[type];
     }
 
     public abstract formGroup(children: any): ReactElement;

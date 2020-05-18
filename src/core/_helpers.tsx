@@ -59,9 +59,9 @@ export function getMetadataNameType(type: FIELD_NAMES): METADATA_NAMES {
         // case FIELD_NAMES.RADIO: {
         //     return METADATA_NAMES.RADIO_GROUPS;
         // }
-        // case FIELD_NAMES.CHECKBOX: {
-        //     return METADATA_NAMES.CHECKBOXES;
-        // }
+        case FIELD_NAMES.CHECKBOX: {
+            return METADATA_NAMES.CHECKBOXES;
+        }
         case FIELD_NAMES.SELECT: {
             return METADATA_NAMES.INPUTS;
         }
@@ -88,6 +88,9 @@ export function getFieldValueType(type: FIELD_NAMES): TypeFieldValueTypes {
         }
         case FIELD_NAMES.TEXTAREA: {
             return "value";
+        }
+        case FIELD_NAMES.CHECKBOX: {
+            return "checked";
         }
         default: {
             return "value";

@@ -9,6 +9,7 @@ import {
 import {TextAreaField as _TextAreaField} from "./classes/_TextAreaField";
 import {Metadata} from "./classes/_Metadata";
 import {InputField} from "./classes/_InputField";
+import {CheckBoxField as _CheckBoxField} from "./classes/_CheckBoxField";
 import {SubmitButton as _SubmitButton} from "./classes/_SubmitButton";
 
 /** @internal */
@@ -204,10 +205,10 @@ export const PasswordField = (props: IPasswordField) => {
  * @param props
  * @constructor
  */
-// export const CheckBoxField = (props: ICheckBoxField) => {
-//   const checkBox = new _CheckBoxField<ICheckBoxField>(FIELD_NAMES.CHECKBOX, props);
-//   return checkBox.create();
-// };
+export const CheckBoxField = (props: ICheckBoxField) => {
+  const checkBox = new _CheckBoxField<ICheckBoxField>(FIELD_NAMES.CHECKBOX, props);
+  return checkBox.create();
+};
 
 /**
  * The TextAreaField takes in an extra prop of *row* which is a number & declares

@@ -5,7 +5,7 @@ import {
     TextInputField,
     EmailField,
     PasswordField,
-    TextAreaField,
+    TextAreaField, CheckBoxField,
     // SelectField,
     // CheckBoxField,
     // FileField,
@@ -13,7 +13,7 @@ import {
     // RadioGroup,
 
 } from "../src/elements";
-import {isEmailValid, isFieldEmpty} from "../src/validators";
+import {isChecked, isEmailValid, isFieldEmpty} from "../src/validators";
 
 import {createFileRef, getFileFromRef} from "../src/uncrontrolled";
 import {areFieldsEqual} from "../src/validators";
@@ -109,13 +109,13 @@ export class Main extends React.Component<IProps, IState> {
                                     validators={[isFieldEmpty(20)]}
                                 />
 
-                            {/*    <CheckBoxField*/}
-                            {/*        name="terms"*/}
-                            {/*        checked={this.state.terms}*/}
-                            {/*        hint="Click to agree"*/}
-                            {/*        labelText="Agree to terms & conditions"*/}
-                            {/*        validators={[isChecked()]}*/}
-                            {/*    />*/}
+                                <CheckBoxField
+                                    name="terms"
+                                    checked={this.state.terms}
+                                    hint="Click to agree"
+                                    labelText="Agree to terms & conditions"
+                                    validators={[isChecked()]}
+                                />
 
 
                             {/*    <RadioGroup name="group1">*/}

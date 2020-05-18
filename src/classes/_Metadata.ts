@@ -29,12 +29,12 @@ export class Metadata<T extends IFieldValidation> extends AbstractMetadata<T> {
                     isTouched: false,
                     fieldValues: {
                         type: getFieldValueType(this.fieldType),
-                        currentValue: null,
+                        currentValue: value,
                     },
                 },
             };
             this.updateState(state);
-        } else if(value && this.state[this.name] && value !== this.state[this.name].fieldValues.currentValue) {
+        } else if(this.state[this.name] && value !== this.state[this.name].fieldValues.currentValue) {
             state = {
                 ...this.state,
                 [this.name]: {

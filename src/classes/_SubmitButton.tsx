@@ -1,5 +1,5 @@
 import {ReactElement, default as React, useContext, useEffect} from "react";
-import {FormContext, IInputFieldMetadata, METADATA_NAMES} from "../form";
+import {FormContext, IInputFieldMetadata, IMetadata, METADATA_NAMES} from "../form";
 
 export interface IButton<T> {
     create(): (props: T) => ReactElement<T>;
@@ -35,11 +35,14 @@ export class SubmitButton implements Button<ISubmitButtonProps> {
 
            let isDisabled = false;
            const inputState = context.metadata.inputs.state;
-           // If all all fields are valid then pass through the default isDisabled value
-           for(let field of Object.keys(inputState)) {
-               for(let validation of inputState[field].validation) {
-                   if(!validation.isValid) {
-                       isDisabled = true;
+           for (let meta of Object.keys(context.metadata)) {
+               let metaField = context.metadata[meta as keyof IMetadata].state;
+               // If all all fields are valid then pass through the default isDisabled value
+               for(let field of Object.keys(metaField)) {
+                   for(let validation of metaField[field].validation) {
+                       if(!validation.isValid) {
+                           isDisabled = true;
+                       }
                    }
                }
            }

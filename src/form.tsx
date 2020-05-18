@@ -48,32 +48,26 @@ export type TypeFileMetadata = AbstractMetadata<TypeFormMetadata>;
 /** @internal */
 export type TypeRadioGroupMetadata = AbstractMetadata<TypeFormMetadata>;
 /** @internal */
-export type TypeCheckboxesMetadata = AbstractMetadata<TypeFormMetadata>;
+export type TypeCheckboxesMetadata = AbstractMetadata<ICheckBoxesMetadata>;
 /** @internal */
 export type TypeFormMetadata =
     | TypeInputMetadata
     | TypeRadioGroupMetadata
     | TypeCheckboxesMetadata
     | TypeFileMetadata;
-/** @internal **/
-export type TypeMetadataNames =
-    | "inputs"
-    | "radioGroups"
-    | "files"
-    | "checkboxes";
 /** @internal */
 export interface IMetadata {
     // radioGroups: TypeRadioGroupMetadata;
     inputs: TypeInputMetadata;
     // files: TypeInputMetadata;
-    // checkboxes: TypeCheckboxesMetadata;
+    checkboxes: TypeCheckboxesMetadata;
 }
 /** @internal **/
 export enum METADATA_NAMES {
     INPUTS = "inputs",
     // RADIO_GROUPS = "radioGroups",
     // FILES = "files",
-    // CHECKBOXES = "checkboxes",
+    CHECKBOXES = "checkboxes",
 }
 /**
  * @interface **IForm** Exported Form interface available to the caller. Contains all the properties required by
@@ -106,8 +100,6 @@ export interface IFormContext {
     metadata: IMetadata;
     state: any;
     updateParentState?: (e: React.ChangeEvent<any>, name: string) => void;
-    //updateMetadata?: (fieldName: string, fieldValue: any, validation: Array<IValidation>, type?: TypeMetadataNames) => void;
-    // inputsMetadata?: AbstractMetadata<TypeInputMetadata>;
 }
 /** @internal */
 const INPUTS_STATE = {};
@@ -116,7 +108,7 @@ const INPUTS_STATE = {};
 /** @internal */
 // const FILES_STATE: TypeFileMetadata = {};
 /** @internal */
-// const CHECKBOXES_STATE: TypeCheckboxesMetadata = {};
+const CHECKBOXES_STATE = {};
 /** @internal */
 const providerContext: IFormContext = {
     bare: false,
@@ -128,7 +120,7 @@ const providerContext: IFormContext = {
         inputs: null as any,
         // radioGroups: null,
         // files: null,
-        // checkboxes: null,
+        checkboxes: null as any,
     },
 };
 /** @internal */
@@ -210,10 +202,10 @@ export const Form = (props: IForm) => {
             });
         }, [parentState]);
     }
-
+    // State Hooks
     const [context, updateContext] = useState(providerContext);
-
     const [inputState, updateInputState] = useState(INPUTS_STATE);
+    const [checkboxesState, updateCheckboxesState] = useState(CHECKBOXES_STATE);
 
 
     const _providerContext: IFormContext = {
@@ -224,12 +216,13 @@ export const Form = (props: IForm) => {
         dynamic: props.dynamic || context.dynamic,
         updateParentState: updateParentState(parentState, setParentState),
         metadata: {
-            [METADATA_NAMES.INPUTS]: new Metadata<IInputFieldMetadata>(inputState, updateInputState, METADATA_NAMES.INPUTS)
+            [METADATA_NAMES.INPUTS]: new Metadata<IInputFieldMetadata>(inputState, updateInputState, METADATA_NAMES.INPUTS),
+            [METADATA_NAMES.CHECKBOXES]: new Metadata<ICheckBoxesMetadata>(checkboxesState, updateCheckboxesState, METADATA_NAMES.CHECKBOXES)
         },
     };
-    
+
     return (
-        <FormProvider value={_providerContext}>
+            <FormProvider value={_providerContext}>
             <form onSubmit={handleSubmit(props)} {...props}>{props.children}</form>
         </FormProvider>
     );
