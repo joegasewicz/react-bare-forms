@@ -1,0 +1,41 @@
+import {default as React} from "react";
+import {AbstractField, IAbstractField} from "./_AbstractField";
+import {IFormContext} from "../form";
+import {FIELD_NAMES} from "../elements";
+
+
+
+/** @internal */
+export class CheckBoxField<T extends any> extends AbstractField<T> implements IAbstractField<T> {
+
+    constructor(type: FIELD_NAMES, props: T) {
+        super(props, type);
+        this.type = type;
+        this.props = props;
+    }
+
+    public create() {
+        return this.createField(this.getField());
+    }
+
+    public formGroup(children: any): React.ReactElement {
+        return (
+            <div className="form-group form-check">
+                {children}
+                {this.props.labelText && <label className="form-check-label">{this.props.labelText}</label>}
+                {this.props.hint && <small className="form-text text-muted">{this.props.hint}</small>}
+            </div>
+        );
+    }
+
+    public getField() {
+        return () => (<>{<input
+                type={this.type}
+                checked={(this.context as IFormContext).state[this.props.name] || false}
+                onChange={(e) => (this.context as any).updateParentState(this.overrideEvent(e, (this.context as IFormContext).state[this.props.name]), this.props.name)}
+                name={this.props.name}
+                className={AbstractField.mergeDefaultCssWithProps("form-check-input", this.props.className, (this.context as any).bare)}
+        />}</>);
+    }
+}
+

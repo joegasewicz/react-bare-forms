@@ -1,8 +1,9 @@
 import * as React from "react";
-import {ReactElement, useContext, useEffect} from "react";
-import {FormContext, IFormContext, IRadioGroupChildren, METADATA_NAMES, TypeRadioGroup} from "../form";
+import {ReactElement} from "react";
+import {METADATA_NAMES, TypeFieldValueTypes, TypeFormMetadata} from "../form";
 import {IValidation} from "../validators";
 import {FIELD_NAMES} from "../elements";
+import {AbstractMetadata} from "../classes/_AbstractMetadata";
 
 
 /** @internal */
@@ -12,8 +13,9 @@ interface IFormElementValidators {
     value: any;
     type: METADATA_NAMES;
     className?: string;
-    /* If a field is part of a group e.g Radio buttons then this is the name of parent field **/
+    /* If a field is part of a group e.g Radio buttons then this is the name of parentName field **/
     readonly parent?: string;
+    metadata: AbstractMetadata<TypeFormMetadata>;
 }
 /** @internal */
 type TypeValidationElement = { results: Array<IValidation>, styles: string };
@@ -26,74 +28,6 @@ function ValidationResults(props: TypeValidationElement): ReactElement<TypeValid
             <div key={index} className={styles}>{msg}</div>
         ))}</>);
 }
-
-/** @internal */
-export const FormElementValidators = (props: IFormElementValidators): ReactElement => {
-    const {validators = null, name, parent, type} = props;
-    const context: IFormContext = useContext(FormContext);
-    const styles = !context.bare ? `alert mt-2 alert-danger ${props.className}` : props.className;
-    // Collect validators results before updating context
-    let validationResults: Array<IValidation> = [];
-    switch(type) {
-        case METADATA_NAMES.INPUTS: {
-            validators.map((key: any, index: number) => {
-                validationResults = [...validationResults , validators[index](context.state[name], context)];
-            });
-            useEffect(() => {
-                context.updateFieldValidation(name, context.state[name], validationResults, "inputs")
-            }, [context]);
-            if(context.metadata.inputs[name] && context.metadata.inputs[name].isTouched) {
-                return <ValidationResults results={validationResults} styles={styles} />;
-            }
-            return null;
-        }
-        case METADATA_NAMES.FILES: {
-            validators.map((key: any, index: number) => {
-                validationResults = [...validationResults , validators[index](name, context)];
-            });
-            useEffect(() => {
-                context.updateFieldValidation(name, context.state[name], validationResults, "files")
-            }, [context]);
-            if(context.metadata.files[name] && context.metadata.files[name].isTouched) {
-                return <ValidationResults results={validationResults} styles={styles} />;
-            }
-            return null;
-        }
-        case METADATA_NAMES.FIELD_GROUPS: {
-            validators.map((key: any, index: number) => {
-                validationResults = [...validationResults , validators[index]([name, parent], context)];
-            });
-            useEffect(() => {
-                context.updateFieldValidation(name, context.state[name], validationResults, "fieldGroups")
-            }, [context]);
-
-            const fieldGroups = context.metadata.fieldGroups[parent];
-            if(fieldGroups) {
-                // @ts-ignore TODO
-                if(fieldGroups[name]) {
-                    return <ValidationResults results={validationResults} styles={styles} />;
-                }
-            }
-            return null;
-        }
-        case METADATA_NAMES.CHECKBOXES: {
-            validators.map((key: any, index: number) => {
-                validationResults = [...validationResults , validators[index](name, context)];
-            });
-            useEffect(() => {
-                context.updateFieldValidation(name, context.state[name], validationResults, "checkboxes")
-            }, [context]);
-            if(context.metadata.checkboxes[name] && context.metadata.checkboxes[name].isTouched) {
-                return <ValidationResults results={validationResults} styles={styles} />;
-            }
-            return null;
-        }
-        default: {
-            return null;
-        }
-    }
-
-};
 
 /** @internal */
 export function mergeDefaultCssWithProps(defaultValue: string, cssProps: any, bare: boolean): string {
@@ -123,7 +57,7 @@ export function getMetadataNameType(type: FIELD_NAMES): METADATA_NAMES {
             return METADATA_NAMES.INPUTS;
         }
         case FIELD_NAMES.RADIO: {
-            return METADATA_NAMES.FIELD_GROUPS;
+            return METADATA_NAMES.RADIO_GROUPS;
         }
         case FIELD_NAMES.CHECKBOX: {
             return METADATA_NAMES.CHECKBOXES;
@@ -136,6 +70,39 @@ export function getMetadataNameType(type: FIELD_NAMES): METADATA_NAMES {
         }
         default: {
             return METADATA_NAMES.INPUTS;
+        }
+    }
+}
+
+/** @internal */
+export function getFieldValueType(type: FIELD_NAMES): TypeFieldValueTypes {
+    switch(type) {
+        case FIELD_NAMES.TEXT: {
+            return "value";
+        }
+        case FIELD_NAMES.EMAIL: {
+            return "value";
+        }
+        case FIELD_NAMES.PASSWORD: {
+            return "value";
+        }
+        case FIELD_NAMES.TEXTAREA: {
+            return "value";
+        }
+        case FIELD_NAMES.CHECKBOX: {
+            return "checked";
+        }
+        case FIELD_NAMES.SELECT: {
+            return "value";
+        }
+        case FIELD_NAMES.FILE: {
+            return "file";
+        }
+        case FIELD_NAMES.RADIO: {
+            return "value"
+        }
+        default: {
+            return "value";
         }
     }
 }

@@ -1,19 +1,19 @@
 import {_FieldEmptyErrorMsg} from "./core/_errors";
-import {IFormContext} from "./form";
+import {IFileMetaData, IFormContext, IInputFieldMetadata} from "./form";
 import {EMAIL_REGEX} from "./core/_regex";
 
 
 /** @internal */
 export interface IValidation {
     isValid: boolean;
-    messages: Array<string>;
+    messages: [...string[]];
 }
 /** @internal The inner returned function type that custom validators must implement */
 export type IValidationFunction = (...args: Array<any>) => IValidation|_FieldEmptyErrorMsg;
 /** @internal The expected validator's type that {@link IField} elements can consume */
 export type IValidators = Array<IValidationFunction>;
 /** @internal The custom validator type callback */
-export type ICustomValidatorCallback = (arg: any, fieldValue: any, context: IFormContext) => Array<string>|null;
+export type ICustomValidatorCallback = (arg: any, fieldValue: any, context: IFormContext) => Array<string>|undefined;
 /** @internal */
 export type IValidationVariable = (arg?: any) => IValidationFunction;
 /**
@@ -57,7 +57,7 @@ export const areFieldsEqual: IValidationVariable = customValidator((passwordKey,
  * @param minLength The minimum length of the form field value
  */
 export const isFieldEmpty: IValidationVariable = customValidator((minLength, fieldValue, _) => {
-    const isValid = (fieldValue.length >= minLength);
+    const isValid = (fieldValue && fieldValue.length >= minLength);
     if(!isValid) {
         return [`Must be at least ${minLength} characters`];
     }
@@ -85,36 +85,24 @@ export const isEmailValid: IValidationVariable = customValidator((_ , fieldValue
  * @example
  */
 export const isFile: IValidationVariable = customValidator((_, name, context) => {
-    if(name in context.metadata.files) {
-        if(!context.metadata.files[name].file || Object.keys(context.metadata.files[name].file).length === 0) {
-            return [`Must be a file type`];
-        }
+    if(!name) {
+        return [`Must be a file type`];
     }
 });
 
 /**
  *
  */
-export const isRadioChecked: IValidationVariable = customValidator((_ , [name, parent], context) => {
-    let fieldGroup = context.metadata.fieldGroups[parent];
-    if(fieldGroup) {
-        // @ts-ignore TODO
-        let radio = fieldGroup[name];
-        if(radio && !radio.isChecked) {
-            return [`Radio ... must be selected`];
-        }
-    }
+export const isRadioChecked: IValidationVariable = customValidator((_ , __, context) => {
+    return [`error here ....`]
 });
 
 /**
  *
  */
-export const isChecked: IValidationVariable = customValidator((_, name, context) => {
-    let checkbox = context.metadata.checkboxes[name];
-    if(checkbox) {
-        if(!checkbox.isChecked) {
-            return [`Must be checked`];
-        }
+export const isChecked: IValidationVariable = customValidator((_, fieldValue, context) => {
+    if(fieldValue === false) {
+        return [`Must be checked`];
     }
 });
 
@@ -153,6 +141,7 @@ export const isChecked: IValidationVariable = customValidator((_, name, context)
 export function customValidator(callback: ICustomValidatorCallback): (arg: any) => IValidationFunction  {
     return (arg: any = null): IValidationFunction => {
         return (...args: Array<any>) => {
+            // TODO custom exceptions for the below args
             const fieldValue: any = args[0];
             const context: IFormContext = args[1];
             const messages = callback(arg, fieldValue, context);

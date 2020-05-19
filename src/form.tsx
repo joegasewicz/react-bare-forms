@@ -1,59 +1,73 @@
-import {default as React, useEffect, useState} from "react";
-import {updateRadioGroupStateFromPassedInContext, updateStateFromPassedInContext} from "./core/_handlers";
+import {default as React, Provider, useEffect, useState} from "react";
+import {updateRadioGroupStateFromPassedInContext, updateParentState} from "./core/_handlers";
 import {IValidation} from "./validators";
-import {updateRadioGroupMetadata, updateValidationMetadata} from "./core/_context_updaters";
-import {IRadioField} from "./elements";
+// import {updateMetadata} from "./core/_context_updaters";
+import {IRadioField, ITextInputField} from "./elements";
 import {getFileFromRef} from "./uncrontrolled";
+import {AbstractMetadata} from "./classes/_AbstractMetadata";
+import {Metadata} from "./classes/_Metadata";
+import {MetadataFile} from "./classes/_MetadataFile";
+import {MetadataGroup} from "./classes/_MetadataGroup";
 
 
+
+/** @internal */
+export type TypeFieldValueTypes = "value"|"checked"|"file";
+/** @internal */
+export interface IFieldValues {
+    currentValue: any;
+    readonly type: TypeFieldValueTypes;
+}
 /** @internal */
 export interface IFieldValidation {
+    readonly name: string;
     validation: Array<IValidation>;
+    fieldValues: IFieldValues;
+    isTouched: boolean;
 }
 /** @internal */
-export interface IInputFieldMetadata extends IFieldValidation {
-    isTouched: boolean;
-    value: any;
-}
+export interface IInputFieldMetadata extends IFieldValidation {}
 /** @internal */
 export interface IFileMetaData extends IFieldValidation {
-    isTouched: boolean;
-    refName: string;
-    file: File;
+    readonly refName: string;
 }
 /** @internal */
 export interface IRadioGroupChildren extends IFieldValidation {
-    readonly name: string;
-    isChecked: boolean;
-    parent: string;
+    readonly parent: string;
 }
 /** @internal */
-export interface ICheckBoxesMetadata extends IFieldValidation {
-    readonly name: string;
-    isChecked: boolean;
-    isTouched: boolean;
-}
-/** @internal **/
-export type TypeMetadataNames = "inputs"|"fieldGroups"|"files"|"checkboxes";
+export interface ICheckBoxesMetadata extends IFieldValidation {}
 /** @internal */
-export type TypeInputMetadata = { [k: string]: IInputFieldMetadata};
+export type TypeIFieldMetadata =
+    | IInputFieldMetadata
+    | IFileMetaData
+    | IRadioGroupChildren
+    | ICheckBoxesMetadata;
 /** @internal */
-export type TypeFileMetadata = {[k: string]: IFileMetaData};
+export type TypeInputMetadata = AbstractMetadata<IInputFieldMetadata>;
 /** @internal */
-export type TypeRadioGroup = {[k: string]: IRadioGroupChildren};
+export type TypeFileMetadata = AbstractMetadata<IFileMetaData>;
 /** @internal */
-export type TypeCheckboxesMetadata = {[k: string]: ICheckBoxesMetadata};
+export type TypeRadioGroupMetadata = AbstractMetadata<IRadioGroupChildren>;
+/** @internal */
+export type TypeCheckboxesMetadata = AbstractMetadata<ICheckBoxesMetadata>;
+/** @internal */
+export type TypeFormMetadata =
+    | TypeInputMetadata
+    | TypeRadioGroupMetadata
+    | TypeCheckboxesMetadata
+    | TypeFileMetadata;
 /** @internal */
 export interface IMetadata {
-    fieldGroups: TypeRadioGroup;
+    radioGroups: TypeRadioGroupMetadata;
     inputs: TypeInputMetadata;
-    files: TypeFileMetadata;
+    files: TypeInputMetadata;
     checkboxes: TypeCheckboxesMetadata;
 }
 /** @internal **/
 export enum METADATA_NAMES {
     INPUTS = "inputs",
-    FIELD_GROUPS = "fieldGroups",
+    RADIO_GROUPS = "radioGroups",
     FILES = "files",
     CHECKBOXES = "checkboxes",
 }
@@ -62,11 +76,11 @@ export enum METADATA_NAMES {
  * the Form *RBF* Form's component.
  */
 export interface IForm extends React.FormHTMLAttributes<HTMLFormElement> {
-    /** The passed in state from the parent component */
+    /** The passed in state from the parentName component */
     state: any;
-    /** If the parent component is a class component then the context must contain the parent's **this** keyword. */
+    /** If the parentName component is a class component then the context must contain the parentName's **this** keyword. */
     context?: any;
-    /** If the form's state is not directly contained at parent's state root object, then formKey needs to represent the key. */
+    /** If the form's state is not directly contained at parentName's state root object, then formKey needs to represent the key. */
     readonly formKey?: string;
     /** Default is false. If set to true then the form state will be displayed just below the form component in `code` tags. */
     readonly debug?: boolean;
@@ -89,31 +103,42 @@ export interface IFormContext {
     state: any;
     updateParentState?: (e: React.ChangeEvent<any>, name: string) => void;
     updateRadioGroupStateFromPassedInContext?: (e: React.ChangeEvent<any>, name: string, radioGroup: any) => void;
-    updateFieldValidation?: (fieldName: string, fieldValue: any, validation: Array<IValidation>, type?: TypeMetadataNames) => void;
-    updateRadioGroupMetadata?: (fieldGroupKey: string, radioProps: Array<{ props: IRadioField}>) => void;
 }
-
+/** @internal */
+const INPUTS_STATE: TypeInputMetadata = {} as any;
+/** @internal */
+const RADIO_GROUPS_STATE: TypeRadioGroupMetadata = {} as any;
+/** @internal */
+const FILES_STATE: TypeFileMetadata = {} as any;
+/** @internal */
+const CHECKBOXES_STATE: TypeCheckboxesMetadata = {} as any;
 /** @internal */
 const providerContext: IFormContext = {
     bare: false,
     state: {},
-    formKey: null,
+    formKey: null as any,
     debug: false,
     dynamic: true,
     metadata: {
-        inputs: {},
-        fieldGroups: {},
-        files: {},
-        checkboxes: {},
+        inputs: null as any,
+        radioGroups: null as any,
+        files: null as any,
+        checkboxes: null as any,
     },
 };
-
 /** @internal */
-export const FormContext = React.createContext(providerContext);
+export interface IRadioGroupParentContext {
+    parent?: { name: string };
+    children?: any;
+}
+/** @internal */
+export const RadioGroupContext = React.createContext<TypeRadioGroupMetadata>(RADIO_GROUPS_STATE);
+/** @internal */
+export const FormContext = React.createContext<IFormContext>(providerContext);
 /** @internal */
 export const FormProvider = FormContext.Provider;
 /**
- * @var Access the form state within a React Conext Api Consumer scope
+ * @var Access the form state within a React Context Api Consumer scope
  * @example For example:
  * ```
  * <Form state={this.state} context={this}>
@@ -172,7 +197,7 @@ export const Submit = (props: any) => {
  */
 export const Form = (props: IForm) => {
     const [parentState, setParentState] = useState(props.state);
-    // If the parent component is a class component, then the state needs to be updated from the parent context
+    // If the parentName component is a class component, then the state needs to be updated from the parentName context
     if(props.context) {
         useEffect(() => {
             props.context.setState({
@@ -180,21 +205,48 @@ export const Form = (props: IForm) => {
             });
         }, [parentState]);
     }
-    const [context, updateContext] = useState(providerContext);
+    // State Hooks
+    const [context, _] = useState(providerContext);
+    const [inputState, updateInputState] = useState(INPUTS_STATE);
+    const [checkboxesState, updateCheckboxesState] = useState(CHECKBOXES_STATE);
+    const [fileState, updateFileState] = useState(FILES_STATE);
+    const [radioState, updateRadioState] = useState(RADIO_GROUPS_STATE);
+
+
     const _providerContext: IFormContext = {
         bare: props.bare || context.bare,
         state: props.state,
         formKey: props.formKey,
         debug: props.debug || context.debug,
         dynamic: props.dynamic || context.dynamic,
-        metadata: context.metadata,
-        updateParentState: updateStateFromPassedInContext(parentState, setParentState),
+        updateParentState: updateParentState(parentState, setParentState),
         updateRadioGroupStateFromPassedInContext: updateRadioGroupStateFromPassedInContext(parentState, setParentState),
-        updateFieldValidation: updateValidationMetadata(context, updateContext),
-        updateRadioGroupMetadata: updateRadioGroupMetadata(context, updateContext),
+        metadata: {
+            [METADATA_NAMES.INPUTS]: new Metadata<IInputFieldMetadata>(
+                inputState as {},
+                updateInputState,
+                METADATA_NAMES.INPUTS,
+            ),
+            [METADATA_NAMES.CHECKBOXES]: new Metadata<ICheckBoxesMetadata>(
+                checkboxesState as {},
+                updateCheckboxesState,
+                METADATA_NAMES.CHECKBOXES,
+            ),
+            [METADATA_NAMES.FILES]: new MetadataFile<IFileMetaData>(
+                fileState as {},
+                updateFileState,
+                METADATA_NAMES.FILES,
+            ),
+            [METADATA_NAMES.RADIO_GROUPS]: new MetadataGroup<IRadioGroupChildren>(
+                radioState as any,
+                updateRadioState,
+                METADATA_NAMES.RADIO_GROUPS,
+            ),
+        },
     };
+
     return (
-        <FormProvider value={_providerContext}>
+            <FormProvider value={_providerContext}>
             <form onSubmit={handleSubmit(props)} {...props}>{props.children}</form>
         </FormProvider>
     );

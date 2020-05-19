@@ -1,15 +1,19 @@
-import {default as React, useContext, useEffect} from "react";
-import {FormContext, IForm} from "./form";
+import {default as React} from "react";
 import {IValidators} from "./validators";
 import {
-    InputField,
-    TextAreaField as _TextAreaField,
-    CheckBoxField as _CheckBoxField,
-    RadioField as _RadioField,
-    SelectField as _SelectField,
-    FileField as _FileField,
-} from "./core/_field";
-
+    IForm,
+    IRadioGroupParentContext,
+    RadioGroupContext,
+    TypeRadioGroupMetadata,
+} from "./form";
+import {TextAreaField as _TextAreaField} from "./classes/_TextAreaField";
+import {Metadata} from "./classes/_Metadata";
+import {InputField} from "./classes/_InputField";
+import {CheckBoxField as _CheckBoxField} from "./classes/_CheckBoxField";
+import {SubmitButton as _SubmitButton} from "./classes/_SubmitButton";
+import {SelectField as _SelectField} from "./classes/_SelectField";
+import {FileField as _FileField} from "./classes/_FileField";
+import {RadioField as _RadioField} from "./classes/_RadioField";
 
 /** @internal */
 export enum FIELD_NAMES {
@@ -100,8 +104,34 @@ export interface ISelectField extends IField {
  * @constructor
  */
 export const TextInputField = (props: ITextInputField) => {
-  const textInput = new InputField<ITextInputField>(FIELD_NAMES.TEXTAREA, props);
+  const textInput = new InputField<ITextInputField>(FIELD_NAMES.TEXT, props);
   return textInput.create();
+};
+
+/**
+ *
+ * @param props
+ * ```
+ * // A bare form example ... remember to set the {@link Form.bare} property to `true`
+ * <TextInputField
+ *    value={this.state.username}
+ *    name="username"
+ * />
+ *
+ * // Example with Bootstrap styling (Bootstrap styling comes as default)
+ *
+ * <TextInputField
+ *    value={this.state.username}
+ *    name="username"
+ *    hint="Needs to be at least 50 characters long"
+ *    labelText="Username"
+ *  />
+ * ```
+ * @constructor
+ */
+export const EmailField = (props: IEmailField) => {
+    const emailInput = new InputField<IEmailField>(FIELD_NAMES.EMAIL, props);
+    return emailInput.create();
 };
 
 /**
@@ -154,31 +184,6 @@ export const PasswordField = (props: IPasswordField) => {
   return passwordInput.create();
 };
 
-/**
- *
- * @param props
- * ```
- * // A bare form example ... remember to set the {@link Form.bare} property to `true`
- * <TextInputField
- *    value={this.state.username}
- *    name="username"
- * />
- *
- * // Example with Bootstrap styling (Bootstrap styling comes as default)
- *
- * <TextInputField
- *    value={this.state.username}
- *    name="username"
- *    hint="Needs to be at least 50 characters long"
- *    labelText="Username"
- *  />
- * ```
- * @constructor
- */
-export const EmailField = (props: IEmailField) => {
-  const emailInput = new InputField<IEmailField>(FIELD_NAMES.EMAIL, props);
-  return emailInput.create();
-};
 
 
 /**
@@ -243,15 +248,6 @@ export interface IRadioGroupProps {
     children: any;
 }
 
-export interface IRadioGroupParentContext {
-    parent?: { name: string };
-    children?: any;
-}
-
-export const RadioGroupContext = React.createContext({});
-
-
-
 /**
  *
  * @param props
@@ -259,10 +255,7 @@ export const RadioGroupContext = React.createContext({});
  */
 export function RadioGroup(props: IRadioGroupProps) {
     const contextValue: IRadioGroupParentContext = {parent: {name: props.name}, children: props.children};
-    const context = useContext(FormContext);
-    // update state on next cycle tick - TODO use useEffect
-    useEffect(() => context.updateRadioGroupMetadata(props.name, props.children), [props]);
-    return <RadioGroupContext.Provider value={contextValue}>{props.children}</RadioGroupContext.Provider>;
+    return <RadioGroupContext.Provider value={contextValue as TypeRadioGroupMetadata}>{props.children}</RadioGroupContext.Provider>;
 }
 
 /**
@@ -290,8 +283,11 @@ export const SelectField = (props: ISelectField) => {
  * @param props
  * @constructor
  */
-export const FileField = React.forwardRef((props: IFileField, ref: React.RefObject<HTMLFormElement>) => {
+export const FileField = React.forwardRef((props: IFileField, ref: React.RefObject<HTMLFormElement>|any) => {
     let _props = {...props, ref };
     const file = new _FileField<IFileField>(FIELD_NAMES.FILE, _props);
     return file.create();
 });
+
+
+export const SubmitButton = new _SubmitButton().create();

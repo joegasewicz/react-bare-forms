@@ -1,16 +1,23 @@
 import * as React from "react";
 import {FormConsumer, Form} from "../src/form";
 import {
-    CheckBoxField,
-    EmailField, FileField,
+    SubmitButton,
+    TextInputField,
+    EmailField,
     PasswordField,
-    RadioField, RadioGroup, SelectField,
     TextAreaField,
-    TextInputField
+    CheckBoxField,
+    SelectField,
+    FileField,
+    RadioField,
+    RadioGroup,
+
 } from "../src/elements";
-import {areFieldsEqual, isChecked, isEmailValid, isFieldEmpty, isFile, isRadioChecked} from "../src/validators";
-import {SubmitButton} from "../src/submit_button";
+import {isChecked, isEmailValid, isFieldEmpty, isFile, isRadioChecked} from "../src/validators";
+
 import {createFileRef, getFileFromRef} from "../src/uncrontrolled";
+import {areFieldsEqual} from "../src/validators";
+
 
 interface IProps{}
 
@@ -109,6 +116,20 @@ export class Main extends React.Component<IProps, IState> {
                                     validators={[isChecked()]}
                                 />
 
+                                <SelectField
+                                    size="lg"
+                                    value={this.state.fruitChoice}
+                                    name="fruitChoice"
+                                    options={["banana", "apple", "orange"]}
+                                />
+
+                                <FileField
+                                    ref={this.myFileRef}
+                                    hint="Must be a file"
+                                    labelText="Upload your file"
+                                    name="myFileTest"
+                                    validators={[isFile()]}
+                                />
 
                                 <RadioGroup name="group1">
                                     <RadioField
@@ -134,20 +155,7 @@ export class Main extends React.Component<IProps, IState> {
                                     />
                                 </RadioGroup>
 
-                                <SelectField
-                                    size="lg"
-                                    value={this.state.fruitChoice}
-                                    name="fruitChoice"
-                                    options={["banana", "apple", "orange"]}
-                                />
 
-                                <FileField
-                                    ref={this.myFileRef}
-                                    hint="Must be a file"
-                                    labelText="Upload your file"
-                                    name="myFileTest"
-                                    validators={[isFile()]}
-                                />
 
                                 <SubmitButton>Submit Form</SubmitButton>
 
@@ -155,14 +163,25 @@ export class Main extends React.Component<IProps, IState> {
                                 <FormConsumer>
                                     {(context: any) => {
                                         // this.setState({...context});
-                                        return <div><code>Form State: {JSON.stringify(context)}</code></div>;
+                                        return <div className="container"><code><var>state</var>: {JSON.stringify(context.state)}</code></div>;
+                                    }}
+                                </FormConsumer>
+                                <br />
+                                <br />
+                                <FormConsumer>
+                                    {(context: any) => {
+                                        // this.setState({...context});
+                                        return <div className="container"><code><var>metadata</var>: {JSON.stringify(context.metadata.radioGroups)}</code></div>;
                                     }}
                                 </FormConsumer>
                             </Form>
 
                         </div>
+                        <br />
+                        <div className="container">
+                            <code><var>State</var>: {JSON.stringify(this.state)}</code>
+                        </div>
 
-                        <code>State: {JSON.stringify(this.state)}</code>
 
                     </div>
                 </div>
