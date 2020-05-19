@@ -3,7 +3,7 @@ import {IValidators} from "./validators";
 import {
     IForm,
     IRadioGroupParentContext,
-    // RadioGroupContext,
+    RadioGroupContext,
     TypeRadioGroupMetadata,
 } from "./form";
 import {TextAreaField as _TextAreaField} from "./classes/_TextAreaField";
@@ -13,6 +13,7 @@ import {CheckBoxField as _CheckBoxField} from "./classes/_CheckBoxField";
 import {SubmitButton as _SubmitButton} from "./classes/_SubmitButton";
 import {SelectField as _SelectField} from "./classes/_SelectField";
 import {FileField as _FileField} from "./classes/_FileField";
+import {RadioField as _RadioField} from "./classes/_RadioField";
 
 /** @internal */
 export enum FIELD_NAMES {
@@ -252,20 +253,20 @@ export interface IRadioGroupProps {
  * @param props
  * @constructor
  */
-// export function RadioGroup(props: IRadioGroupProps) {
-//     const contextValue: IRadioGroupParentContext = {parent: {name: props.name}, children: props.children};
-//     return <RadioGroupContext.Provider value={contextValue as TypeRadioGroupMetadata}>{props.children}</RadioGroupContext.Provider>;
-// }
+export function RadioGroup(props: IRadioGroupProps) {
+    const contextValue: IRadioGroupParentContext = {parent: {name: props.name}, children: props.children};
+    return <RadioGroupContext.Provider value={contextValue as TypeRadioGroupMetadata}>{props.children}</RadioGroupContext.Provider>;
+}
 
 /**
  *
  * @param props
  * @constructor
  */
-// export const RadioField = (props: IRadioField) => {
-//     const radio = new _RadioField(FIELD_NAMES.RADIO, props);
-//     return radio.create();
-// };
+export const RadioField = (props: IRadioField) => {
+    const radio = new _RadioField(FIELD_NAMES.RADIO, props);
+    return radio.create();
+};
 
 /**
  *

@@ -6,7 +6,7 @@ import {AbstractMetadata} from "./_AbstractMetadata";
 
 
 /** @internal **/
-export class _MetadataGroup<T> extends AbstractMetadata<T> {
+export class MetadataGroup<T> extends AbstractMetadata<T> {
     public defaultState = {} as T;
     public readonly parentName?: string;
 
@@ -19,7 +19,8 @@ export class _MetadataGroup<T> extends AbstractMetadata<T> {
         this.fieldType = fieldType;
     }
 
-    public update(props: any, validation: Array<IValidation>): void {
-
+    public update(value: any, validation: Array<IValidation>): void {
+        console.log("Radio.update value -----> ", value);
     }
+
 }

@@ -9,11 +9,11 @@ import {
     CheckBoxField,
     SelectField,
     FileField,
-    // RadioField,
-    // RadioGroup,
+    RadioField,
+    RadioGroup,
 
 } from "../src/elements";
-import {isChecked, isEmailValid, isFieldEmpty, isFile} from "../src/validators";
+import {isChecked, isEmailValid, isFieldEmpty, isFile, isRadioChecked} from "../src/validators";
 
 import {createFileRef, getFileFromRef} from "../src/uncrontrolled";
 import {areFieldsEqual} from "../src/validators";
@@ -131,29 +131,29 @@ export class Main extends React.Component<IProps, IState> {
                                     validators={[isFile()]}
                                 />
 
-                            {/*    <RadioGroup name="group1">*/}
-                            {/*        <RadioField*/}
-                            {/*            name="radio1"*/}
-                            {/*            checked={this.state.radio1}*/}
-                            {/*            hint="Click to agree"*/}
-                            {/*            labelText="Agree to terms & conditions"*/}
-                            {/*            validators={[isRadioChecked()]}*/}
-                            {/*        />*/}
+                                <RadioGroup name="group1">
+                                    <RadioField
+                                        name="radio1"
+                                        checked={this.state.radio1}
+                                        hint="Click to agree"
+                                        labelText="Agree to terms & conditions"
+                                        validators={[isRadioChecked()]}
+                                    />
 
-                            {/*        <RadioField*/}
-                            {/*            name="radio2"*/}
-                            {/*            checked={this.state.radio2}*/}
-                            {/*            hint="Click to agree"*/}
-                            {/*            labelText="Agree to terms & conditions"*/}
-                            {/*        />*/}
+                                    <RadioField
+                                        name="radio2"
+                                        checked={this.state.radio2}
+                                        hint="Click to agree"
+                                        labelText="Agree to terms & conditions"
+                                    />
 
-                            {/*        <RadioField*/}
-                            {/*            name="radio3"*/}
-                            {/*            checked={this.state.radio3}*/}
-                            {/*            hint="Click to agree"*/}
-                            {/*            labelText="Agree to terms & conditions"*/}
-                            {/*        />*/}
-                            {/*    </RadioGroup>*/}
+                                    <RadioField
+                                        name="radio3"
+                                        checked={this.state.radio3}
+                                        hint="Click to agree"
+                                        labelText="Agree to terms & conditions"
+                                    />
+                                </RadioGroup>
 
 
 
@@ -171,7 +171,7 @@ export class Main extends React.Component<IProps, IState> {
                                 <FormConsumer>
                                     {(context: any) => {
                                         // this.setState({...context});
-                                        return <div className="container"><code><var>metadata</var>: {JSON.stringify(context.metadata)}</code></div>;
+                                        return <div className="container"><code><var>metadata</var>: {JSON.stringify(context.metadata.radioGroups)}</code></div>;
                                     }}
                                 </FormConsumer>
                             </Form>

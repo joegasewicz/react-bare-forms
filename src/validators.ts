@@ -6,7 +6,7 @@ import {EMAIL_REGEX} from "./core/_regex";
 /** @internal */
 export interface IValidation {
     isValid: boolean;
-    messages: Array<string>;
+    messages: [...string[]];
 }
 /** @internal The inner returned function type that custom validators must implement */
 export type IValidationFunction = (...args: Array<any>) => IValidation|_FieldEmptyErrorMsg;
@@ -93,16 +93,9 @@ export const isFile: IValidationVariable = customValidator((_, name, context) =>
 /**
  *
  */
-// export const isRadioChecked: IValidationVariable = customValidator((_ , [name, parent], context) => {
-//     let fieldGroup = context.metadata.radioGroups[parent];
-//     if(fieldGroup) {
-//         // @ts-ignore TODO
-//         let radio = fieldGroup[name];
-//         if(radio && !radio.isChecked) {
-//             return [`Radio ... must be selected`];
-//         }
-//     }
-// });
+export const isRadioChecked: IValidationVariable = customValidator((_ , __, context) => {
+    return [`error here ....`]
+});
 
 /**
  *
@@ -148,6 +141,7 @@ export const isChecked: IValidationVariable = customValidator((_, fieldValue, co
 export function customValidator(callback: ICustomValidatorCallback): (arg: any) => IValidationFunction  {
     return (arg: any = null): IValidationFunction => {
         return (...args: Array<any>) => {
+            // TODO custom exceptions for the below args
             const fieldValue: any = args[0];
             const context: IFormContext = args[1];
             const messages = callback(arg, fieldValue, context);

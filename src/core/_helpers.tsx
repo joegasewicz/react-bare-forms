@@ -13,7 +13,7 @@ interface IFormElementValidators {
     value: any;
     type: METADATA_NAMES;
     className?: string;
-    /* If a field is part of a group e.g Radio buttons then this is the name of parent field **/
+    /* If a field is part of a group e.g Radio buttons then this is the name of parentName field **/
     readonly parent?: string;
     metadata: AbstractMetadata<TypeFormMetadata>;
 }
@@ -56,9 +56,9 @@ export function getMetadataNameType(type: FIELD_NAMES): METADATA_NAMES {
         case FIELD_NAMES.TEXTAREA: {
             return METADATA_NAMES.INPUTS;
         }
-        // case FIELD_NAMES.RADIO: {
-        //     return METADATA_NAMES.RADIO_GROUPS;
-        // }
+        case FIELD_NAMES.RADIO: {
+            return METADATA_NAMES.RADIO_GROUPS;
+        }
         case FIELD_NAMES.CHECKBOX: {
             return METADATA_NAMES.CHECKBOXES;
         }
@@ -97,6 +97,9 @@ export function getFieldValueType(type: FIELD_NAMES): TypeFieldValueTypes {
         }
         case FIELD_NAMES.FILE: {
             return "file";
+        }
+        case FIELD_NAMES.RADIO: {
+            return "value"
         }
         default: {
             return "value";

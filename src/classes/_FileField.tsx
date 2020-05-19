@@ -55,7 +55,7 @@ export class FileField<T extends any> extends AbstractField<T> implements IAbstr
     /**
      * @internal
      * @param _
-     * @description This overrides the same behaviour in the parent class.
+     * @description This overrides the same behaviour in the parentName class.
      */
     public getFieldValue(_: unknown): any {
         if(this.props.ref.current) {

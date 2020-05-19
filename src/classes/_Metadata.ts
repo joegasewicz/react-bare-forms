@@ -47,7 +47,6 @@ export class Metadata<T extends IFieldValidation> extends AbstractMetadata<T> {
                     isTouched: true,
                 },
             };
-            console.log("INSIDE ", value)
             this.updateState(state);
         }
     }
