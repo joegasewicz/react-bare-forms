@@ -1,18 +1,17 @@
 import {default as React, useContext} from "react";
 import {AbstractField, IAbstractField} from "./_AbstractField";
-import {FIELD_NAMES, IRadioGroupProps} from "../elements";
+import {FIELD_NAMES} from "../elements";
 import {IFormContext, IRadioGroupParentContext, RadioGroupContext} from "../form";
-import {updateRadioGroupStateFromPassedInContext} from "../core/_handlers";
+
 
 
 
 /** @internal */
 export class RadioField<T extends any> extends AbstractField<T> implements IAbstractField<T> {
-    public _parentName?: string;
-    constructor(type: FIELD_NAMES, props: T) {
+    private _parentName?: string;
+
+    constructor(public type: FIELD_NAMES, public props: T) {
         super(props, type);
-        this.type = type;
-        this.props = props;
     }
 
     get parentName(): string|undefined {
@@ -42,21 +41,19 @@ export class RadioField<T extends any> extends AbstractField<T> implements IAbst
         this.parentName = (radioContext  as any).parent.name;
 
 
-
-        const test = (e: React.ChangeEvent<any>) => {
-            let event: React.ChangeEvent<HTMLFormElement> = this.overrideEvent(e, e.target.value);
-            console.log("Radiocontext----->", radioContext);
-            (this.context as any).updateRadioGroupStateFromPassedInContext(event, this.props.name, radioContext);
-        };
-
         return () => {
             return <input
                 type={this.type}
                 checked={(this.context as IFormContext).state[this.props.name] || false}
                 name={this.props.name}
-                onChange={e => test(e)}
+                onChange={e => this.handleOnChange(e, radioContext)}
                 className={AbstractField.mergeDefaultCssWithProps("form-check-input", this.props.className, (this.context as any).bare)}
             />
         }
     }
+
+    handleOnChange = (e: React.ChangeEvent<any>, radioContext: IRadioGroupParentContext) => {
+        let event: React.ChangeEvent<HTMLFormElement> = this.overrideEvent(e, e.target.value);
+        (this.context as any).updateRadioGroupStateFromPassedInContext(event, this.props.name, radioContext);
+    };
 }
