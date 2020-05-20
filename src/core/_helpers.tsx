@@ -1,33 +1,9 @@
 import * as React from "react";
-import {ReactElement} from "react";
-import {METADATA_NAMES, TypeFieldValueTypes, TypeFormMetadata} from "../form";
-import {IValidation} from "../validators";
+
+import {METADATA_NAMES, TypeFieldValueTypes} from "../form";
 import {FIELD_NAMES} from "../elements";
-import {AbstractMetadata} from "../classes/_AbstractMetadata";
 
 
-/** @internal */
-interface IFormElementValidators {
-    validators: Array<(...args: Array<any>) => IValidation>;
-    name: string;
-    value: any;
-    type: METADATA_NAMES;
-    className?: string;
-    /* If a field is part of a group e.g Radio buttons then this is the name of parentName field **/
-    readonly parent?: string;
-    metadata: AbstractMetadata<TypeFormMetadata>;
-}
-/** @internal */
-type TypeValidationElement = { results: Array<IValidation>, styles: string };
-
-/** @internal */
-function ValidationResults(props: TypeValidationElement): ReactElement<TypeValidationElement> {
-    const { results, styles } = props;
-    return (<>{results.map((result: IValidation) =>
-        result.messages.map((msg: string, index: number) =>
-            <div key={index} className={styles}>{msg}</div>
-        ))}</>);
-}
 
 /** @internal */
 export function mergeDefaultCssWithProps(defaultValue: string, cssProps: any, bare: boolean): string {

@@ -25,7 +25,11 @@
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(ts|tsx|js)?$"
   },
   "keywords": [
-    "react"
+    "react",
+    "typescript",
+    "forms",
+    "react-forms",
+    "javascript"
   ],
   "author": "joegasewicz",
   "license": "MIT",

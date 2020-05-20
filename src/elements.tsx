@@ -1,4 +1,5 @@
 import {default as React} from "react";
+
 import {IValidators} from "./validators";
 import {
     IForm,
@@ -6,14 +7,15 @@ import {
     RadioGroupContext,
     TypeRadioGroupMetadata,
 } from "./form";
-import {TextAreaField as _TextAreaField} from "./classes/_TextAreaField";
-import {Metadata} from "./classes/_Metadata";
-import {InputField} from "./classes/_InputField";
-import {CheckBoxField as _CheckBoxField} from "./classes/_CheckBoxField";
-import {SubmitButton as _SubmitButton} from "./classes/_SubmitButton";
-import {SelectField as _SelectField} from "./classes/_SelectField";
-import {FileField as _FileField} from "./classes/_FileField";
-import {RadioField as _RadioField} from "./classes/_RadioField";
+import {SubmitButton as _SubmitButton,} from "./classes/_SubmitButton";
+import {
+    CheckBoxField as _CheckBoxField,
+    FileField as _FileField,
+    InputField,
+    RadioField as _RadioField,
+    SelectField as _SelectField,
+    TextAreaField as _TextAreaField,
+} from "./classes/index";
 
 /** @internal */
 export enum FIELD_NAMES {

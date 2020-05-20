@@ -1,15 +1,13 @@
 import {default as React, Provider, useEffect, useState} from "react";
 import {updateRadioGroupStateFromPassedInContext, updateParentState} from "./core/_handlers";
 import {IValidation} from "./validators";
-// import {updateMetadata} from "./core/_context_updaters";
-import {IRadioField, ITextInputField} from "./elements";
 import {getFileFromRef} from "./uncrontrolled";
-import {AbstractMetadata} from "./classes/_AbstractMetadata";
-import {Metadata} from "./classes/_Metadata";
-import {MetadataFile} from "./classes/_MetadataFile";
-import {MetadataGroup} from "./classes/_MetadataGroup";
-
-
+import {
+    AbstractMetadata,
+    Metadata,
+    MetadataFile,
+    MetadataGroup,
+} from "./classes/index";
 
 /** @internal */
 export type TypeFieldValueTypes = "value"|"checked"|"file";
@@ -169,15 +167,6 @@ export const handleSubmit = (props: IForm) =>
             // TODO throw error
         }
     };
-
-/**
- *
- * @param props
- * @constructor
- */
-export const Submit = (props: any) => {
-    return <button type="submit">Submit</button>;
-};
 
 /**
  * The main Form component
