@@ -1,7 +1,7 @@
 import {default as React, ReactElement, useContext} from "react";
 
 
-import {FIELD_NAMES} from "../elements";
+import {FIELD_NAMES, IField} from "../elements";
 import {IValidation} from "../validators";
 import {
     FormElementValidators,
@@ -32,7 +32,7 @@ export interface IAbstractField<T> {
 }
 
 /** @internal */
-export function _genericFormGroup<T extends any>(props: T, children: any) {
+export function _genericFormGroup<T extends IField>(props: T, children: any) {
     return (
         <div className="form-group">
             {props.labelText && <label>{props.labelText}</label>}
@@ -43,16 +43,16 @@ export function _genericFormGroup<T extends any>(props: T, children: any) {
 }
 
 /** @internal */
-export abstract class AbstractField<PropsType extends any> {
+export abstract class AbstractField<T extends IField> {
     public type: FIELD_NAMES;
-    public props: PropsType;
+    public props: T;
     public parent?: string;
     public _metadata?: TypeFormMetadata;
     public _bare?: boolean;
     public context?: IFormContext;
     public parentName?: string;
 
-    protected constructor(props: PropsType, type: FIELD_NAMES) {
+    protected constructor(props: T, type: FIELD_NAMES) {
         this.type = type;
         this.props = props;
         this.init();
@@ -81,7 +81,7 @@ export abstract class AbstractField<PropsType extends any> {
         this.bare = Boolean(this.context.bare);
     }
 
-    protected getProps(): PropsType {
+    protected getProps(): T {
         return this.props;
     }
 
@@ -106,7 +106,7 @@ export abstract class AbstractField<PropsType extends any> {
    public doValidation(value: any): Array<IValidation> {
        let validation: Array<IValidation> = [];
        // Carry out the validation
-       for(let index in this.props.validators) {
+       for(let index = 0;  in this.props.validators) {
            validation = [
                ...validation,
                this.props.validators[index](value, this.context),
@@ -129,7 +129,7 @@ export abstract class AbstractField<PropsType extends any> {
         return validation;
     }
 
-    public getFieldValue(props: PropsType): any {
+    public getFieldValue(props: T): any {
         let type = getFieldValueType(this.type);
         return this.props[type];
     }

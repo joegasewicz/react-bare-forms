@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ICheckBoxField | react-bare-forms</title>
+	<title>IRadioField | react-bare-forms</title>
 	<meta name="description" content="Documentation for react-bare-forms">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_form_elements_.html">&quot;form-elements&quot;</a>
+					<a href="../modules/_elements_.html">&quot;elements&quot;</a>
 				</li>
 				<li>
-					<a href="_form_elements_.icheckboxfield.html">ICheckBoxField</a>
+					<a href="_elements_.iradiofield.html">IRadioField</a>
 				</li>
 			</ul>
-			<h1>Interface ICheckBoxField</h1>
+			<h1>Interface IRadioField</h1>
 		</div>
 	</div>
 </header>
@@ -73,10 +73,10 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="_form_elements_.ifield.html" class="tsd-signature-type">IField</a>
+						<a href="_elements_.ifield.html" class="tsd-signature-type">IField</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">ICheckBoxField</span>
+								<span class="target">IRadioField</span>
 							</li>
 						</ul>
 					</li>
@@ -89,12 +89,13 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_form_elements_.icheckboxfield.html#checked" class="tsd-kind-icon">checked</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_form_elements_.icheckboxfield.html#classname" class="tsd-kind-icon">class<wbr>Name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_form_elements_.icheckboxfield.html#hint" class="tsd-kind-icon">hint</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_form_elements_.icheckboxfield.html#labeltext" class="tsd-kind-icon">label<wbr>Text</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_form_elements_.icheckboxfield.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_form_elements_.icheckboxfield.html#validators" class="tsd-kind-icon">validators</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_elements_.iradiofield.html#checked" class="tsd-kind-icon">checked</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_elements_.iradiofield.html#classname" class="tsd-kind-icon">class<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_elements_.iradiofield.html#disabled" class="tsd-kind-icon">disabled</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_elements_.iradiofield.html#hint" class="tsd-kind-icon">hint</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_elements_.iradiofield.html#labeltext" class="tsd-kind-icon">label<wbr>Text</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_elements_.iradiofield.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_elements_.iradiofield.html#validators" class="tsd-kind-icon">validators</a></li>
 							</ul>
 						</section>
 					</div>
@@ -108,18 +109,18 @@
 					<div class="tsd-signature tsd-kind-icon">checked<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9c58d90/src/form-elements.tsx#L42">src/elements.tsx:42</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dd438ee/src/elements.tsx#L71">src/elements.tsx:71</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="classname" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> class<wbr>Name</h3>
-					<div class="tsd-signature tsd-kind-icon">class<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<div class="tsd-signature tsd-kind-icon">class<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_form_elements_.ifield.html">IField</a>.<a href="_form_elements_.ifield.html#classname">className</a></p>
+						<p>Inherited from <a href="_elements_.ifield.html">IField</a>.<a href="_elements_.ifield.html#classname">className</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9c58d90/src/form-elements.tsx#L23">src/elements.tsx:23</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dd438ee/src/elements.tsx#L42">src/elements.tsx:42</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -128,14 +129,24 @@
 						</div>
 					</div>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="disabled" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> disabled</h3>
+					<div class="tsd-signature tsd-kind-icon">disabled<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dd438ee/src/elements.tsx#L72">src/elements.tsx:72</a></li>
+						</ul>
+					</aside>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="hint" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> hint</h3>
-					<div class="tsd-signature tsd-kind-icon">hint<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<div class="tsd-signature tsd-kind-icon">hint<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_form_elements_.ifield.html">IField</a>.<a href="_form_elements_.ifield.html#hint">hint</a></p>
+						<p>Inherited from <a href="_elements_.ifield.html">IField</a>.<a href="_elements_.ifield.html#hint">hint</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9c58d90/src/form-elements.tsx#L19">src/elements.tsx:19</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dd438ee/src/elements.tsx#L38">src/elements.tsx:38</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -147,11 +158,11 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="labeltext" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> label<wbr>Text</h3>
-					<div class="tsd-signature tsd-kind-icon">label<wbr>Text<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<div class="tsd-signature tsd-kind-icon">label<wbr>Text<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_form_elements_.ifield.html">IField</a>.<a href="_form_elements_.ifield.html#labeltext">labelText</a></p>
+						<p>Inherited from <a href="_elements_.ifield.html">IField</a>.<a href="_elements_.ifield.html#labeltext">labelText</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9c58d90/src/form-elements.tsx#L17">src/elements.tsx:17</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dd438ee/src/elements.tsx#L36">src/elements.tsx:36</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -165,9 +176,9 @@
 					<h3>name</h3>
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_form_elements_.ifield.html">IField</a>.<a href="_form_elements_.ifield.html#name">name</a></p>
+						<p>Inherited from <a href="_elements_.ifield.html">IField</a>.<a href="_elements_.ifield.html#name">name</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9c58d90/src/form-elements.tsx#L15">src/elements.tsx:15</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dd438ee/src/elements.tsx#L34">src/elements.tsx:34</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -179,16 +190,16 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="validators" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> validators</h3>
-					<div class="tsd-signature tsd-kind-icon">validators<span class="tsd-signature-symbol">:</span> <a href="../modules/_validators_.html#ivalidators" class="tsd-signature-type">IValidators</a></div>
+					<div class="tsd-signature tsd-kind-icon">validators<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidators</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_form_elements_.ifield.html">IField</a>.<a href="_form_elements_.ifield.html#validators">validators</a></p>
+						<p>Inherited from <a href="_elements_.ifield.html">IField</a>.<a href="_elements_.ifield.html#validators">validators</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9c58d90/src/form-elements.tsx#L21">src/elements.tsx:21</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dd438ee/src/elements.tsx#L40">src/elements.tsx:40</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>These are the <a href="../modules/_validators_.html#ivalidators">IValidators</a> that you can pass in the validate the form element.</p>
+							<p>These are the {@link IValidators} that you can pass in the validate the form element.</p>
 						</div>
 					</div>
 				</section>
@@ -201,22 +212,25 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="../modules/_field_.html">&quot;<wbr>_field&quot;</a>
+						<a href="../modules/_classes__radiofield_.html">&quot;classes/_<wbr><wbr>Radio<wbr>Field&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="../modules/__context_updaters_.html">&quot;_<wbr>context_<wbr>updaters&quot;</a>
+						<a href="../modules/_classes__submitbutton_.html">&quot;classes/_<wbr><wbr>Submit<wbr>Button&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="../modules/__errors_.html">&quot;_<wbr>errors&quot;</a>
+						<a href="../modules/_core__errors_.html">&quot;core/_<wbr>errors&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="../modules/__regex_.html">&quot;_<wbr>regex&quot;</a>
+						<a href="../modules/_core__regex_.html">&quot;core/_<wbr>regex&quot;</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_elements_.html">&quot;elements&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_form_.html">&quot;form&quot;</a>
 					</li>
-					<li class="current tsd-kind-module">
-						<a href="../modules/_form_elements_.html">&quot;form-<wbr>elements&quot;</a>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_uncrontrolled_.html">&quot;uncrontrolled&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="../modules/_validators_.html">&quot;validators&quot;</a>
@@ -225,62 +239,95 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_elements_.icheckboxfield.html" class="tsd-kind-icon">ICheck<wbr>Box<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_elements_.iemailfield.html" class="tsd-kind-icon">IEmail<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_elements_.ifield.html" class="tsd-kind-icon">IField</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_elements_.ifilefield.html" class="tsd-kind-icon">IFile<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="_elements_.ipasswordfield.html" class="tsd-kind-icon">IPassword<wbr>Field</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module">
-						<a href="_form_elements_.icheckboxfield.html" class="tsd-kind-icon">ICheck<wbr>Box<wbr>_field</a>
+						<a href="_elements_.iradiofield.html" class="tsd-kind-icon">IRadio<wbr>Field</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_form_elements_.icheckboxfield.html#checked" class="tsd-kind-icon">checked</a>
+								<a href="_elements_.iradiofield.html#checked" class="tsd-kind-icon">checked</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_form_elements_.icheckboxfield.html#classname" class="tsd-kind-icon">class<wbr>Name</a>
+								<a href="_elements_.iradiofield.html#classname" class="tsd-kind-icon">class<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_elements_.iradiofield.html#disabled" class="tsd-kind-icon">disabled</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_form_elements_.icheckboxfield.html#hint" class="tsd-kind-icon">hint</a>
+								<a href="_elements_.iradiofield.html#hint" class="tsd-kind-icon">hint</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_form_elements_.icheckboxfield.html#labeltext" class="tsd-kind-icon">label<wbr>Text</a>
+								<a href="_elements_.iradiofield.html#labeltext" class="tsd-kind-icon">label<wbr>Text</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_form_elements_.icheckboxfield.html#name" class="tsd-kind-icon">name</a>
+								<a href="_elements_.iradiofield.html#name" class="tsd-kind-icon">name</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_form_elements_.icheckboxfield.html#validators" class="tsd-kind-icon">validators</a>
+								<a href="_elements_.iradiofield.html#validators" class="tsd-kind-icon">validators</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_form_elements_.iemailfield.html" class="tsd-kind-icon">IEmail<wbr>_field</a>
+						<a href="_elements_.iradiogroupprops.html" class="tsd-kind-icon">IRadio<wbr>Group<wbr>Props</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_form_elements_.ifield.html" class="tsd-kind-icon">IField</a>
+						<a href="_elements_.iselectfield.html" class="tsd-kind-icon">ISelect<wbr>Field</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_form_elements_.ipasswordfield.html" class="tsd-kind-icon">IPassword<wbr>_field</a>
+						<a href="_elements_.itextareafield.html" class="tsd-kind-icon">IText<wbr>Area<wbr>Field</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_form_elements_.itextareafield.html" class="tsd-kind-icon">IText<wbr>Area<wbr>_field</a>
+						<a href="_elements_.itextinputfield.html" class="tsd-kind-icon">IText<wbr>Input<wbr>Field</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_form_elements_.itextinputfield.html" class="tsd-kind-icon">IText<wbr>Input<wbr>_field</a>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+						<a href="../modules/_elements_.html#typeselectcsssizename" class="tsd-kind-icon">Type<wbr>Select<wbr>Css<wbr>Size<wbr>Name</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/_form_elements_.html#checkboxfield" class="tsd-kind-icon">Check<wbr>Box<wbr>_field</a>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="../modules/_elements_.html#filefield" class="tsd-kind-icon">File<wbr>Field</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/_form_elements_.html#emailfield" class="tsd-kind-icon">Email<wbr>_field</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/_form_elements_.html#passwordfield" class="tsd-kind-icon">Password<wbr>_field</a>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="../modules/_elements_.html#submitbutton" class="tsd-kind-icon">Submit<wbr>Button</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/_form_elements_.html#textareafield" class="tsd-kind-icon">Text<wbr>Area<wbr>_field</a>
+						<a href="../modules/_elements_.html#checkboxfield" class="tsd-kind-icon">Check<wbr>Box<wbr>Field</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="../modules/_form_elements_.html#textinputfield" class="tsd-kind-icon">Text<wbr>Input<wbr>_field</a>
+						<a href="../modules/_elements_.html#emailfield" class="tsd-kind-icon">Email<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/_elements_.html#passwordfield" class="tsd-kind-icon">Password<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/_elements_.html#radiofield" class="tsd-kind-icon">Radio<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/_elements_.html#radiogroup" class="tsd-kind-icon">Radio<wbr>Group</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/_elements_.html#selectfield" class="tsd-kind-icon">Select<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/_elements_.html#textareafield" class="tsd-kind-icon">Text<wbr>Area<wbr>Field</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="../modules/_elements_.html#textinputfield" class="tsd-kind-icon">Text<wbr>Input<wbr>Field</a>
 					</li>
 				</ul>
 			</nav>
@@ -292,7 +339,6 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>

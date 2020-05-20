@@ -1,12 +1,12 @@
 import {Context, default as React, ReactElement} from "react";
 
 import {IFormContext} from "../form";
-import {FIELD_NAMES} from "../elements";
+import {FIELD_NAMES, IField} from "../elements";
 import {_genericFormGroup, AbstractField, IAbstractField} from "./_AbstractField";
 
 
 /** @internal */
-export class InputField<T extends any> extends AbstractField<T> implements IAbstractField<T> {
+export class InputField<T extends IField> extends AbstractField<T> implements IAbstractField<T> {
 
     constructor(type: FIELD_NAMES, props: T) {
         super(props, type);
@@ -25,7 +25,7 @@ export class InputField<T extends any> extends AbstractField<T> implements IAbst
     public getField() {
         return () => <>{<input
             type={this.type}
-            value={(this.context as IFormContext).state[this.props.name as T]|| ""}
+            value={(this.context as IFormContext).state[this.props.name]|| ""}
             onChange={(e) => (this.context as any).updateParentState(e, this.props.name)}
             name={this.props.name}
             className={AbstractField.mergeDefaultCssWithProps("form-control", this.props.className, this.bare)}

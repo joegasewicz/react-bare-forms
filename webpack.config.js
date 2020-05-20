@@ -15,7 +15,7 @@ module.exports =  function(env, argv) {
             ],
         },
         resolve: {
-            extensions: [".tsx", ".ts"],
+            extensions: [".tsx", ".ts", ".js"],
         },
         output: {
             filename: argv["output-filename"],

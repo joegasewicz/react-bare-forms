@@ -71,27 +71,14 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Interfaces</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_validators_.ivalidation.html" class="tsd-kind-icon">IValidation</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Type aliases</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_validators_.html#icustomvalidatorcallback" class="tsd-kind-icon">ICustom<wbr>Validator<wbr>Callback</a></li>
-								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_validators_.html#ivalidationfunction" class="tsd-kind-icon">IValidation<wbr>Function</a></li>
-								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_validators_.html#ivalidationvariable" class="tsd-kind-icon">IValidation<wbr>Variable</a></li>
-								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_validators_.html#ivalidator" class="tsd-kind-icon">IValidator</a></li>
-								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_validators_.html#ivalidators" class="tsd-kind-icon">IValidators</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_validators_.html#arefieldsequal" class="tsd-kind-icon">are<wbr>_field<wbr>Equal</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_validators_.html#arefieldsequal" class="tsd-kind-icon">are<wbr>Fields<wbr>Equal</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_validators_.html#ischecked" class="tsd-kind-icon">is<wbr>Checked</a></li>
 								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_validators_.html#isemailvalid" class="tsd-kind-icon">is<wbr>Email<wbr>Valid</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_validators_.html#isfieldempty" class="tsd-kind-icon">is<wbr>_field<wbr>Empty</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_validators_.html#isfieldempty" class="tsd-kind-icon">is<wbr>Field<wbr>Empty</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_validators_.html#isfile" class="tsd-kind-icon">is<wbr>File</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_validators_.html#isradiochecked" class="tsd-kind-icon">is<wbr>Radio<wbr>Checked</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -104,177 +91,14 @@
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Type aliases</h2>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
-					<a name="icustomvalidatorcallback" class="tsd-anchor"></a>
-					<h3>ICustom<wbr>Validator<wbr>Callback</h3>
-					<div class="tsd-signature tsd-kind-icon">ICustom<wbr>Validator<wbr>Callback<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>arg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, fieldValue<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, context<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IFormContext</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9c58d90/src/validators.ts#L18">src/validators.ts:18</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The custom validator type callback</p>
-						</div>
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-signature">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>arg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, fieldValue<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, context<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IFormContext</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>arg: <span class="tsd-signature-type">any</span></h5>
-											</li>
-											<li>
-												<h5>fieldValue: <span class="tsd-signature-type">any</span></h5>
-											</li>
-											<li>
-												<h5>context: <span class="tsd-signature-type">IFormContext</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
-					<a name="ivalidationfunction" class="tsd-anchor"></a>
-					<h3>IValidation<wbr>Function</h3>
-					<div class="tsd-signature tsd-kind-icon">IValidation<wbr>Function<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="../interfaces/_validators_.ivalidation.html" class="tsd-signature-type">IValidation</a><span class="tsd-signature-symbol"> | </span><a href="../classes/__errors_._fieldemptyerrormsg.html" class="tsd-signature-type">_FieldEmptyErrorMsg</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9c58d90/src/validators.ts#L12">src/validators.ts:12</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The inner returned function type that custom validators must implement</p>
-						</div>
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-signature">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_validators_.ivalidation.html" class="tsd-signature-type">IValidation</a><span class="tsd-signature-symbol"> | </span><a href="../classes/__errors_._fieldemptyerrormsg.html" class="tsd-signature-type">_FieldEmptyErrorMsg</a></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>args: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <a href="../interfaces/_validators_.ivalidation.html" class="tsd-signature-type">IValidation</a><span class="tsd-signature-symbol"> | </span><a href="../classes/__errors_._fieldemptyerrormsg.html" class="tsd-signature-type">_FieldEmptyErrorMsg</a></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
-					<a name="ivalidationvariable" class="tsd-anchor"></a>
-					<h3>IValidation<wbr>Variable</h3>
-					<div class="tsd-signature tsd-kind-icon">IValidation<wbr>Variable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>arg<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="_validators_.html#ivalidationfunction" class="tsd-signature-type">IValidationFunction</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9c58d90/src/validators.ts#L20">src/validators.ts:20</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-signature">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>arg<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_validators_.html#ivalidationfunction" class="tsd-signature-type">IValidationFunction</a></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5><span class="tsd-flag ts-flagOptional">Optional</span> arg: <span class="tsd-signature-type">any</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <a href="_validators_.html#ivalidationfunction" class="tsd-signature-type">IValidationFunction</a></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
-					<a name="ivalidator" class="tsd-anchor"></a>
-					<h3>IValidator</h3>
-					<div class="tsd-signature tsd-kind-icon">IValidator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>t<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="_validators_.html#ivalidationfunction" class="tsd-signature-type">IValidationFunction</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9c58d90/src/validators.ts#L14">src/validators.ts:14</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>All custom validators must implement this type</p>
-						</div>
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-signature">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>t<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_validators_.html#ivalidationfunction" class="tsd-signature-type">IValidationFunction</a></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>t: <span class="tsd-signature-type">any</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <a href="_validators_.html#ivalidationfunction" class="tsd-signature-type">IValidationFunction</a></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
-					<a name="ivalidators" class="tsd-anchor"></a>
-					<h3>IValidators</h3>
-					<div class="tsd-signature tsd-kind-icon">IValidators<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="_validators_.html#ivalidationfunction" class="tsd-signature-type">IValidationFunction</a><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9c58d90/src/validators.ts#L16">src/validators.ts:16</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The expected validator&#39;s type that <a href="../interfaces/_form_elements_.ifield.html">IField</a> elements can consume</p>
-						</div>
-					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Variables</h2>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
 					<a name="arefieldsequal" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> are<wbr>_field<wbr>Equal</h3>
-					<div class="tsd-signature tsd-kind-icon">are<wbr>_field<wbr>Equal<span class="tsd-signature-symbol">:</span> <a href="_validators_.html#ivalidationvariable" class="tsd-signature-type">IValidationVariable</a><span class="tsd-signature-symbol"> = customValidator((passwordKey, fieldValue, context) &#x3D;&gt; {if(fieldValue !&#x3D;&#x3D; context.state[passwordKey]) {return [&#x60;_field do not match&#x60;];}})</span></div>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> are<wbr>Fields<wbr>Equal</h3>
+					<div class="tsd-signature tsd-kind-icon">are<wbr>Fields<wbr>Equal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((passwordKey, fieldValue, context) &#x3D;&gt; {if(fieldValue !&#x3D;&#x3D; context.state[passwordKey]) {return [&#x60;Fields do not match&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9c58d90/src/validators.ts#L41">src/validators.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dd438ee/src/validators.ts#L38">src/validators.ts:38</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -287,15 +111,15 @@
 						<dl class="tsd-comment-tags">
 							<dt>example</dt>
 							<dd><pre><code> &lt;PasswordField
-     <span class="hljs-string">//</span> other props.<span class="hljs-string">..</span>
+     <span class="hljs-regexp">//</span> other props...
      name=<span class="hljs-string">"myPassword"</span>
  /&gt;
 
  &lt;ConfirmPasswordField
-       <span class="hljs-string">//</span> other props.<span class="hljs-string">..</span>
-       validators={[areFieldsEqual<span class="hljs-params">("myPassword")</span>]}
+       <span class="hljs-regexp">//</span> other props...
+       validators={[areFieldsEqual(<span class="hljs-string">"myPassword"</span>)]}
   /&gt;
-  <span class="hljs-string">//</span> message: _field do not match</code></pre></dd>
+  <span class="hljs-regexp">//</span> message: Fields <span class="hljs-keyword">do</span> not match</code></pre></dd>
 							<dt>param</dt>
 							<dd><p>The name of the password form element you watch to match against</p>
 							</dd>
@@ -303,12 +127,22 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
-					<a name="isemailvalid" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Email<wbr>Valid</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Email<wbr>Valid<span class="tsd-signature-symbol">:</span> <a href="_validators_.html#ivalidationvariable" class="tsd-signature-type">IValidationVariable</a><span class="tsd-signature-symbol"> = customValidator((_ , fieldValue, context) &#x3D;&gt; {const isValid &#x3D; EMAIL_REGEX.test(String(fieldValue).toLowerCase());if(!isValid) {return [&#x60;Must be a valid email&#x60;];}})</span></div>
+					<a name="ischecked" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Checked</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Checked<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((_, fieldValue, context) &#x3D;&gt; {if(fieldValue &#x3D;&#x3D;&#x3D; false) {return [&#x60;Must be checked&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9c58d90/src/validators.ts#L79">src/validators.ts:79</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dd438ee/src/validators.ts#L104">src/validators.ts:104</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="isemailvalid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Email<wbr>Valid</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Email<wbr>Valid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((_ , fieldValue, context) &#x3D;&gt; {const isValid &#x3D; EMAIL_REGEX.test(String(fieldValue).toLowerCase());if(!isValid) {return [&#x60;Must be a valid email&#x60;];}})</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dd438ee/src/validators.ts#L76">src/validators.ts:76</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -318,20 +152,20 @@
 						<dl class="tsd-comment-tags">
 							<dt>example</dt>
 							<dd><pre><code> &lt;EmailField
-   <span class="hljs-comment">// other props...</span>
-   validators={[isEmailValid<span class="hljs-comment">()</span>]}
+   <span class="hljs-regexp">//</span> other props...
+   validators={[isEmailValid()]}
  /&gt;
- <span class="hljs-comment">// message: Must be a valid email</span></code></pre></dd>
+ <span class="hljs-regexp">//</span> message: Must be a valid email</code></pre></dd>
 						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
 					<a name="isfieldempty" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>_field<wbr>Empty</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>_field<wbr>Empty<span class="tsd-signature-symbol">:</span> <a href="_validators_.html#ivalidationvariable" class="tsd-signature-type">IValidationVariable</a><span class="tsd-signature-symbol"> = customValidator((minLength, fieldValue, _) &#x3D;&gt; {const isValid &#x3D; (fieldValue.length &gt;&#x3D; minLength);if(!isValid) {return [&#x60;Must be at least ${minLength} characters&#x60;];}})</span></div>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Field<wbr>Empty</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Field<wbr>Empty<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((minLength, fieldValue, _) &#x3D;&gt; {const isValid &#x3D; (fieldValue &amp;&amp; fieldValue.length &gt;&#x3D; minLength);if(!isValid) {return [&#x60;Must be at least ${minLength} characters&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9c58d90/src/validators.ts#L61">src/validators.ts:61</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dd438ee/src/validators.ts#L58">src/validators.ts:58</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -343,15 +177,41 @@
 						<dl class="tsd-comment-tags">
 							<dt>example</dt>
 							<dd><pre><code> &lt;TextInputField
-       <span class="hljs-comment">// other props...</span>
+       <span class="hljs-regexp">//</span> other props...
        validators={[isFieldEmpty(<span class="hljs-number">5</span>)]}
   /&gt;
-  <span class="hljs-comment">// message: Must be at least 5 characters</span></code></pre></dd>
+  <span class="hljs-regexp">//</span> message: Must be at least <span class="hljs-number">5</span> characters</code></pre></dd>
 							<dt>param</dt>
 							<dd><p>The minimum length of the form field value</p>
 							</dd>
 						</dl>
 					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="isfile" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>File</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>File<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((_, name, context) &#x3D;&gt; {if(!name) {return [&#x60;Must be a file type&#x60;];}})</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dd438ee/src/validators.ts#L86">src/validators.ts:86</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>example</dt>
+							<dd></dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="isradiochecked" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> is<wbr>Radio<wbr>Checked</h3>
+					<div class="tsd-signature tsd-kind-icon">is<wbr>Radio<wbr>Checked<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((_ , value, context) &#x3D;&gt; {if(!value) {return [&#x60;This option must be selected&#x60;];}})</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dd438ee/src/validators.ts#L95">src/validators.ts:95</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -360,20 +220,20 @@
 					<a name="customvalidator" class="tsd-anchor"></a>
 					<h3>custom<wbr>Validator</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">custom<wbr>Validator<span class="tsd-signature-symbol">(</span>callback<span class="tsd-signature-symbol">: </span><a href="_validators_.html#icustomvalidatorcallback" class="tsd-signature-type">ICustomValidatorCallback</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>arg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="_validators_.html#ivalidationfunction" class="tsd-signature-type">IValidationFunction</a></li>
+						<li class="tsd-signature tsd-kind-icon">custom<wbr>Validator<span class="tsd-signature-symbol">(</span>callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ICustomValidatorCallback</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>arg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">IValidationFunction</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9c58d90/src/validators.ts#L118">src/validators.ts:118</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dd438ee/src/validators.ts#L142">src/validators.ts:142</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Function that takes a callback which contains the callers own validation logic
 										&amp; returns an array of string(s) which are the validation error message or <em>undefined</em>. Below is an
-									example of creatinga custom validator to test if a field has a string length of nth.</p>
+									example of creating a custom validator to test if a field has a string length of nth.</p>
 								</div>
 								<p>There are 3 arguments available to your custom validation callback:</p>
 								<ul>
@@ -408,14 +268,14 @@ if </span>the `fieldValue`is **NOT** validated.
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>callback: <a href="_validators_.html#icustomvalidatorcallback" class="tsd-signature-type">ICustomValidatorCallback</a></h5>
+									<h5>callback: <span class="tsd-signature-type">ICustomValidatorCallback</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">(</span>arg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="_validators_.html#ivalidationfunction" class="tsd-signature-type">IValidationFunction</a></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">(</span>arg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">IValidationFunction</span></h4>
 							<ul class="tsd-parameters">
 								<li class="tsd-parameter-signature">
 									<ul class="tsd-signatures tsd-kind-type-literal">
-										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>arg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_validators_.html#ivalidationfunction" class="tsd-signature-type">IValidationFunction</a></li>
+										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>arg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IValidationFunction</span></li>
 									</ul>
 									<ul class="tsd-descriptions">
 										<li class="tsd-description">
@@ -425,7 +285,7 @@ if </span>the `fieldValue`is **NOT** validated.
 													<h5>arg: <span class="tsd-signature-type">any</span></h5>
 												</li>
 											</ul>
-											<h4 class="tsd-returns-title">Returns <a href="_validators_.html#ivalidationfunction" class="tsd-signature-type">IValidationFunction</a></h4>
+											<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">IValidationFunction</span></h4>
 										</li>
 									</ul>
 								</li>
@@ -442,22 +302,25 @@ if </span>the `fieldValue`is **NOT** validated.
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="_field_.html">&quot;<wbr>_field&quot;</a>
+						<a href="_classes__radiofield_.html">&quot;classes/_<wbr><wbr>Radio<wbr>Field&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="__context_updaters_.html">&quot;_<wbr>context_<wbr>updaters&quot;</a>
+						<a href="_classes__submitbutton_.html">&quot;classes/_<wbr><wbr>Submit<wbr>Button&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="__errors_.html">&quot;_<wbr>errors&quot;</a>
+						<a href="_core__errors_.html">&quot;core/_<wbr>errors&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="__regex_.html">&quot;_<wbr>regex&quot;</a>
+						<a href="_core__regex_.html">&quot;core/_<wbr>regex&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_elements_.html">&quot;elements&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="_form_.html">&quot;form&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="_form_elements_.html">&quot;form-<wbr>elements&quot;</a>
+						<a href="_uncrontrolled_.html">&quot;uncrontrolled&quot;</a>
 					</li>
 					<li class="current tsd-kind-module">
 						<a href="_validators_.html">&quot;validators&quot;</a>
@@ -466,32 +329,23 @@ if </span>the `fieldValue`is **NOT** validated.
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="../interfaces/_validators_.ivalidation.html" class="tsd-kind-icon">IValidation</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="_validators_.html#icustomvalidatorcallback" class="tsd-kind-icon">ICustom<wbr>Validator<wbr>Callback</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="_validators_.html#ivalidationfunction" class="tsd-kind-icon">IValidation<wbr>Function</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="_validators_.html#ivalidationvariable" class="tsd-kind-icon">IValidation<wbr>Variable</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="_validators_.html#ivalidator" class="tsd-kind-icon">IValidator</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="_validators_.html#ivalidators" class="tsd-kind-icon">IValidators</a>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="_validators_.html#arefieldsequal" class="tsd-kind-icon">are<wbr>Fields<wbr>Equal</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-module">
-						<a href="_validators_.html#arefieldsequal" class="tsd-kind-icon">are<wbr>_field<wbr>Equal</a>
+						<a href="_validators_.html#ischecked" class="tsd-kind-icon">is<wbr>Checked</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-module">
 						<a href="_validators_.html#isemailvalid" class="tsd-kind-icon">is<wbr>Email<wbr>Valid</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-module">
-						<a href="_validators_.html#isfieldempty" class="tsd-kind-icon">is<wbr>_field<wbr>Empty</a>
+						<a href="_validators_.html#isfieldempty" class="tsd-kind-icon">is<wbr>Field<wbr>Empty</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="_validators_.html#isfile" class="tsd-kind-icon">is<wbr>File</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="_validators_.html#isradiochecked" class="tsd-kind-icon">is<wbr>Radio<wbr>Checked</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_validators_.html#customvalidator" class="tsd-kind-icon">custom<wbr>Validator</a>
@@ -506,7 +360,6 @@ if </span>the `fieldValue`is **NOT** validated.
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
