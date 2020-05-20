@@ -1,17 +1,32 @@
 import {Form, FormConsumer} from "./form";
 import {
     CheckBoxField,
-    EmailField, FileField,
-    PasswordField, RadioField, RadioGroup,
+    EmailField,
+    FileField,
+    ICheckBoxField,
+    IEmailField,
+    IField,
+    IPasswordField,
+    IRadioField, ISelectField,
+    ITextAreaField,
+    ITextInputField,
+    PasswordField,
+    RadioField,
+    RadioGroup,
     SelectField,
     SubmitButton,
     TextAreaField,
     TextInputField
 } from "./elements";
-import {areFieldsEqual, isChecked, isEmailValid, isFieldEmpty, isFile, isRadioChecked} from "./validators";
+import {
+    areFieldsEqual,
+    isChecked,
+    isEmailValid,
+    isFieldEmpty,
+    isFile,
+    isRadioChecked
+} from "./validators";
 import {createFileRef, getFileFromRef} from "./uncrontrolled";
-
-
 
 
 export {
@@ -27,6 +42,15 @@ export {
     isRadioChecked,
     // Context API
     FormConsumer,
+    // Interfaces
+    ICheckBoxField,
+    IEmailField,
+    IField,
+    IPasswordField,
+    IRadioField,
+    ITextAreaField,
+    ITextInputField,
+    ISelectField,
     // Form Components
     CheckBoxField,
     EmailField,
