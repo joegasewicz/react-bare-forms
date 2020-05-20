@@ -45,6 +45,7 @@ export class MetadataGroup<T> extends AbstractMetadata<T> {
             state = this._createGroupState(current, validation, false);
             this.updateState(state);
         } else if(this.state[current.parentName] && !(this.name in this.state[current.parentName])) {
+            // For readability - keep this coercion & the next, separate please
             state = this._createGroupState(current, validation);
             this.updateState(state);
         } else if((this.state[current.parentName] as any)[this.name] &&
