@@ -1,12 +1,12 @@
 import {default as React} from "react";
 import {AbstractField, IAbstractField} from "./_AbstractField";
 import {IFormContext} from "../form";
-import {FIELD_NAMES} from "../elements";
+import {FIELD_NAMES, IField} from "../elements";
 
 
 
 /** @internal */
-export class CheckBoxField<T extends any> extends AbstractField<T> implements IAbstractField<T> {
+export class CheckBoxField<T extends IField> extends AbstractField<T> implements IAbstractField<T> {
 
     constructor(type: FIELD_NAMES, props: T) {
         super(props, type);

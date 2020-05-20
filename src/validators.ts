@@ -8,7 +8,7 @@ export interface IValidation {
     messages: [...string[]];
 }
 /** @internal The inner returned function type that custom validators must implement */
-export type IValidationFunction = (...args: Array<any>) => IValidation|_FieldEmptyErrorMsg;
+export type IValidationFunction = (...args: Array<any>) => IValidation;
 /** @internal The expected validator's type that {@link IField} elements can consume */
 export type IValidators = Array<IValidationFunction>;
 /** @internal The custom validator type callback */

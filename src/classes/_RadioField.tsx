@@ -1,13 +1,13 @@
 import {default as React, useContext} from "react";
 import {AbstractField, IAbstractField} from "./_AbstractField";
-import {FIELD_NAMES} from "../elements";
+import {FIELD_NAMES, IRadioField} from "../elements";
 import {IFormContext, IRadioGroupParentContext, RadioGroupContext} from "../form";
 import {IValidation} from "../validators";
 
 export type TypeMetadataRadioGroupValue = { value: boolean, parentName: string, name: string };
 
 /** @internal */
-export class RadioField<T extends any> extends AbstractField<T> implements IAbstractField<T> {
+export class RadioField<T extends IRadioField> extends AbstractField<T> implements IAbstractField<T> {
     private _parentName?: string;
     public props: any;
     public type: any;

@@ -1,6 +1,6 @@
 import {default as React} from "react";
 import {_genericFormGroup, AbstractField, IAbstractField} from "./_AbstractField";
-import {FIELD_NAMES} from "../elements";
+import {FIELD_NAMES, IField, IFileField} from "../elements";
 import {createFileObject, IFile} from "../core/index";
 
 
@@ -9,11 +9,11 @@ import {createFileObject, IFile} from "../core/index";
  * The main difference of this class is that the onChange event is used only
  * to carry out the validation (which is set manually in FileField._updateFieldValidation).
  */
-export class FileField<T extends any> extends AbstractField<T> implements IAbstractField<T> {
+export class FileField<T extends IField> extends AbstractField<T> implements IAbstractField<T> {
 
     _file?: IFile|null;
 
-    constructor(type: FIELD_NAMES, props: T) {
+    constructor(type: FIELD_NAMES, props: T & IFileField) {
         super(props, type);
         this.type = type;
         this.props = props;
@@ -37,7 +37,7 @@ export class FileField<T extends any> extends AbstractField<T> implements IAbstr
 
     public getField() {
         return () => <>{<input
-            ref={this.props.ref}
+            ref={(this.props as any).ref}
             type={this.type}
             onChange={this._updateFieldValidation.bind(this)}
             className={AbstractField.mergeDefaultCssWithProps("form-control-file", this.props.className, (this.context as any).bare)}
@@ -45,7 +45,7 @@ export class FileField<T extends any> extends AbstractField<T> implements IAbstr
     }
 
     private _updateFieldValidation = (): void => {
-        this.file = createFileObject(this.props.ref);
+        this.file = createFileObject((this.props as any).ref);
         if(typeof this.file !== "undefined") {
             this.validate();
         }
@@ -57,8 +57,8 @@ export class FileField<T extends any> extends AbstractField<T> implements IAbstr
      * @description This overrides the same behaviour in the parentName class.
      */
     public getFieldValue(_: unknown): any {
-        if(this.props.ref.current) {
-            return createFileObject(this.props.ref);
+        if((this.props as T & IFileField).ref.current) {
+            return createFileObject((this.props as T & IFileField).ref);
         }
         return null;
     }

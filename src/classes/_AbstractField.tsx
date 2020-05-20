@@ -10,7 +10,7 @@ import {
 } from "../core/index";
 import {
     FormContext,
-    IFormContext,
+    IFormContext, TypeFieldValueTypes,
     TypeFormMetadata,
 } from "../form";
 
@@ -106,12 +106,15 @@ export abstract class AbstractField<T extends IField> {
    public doValidation(value: any): Array<IValidation> {
        let validation: Array<IValidation> = [];
        // Carry out the validation
-       for(let index = 0;  in this.props.validators) {
-           validation = [
-               ...validation,
-               this.props.validators[index](value, this.context),
-           ];
+       if(this.props.validators) {
+           for(let validate of this.props.validators) {
+               validation = [
+                   ...validation,
+                   validate(value, this.context),
+               ];
+           }
        }
+
        return validation;
    }
 
@@ -131,7 +134,7 @@ export abstract class AbstractField<T extends IField> {
 
     public getFieldValue(props: T): any {
         let type = getFieldValueType(this.type);
-        return this.props[type];
+        return (this.props as T & TypeFieldValueTypes)[type as any];
     }
 
     public abstract formGroup(children: any): ReactElement;
