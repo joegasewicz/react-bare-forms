@@ -1,6 +1,10 @@
 import * as React from "react";
-import {FormConsumer, Form} from "../src/form";
 import {
+    areFieldsEqual,
+    createFileRef,
+    getFileFromRef,
+    FormConsumer,
+    Form,
     SubmitButton,
     TextInputField,
     EmailField,
@@ -11,13 +15,12 @@ import {
     FileField,
     RadioField,
     RadioGroup,
-
-} from "../src/elements";
-import {isChecked, isEmailValid, isFieldEmpty, isFile, isRadioChecked} from "../src/validators";
-
-import {createFileRef, getFileFromRef} from "../src/uncrontrolled";
-import {areFieldsEqual} from "../src/validators";
-
+    isChecked,
+    isEmailValid,
+    isFieldEmpty,
+    isFile,
+    isRadioChecked
+} from "../src/index";
 
 interface IProps{}
 
