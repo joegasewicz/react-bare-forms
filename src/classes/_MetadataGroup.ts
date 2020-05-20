@@ -20,6 +20,13 @@ export class MetadataGroup<T> extends AbstractMetadata<T> {
         this.fieldType = fieldType;
     }
 
+    /**
+     * @internal
+     * @param current
+     * @param validation
+     * @param isTouched {Boolean} - Set this to false on init
+     * @private
+     */
     private _createGroupState(current: TypeMetadataRadioGroupValue, validation: Array<IValidation>, isTouched=true): IRadioGroupParentContext {
         return {
             ...this.state,
@@ -39,6 +46,7 @@ export class MetadataGroup<T> extends AbstractMetadata<T> {
         };
     }
 
+    /** @internal */
     public update(current: TypeMetadataRadioGroupValue, validation: Array<IValidation>): void {
         let state = {};
         if(!this.state[current.parentName]) {
