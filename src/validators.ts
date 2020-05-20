@@ -94,7 +94,6 @@ export const isFile: IValidationVariable = customValidator((_, name, context) =>
  */
 export const isRadioChecked: IValidationVariable = customValidator((_ , value, context) => {
     if(!value) {
-       // console.log("here-----> ", value)
         return [`This option must be selected`];
     }
 });
