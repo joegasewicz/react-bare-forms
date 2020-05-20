@@ -1,5 +1,5 @@
 import {_FieldEmptyErrorMsg} from "./core/_errors";
-import {IFileMetaData, IFormContext, IInputFieldMetadata} from "./form";
+import {IFileMetaData, IFormContext, IInputFieldMetadata, IRadioGroupParentContext} from "./form";
 import {EMAIL_REGEX} from "./core/_regex";
 
 
@@ -93,8 +93,11 @@ export const isFile: IValidationVariable = customValidator((_, name, context) =>
 /**
  *
  */
-export const isRadioChecked: IValidationVariable = customValidator((_ , __, context) => {
-    return [`error here ....`]
+export const isRadioChecked: IValidationVariable = customValidator((_ , value, context) => {
+    if(!value) {
+       // console.log("here-----> ", value)
+        return [`This option must be selected`];
+    }
 });
 
 /**

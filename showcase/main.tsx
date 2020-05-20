@@ -147,7 +147,7 @@ export class Main extends React.Component<IProps, IState> {
                                         checked={this.state.radio1}
                                         hint="Click to agree"
                                         labelText="Agree to terms & conditions"
-                                        validators={[isRadioChecked()]}
+
                                     />
 
                                     <RadioField
@@ -155,6 +155,7 @@ export class Main extends React.Component<IProps, IState> {
                                         checked={this.state.radio2}
                                         hint="Click to agree"
                                         labelText="Agree to terms & conditions"
+                                        validators={[isRadioChecked()]}
                                     />
 
                                     <RadioField

@@ -32,9 +32,7 @@ export interface IFileMetaData extends IFieldValidation {
     readonly refName: string;
 }
 /** @internal */
-export interface IRadioGroupChildren extends IFieldValidation {
-    readonly _parent: string;
-}
+export interface IRadioGroupChildren extends IFieldValidation {}
 /** @internal */
 export interface ICheckBoxesMetadata extends IFieldValidation {}
 /** @internal */
@@ -63,6 +61,7 @@ export interface IMetadata {
     inputs: TypeInputMetadata;
     files: TypeInputMetadata;
     checkboxes: TypeCheckboxesMetadata;
+
 }
 /** @internal **/
 export enum METADATA_NAMES {

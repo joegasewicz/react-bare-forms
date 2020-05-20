@@ -9,7 +9,7 @@ import {TypeMetadataRadioGroupValue} from "./_RadioField";
 /** @internal **/
 export class MetadataGroup<T> extends AbstractMetadata<T> {
     public defaultState = {} as T;
-    public readonly parentName?: string;
+    public parentName?: string;
 
     constructor(state: {[k: string]: T}, updateState: Function, type: METADATA_NAMES) {
         super(state, updateState, type);
@@ -53,7 +53,7 @@ export class MetadataGroup<T> extends AbstractMetadata<T> {
             state = this._createGroupState(current, validation, false);
             this.updateState(state);
         } else if(this.state[current.parentName] && !(this.name in this.state[current.parentName])) {
-            // For readability - keep this coercion & the next, separate please
+            // For readability - keep this clause & the next, separate please
             state = this._createGroupState(current, validation);
             this.updateState(state);
         } else if((this.state[current.parentName] as any)[this.name] &&
@@ -61,5 +61,16 @@ export class MetadataGroup<T> extends AbstractMetadata<T> {
             state = this._createGroupState(current, validation);
             this.updateState(state);
         }
+    }
+
+    public isFieldTouched(): boolean {
+        let parentState = (this.state);
+        if(parentState) {
+            if(this.parentName && this.name && this.state[this.parentName]) {
+                let metaGroup = (this.state[this.parentName] as any)[this.name as keyof T];
+                if(metaGroup) return metaGroup.isTouched;
+            }
+        }
+        return false;
     }
 }

@@ -25,7 +25,7 @@ export interface IMetadata<T> {
     readonly updateState: Function;
     readonly metaType: string;
     fieldType: FIELD_NAMES;
-    readonly parentName?: string;
+    parentName?: string;
     readonly name: string;
     defaultState: {};
     init: (name: string, fieldType: FIELD_NAMES) => void;
@@ -37,7 +37,7 @@ export abstract class AbstractMetadata<T> implements IMetadata<T> {
     public state: {[k: string]: T};
     public readonly updateState: Function;
     public readonly metaType: METADATA_NAMES;
-    public readonly parentName?: string;
+    public parentName?: string;
     private _fieldType?: FIELD_NAMES;
     private _name?: string;
     public abstract defaultState: T;

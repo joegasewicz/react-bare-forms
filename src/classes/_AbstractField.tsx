@@ -6,7 +6,7 @@ import {
 } from "../core/_helpers";
 import {
     FormContext,
-    IFormContext,
+    IFormContext, IRadioGroupParentContext,
     TypeFormMetadata,
 } from "../form";
 import {

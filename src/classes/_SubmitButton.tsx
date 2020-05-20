@@ -1,10 +1,9 @@
 import {default as React, ReactElement, useContext} from "react";
-import {FormContext, IMetadata, IRadioGroupChildren, METADATA_NAMES, TypeInputMetadata} from "../form";
+import {FormContext, IMetadata, METADATA_NAMES} from "../form";
 
 export interface IButton<T> {
     create(): (props: T) => ReactElement<T>;
 }
-
 
 abstract class Button<T> implements IButton<T> {
 

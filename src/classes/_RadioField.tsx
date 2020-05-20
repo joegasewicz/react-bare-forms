@@ -11,11 +11,17 @@ export class RadioField<T extends any> extends AbstractField<T> implements IAbst
     private _parentName?: string;
     public props: any;
     public type: any;
+    public radioContext?: IRadioGroupParentContext; // TODO if more groups are required then make this abstract
 
     constructor(type: FIELD_NAMES, props: T) {
         super(props, type);
         this.props = props;
         this.type = type;
+        this.radioContext = useContext(RadioGroupContext) as any;
+        if(this.radioContext && this.radioContext.parent) {
+            this.parentName = this.radioContext.parent.name;
+            this.metadata.parentName = this.parentName;
+        }
     }
 
     get parentName(): string|undefined {
@@ -41,14 +47,12 @@ export class RadioField<T extends any> extends AbstractField<T> implements IAbst
     }
 
     public getField() {
-        const radioContext: IRadioGroupParentContext = useContext(RadioGroupContext) as any;
-        this.parentName = (radioContext  as any).parent.name;
         return () => {
             return <input
                 type={this.type}
                 checked={(this.context as IFormContext).state[this.props.name] || false}
                 name={this.props.name}
-                onChange={e => this.handleOnChange(e, radioContext)}
+                onChange={e => this.handleOnChange(e, (this.radioContext as IRadioGroupParentContext))}
                 className={AbstractField.mergeDefaultCssWithProps("form-check-input", this.props.className, (this.context as any).bare)}
             />
         }
