@@ -2,7 +2,7 @@ import {default as React, ReactElement} from "react";
 import {_genericFormGroup, AbstractField, IAbstractField} from "./_AbstractField";
 import {FIELD_NAMES} from "../elements";
 import {IFormContext} from "../form";
-import {mergeDefaultCssWithProps} from "../core/_helpers";
+import {mergeDefaultCssWithProps} from "../core/index";
 
 /** @internal */
 export class TextAreaField<T extends any> extends AbstractField<T> implements IAbstractField<T> {

@@ -1,8 +1,7 @@
 import {default as React} from "react";
 import {_genericFormGroup, AbstractField, IAbstractField} from "./_AbstractField";
 import {FIELD_NAMES} from "../elements";
-import {createFileObject, IFile} from "../core/_file";
-import {IFormContext} from "../form";
+import {createFileObject, IFile} from "../core/index";
 
 
 /**

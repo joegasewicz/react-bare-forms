@@ -1,19 +1,7 @@
-import {Context, default as React, ReactElement, useContext} from "react";
+import {Context, default as React, ReactElement} from "react";
 
-import {
-    getMetadataNameType,
-} from "../core/_helpers";
-import {
-    FormContext,
-    IFormContext,
-    METADATA_NAMES,
-    TypeFormMetadata,
-} from "../form";
-import {
-    FIELD_NAMES,
-} from "../elements";
-import {IValidation} from "../validators";
-import {FormElementValidators} from "../core/_components";
+import {IFormContext} from "../form";
+import {FIELD_NAMES} from "../elements";
 import {_genericFormGroup, AbstractField, IAbstractField} from "./_AbstractField";
 
 

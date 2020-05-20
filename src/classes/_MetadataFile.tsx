@@ -1,9 +1,8 @@
 import {IFieldValidation, METADATA_NAMES} from "../form";
 import {IValidation} from "../validators";
-import {getFieldValueType} from "../core/_helpers";
+import {getFieldValueType, IFile} from "../core/index";
 import {FIELD_NAMES} from "../elements";
 import {AbstractMetadata} from "./_AbstractMetadata";
-import {IFile} from "../core/_file";
 
 
 /** @internal **/
