@@ -1,5 +1,5 @@
 import {default as React, Provider, useEffect, useState} from "react";
-import {updateRadioGroupStateFromPassedInContext, updateParentState} from "./core/_handlers";
+import {updateRadioGroupStateFromPassedInContext, updateParentState} from "./core/index";
 import {IValidation} from "./validators";
 import {getFileFromRef} from "./uncrontrolled";
 import {

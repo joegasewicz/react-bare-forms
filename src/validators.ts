@@ -1,6 +1,5 @@
-import {_FieldEmptyErrorMsg} from "./core/_errors";
-import {IFileMetaData, IFormContext, IInputFieldMetadata, IRadioGroupParentContext} from "./form";
-import {EMAIL_REGEX} from "./core/_regex";
+import {EMAIL_REGEX, _FieldEmptyErrorMsg} from "./core/index";
+import {IFormContext} from "./form";
 
 
 /** @internal */
