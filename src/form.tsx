@@ -172,6 +172,11 @@ export const handleSubmit = (props: IForm) =>
  */
 export const Form = (props: IForm) => {
     const [parentState, setParentState] = useState(props.state);
+    const [context, _] = useState(providerContext);
+    const [inputState, updateInputState] = useState(INPUTS_STATE);
+    const [checkboxesState, updateCheckboxesState] = useState(CHECKBOXES_STATE);
+    const [fileState, updateFileState] = useState(FILES_STATE);
+    const [radioState, updateRadioState] = useState(RADIO_GROUPS_STATE);
     // If the parentName component is a class component, then the state needs to be updated from the parentName context
     if(props.context) {
         useEffect(() => {
@@ -181,13 +186,6 @@ export const Form = (props: IForm) => {
         }, [parentState]);
     }
     // State Hooks
-    const [context, _] = useState(providerContext);
-    const [inputState, updateInputState] = useState(INPUTS_STATE);
-    const [checkboxesState, updateCheckboxesState] = useState(CHECKBOXES_STATE);
-    const [fileState, updateFileState] = useState(FILES_STATE);
-    const [radioState, updateRadioState] = useState(RADIO_GROUPS_STATE);
-
-
     const _providerContext: IFormContext = {
         bare: props.bare || context.bare,
         state: props.state,
