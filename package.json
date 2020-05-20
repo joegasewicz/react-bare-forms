@@ -2,10 +2,11 @@
   "name": "react-bare-forms",
   "version": "0.0.2",
   "description": "A bare minimal React form library for quick & simple forms.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/src/index.d.ts",
   "scripts": {
-    "build-dev": "webpack --env.mode devlopment --entry=./src/index.ts --output-path=lib --output-filename=index.js",
-    "build-prod": "webpack --env.mode production --entry=./src/index.ts --output-path=lib --output-filename=index.js",
+    "build-dev": "webpack --env.mode devlopment --entry=./src/index.ts --output-path=dist --output-filename=index.js",
+    "build-prod": "webpack --env.mode production --entry=./src/index.ts --output-path=dist --output-filename=index.js",
     "start": "webpack-dev-server --config webpack.config.dev.js --output-path=dist --output-filename=bundle.js",
     "test": "jest",
     "typedoc": "typedoc --mode modules --ignoreCompilerErrors --stripInternal --out docs src && touch docs/.nojekyll"

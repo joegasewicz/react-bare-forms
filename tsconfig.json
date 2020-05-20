@@ -8,9 +8,10 @@
     "strict": true,
     "jsx": "react",
     "allowJs": true,
+    "declaration": true,
     "typeRoots": [
       "node_modules/@types/",
-      "index.d.ts"
+      "dist/src/index.d.ts"
     ],
     "esModuleInterop": true
   },
