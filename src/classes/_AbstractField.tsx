@@ -30,6 +30,7 @@ export interface IAbstractField<T> {
     overrideEvent: (e: any, value: any) => React.ChangeEvent<any>;
     getFieldValue: (props: any) => any
     validate: () => Array<IValidation>;
+    doValidation: (value: any) => Array<IValidation>;
 }
 
 /** @internal */
@@ -51,6 +52,7 @@ export abstract class AbstractField<PropsType extends any> {
     public _metadata?: TypeFormMetadata;
     public _bare?: boolean;
     public context?: IFormContext;
+    public parentName?: string;
 
     protected constructor(props: PropsType, type: FIELD_NAMES) {
         this.type = type;
@@ -81,8 +83,12 @@ export abstract class AbstractField<PropsType extends any> {
         this.bare = Boolean(this.context.bare);
     }
 
+    protected getProps(): PropsType {
+        return this.props;
+    }
+
     public createField(fieldCallback: Function) {
-        const _validate = this.props.validators ?
+        const _validate = this.props.validators || this.parentName ?
             <FormElementValidators
                 isTouched={this.metadata.isFieldTouched()}
                 results={this.validate()}
@@ -99,21 +105,27 @@ export abstract class AbstractField<PropsType extends any> {
         }
     }
 
+   public doValidation(value: any): Array<IValidation> {
+       let validation: Array<IValidation> = [];
+       // Carry out the validation
+       for(let index in this.props.validators) {
+           validation = [
+               ...validation,
+               this.props.validators[index](value, this.context),
+           ];
+       }
+       return validation;
+   }
+
     /**
      * @internal
      * @description Normally, this method will be called from this super class. But it is public as
      * there are some edge cases where it needs to be called by a child class that extends AbstractField.
      */
     public validate(): Array<IValidation> {
-        let validation: Array<IValidation> = [];
         let value = this.getFieldValue(this.props);
         // Carry out the validation
-        for(let index in this.props.validators) {
-            validation = [
-                ...validation,
-                this.props.validators[index](value, this.context),
-            ];
-        }
+        let validation = this.doValidation(value);
         // Update the metadata type state
         this.metadata.update(value, validation);
         return validation;

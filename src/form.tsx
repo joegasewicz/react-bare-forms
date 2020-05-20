@@ -33,7 +33,7 @@ export interface IFileMetaData extends IFieldValidation {
 }
 /** @internal */
 export interface IRadioGroupChildren extends IFieldValidation {
-    readonly parent: string;
+    readonly _parent: string;
 }
 /** @internal */
 export interface ICheckBoxesMetadata extends IFieldValidation {}
@@ -158,9 +158,9 @@ export const handleSubmit = (props: IForm) =>
         e.preventDefault();
         const { callback, } = props;
         for (let elem of props.children) {
-            console.log(elem)
+
             if(elem.ref && !(getFileFromRef(elem.ref) instanceof File)) {
-                console.log("NO FILE!")
+
                 // TODO run validator
             }
         }

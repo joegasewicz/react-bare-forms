@@ -2,16 +2,20 @@ import {default as React, useContext} from "react";
 import {AbstractField, IAbstractField} from "./_AbstractField";
 import {FIELD_NAMES} from "../elements";
 import {IFormContext, IRadioGroupParentContext, RadioGroupContext} from "../form";
+import {IValidation} from "../validators";
 
-
-
+export type TypeMetadataRadioGroupValue = { value: boolean, parentName: string, name: string };
 
 /** @internal */
 export class RadioField<T extends any> extends AbstractField<T> implements IAbstractField<T> {
     private _parentName?: string;
+    public props: any;
+    public type: any;
 
-    constructor(public type: FIELD_NAMES, public props: T) {
+    constructor(type: FIELD_NAMES, props: T) {
         super(props, type);
+        this.props = props;
+        this.type = type;
     }
 
     get parentName(): string|undefined {
@@ -39,8 +43,6 @@ export class RadioField<T extends any> extends AbstractField<T> implements IAbst
     public getField() {
         const radioContext: IRadioGroupParentContext = useContext(RadioGroupContext) as any;
         this.parentName = (radioContext  as any).parent.name;
-
-
         return () => {
             return <input
                 type={this.type}
@@ -56,4 +58,14 @@ export class RadioField<T extends any> extends AbstractField<T> implements IAbst
         let event: React.ChangeEvent<HTMLFormElement> = this.overrideEvent(e, e.target.value);
         (this.context as any).updateRadioGroupStateFromPassedInContext(event, this.props.name, radioContext);
     };
+
+    public validate(): Array<IValidation> {
+        let value = this.getFieldValue(this.props);
+        // Carry out the validation
+        let validation = this.doValidation(value);
+        // Update the metadata type state
+        this.metadata.update({ value, parentName: this.parentName, name: this.props.name} as TypeMetadataRadioGroupValue, validation);
+        return validation;
+    }
+
 }

@@ -99,7 +99,7 @@ export function getFieldValueType(type: FIELD_NAMES): TypeFieldValueTypes {
             return "file";
         }
         case FIELD_NAMES.RADIO: {
-            return "value"
+            return "checked"
         }
         default: {
             return "value";
