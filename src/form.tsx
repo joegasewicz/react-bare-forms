@@ -34,12 +34,6 @@ export interface IRadioGroupChildren extends IFieldValidation {}
 /** @internal */
 export interface ICheckBoxesMetadata extends IFieldValidation {}
 /** @internal */
-export type TypeIFieldMetadata =
-    | IInputFieldMetadata
-    | IFileMetaData
-    | IRadioGroupChildren
-    | ICheckBoxesMetadata;
-/** @internal */
 export type TypeInputMetadata = AbstractMetadata<IInputFieldMetadata>;
 /** @internal */
 export type TypeFileMetadata = AbstractMetadata<IFileMetaData>;
@@ -154,13 +148,6 @@ export const handleSubmit = (props: IForm) =>
     (e: React.ChangeEvent<any>) => {
         e.preventDefault();
         const { callback, } = props;
-        for (let elem of props.children) {
-
-            if(elem.ref && !(getFileFromRef(elem.ref) instanceof File)) {
-
-                // TODO run validator
-            }
-        }
         if(typeof callback === "function" && callback()) {
             callback();
         } else {
