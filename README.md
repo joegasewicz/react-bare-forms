@@ -9,6 +9,8 @@ Docs are [here](https://joegasewicz.github.io/react-bare-forms/)
 npm install react-bare-forms
 ```
 
+Warning: ***The library is still in a beta stage***
+
 ## Usage
 A basic form example with a text input field & submit button. Also, note how imported `isFieldEmpty` function 
 from `react-bare-forms`. This is a validator & can be used to validate a single or group (such as radio buttons) field(s).
