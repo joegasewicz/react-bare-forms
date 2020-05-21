@@ -104,7 +104,7 @@ There are 4 components that cover the `input` field element:
 - [PasswordField](https://joegasewicz.github.io/react-bare-forms/modules/_elements_.html#passwordfield)
 - [CheckBoxField](https://joegasewicz.github.io/react-bare-forms/modules/_elements_.html#checkboxfield) 
 
-#### Text Input _field
+#### TextInputField
 ```typescript jsx
 import {TextInputField} from "react-bare-forms";
 
@@ -124,7 +124,7 @@ const state = { username: "" }
     labelText="Username"
 />
 ```
-#### Email Input _field
+#### EmailField
 ```typescript jsx
   import {EmailField} from "react-base-forms"
 
@@ -144,24 +144,51 @@ const state = { username: "" }
     labelText="Username"
   />
 ```
-#### Password Input _field
+#### PasswordField
+The `PasswordField` works the same as the `EmailField` & `TextInputField`'s.
+```typescript jsx
+
+import {areFieldsEqual, isFieldEmpty, PasswordField} from "react-base-forms";
+ 
+const state = { password: "", confirmPassword: "" };
+ 
+// A bare form example ... remember to set the {@link Form.bare} property to `true`
+<PasswordField
+  value={state.password}
+  name="username"
+  validators={[isFieldEmpty(8)]}
+/>
+ 
+// Example with Bootstrap styling (Bootstrap styling comes as default)
+
+<PasswordField
+  value={state.confirmPassword}
+  name="password"
+  hint="Needs to be at least 8 characters long"
+  labelText="Password"
+/>
+```
+Also we can create two *PasswordField* components to confirm passwords are equal. Please see
+{@link areFieldsEqual} for more info.
+The first *PasswordField* has has a *name* prop of **password** & the second *PasswordField* a name
+prop of *confirmPassword*. Then we can add a *areFieldsEqual* validator to the *PasswordField*
+with the *confirmPassword* name props *areFieldsEqual* takes the first *PasswordField*
+name as an argument).
+
 ```typescript jsx
 <PasswordField
     name="password"
-    value={this.state.password}
-    labelText="Pasword"
-    validators={[isFieldEmpty(5)]}
+    // other props...
+
 />
 
 <PasswordField
     name="confirmPassword"
-    value={this.state.confirmPassword}
-    hint="Password must match"
-    labelText="Confirm Password"
-    validators={[isFieldEmpty(5), areFieldsEqual("password")]}
+    // other props...
+    validators={[areFieldsEqual("password")]}
 />
 ```
-```
+
 #### Checkbox Input _field
 ```typescript jsx
 <CheckBoxField

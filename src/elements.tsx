@@ -145,24 +145,27 @@ export const EmailField = (props: IEmailField) => {
 };
 
 /**
- *
+ *  The `PasswordField` works the same as the `EmailField` & `TextInputField`'s.
  * @param props
  * ```
+ *  import {areFieldsEqual, isFieldEmpty, PasswordField} from "react-base-forms";
+ *
+ *  const state = { password: "", confirmPassword: "" };
+ *
  * // A bare form example ... remember to set the {@link Form.bare} property to `true`
  * <PasswordField
- *    value={this.state.username}
+ *    value={state.password}
  *    name="username"
- *    validators={[isEmailValid()]}
+ *    validators={[isFieldEmpty(8)]}
  * />
  *
  * // Example with Bootstrap styling (Bootstrap styling comes as default)
  *
  * <PasswordField
- *    value={this.state.password}
+ *    value={state.confirmPassword}
  *    name="password"
  *    hint="Needs to be at least 8 characters long"
  *    labelText="Password"
- *    validators={[isEmailValid()]}
  *  />
  *  ```
  * Also we can create two *PasswordField* components to confirm passwords are equal. Please see
@@ -177,7 +180,6 @@ export const EmailField = (props: IEmailField) => {
  *  name="password"
  *  // other props...
  *
- *  validators={[isEmailValid()]}
  * />
  *
  * <PasswordField
