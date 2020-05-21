@@ -1,9 +1,9 @@
 import {IRadioGroupParentContext, METADATA_NAMES} from "../form";
 import {IValidation} from "../validators";
-import {getFieldValueType} from "../core/index";
+import {getFieldValueType} from "./index";
 import {FIELD_NAMES} from "../elements";
 import {AbstractMetadata} from "./_AbstractMetadata";
-import {TypeMetadataRadioGroupValue} from "./_RadioField";
+import {TypeMetadataRadioGroupValue} from "../field_classes/_RadioField";
 
 
 /** @internal **/

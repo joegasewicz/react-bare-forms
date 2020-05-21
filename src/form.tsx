@@ -1,13 +1,12 @@
-import {default as React, Provider, useEffect, useState} from "react";
-import {updateRadioGroupStateFromPassedInContext, updateParentState} from "./core/index";
+import {default as React, useEffect, useState} from "react";
+import {updateRadioGroupStateFromPassedInContext, updateParentState} from "./core";
 import {IValidation} from "./validators";
-import {getFileFromRef} from "./uncrontrolled";
 import {
     AbstractMetadata,
     Metadata,
     MetadataFile,
     MetadataGroup,
-} from "./classes/index";
+} from "./field_classes";
 
 /** @internal */
 export type TypeFieldValueTypes = "value"|"checked"|"file";

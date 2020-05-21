@@ -7,7 +7,7 @@ import {
     RadioGroupContext,
     TypeRadioGroupMetadata,
 } from "./form";
-import {SubmitButton as _SubmitButton,} from "./classes/_SubmitButton";
+import {SubmitButton as _SubmitButton,} from "./field_classes/_SubmitButton";
 import {
     CheckBoxField as _CheckBoxField,
     FileField as _FileField,
@@ -15,7 +15,7 @@ import {
     RadioField as _RadioField,
     SelectField as _SelectField,
     TextAreaField as _TextAreaField,
-} from "./classes/index";
+} from "./field_classes";
 
 /** @internal */
 export enum FIELD_NAMES {

@@ -82,6 +82,20 @@ values of the current state of that form field element.
 
 ## Validators
 
+There are validators available to handle all the basic common form validation requirements. Below is a list
+of the current validators available but this list should grow in the near future!
+
+- areFieldsEqual,
+- isChecked,
+- isEmailValid,
+- isFieldEmpty,
+- isFile,
+- isRadioChecked,
+
+To create your own custom hooks use:
+
+- customValidator
+
 ## Form Fields
 
 #### Text Input _field

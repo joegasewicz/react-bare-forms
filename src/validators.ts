@@ -1,4 +1,4 @@
-import {EMAIL_REGEX, _FieldEmptyErrorMsg} from "./core/index";
+import {EMAIL_REGEX} from "./core";
 import {IFormContext} from "./form";
 
 

@@ -20,11 +20,12 @@ import {
 } from "./elements";
 import {
     areFieldsEqual,
+    customValidator,
     isChecked,
     isEmailValid,
     isFieldEmpty,
     isFile,
-    isRadioChecked
+    isRadioChecked,
 } from "./validators";
 import {createFileRef, getFileFromRef} from "./uncrontrolled";
 
@@ -35,6 +36,7 @@ export {
     getFileFromRef,
     // Validators
     areFieldsEqual,
+    customValidator,
     isChecked,
     isEmailValid,
     isFieldEmpty,
