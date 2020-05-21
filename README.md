@@ -391,7 +391,7 @@ import "./mystyles.scss";
 
 
 ## Contributors
-<a href="https://github.com/joegasewicz/react-bare-forms/graphs/contributors"><img src="https://opencollective.com/emotion/contributors.svg?width=890&button=false" /></a>
+<a href="https://github.com/joegasewicz/react-bare-forms/graphs/contributors"><img src="https://opencollective.com/react-bare-forms/contributors.svg?width=890&button=false" /></a>
 
 
 Licence MIT
