@@ -50,7 +50,7 @@ the `createFileRef` function to a variable & pass this variable to `FileField`'s
  
  // Now myFileRef has access to the file object once it's been selected by the user
 ````
-## Consumer
+## Form Consumer
 RBF's provides the `FormConsumer` for you to debug visually your form. Below is an example of a form container a single text input field.
 Notice, that the `context` object return from the `FormConsumer` has a `metadata` property which gives you detailed
 values of the current state of that form field element.
