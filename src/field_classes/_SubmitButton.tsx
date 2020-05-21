@@ -20,10 +20,7 @@ export interface ISubmitButtonProps {
     children?: any;
 }
 
-/**
- * SubmitButton is the main component for submitting forms.
- *
- */
+/** @internal */
 export class SubmitButton implements Button<ISubmitButtonProps> {
 
 
