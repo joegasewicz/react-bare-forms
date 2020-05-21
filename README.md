@@ -15,15 +15,16 @@ There are different validators available but there is also a custom validator fa
 ```typescript jsx
 import {Form, isFieldEmpty, SubmitButton, TextInputField} from "react-bare-forms";
 
+const state = { age: 0 }
+
 <Form
-    state={this.state}
-    context={this}
+    state={state}
     bare={false}
     autoComplete="off"
     callback={() => console.log("Form submitted!")}>
 
     <TextInputField
-        value={this.state.age}
+        value={state.age}
         name="age"
         hint="Enter your age"
         labelText="Age"
@@ -55,9 +56,11 @@ RBF's provides the `FormConsumer` for you to debug visually your form. Below is 
 ````typescript jsx
 import {Form, FormConsumer, IFormContext, isFieldEmpty, TextInputField} from "react-bare-forms";
 
+const state = { age: 0 }
+
 <Form>
     <TextInputField
-        value={this.state.age}
+        value={state.age}
         name="age"
         hint="Enter your age"
         labelText="Age"
