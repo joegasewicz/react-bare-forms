@@ -86,7 +86,8 @@ export interface ISelectField extends IField {
 
 /**
  *
- * @param props
+ * @param props {@link ITextInputField}
+ * @example
  * ```
  *  import {TextInputField} from "react-base-forms"
  *
@@ -115,8 +116,8 @@ export const TextInputField = (props: ITextInputField) => {
 };
 
 /**
- *@param props
- *
+ * @param props {@link IEmailField}
+ * @example
  * ```
  *  import {EmailField} from "react-base-forms"
  *
@@ -146,7 +147,8 @@ export const EmailField = (props: IEmailField) => {
 
 /**
  *  The `PasswordField` works the same as the `EmailField` & `TextInputField`'s.
- * @param props
+ * @param props {@link IPasswordField}
+ * @example
  * ```
  *  import {areFieldsEqual, isFieldEmpty, PasswordField} from "react-base-forms";
  *
@@ -175,6 +177,7 @@ export const EmailField = (props: IEmailField) => {
  * with the *confirmPassword* name props (also notice how {@link areFieldsEqual} takes the first *PasswordField*
  * name as an argument).
  *
+ * @example
  * ```
  * <PasswordField
  *  name="password"
@@ -201,7 +204,7 @@ export const PasswordField = (props: IPasswordField) => {
 /**
  * The CheckBoxField requires a *checked* prop instead of a *value* prop. See
  * {@link ICheckBoxField}.
- *
+ * @example
  * ```
  * // A bare form example ... remember to set the {@link Form.bare} property to `true`
  *  import {CheckBoxField} from "react-base-forms";
@@ -221,7 +224,7 @@ export const PasswordField = (props: IPasswordField) => {
  *   labelText="Agree to terms & conditions"
  * />
  * ```
- * @param props
+ * @param props {@link ICheckBoxField}
  * @constructor
  */
 export const CheckBoxField = (props: ICheckBoxField) => {
@@ -233,10 +236,14 @@ export const CheckBoxField = (props: ICheckBoxField) => {
  * The TextAreaField takes in an extra prop of *row* which is a number & declares
  * the number of rows displayed by the textarea element. The TextAreaField accepts
  * all the {@link IField} props.
+ * @example
  * ```
+ *  *  import {CheckBoxField} from "react-base-forms";
+ *
+ *  const state = { about: "" };
  * // A bare form example ... remember to set the {@link Form.bare} property to `true`
  * <TextAreaField
- *    value={this.state.about}
+ *    value={state.about}
  *    name="about"
  *    validators={[isFieldEmpty(20)]}
  * />
@@ -245,13 +252,13 @@ export const CheckBoxField = (props: ICheckBoxField) => {
  *
  * <TextAreaField
  *    name="about"
- *    value={this.state.about}
+ *    value={state.about}
  *    hint="Must be at least 20 characters"
  *    labelText="About you..."
  *    validators={[isFieldEmpty(20)]}
  * />
  * ```
- * @param props
+ * @param props {@link ITextInputField}
  * @constructor
  */
 export const TextAreaField = (props: ITextAreaField) => {
@@ -266,9 +273,20 @@ export interface IRadioGroupProps {
 
 /**
  *
- * @param props
+ * @param props the `RadioGroup` component takes a single props of `name`, which
+ * must be a unique to a form. See {@link RadioField}.
  * @constructor
+ *
  * @example
+ * ```
+ *  import {CheckBoxField} from "react-base-forms";
+ *
+ *  const state = { male: true, female: false };
+ *
+ *  <RadioGroup name="group1">
+ *    // place RadioFields components here...
+ *  </RadioGroup>
+ * ```
  *
  */
 export function RadioGroup(props: IRadioGroupProps) {
