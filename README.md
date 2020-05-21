@@ -106,9 +106,9 @@ To create your own custom validator use:
 ## Form Fields
 
 #### Form component
-The main Form component that is required to wrap allRBF* components.
+The main Form component that is required to wrap all *RBF* components.
 If the component that uses the Form component is a functional component then
-only the state props is required. If you are calling Form component from a
+only the state props are required. If you are calling the *RBF* Form component from a
 class component then you must pass your local context or `this` keyword to
 the `context` prop.
 
