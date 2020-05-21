@@ -9,9 +9,10 @@ npm install react-bare-forms
 ```
 
 #### Usage
+A basic form example with a text input field & submit button. Also, note how imported `isFieldEmpty` function 
+from `react-bare-forms`. This is a validator & can be used to validate a single or group (such as radio buttons) field(s).
+There are different validators available but there is also a custom validator factor function to make is super easy tro create your own validator functions.
 ```typescript jsx
-
-// A basic form example with a text input field & submit button
 import {Form, isFieldEmpty, SubmitButton, TextInputField} from "react-bare-forms";
 
 <Form
