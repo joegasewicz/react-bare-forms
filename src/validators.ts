@@ -198,7 +198,7 @@ export const isChecked: IValidationVariable = customValidator((_, fieldValue, co
  *         return [`Must be at least ${minLength} characters`];
  *     }
  * });
- * ``
+ * ````
  * You only need to return type an array of string(s) (which is your validation message)
  * if the `fieldValue`is **NOT** validated.
  * @param callback
