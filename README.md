@@ -85,16 +85,16 @@ values of the current state of that form field element.
 There are validators available to handle all the basic common form validation requirements. Below is a list
 of the current validators available but this list should grow in the near future!
 
-- areFieldsEqual,
-- isChecked,
-- isEmailValid,
-- isFieldEmpty,
-- isFile,
-- isRadioChecked,
+- [areFieldsEqual](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#arefieldsequal),
+- [isChecked](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#ischecked),
+- [isEmailValid](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#isemailvalid),
+- [isFieldEmpty](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#isfieldempty),
+- [isFile](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#isfile),
+- [isRadioChecked](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#isradiochecked),
 
 To create your own custom hooks use:
 
-- customValidator
+- [customValidator](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#customvalidator)
 
 ## Form Fields
 

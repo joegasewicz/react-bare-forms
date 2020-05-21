@@ -34,6 +34,7 @@ export type IValidationVariable = (arg?: any) => IValidationFunction;
  *   // message: Fields do not match
  * ```
  * @param `passwordKey` The name of the password form element you watch to match against
+ * @function
  */
 export const areFieldsEqual: IValidationVariable = customValidator((passwordKey, fieldValue, context) => {
     if(fieldValue !== context.state[passwordKey]) {
@@ -58,6 +59,7 @@ export const areFieldsEqual: IValidationVariable = customValidator((passwordKey,
  *   // message: Must be at least 5 characters
  * ```
  * @param minLength The minimum length of the form field value
+ * @function
  */
 export const isFieldEmpty: IValidationVariable = customValidator((minLength, fieldValue, _) => {
     const isValid = (fieldValue && fieldValue.length >= minLength);
@@ -79,6 +81,8 @@ export const isFieldEmpty: IValidationVariable = customValidator((minLength, fie
  *  />
  *  // message: Must be a valid email
  * ```
+ *
+ * @function
  */
 export const isEmailValid: IValidationVariable = customValidator((_ , fieldValue, context) => {
     const isValid = EMAIL_REGEX.test(String(fieldValue).toLowerCase());
@@ -105,6 +109,8 @@ export const isEmailValid: IValidationVariable = customValidator((_ , fieldValue
  *    validators={[isFile()]}
  * />
  * ```
+ *
+ * @function
  */
 export const isFile: IValidationVariable = customValidator((_, name, context) => {
     if(!name) {
@@ -133,6 +139,8 @@ export const isFile: IValidationVariable = customValidator((_, name, context) =>
  *       checked={state.female}
  *    />
  * </RadioGroup>
+ *
+ * @function
  */
 export const isRadioChecked: IValidationVariable = customValidator((_ , value, context) => {
     if(!value) {
@@ -154,6 +162,8 @@ export const isRadioChecked: IValidationVariable = customValidator((_ , value, c
  *    checked={this.state.terms}
  *    validators={[isChecked()]}
  * />
+ *
+ * @function
  */
 export const isChecked: IValidationVariable = customValidator((_, fieldValue, context) => {
     if(fieldValue === false) {
@@ -192,6 +202,7 @@ export const isChecked: IValidationVariable = customValidator((_, fieldValue, co
  * You only need to return type an array of string(s) (which is your validation message)
  * if the `fieldValue`is **NOT** validated.
  * @param callback
+ * @function
  */
 export function customValidator(callback: ICustomValidatorCallback): (arg: any) => IValidationFunction  {
     return (arg: any = null): IValidationFunction => {
