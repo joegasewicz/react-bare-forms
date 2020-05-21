@@ -10,20 +10,26 @@ npm install react-bare-forms
 
 #### Usage
 ```typescript jsx
-import * as ReactBareForms from "react-bare-forms";
 
+// A basic form example with a text input field & submit button
+import {Form, SubmitButton, TextInputField} from "react-bare-forms";
 
-    <ReactBareForms.Form state={this.state} formKey="myForm1">
-    
-        <ReactBareForms._field
-            name="message"
-            hint="Must be at least 5 characters long"
-            label="Your Name"
-            validators={[ReactBareForms.isFieldEmpty(5)]}
-        ></ReactBareForms._field>
-        
-        <ReactBareForms.Submit>Submit</Submit>
-    </ReactBareForms.Form>
+<Form
+    state={this.state}
+    context={this}
+    bare={false}
+    autoComplete="off"
+    callback={() => console.log("Form submitted!")}>
+
+    <TextInputField
+        value={this.state.age}
+        name="age"
+        hint="Enter your age"
+        labelText="Age"
+        validators={[isFieldEmpty(2)]} />
+               
+    <SubmitButton>Submit Form</SubmitButton>
+</Form>
 ```
 
 #### Text Input _field
