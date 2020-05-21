@@ -389,9 +389,8 @@ import "./mystyles.scss";
 
 <sup>**Fields that are not part of a RBF's form group*</sup>
 
-
 ## Contributors
-<a href="https://github.com/joegasewicz/react-bare-forms/graphs/contributors"><img src="https://opencollective.com/react-bare-forms/contributors.svg?width=890&button=false" /></a>
+If you wish to add a feature to *RBF* then open an issue & wait for it to be approved by an admin before submitting any pull requests, thank you.
 
 
 Licence MIT
