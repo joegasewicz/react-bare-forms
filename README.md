@@ -12,7 +12,7 @@ npm install react-bare-forms
 ```typescript jsx
 
 // A basic form example with a text input field & submit button
-import {Form, SubmitButton, TextInputField} from "react-bare-forms";
+import {Form, isFieldEmpty, SubmitButton, TextInputField} from "react-bare-forms";
 
 <Form
     state={this.state}
@@ -31,6 +31,25 @@ import {Form, SubmitButton, TextInputField} from "react-bare-forms";
     <SubmitButton>Submit Form</SubmitButton>
 </Form>
 ```
+## File Ref
+````typescript jsx
+ import {createFileRef, isFile} from "react-bare-forms";
+
+ const myFileRef = createFileRef();
+ 
+ <FileField
+     ref={myFileRef}
+     hint="Must be a file"
+     labelText="Upload your file"
+     name="myFileTest"
+     validators={[isFile()]}
+ />
+````
+## Consumer
+
+## Validators
+
+## Form Fields
 
 #### Text Input _field
 ```typescript jsx
