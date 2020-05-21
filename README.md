@@ -99,7 +99,7 @@ of the current validators available but this list should grow in the near future
 - [isFile](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#isfile),
 - [isRadioChecked](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#isradiochecked),
 
-To create your own custom hooks use:
+To create your own custom validator use:
 
 - [customValidator](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#customvalidator)
 
