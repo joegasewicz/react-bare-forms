@@ -32,8 +32,10 @@ import {Form, isFieldEmpty, SubmitButton, TextInputField} from "react-bare-forms
 </Form>
 ```
 ## File Ref
+RBF's provides a function that returns a React ref to access your file object. To use, simply assign the returned ref from
+the `createFileRef` function to a variable & pass this variable to `FileField`'s ref prop. For example:
 ````typescript jsx
- import {createFileRef, isFile} from "react-bare-forms";
+ import {createFileRef, FileField, isFile} from "react-bare-forms";
 
  const myFileRef = createFileRef();
  
