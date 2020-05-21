@@ -122,7 +122,7 @@
 					<div class="tsd-signature tsd-kind-icon">Type<wbr>Select<wbr>Css<wbr>Size<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"sm"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"default"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"lg"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L79">src/elements.tsx:79</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L79">src/elements.tsx:79</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -135,7 +135,7 @@
 					<div class="tsd-signature tsd-kind-icon">File<wbr>Field<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ForwardRefExoticComponent</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">RefAttributes</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = React.forwardRef((props: IFileField, ref: React.RefObject&lt;HTMLFormElement&gt;|any) &#x3D;&gt; {let _props &#x3D; {...props, ref };const file &#x3D; new _FileField&lt;IFileField&gt;(FIELD_NAMES.FILE, _props);return file.create();})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L298">src/elements.tsx:298</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L301">src/elements.tsx:301</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -151,7 +151,7 @@
 					<div class="tsd-signature tsd-kind-icon">Submit<wbr>Button<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = new _SubmitButton().create()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L305">src/elements.tsx:305</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L308">src/elements.tsx:308</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -168,7 +168,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L223">src/elements.tsx:223</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L226">src/elements.tsx:226</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -176,16 +176,18 @@
 									<p>The CheckBoxField requires a <em>checked</em> prop instead of a <em>value</em> prop. See
 									<a href="../interfaces/_elements_.icheckboxfield.html">ICheckBoxField</a>.</p>
 									<p>```
-									// A bare form example ... remember to set the {@link Form.bare} property to <code>true</code></p>
+										// A bare form example ... remember to set the {@link Form.bare} property to <code>true</code>
+									import {CheckBoxField} from &quot;react-base-forms&quot;;</p>
 								</div>
+								<p> const state = { password: &quot;&quot;, confirmPassword: &quot;&quot; };</p>
 								<p><CheckBoxField
 									name="terms"
-									checked={this.state.terms}
+									checked={state.terms}
 								/></p>
 								<p>// Example with Bootstrap styling (Bootstrap styling comes as default)
 									<CheckBoxField
 									name="terms"
-									checked={this.state.terms}
+									checked={state.terms}
 									hint="Click to agree"
 									labelText="Agree to terms & conditions"
 									/>
@@ -211,7 +213,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L142">src/elements.tsx:142</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L142">src/elements.tsx:142</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -258,7 +260,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L194">src/elements.tsx:194</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L194">src/elements.tsx:194</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -325,7 +327,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L278">src/elements.tsx:278</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L281">src/elements.tsx:281</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -350,7 +352,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L268">src/elements.tsx:268</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L271">src/elements.tsx:271</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -375,7 +377,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L288">src/elements.tsx:288</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L291">src/elements.tsx:291</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -400,7 +402,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L253">src/elements.tsx:253</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L256">src/elements.tsx:256</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -446,7 +448,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L112">src/elements.tsx:112</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L112">src/elements.tsx:112</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
