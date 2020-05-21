@@ -62,7 +62,7 @@
     "react-dom": "^16.13.1"
   },
   "files": [
-    "dist/index.js",
-    "dist/index.d.ts"
+    "index.js",
+    "index.d.ts"
   ]
 }
