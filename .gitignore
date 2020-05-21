@@ -117,3 +117,4 @@ dist
 .idea/
 dist/
 _src/
+lib/
