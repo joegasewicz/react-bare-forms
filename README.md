@@ -3,12 +3,12 @@
 React library to build forms & let you switch in & out Bootstrap 4 styling.
 
 Docs are [here](https://joegasewicz.github.io/react-bare-forms/) 
-#### Install
+## Install
 ```
 npm install react-bare-forms
 ```
 
-#### Usage
+## Usage
 A basic form example with a text input field & submit button. Also, note how imported `isFieldEmpty` function 
 from `react-bare-forms`. This is a validator & can be used to validate a single or group (such as radio buttons) field(s).
 There are different validators available but there is also a custom validator factor function to make is super easy tro create your own validator functions.
