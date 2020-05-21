@@ -160,52 +160,93 @@
 				<a href="#form-fields" id="form-fields" style="color: inherit; text-decoration: none;">
 					<h2>Form Fields</h2>
 				</a>
-				<a href="#text-input-_field" id="text-input-_field" style="color: inherit; text-decoration: none;">
-					<h4>Text Input _field</h4>
+				<p>There are 4 components that cover the <code>input</code> field element:</p>
+				<ul>
+					<li><a href="https://joegasewicz.github.io/react-bare-forms/modules/_elements_.html#textinputfield">TextInputField</a></li>
+					<li><a href="https://joegasewicz.github.io/react-bare-forms/modules/_elements_.html#emailfield">EmailField</a></li>
+					<li><a href="https://joegasewicz.github.io/react-bare-forms/modules/_elements_.html#passwordfield">PasswordField</a></li>
+					<li><a href="https://joegasewicz.github.io/react-bare-forms/modules/_elements_.html#checkboxfield">CheckBoxField</a> </li>
+				</ul>
+				<a href="#textinputfield" id="textinputfield" style="color: inherit; text-decoration: none;">
+					<h4>TextInputField</h4>
 				</a>
-				<pre><code class="language-typescript">&lt;TextInputField
-    value={<span class="hljs-keyword">this</span>.state.password}
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {TextInputField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bare-forms"</span>;
+
+<span class="hljs-keyword">const</span> state = { username: <span class="hljs-string">""</span> }
+<span class="hljs-comment">// A bare form example ... remember to set the Form.bare property to `true`</span>
+&lt;TextInputField
+    value={<span class="hljs-keyword">this</span>.state.username}
     name=<span class="hljs-string">"username"</span>
-    hint=<span class="hljs-string">"Enter your username"</span>
+/&gt;
+
+<span class="hljs-comment">// Example with Bootstrap styling (Bootstrap styling comes as default)</span>
+
+&lt;TextInputField
+    value={state.username}
+    name=<span class="hljs-string">"username"</span>
+    hint=<span class="hljs-string">"Needs to be at least 50 characters long"</span>
     labelText=<span class="hljs-string">"Username"</span>
-    validators={[isFieldEmpty(<span class="hljs-number">5</span>)]}
 /&gt;</code></pre>
-				<a href="#email-input-_field" id="email-input-_field" style="color: inherit; text-decoration: none;">
-					<h4>Email Input _field</h4>
+				<a href="#emailfield" id="emailfield" style="color: inherit; text-decoration: none;">
+					<h4>EmailField</h4>
 				</a>
-				<pre><code class="language-typescript">&lt;EmailField
+				<pre><code class="language-typescript">  <span class="hljs-keyword">import</span> {EmailField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>
+
+  <span class="hljs-keyword">const</span> state = { email: <span class="hljs-string">""</span> }
+
+ <span class="hljs-comment">// A bare form example ... remember to set the Form.bare property to `true`</span>
+ &lt;EmailField
+    value={state.email}
     name=<span class="hljs-string">"email"</span>
-    value={<span class="hljs-keyword">this</span>.state.email}
-    hint=<span class="hljs-string">"Your email"</span>
-    labelText=<span class="hljs-string">"Please enter your email"</span>
-    validators={[isEmailValid()]}
-/&gt;</code></pre>
-				<a href="#password-input-_field" id="password-input-_field" style="color: inherit; text-decoration: none;">
-					<h4>Password Input _field</h4>
+ /&gt;
+
+ <span class="hljs-comment">// Example with Bootstrap styling (Bootstrap styling comes as default)</span>
+ &lt;EmailField
+    value={state.email}
+    name=<span class="hljs-string">"email"</span>
+    hint=<span class="hljs-string">"Needs to be at least 50 characters long"</span>
+    labelText=<span class="hljs-string">"Username"</span>
+  /&gt;</code></pre>
+				<a href="#passwordfield" id="passwordfield" style="color: inherit; text-decoration: none;">
+					<h4>PasswordField</h4>
 				</a>
+				<p>The <code>PasswordField</code> works the same as the <code>EmailField</code> &amp; <code>TextInputField</code>&#39;s.</p>
+				<pre><code class="language-typescript">
+<span class="hljs-keyword">import</span> {areFieldsEqual, isFieldEmpty, PasswordField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
+
+<span class="hljs-keyword">const</span> state = { password: <span class="hljs-string">""</span>, confirmPassword: <span class="hljs-string">""</span> };
+
+<span class="hljs-comment">// A bare form example ... remember to set the {@link Form.bare} property to `true`</span>
+&lt;PasswordField
+  value={state.password}
+  name=<span class="hljs-string">"username"</span>
+  validators={[isFieldEmpty(<span class="hljs-number">8</span>)]}
+/&gt;
+
+<span class="hljs-comment">// Example with Bootstrap styling (Bootstrap styling comes as default)</span>
+
+&lt;PasswordField
+  value={state.confirmPassword}
+  name=<span class="hljs-string">"password"</span>
+  hint=<span class="hljs-string">"Needs to be at least 8 characters long"</span>
+  labelText=<span class="hljs-string">"Password"</span>
+/&gt;</code></pre>
+				<p>Also we can create two <em>PasswordField</em> components to confirm passwords are equal. Please see
+					<a href="modules/_validators_.html#arefieldsequal">areFieldsEqual</a> for more info.
+					The first <em>PasswordField</em> has has a <em>name</em> prop of <strong>password</strong> &amp; the second <em>PasswordField</em> a name
+					prop of <em>confirmPassword*. Then we can add a *areFieldsEqual</em> validator to the <em>PasswordField</em>
+					with the <em>confirmPassword</em> name props <em>areFieldsEqual</em> takes the first <em>PasswordField</em>
+				name as an argument).</p>
 				<pre><code class="language-typescript">&lt;PasswordField
     name=<span class="hljs-string">"password"</span>
-    value={<span class="hljs-keyword">this</span>.state.password}
-    labelText=<span class="hljs-string">"Pasword"</span>
-    validators={[isFieldEmpty(<span class="hljs-number">5</span>)]}
+    <span class="hljs-comment">// other props...</span>
+
 /&gt;
 
 &lt;PasswordField
     name=<span class="hljs-string">"confirmPassword"</span>
-    value={<span class="hljs-keyword">this</span>.state.confirmPassword}
-    hint=<span class="hljs-string">"Password must match"</span>
-    labelText=<span class="hljs-string">"Confirm Password"</span>
-    validators={[isFieldEmpty(<span class="hljs-number">5</span>), areFieldsEqual(<span class="hljs-string">"password"</span>)]}
-/&gt;</code></pre>
-				<a href="#textarea-input-_field" id="textarea-input-_field" style="color: inherit; text-decoration: none;">
-					<h4>TextArea Input _field</h4>
-				</a>
-				<pre><code class="language-typescript">&lt;TextAreaField
-    name=<span class="hljs-string">"about"</span>
-    value={<span class="hljs-keyword">this</span>.state.about}
-    hint=<span class="hljs-string">"Your email"</span>
-    labelText=<span class="hljs-string">"Must be at least 20 characters"</span>
-    validators={[isFieldEmpty(<span class="hljs-number">20</span>)]}
+    <span class="hljs-comment">// other props...</span>
+    validators={[areFieldsEqual(<span class="hljs-string">"password"</span>)]}
 /&gt;</code></pre>
 				<a href="#checkbox-input-_field" id="checkbox-input-_field" style="color: inherit; text-decoration: none;">
 					<h4>Checkbox Input _field</h4>
@@ -216,31 +257,47 @@
     hint=<span class="hljs-string">"Click to agree"</span>
     labelText=<span class="hljs-string">"Agree to terms &amp; conditions"</span>
 /&gt;</code></pre>
-				<a href="#radio-buttons" id="radio-buttons" style="color: inherit; text-decoration: none;">
-					<h4>Radio Buttons</h4>
+				<a href="#other-field-elements" id="other-field-elements" style="color: inherit; text-decoration: none;">
+					<h3>Other Field Elements</h3>
 				</a>
-				<pre><code class="language-typescript">&lt;RadioGroup name=<span class="hljs-string">"group1"</span>&gt;
+				<p>The rest of thesingle input fields.</p>
+				<a href="#textarea-input-_field" id="textarea-input-_field" style="color: inherit; text-decoration: none;">
+					<h4>TextArea Input _field</h4>
+				</a>
+				<pre><code class="language-typescript">&lt;TextAreaField
+    name=<span class="hljs-string">"about"</span>
+    value={<span class="hljs-keyword">this</span>.state.about}
+    hint=<span class="hljs-string">"Your email"</span>
+    labelText=<span class="hljs-string">"Must be at least 20 characters"</span>
+    validators={[isFieldEmpty(<span class="hljs-number">20</span>)]}
+/&gt;
+
+
+#### Radio Buttons
+
+<span class="hljs-string">``</span><span class="hljs-string">`typescript jsx
+&lt;RadioGroup name="group1"&gt;
     &lt;RadioField
-        name=<span class="hljs-string">"radio1"</span>
-        checked={<span class="hljs-keyword">this</span>.state.radio1}
-        hint=<span class="hljs-string">"Click to agree"</span>
-        labelText=<span class="hljs-string">"Agree to terms &amp; conditions"</span>
+        name="radio1"
+        checked={this.state.radio1}
+        hint="Click to agree"
+        labelText="Agree to terms &amp; conditions"
     /&gt;
 
     &lt;RadioField
-        name=<span class="hljs-string">"radio2"</span>
-        checked={<span class="hljs-keyword">this</span>.state.radio2}
-        hint=<span class="hljs-string">"Click to agree"</span>
-        labelText=<span class="hljs-string">"Agree to terms &amp; conditions"</span>
+        name="radio2"
+        checked={this.state.radio2}
+        hint="Click to agree"
+        labelText="Agree to terms &amp; conditions"
     /&gt;
 
     &lt;RadioField
-        name=<span class="hljs-string">"radio3"</span>
-        checked={<span class="hljs-keyword">this</span>.state.radio3}
-        hint=<span class="hljs-string">"Click to agree"</span>
-        labelText=<span class="hljs-string">"Agree to terms &amp; conditions"</span>
+        name="radio3"
+        checked={this.state.radio3}
+        hint="Click to agree"
+        labelText="Agree to terms &amp; conditions"
     /&gt;
-&lt;/RadioGroup&gt;</code></pre>
+&lt;/RadioGroup&gt;</span></code></pre>
 				<a href="#bootstrap-4" id="bootstrap-4" style="color: inherit; text-decoration: none;">
 					<h4>Bootstrap 4</h4>
 				</a>
@@ -279,6 +336,7 @@
 <span class="hljs-keyword">@import</span> <span class="hljs-string">"~bootstrap/scss/buttons"</span>;</code></pre>
 				<p>And finally import your sass into your React application:</p>
 				<pre><code class="language-jsx"><span class="hljs-keyword">import</span> <span class="hljs-string">"./mystyles.scss"</span>;</code></pre>
+				<p><sup>*<em>Fields that are not part of a RBF&#39;s form group</em></sup></p>
 				<p>Licence MIT</p>
 			</div>
 		</div>

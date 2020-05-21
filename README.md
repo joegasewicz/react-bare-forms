@@ -199,7 +199,7 @@ name as an argument).
 />
 ```
 ### Other Field Elements
-The rest of thesingle input fields.
+The rest of the single input *fields.
 
 #### TextArea Input _field
 ```typescript jsx

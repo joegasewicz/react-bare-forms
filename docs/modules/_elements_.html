@@ -122,7 +122,7 @@
 					<div class="tsd-signature tsd-kind-icon">Type<wbr>Select<wbr>Css<wbr>Size<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"sm"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"default"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"lg"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/d696fc4/src/elements.tsx#L79">src/elements.tsx:79</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L79">src/elements.tsx:79</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -135,7 +135,7 @@
 					<div class="tsd-signature tsd-kind-icon">File<wbr>Field<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ForwardRefExoticComponent</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">RefAttributes</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = React.forwardRef((props: IFileField, ref: React.RefObject&lt;HTMLFormElement&gt;|any) &#x3D;&gt; {let _props &#x3D; {...props, ref };const file &#x3D; new _FileField&lt;IFileField&gt;(FIELD_NAMES.FILE, _props);return file.create();})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/d696fc4/src/elements.tsx#L288">src/elements.tsx:288</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L298">src/elements.tsx:298</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -151,7 +151,7 @@
 					<div class="tsd-signature tsd-kind-icon">Submit<wbr>Button<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = new _SubmitButton().create()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/d696fc4/src/elements.tsx#L295">src/elements.tsx:295</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L305">src/elements.tsx:305</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -168,7 +168,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/d696fc4/src/elements.tsx#L213">src/elements.tsx:213</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L223">src/elements.tsx:223</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -211,7 +211,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/d696fc4/src/elements.tsx#L134">src/elements.tsx:134</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L142">src/elements.tsx:142</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -222,17 +222,21 @@
 									<h5>props: <a href="../interfaces/_elements_.iemailfield.html" class="tsd-signature-type">IEmailField</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<pre><code>// A bare form example ... remember to <span class="hljs-keyword">set</span> the {@<span class="hljs-keyword">link</span> Form.bare} property <span class="hljs-keyword">to</span> <span class="hljs-string">`true`</span>
-&lt;TextInputField
-   <span class="hljs-keyword">value</span>={this.state.username}
-   <span class="hljs-keyword">name</span>=<span class="hljs-string">"username"</span>
+											<pre><code> <span class="hljs-keyword">import</span> {EmailField} from <span class="hljs-string">"react-base-forms"</span>
+
+ const state = { email: <span class="hljs-string">""</span> }
+
+// A bare form example ... remember <span class="hljs-keyword">to</span> set the {@link Form.bare} property <span class="hljs-keyword">to</span> <span class="hljs-built_in">`true</span>`
+&lt;EmailField
+   <span class="hljs-keyword">value</span>={state.email}
+  <span class="hljs-built_in"> name</span>=<span class="hljs-string">"email"</span>
 /&gt;
 
-// Example <span class="hljs-keyword">with</span> Bootstrap styling (Bootstrap styling comes <span class="hljs-keyword">as</span> <span class="hljs-keyword">default</span>)
+// Example with Bootstrap styling (Bootstrap styling comes <span class="hljs-keyword">as</span> <span class="hljs-keyword">default</span>)
 
-&lt;TextInputField
-   <span class="hljs-keyword">value</span>={this.state.username}
-   <span class="hljs-keyword">name</span>=<span class="hljs-string">"username"</span>
+&lt;EmailField
+   <span class="hljs-keyword">value</span>={state.email}
+  <span class="hljs-built_in"> name</span>=<span class="hljs-string">"email"</span>
    hint=<span class="hljs-string">"Needs to be at least 50 characters long"</span>
    labelText=<span class="hljs-string">"Username"</span>
  /&gt;</code></pre>
@@ -254,10 +258,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/d696fc4/src/elements.tsx#L184">src/elements.tsx:184</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L194">src/elements.tsx:194</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p> The <code>PasswordField</code> works the same as the <code>EmailField</code> &amp; <code>TextInputField</code>&#39;s.</p>
+								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -265,22 +272,25 @@
 									<h5>props: <a href="../interfaces/_elements_.ipasswordfield.html" class="tsd-signature-type">IPasswordField</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<pre><code>// A bare form example ... remember to <span class="hljs-keyword">set</span> the {@<span class="hljs-keyword">link</span> Form.bare} property <span class="hljs-keyword">to</span> <span class="hljs-string">`true`</span>
-&lt;PasswordField
-   <span class="hljs-keyword">value</span>={this.state.username}
-   <span class="hljs-keyword">name</span>=<span class="hljs-string">"username"</span>
-   validators={[isEmailValid()]}
-/&gt;
+											<pre><code> <span class="hljs-keyword">import</span> {areFieldsEqual, isFieldEmpty, PasswordField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
 
-// Example <span class="hljs-keyword">with</span> Bootstrap styling (Bootstrap styling comes <span class="hljs-keyword">as</span> <span class="hljs-keyword">default</span>)
+ <span class="hljs-keyword">const</span> state = { <span class="hljs-attr">password</span>: <span class="hljs-string">""</span>, <span class="hljs-attr">confirmPassword</span>: <span class="hljs-string">""</span> };
 
-&lt;PasswordField
-   <span class="hljs-keyword">value</span>={this.state.password}
-   <span class="hljs-keyword">name</span>=<span class="hljs-string">"password"</span>
-   hint=<span class="hljs-string">"Needs to be at least 8 characters long"</span>
-   labelText=<span class="hljs-string">"Password"</span>
-   validators={[isEmailValid()]}
- /&gt;</code></pre><p>Also we can create two <em>PasswordField</em> components to confirm passwords are equal. Please see
+<span class="hljs-comment">// A bare form example ... remember to set the {@link Form.bare} property to `true`</span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">PasswordField</span>
+   <span class="hljs-attr">value</span>=<span class="hljs-string">{state.password}</span>
+   <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span>
+   <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isFieldEmpty(8)]}</span>
+/&gt;</span></span>
+
+<span class="hljs-comment">// Example with Bootstrap styling (Bootstrap styling comes as default)</span>
+
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">PasswordField</span>
+   <span class="hljs-attr">value</span>=<span class="hljs-string">{state.confirmPassword}</span>
+   <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span>
+   <span class="hljs-attr">hint</span>=<span class="hljs-string">"Needs to be at least 8 characters long"</span>
+   <span class="hljs-attr">labelText</span>=<span class="hljs-string">"Password"</span>
+ /&gt;</span></span></code></pre><p>Also we can create two <em>PasswordField</em> components to confirm passwords are equal. Please see
 												<a href="_validators_.html#arefieldsequal">areFieldsEqual</a> for more info.
 												The first <em>PasswordField</em> has has a <em>name</em> prop of <strong>password</strong> &amp; the second <em>PasswordField</em> a name
 												prop of <em>confirmPassword*. Then we can add a <a href="_validators_.html#arefieldsequal">areFieldsEqual</a> validator to the *PasswordField</em>
@@ -290,7 +300,6 @@
  name=<span class="hljs-string">"password"</span>
  <span class="hljs-regexp">//</span> other props...
 
- validators={[isEmailValid()]}
 /&gt;
 
 &lt;PasswordField
@@ -316,7 +325,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/d696fc4/src/elements.tsx#L268">src/elements.tsx:268</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L278">src/elements.tsx:278</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -341,7 +350,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/d696fc4/src/elements.tsx#L258">src/elements.tsx:258</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L268">src/elements.tsx:268</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -366,7 +375,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/d696fc4/src/elements.tsx#L278">src/elements.tsx:278</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L288">src/elements.tsx:288</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -391,7 +400,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/d696fc4/src/elements.tsx#L243">src/elements.tsx:243</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L253">src/elements.tsx:253</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -437,7 +446,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/d696fc4/src/elements.tsx#L108">src/elements.tsx:108</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/7d09a55/src/elements.tsx#L112">src/elements.tsx:112</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -448,17 +457,21 @@
 									<h5>props: <a href="../interfaces/_elements_.itextinputfield.html" class="tsd-signature-type">ITextInputField</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<pre><code>// A bare form example ... remember to <span class="hljs-keyword">set</span> the {@<span class="hljs-keyword">link</span> Form.bare} property <span class="hljs-keyword">to</span> <span class="hljs-string">`true`</span>
+											<pre><code> <span class="hljs-keyword">import</span> {TextInputField} from <span class="hljs-string">"react-base-forms"</span>
+
+ const state = { username: <span class="hljs-string">""</span> }
+
+// A bare form example ... remember <span class="hljs-keyword">to</span> set the {@link Form.bare} property <span class="hljs-keyword">to</span> <span class="hljs-built_in">`true</span>`
 &lt;TextInputField
-   <span class="hljs-keyword">value</span>={this.state.username}
-   <span class="hljs-keyword">name</span>=<span class="hljs-string">"username"</span>
+   <span class="hljs-keyword">value</span>={state.username}
+  <span class="hljs-built_in"> name</span>=<span class="hljs-string">"username"</span>
 /&gt;
 
-// Example <span class="hljs-keyword">with</span> Bootstrap styling (Bootstrap styling comes <span class="hljs-keyword">as</span> <span class="hljs-keyword">default</span>)
+// Example with Bootstrap styling (Bootstrap styling comes <span class="hljs-keyword">as</span> <span class="hljs-keyword">default</span>)
 
 &lt;TextInputField
-   <span class="hljs-keyword">value</span>={this.state.username}
-   <span class="hljs-keyword">name</span>=<span class="hljs-string">"username"</span>
+   <span class="hljs-keyword">value</span>={state.username}
+  <span class="hljs-built_in"> name</span>=<span class="hljs-string">"username"</span>
    hint=<span class="hljs-string">"Needs to be at least 50 characters long"</span>
    labelText=<span class="hljs-string">"Username"</span>
  /&gt;</code></pre>
