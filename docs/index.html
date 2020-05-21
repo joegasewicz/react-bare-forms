@@ -66,12 +66,12 @@
 			<div class="tsd-panel tsd-typography">
 				<p><img src="images/rbf_logo3.png?raw=true" alt="ReactBareForms" title="React Bare Forms"></p>
 				<p>React library using React Hooks to build forms &amp; let you switch in &amp; out Bootstrap 4 styling.
-				<strong>React Bare Forms</strong> library is compatible with both React functional &amp; class components!</p>
-				<p>Docs are <a href="https://joegasewicz.github.io/react-bare-forms/">here</a> </p>
+				<strong>React Bare Forms</strong> library is compatible with both React functional &amp; class components 🎉</p>
+				<p>📚 Docs are <a href="https://joegasewicz.github.io/react-bare-forms/">here</a> </p>
 				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
 					<h2>Install</h2>
 				</a>
-				<pre><code>npm <span class="hljs-keyword">install</span> react-bare-forms</code></pre>
+				<pre><code>npm <span class="hljs-keyword">install</span> react-bare-forms</code></pre><p>⚠️ Warning: <strong><em>The library is still in a beta stage</em></strong></p>
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
 					<h2>Usage</h2>
 				</a>
@@ -284,35 +284,75 @@
     labelText=<span class="hljs-string">"Must be at least 20 characters"</span>
     validators={[isFieldEmpty(<span class="hljs-number">20</span>)]}
 /&gt;
+</code></pre>
+				<a href="#selectfield" id="selectfield" style="color: inherit; text-decoration: none;">
+					<h4>SelectField</h4>
+				</a>
+				<p>A component to render a select field element.</p>
+				<pre><code class="language-typescript">  <span class="hljs-keyword">import</span> {SelectField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
 
+  <span class="hljs-keyword">const</span> state = { fruitChoice: <span class="hljs-string">""</span> };
 
-#### Radio Buttons
+ &lt;SelectField
+   size=<span class="hljs-string">"lg"</span>
+   value={state.fruitChoice}
+   name=<span class="hljs-string">"fruitChoice"</span>
+   options={[<span class="hljs-string">"banana"</span>, <span class="hljs-string">"apple"</span>, <span class="hljs-string">"orange"</span>]}
+  /&gt;</code></pre>
+				<a href="#radio-buttons" id="radio-buttons" style="color: inherit; text-decoration: none;">
+					<h3>Radio Buttons</h3>
+				</a>
+				<a href="#radiogroup" id="radiogroup" style="color: inherit; text-decoration: none;">
+					<h4>RadioGroup</h4>
+				</a>
+				<p>The <code>RadioGroup</code> component takes a single props of <code>name</code>, which</p>
+				<ul>
+					<li><p>must be a unique to a form. See <a href="modules/_elements_.html#radiofield">RadioField</a>.</p>
+						<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {CheckBoxField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
 
-<span class="hljs-string">``</span><span class="hljs-string">`typescript jsx
-&lt;RadioGroup name="group1"&gt;
-    &lt;RadioField
-        name="radio1"
-        checked={this.state.radio1}
-        hint="Click to agree"
-        labelText="Agree to terms &amp; conditions"
-    /&gt;
+&lt;RadioGroup name=<span class="hljs-string">"group1"</span>&gt;
+  <span class="hljs-comment">// place RadioFields components here...</span>
+&lt;/RadioGroup&gt;</code></pre>
+					</li>
+				</ul>
+				<a href="#radiofield" id="radiofield" style="color: inherit; text-decoration: none;">
+					<h4>RadioField</h4>
+				</a>
+				<p><code>RadioField</code> inputs are designed to be used with the <strong>RadioGroup</strong> component.
+					To use this component, add or nest it within a <strong>RadioGroup</strong> component as children.
+				It&#39;s possible to also use the <strong>isRadioChecked</strong> validator with a RadioGroup, as shown below:</p>
+				<pre><code class="language-typescript"> <span class="hljs-keyword">import</span> {isRadioChecked, RadioField, RadioGroup} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
 
-    &lt;RadioField
-        name="radio2"
-        checked={this.state.radio2}
-        hint="Click to agree"
-        labelText="Agree to terms &amp; conditions"
-    /&gt;
+ <span class="hljs-keyword">const</span> state = { male: <span class="hljs-literal">true</span>, female: <span class="hljs-literal">false</span> };
 
-    &lt;RadioField
-        name="radio3"
-        checked={this.state.radio3}
-        hint="Click to agree"
-        labelText="Agree to terms &amp; conditions"
-    /&gt;
-&lt;/RadioGroup&gt;</span></code></pre>
+ &lt;RadioGroup name=<span class="hljs-string">"group1"</span>&gt;
+   &lt;RadioField
+     name=<span class="hljs-string">"male"</span>
+     checked={state.male}
+     hint=<span class="hljs-string">"Click to agree"</span>
+     labelText=<span class="hljs-string">"Agree to terms &amp; conditions"</span>
+   /&gt;
+
+   &lt;RadioField
+     name=<span class="hljs-string">"female"</span>
+     checked={state.female}
+     hint=<span class="hljs-string">"Click to agree"</span>
+     labelText=<span class="hljs-string">"Agree to terms &amp; conditions"</span>
+     validators={[isRadioChecked()]}
+   /&gt;
+
+ &lt;/RadioGroup&gt;</code></pre>
+				<a href="#buttons" id="buttons" style="color: inherit; text-decoration: none;">
+					<h2>Buttons</h2>
+				</a>
+				<p>The SubmitButton only requires a text string as children props (see below example).
+				The SubmitButton will be disabled until all form fields are validated.</p>
+				<pre><code class="language-typescript">
+ <span class="hljs-keyword">import</span> {SubmitButton} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
+
+ &lt;SubmitButton&gt;Submit&lt;/SubmitButton&gt;</code></pre>
 				<a href="#bootstrap-4" id="bootstrap-4" style="color: inherit; text-decoration: none;">
-					<h4>Bootstrap 4</h4>
+					<h2>Bootstrap 4</h2>
 				</a>
 				<p>Bootstrap 4 doesn&#39;t come with React Bare Forms so that you can obtain the smallest bundle size possible!</p>
 				<p>There are several ways to include Bootstrap 4. the simplist (but not the best) is to import it directly from the cdn in your index.html file. For example</p>

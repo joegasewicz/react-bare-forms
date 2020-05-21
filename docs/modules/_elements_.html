@@ -122,7 +122,7 @@
 					<div class="tsd-signature tsd-kind-icon">Type<wbr>Select<wbr>Css<wbr>Size<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"sm"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"default"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"lg"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L79">src/elements.tsx:79</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/31af5fd/src/elements.tsx#L79">src/elements.tsx:79</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -135,13 +135,22 @@
 					<div class="tsd-signature tsd-kind-icon">File<wbr>Field<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ForwardRefExoticComponent</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">RefAttributes</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = React.forwardRef((props: IFileField, ref: React.RefObject&lt;HTMLFormElement&gt;|any) &#x3D;&gt; {let _props &#x3D; {...props, ref };const file &#x3D; new _FileField&lt;IFileField&gt;(FIELD_NAMES.FILE, _props);return file.create();})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L322">src/elements.tsx:322</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/31af5fd/src/elements.tsx#L369">src/elements.tsx:369</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The SubmitButton only requires a text string as children props (see below example).
+							The SubmitButton will be disabled until all form fields are validated.</p>
+						</div>
 						<dl class="tsd-comment-tags">
 							<dt>param</dt>
-							<dd></dd>
+							<dd><p><a href="../interfaces/_field_classes__submitbutton_.isubmitbuttonprops.html">ISubmitButtonProps</a></p>
+							</dd>
+							<dt>example</dt>
+							<dd><pre><code><span class="hljs-keyword">import</span> {SubmitButton} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
+
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">SubmitButton</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">SubmitButton</span>&gt;</span></span></code></pre></dd>
 						</dl>
 					</div>
 				</section>
@@ -151,7 +160,7 @@
 					<div class="tsd-signature tsd-kind-icon">Submit<wbr>Button<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = new _SubmitButton().create()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L329">src/elements.tsx:329</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/31af5fd/src/elements.tsx#L376">src/elements.tsx:376</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -168,7 +177,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L230">src/elements.tsx:230</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/31af5fd/src/elements.tsx#L230">src/elements.tsx:230</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -222,7 +231,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L143">src/elements.tsx:143</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/31af5fd/src/elements.tsx#L143">src/elements.tsx:143</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -273,7 +282,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L197">src/elements.tsx:197</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/31af5fd/src/elements.tsx#L197">src/elements.tsx:197</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -346,15 +355,44 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L302">src/elements.tsx:302</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/31af5fd/src/elements.tsx#L329">src/elements.tsx:329</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code> <span class="hljs-keyword">import</span> {isRadioChecked, RadioField, RadioGroup} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
+
+ <span class="hljs-keyword">const</span> state = { <span class="hljs-attr">male</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">female</span>: <span class="hljs-literal">false</span> };
+
+ <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">RadioGroup</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"group1"</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">RadioField</span>
+     <span class="hljs-attr">name</span>=<span class="hljs-string">"male"</span>
+     <span class="hljs-attr">checked</span>=<span class="hljs-string">{state.male}</span>
+     <span class="hljs-attr">hint</span>=<span class="hljs-string">"Click to agree"</span>
+     <span class="hljs-attr">labelText</span>=<span class="hljs-string">"Agree to terms &amp; conditions"</span>
+   /&gt;</span>
+
+   <span class="hljs-tag">&lt;<span class="hljs-name">RadioField</span>
+     <span class="hljs-attr">name</span>=<span class="hljs-string">"female"</span>
+     <span class="hljs-attr">checked</span>=<span class="hljs-string">{state.female}</span>
+     <span class="hljs-attr">hint</span>=<span class="hljs-string">"Click to agree"</span>
+     <span class="hljs-attr">labelText</span>=<span class="hljs-string">"Agree to terms &amp; conditions"</span>
+     <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isRadioChecked()]}</span>
+   /&gt;</span>
+
+ <span class="hljs-tag">&lt;/<span class="hljs-name">RadioGroup</span>&gt;</span></span></code></pre></dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>props: <a href="../interfaces/_elements_.iradiofield.html" class="tsd-signature-type">IRadioField</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p><a href="../interfaces/_elements_.iradiofield.html">IRadioField</a></p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -371,11 +409,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L292">src/elements.tsx:292</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/31af5fd/src/elements.tsx#L292">src/elements.tsx:292</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<dl class="tsd-comment-tags">
+									<dt>props</dt>
+									<dd><p><a href="../interfaces/_elements_.iradiogroupprops.html">IRadioGroupProps</a></p>
+									</dd>
 									<dt>example</dt>
 									<dd><pre><code> <span class="hljs-keyword">import</span> {CheckBoxField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
 
@@ -391,7 +432,7 @@
 								<li>
 									<h5>props: <a href="../interfaces/_elements_.iradiogroupprops.html" class="tsd-signature-type">IRadioGroupProps</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the <code>RadioGroup</code> component takes a single props of <code>name</code>, which
+										<p>The <code>RadioGroup</code> component takes a single props of <code>name</code>, which
 										must be a unique to a form. See <a href="_elements_.html#radiofield">RadioField</a>.</p>
 									</div>
 								</li>
@@ -410,15 +451,36 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L312">src/elements.tsx:312</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/31af5fd/src/elements.tsx#L352">src/elements.tsx:352</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>A component to render a select field element.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code> <span class="hljs-keyword">import</span> {SelectField} <span class="hljs-keyword">from</span> "react-base-forms";
+
+ const state = { fruitChoice: "" };
+
+&lt;SelectField
+  size="lg"
+  <span class="hljs-keyword">value</span>={state.fruitChoice}
+  <span class="hljs-type">name</span>="fruitChoice"
+  <span class="hljs-keyword">options</span>={["banana", "apple", "orange"]}
+ /&gt;</code></pre></dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>props: <a href="../interfaces/_elements_.iselectfield.html" class="tsd-signature-type">ISelectField</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p><a href="../interfaces/_elements_.iselectfield.html">ISelectField</a></p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -435,7 +497,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L264">src/elements.tsx:264</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/31af5fd/src/elements.tsx#L264">src/elements.tsx:264</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -492,7 +554,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L113">src/elements.tsx:113</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/31af5fd/src/elements.tsx#L113">src/elements.tsx:113</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
