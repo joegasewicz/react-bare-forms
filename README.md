@@ -1,3 +1,5 @@
+![NPM](https://img.shields.io/npm/l/react-bare-forms)
+
 ![ReactBareForms](images/rbf_logo3.png?raw=true "React Bare Forms")
 
 React library using React Hooks to build forms & let you switch in & out Bootstrap 4 styling.
