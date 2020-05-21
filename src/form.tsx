@@ -177,14 +177,7 @@ export const Form = (props: IForm) => {
     const [checkboxesState, updateCheckboxesState] = useState(CHECKBOXES_STATE);
     const [fileState, updateFileState] = useState(FILES_STATE);
     const [radioState, updateRadioState] = useState(RADIO_GROUPS_STATE);
-    // If the parentName component is a class component, then the state needs to be updated from the parentName context
-    if(props.context) {
-        useEffect(() => {
-            props.context.setState({
-                ...parentState,
-            });
-        }, [parentState]);
-    }
+
     // State Hooks
     const _providerContext: IFormContext = {
         bare: props.bare || context.bare,
@@ -218,8 +211,17 @@ export const Form = (props: IForm) => {
         },
     };
 
+    // If the parentName component is a class component, then the state needs to be updated from the parentName context
+    if(props.context) {
+        useEffect(() => {
+            props.context.setState({
+                ...parentState,
+            });
+        }, [parentState]);
+    }
+
     return (
-            <FormProvider value={_providerContext}>
+        <FormProvider value={_providerContext}>
             <form onSubmit={handleSubmit(props)} {...props}>{props.children}</form>
         </FormProvider>
     );

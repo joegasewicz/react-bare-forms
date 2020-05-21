@@ -1,12 +1,13 @@
 {
   "name": "react-bare-forms",
-  "version": "0.0.5",
+  "version": "0.0.4",
   "description": "A bare minimal React form library for quick & simple forms.",
   "main": "dist/index.js",
   "types": "dist/src/index.d.ts",
   "scripts": {
-    "build-dev": "webpack --env.mode devlopment --entry=./src/index.ts --output-path=dist --output-filename=index.js",
-    "build-prod": "webpack --env.mode production --entry=./src/index.ts --output-path=dist --output-filename=index.js",
+    "build:dev": "webpack --env.mode devlopment --entry=./src/index.ts --output-path=dist --output-filename=index.js",
+    "build:prod": "webpack --env.mode production --entry=./src/index.ts --output-path=dist --output-filename=index.js",
+    "watch:prod": "webpack --watch --env.mode production --entry=./src/index.ts --output-path=dist --output-filename=index.js",
     "start": "webpack-dev-server --config webpack.config.dev.js --output-path=dist --output-filename=bundle.js",
     "test": "jest",
     "typedoc": "typedoc --mode modules --ignoreCompilerErrors --stripInternal --out docs src && touch docs/.nojekyll"
@@ -53,12 +54,16 @@
     "typedoc": "^0.17.4",
     "typescript": "^3.8.3",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "save-dev": "0.0.1-security",
-    "webpack-dev-server": "^3.10.3"
-  }
+    "react-dom": "^16.13.1"
+
+  },
+  "files": [
+    "dist/index.js",
+    "dist/index.d.ts"
+  ]
 }
