@@ -51,6 +51,32 @@ the `createFileRef` function to a variable & pass this variable to `FileField`'s
  // Now myFileRef has access to the file object once it's been selected by the user
 ````
 ## Consumer
+RBF's provides the `FormConsumer` for you to debug visually your form. Below is an example of a form container a single text input field.
+Notice, that the `context` object return from the `FormConsumer` has a `metadata` property which gives you detailed
+values of the current state of that form field element.
+````typescript jsx
+import {Form, FormConsumer, IFormContext, isFieldEmpty, TextInputField} from "react-bare-forms";
+
+<Form>
+    <TextInputField
+        value={this.state.age}
+        name="age"
+        hint="Enter your age"
+        labelText="Age"
+        validators={[isFieldEmpty(5)]}
+    />
+    <FormConsumer>
+        {(context: IFormContext) => {
+            return <code>{JSON.stringify(context.state)}</code>;
+        }}
+    </FormConsumer>
+</Form>
+
+````
+
+````json
+{"inputs":{"state":{"age":{"name":"age","validation":[{"isValid":false,"messages":["Must be at least 2 characters"]}],"isTouched":false,"fieldValues":{"type":"value","currentValue":0}}},"metaType":"inputs","defaultState":{},"_name":"age","_fieldType":"text"},"checkboxes":{"state":{},"metaType":"checkboxes","defaultState":{}},"files":{"state":{},"metaType":"files","defaultState":{}},"radioGroups":{"state":{},"metaType":"radioGroups","defaultState":{}}}
+````
 
 ## Validators
 
