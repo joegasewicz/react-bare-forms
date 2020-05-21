@@ -122,7 +122,7 @@
 					<div class="tsd-signature tsd-kind-icon">Type<wbr>Select<wbr>Css<wbr>Size<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"sm"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"default"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"lg"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L79">src/elements.tsx:79</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L79">src/elements.tsx:79</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -135,7 +135,7 @@
 					<div class="tsd-signature tsd-kind-icon">File<wbr>Field<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ForwardRefExoticComponent</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">RefAttributes</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = React.forwardRef((props: IFileField, ref: React.RefObject&lt;HTMLFormElement&gt;|any) &#x3D;&gt; {let _props &#x3D; {...props, ref };const file &#x3D; new _FileField&lt;IFileField&gt;(FIELD_NAMES.FILE, _props);return file.create();})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L301">src/elements.tsx:301</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L322">src/elements.tsx:322</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -151,7 +151,7 @@
 					<div class="tsd-signature tsd-kind-icon">Submit<wbr>Button<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = new _SubmitButton().create()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L308">src/elements.tsx:308</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L329">src/elements.tsx:329</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -168,35 +168,44 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L226">src/elements.tsx:226</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L230">src/elements.tsx:230</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>The CheckBoxField requires a <em>checked</em> prop instead of a <em>value</em> prop. See
 									<a href="../interfaces/_elements_.icheckboxfield.html">ICheckBoxField</a>.</p>
-									<p>```
-										// A bare form example ... remember to set the {@link Form.bare} property to <code>true</code>
-									import {CheckBoxField} from &quot;react-base-forms&quot;;</p>
 								</div>
-								<p> const state = { password: &quot;&quot;, confirmPassword: &quot;&quot; };</p>
-								<p><CheckBoxField
-									name="terms"
-									checked={state.terms}
-								/></p>
-								<p>// Example with Bootstrap styling (Bootstrap styling comes as default)
-									<CheckBoxField
-									name="terms"
-									checked={state.terms}
-									hint="Click to agree"
-									labelText="Agree to terms & conditions"
-									/>
-								```</p>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code><span class="hljs-comment">// A bare form example ... remember to set the {@link Form.bare} property to `true`</span>
+ <span class="hljs-keyword">import</span> {CheckBoxField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
+
+ <span class="hljs-keyword">const</span> state = { <span class="hljs-attr">password</span>: <span class="hljs-string">""</span>, <span class="hljs-attr">confirmPassword</span>: <span class="hljs-string">""</span> };
+
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">CheckBoxField</span>
+  <span class="hljs-attr">name</span>=<span class="hljs-string">"terms"</span>
+  <span class="hljs-attr">checked</span>=<span class="hljs-string">{state.terms}</span>
+/&gt;</span></span>
+
+<span class="hljs-comment">// Example with Bootstrap styling (Bootstrap styling comes as default)</span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">CheckBoxField</span>
+  <span class="hljs-attr">name</span>=<span class="hljs-string">"terms"</span>
+  <span class="hljs-attr">checked</span>=<span class="hljs-string">{state.terms}</span>
+  <span class="hljs-attr">hint</span>=<span class="hljs-string">"Click to agree"</span>
+  <span class="hljs-attr">labelText</span>=<span class="hljs-string">"Agree to terms &amp; conditions"</span>
+/&gt;</span></span></code></pre></dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>props: <a href="../interfaces/_elements_.icheckboxfield.html" class="tsd-signature-type">ICheckBoxField</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p><a href="../interfaces/_elements_.icheckboxfield.html">ICheckBoxField</a></p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -213,18 +222,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L142">src/elements.tsx:142</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L143">src/elements.tsx:143</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>props: <a href="../interfaces/_elements_.iemailfield.html" class="tsd-signature-type">IEmailField</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<pre><code> <span class="hljs-keyword">import</span> {EmailField} from <span class="hljs-string">"react-base-forms"</span>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code> <span class="hljs-keyword">import</span> {EmailField} from <span class="hljs-string">"react-base-forms"</span>
 
  const state = { email: <span class="hljs-string">""</span> }
 
@@ -241,7 +245,16 @@
   <span class="hljs-built_in"> name</span>=<span class="hljs-string">"email"</span>
    hint=<span class="hljs-string">"Needs to be at least 50 characters long"</span>
    labelText=<span class="hljs-string">"Username"</span>
- /&gt;</code></pre>
+ /&gt;</code></pre></dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>props: <a href="../interfaces/_elements_.iemailfield.html" class="tsd-signature-type">IEmailField</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p><a href="../interfaces/_elements_.iemailfield.html">IEmailField</a></p>
 										</div>
 									</div>
 								</li>
@@ -260,21 +273,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L194">src/elements.tsx:194</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L197">src/elements.tsx:197</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p> The <code>PasswordField</code> works the same as the <code>EmailField</code> &amp; <code>TextInputField</code>&#39;s.</p>
 								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>props: <a href="../interfaces/_elements_.ipasswordfield.html" class="tsd-signature-type">IPasswordField</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<pre><code> <span class="hljs-keyword">import</span> {areFieldsEqual, isFieldEmpty, PasswordField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code> <span class="hljs-keyword">import</span> {areFieldsEqual, isFieldEmpty, PasswordField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
 
  <span class="hljs-keyword">const</span> state = { <span class="hljs-attr">password</span>: <span class="hljs-string">""</span>, <span class="hljs-attr">confirmPassword</span>: <span class="hljs-string">""</span> };
 
@@ -293,12 +301,14 @@
    <span class="hljs-attr">hint</span>=<span class="hljs-string">"Needs to be at least 8 characters long"</span>
    <span class="hljs-attr">labelText</span>=<span class="hljs-string">"Password"</span>
  /&gt;</span></span></code></pre><p>Also we can create two <em>PasswordField</em> components to confirm passwords are equal. Please see
-												<a href="_validators_.html#arefieldsequal">areFieldsEqual</a> for more info.
-												The first <em>PasswordField</em> has has a <em>name</em> prop of <strong>password</strong> &amp; the second <em>PasswordField</em> a name
-												prop of <em>confirmPassword*. Then we can add a <a href="_validators_.html#arefieldsequal">areFieldsEqual</a> validator to the *PasswordField</em>
-												with the <em>confirmPassword</em> name props (also notice how <a href="_validators_.html#arefieldsequal">areFieldsEqual</a> takes the first <em>PasswordField</em>
-											name as an argument).</p>
-											<pre><code>&lt;PasswordField
+											<a href="_validators_.html#arefieldsequal">areFieldsEqual</a> for more info.
+											The first <em>PasswordField</em> has has a <em>name</em> prop of <strong>password</strong> &amp; the second <em>PasswordField</em> a name
+											prop of <em>confirmPassword*. Then we can add a <a href="_validators_.html#arefieldsequal">areFieldsEqual</a> validator to the *PasswordField</em>
+											with the <em>confirmPassword</em> name props (also notice how <a href="_validators_.html#arefieldsequal">areFieldsEqual</a> takes the first <em>PasswordField</em>
+										name as an argument).</p>
+									</dd>
+									<dt>example</dt>
+									<dd><pre><code>&lt;PasswordField
  name=<span class="hljs-string">"password"</span>
  <span class="hljs-regexp">//</span> other props...
 
@@ -308,7 +318,16 @@
  name=<span class="hljs-string">"confirmPassword"</span>
  <span class="hljs-regexp">//</span> other props...
  validators={[areFieldsEqual(<span class="hljs-string">"password"</span>)]}
-/&gt;</code></pre>
+/&gt;</code></pre></dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>props: <a href="../interfaces/_elements_.ipasswordfield.html" class="tsd-signature-type">IPasswordField</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p><a href="../interfaces/_elements_.ipasswordfield.html">IPasswordField</a></p>
 										</div>
 									</div>
 								</li>
@@ -327,7 +346,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L281">src/elements.tsx:281</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L302">src/elements.tsx:302</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -352,15 +371,29 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L271">src/elements.tsx:271</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L292">src/elements.tsx:292</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code> <span class="hljs-keyword">import</span> {CheckBoxField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
+
+ <span class="hljs-keyword">const</span> state = { <span class="hljs-attr">male</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">female</span>: <span class="hljs-literal">false</span> };
+
+ <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">RadioGroup</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"group1"</span>&gt;</span>
+   // place RadioFields components here...
+ <span class="hljs-tag">&lt;/<span class="hljs-name">RadioGroup</span>&gt;</span></span></code></pre></dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>props: <a href="../interfaces/_elements_.iradiogroupprops.html" class="tsd-signature-type">IRadioGroupProps</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the <code>RadioGroup</code> component takes a single props of <code>name</code>, which
+										must be a unique to a form. See <a href="_elements_.html#radiofield">RadioField</a>.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -377,7 +410,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L291">src/elements.tsx:291</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L312">src/elements.tsx:312</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -402,7 +435,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L256">src/elements.tsx:256</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L264">src/elements.tsx:264</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -410,28 +443,39 @@
 									<p>The TextAreaField takes in an extra prop of <em>row</em> which is a number &amp; declares
 										the number of rows displayed by the textarea element. The TextAreaField accepts
 									all the <a href="../interfaces/_elements_.ifield.html">IField</a> props.</p>
-									<p>```
-										// A bare form example ... remember to set the {@link Form.bare} property to <code>true</code>
-										<TextAreaField
-										value={this.state.about}
-										name="about"
-										validators={[isFieldEmpty(20)]}
-									/></p>
 								</div>
-								<p>// Example with Bootstrap styling (Bootstrap styling comes as default)</p>
-								<p><TextAreaField
-									name="about"
-									value={this.state.about}
-									hint="Must be at least 20 characters"
-									labelText="About you..."
-									validators={[isFieldEmpty(20)]}
-									/>
-								```</p>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code> *  <span class="hljs-keyword">import</span> {CheckBoxField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
+
+ <span class="hljs-keyword">const</span> state = { <span class="hljs-attr">about</span>: <span class="hljs-string">""</span> };
+<span class="hljs-comment">// A bare form example ... remember to set the {@link Form.bare} property to `true`</span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TextAreaField</span>
+   <span class="hljs-attr">value</span>=<span class="hljs-string">{state.about}</span>
+   <span class="hljs-attr">name</span>=<span class="hljs-string">"about"</span>
+   <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isFieldEmpty(20)]}</span>
+/&gt;</span></span>
+
+<span class="hljs-comment">// Example with Bootstrap styling (Bootstrap styling comes as default)</span>
+
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TextAreaField</span>
+   <span class="hljs-attr">name</span>=<span class="hljs-string">"about"</span>
+   <span class="hljs-attr">value</span>=<span class="hljs-string">{state.about}</span>
+   <span class="hljs-attr">hint</span>=<span class="hljs-string">"Must be at least 20 characters"</span>
+   <span class="hljs-attr">labelText</span>=<span class="hljs-string">"About you..."</span>
+   <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isFieldEmpty(20)]}</span>
+/&gt;</span></span></code></pre></dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>props: <a href="../interfaces/_elements_.itextareafield.html" class="tsd-signature-type">ITextAreaField</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p><a href="../interfaces/_elements_.itextinputfield.html">ITextInputField</a></p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Element</span></h4>
@@ -448,18 +492,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/845112c/src/elements.tsx#L112">src/elements.tsx:112</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/b25c29f/src/elements.tsx#L113">src/elements.tsx:113</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>props: <a href="../interfaces/_elements_.itextinputfield.html" class="tsd-signature-type">ITextInputField</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<pre><code> <span class="hljs-keyword">import</span> {TextInputField} from <span class="hljs-string">"react-base-forms"</span>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code> <span class="hljs-keyword">import</span> {TextInputField} from <span class="hljs-string">"react-base-forms"</span>
 
  const state = { username: <span class="hljs-string">""</span> }
 
@@ -476,7 +515,16 @@
   <span class="hljs-built_in"> name</span>=<span class="hljs-string">"username"</span>
    hint=<span class="hljs-string">"Needs to be at least 50 characters long"</span>
    labelText=<span class="hljs-string">"Username"</span>
- /&gt;</code></pre>
+ /&gt;</code></pre></dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>props: <a href="../interfaces/_elements_.itextinputfield.html" class="tsd-signature-type">ITextInputField</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p><a href="../interfaces/_elements_.itextinputfield.html">ITextInputField</a></p>
 										</div>
 									</div>
 								</li>
