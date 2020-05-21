@@ -1,6 +1,6 @@
 ![ReactBareForms](images/rbf_logo3.png?raw=true "React Bare Forms")
 
-React library using built with Typescript, using React Hooks to build forms & let you switch in & out Bootstrap 4 styling.
+React library using React Hooks to build forms & let you switch in & out Bootstrap 4 styling.
 **React Bare Forms** library is compatible with both React functional & class components!
 
 Docs are [here](https://joegasewicz.github.io/react-bare-forms/) 
