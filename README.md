@@ -228,6 +228,23 @@ The rest of the single input *fields.
 />
 
 ```
+
+#### SelectField
+A component to render a select field element.
+
+```typescript jsx
+  import {SelectField} from "react-base-forms";
+
+  const state = { fruitChoice: "" };
+
+ <SelectField
+   size="lg"
+   value={state.fruitChoice}
+   name="fruitChoice"
+   options={["banana", "apple", "orange"]}
+  />
+```
+ 
 ### Radio Buttons
 
 #### RadioGroup
@@ -241,32 +258,45 @@ The `RadioGroup` component takes a single props of `name`, which
    </RadioGroup>
  ```
 
+#### RadioField
+`RadioField` inputs are designed to be used with the **RadioGroup** component.
+ To use this component, add or nest it within a **RadioGroup** component as children.
+ It's possible to also use the **isRadioChecked** validator with a RadioGroup, as shown below:
 ```typescript jsx
-<RadioGroup name="group1">
-    <RadioField
-        name="radio1"
-        checked={this.state.radio1}
-        hint="Click to agree"
-        labelText="Agree to terms & conditions"
-    />
-
-    <RadioField
-        name="radio2"
-        checked={this.state.radio2}
-        hint="Click to agree"
-        labelText="Agree to terms & conditions"
-    />
-
-    <RadioField
-        name="radio3"
-        checked={this.state.radio3}
-        hint="Click to agree"
-        labelText="Agree to terms & conditions"
-    />
-</RadioGroup>
+ import {isRadioChecked, RadioField, RadioGroup} from "react-base-forms";
+ 
+ const state = { male: true, female: false };
+ 
+ <RadioGroup name="group1">
+   <RadioField
+     name="male"
+     checked={state.male}
+     hint="Click to agree"
+     labelText="Agree to terms & conditions"
+   />
+ 
+   <RadioField
+     name="female"
+     checked={state.female}
+     hint="Click to agree"
+     labelText="Agree to terms & conditions"
+     validators={[isRadioChecked()]}
+   />
+   
+ </RadioGroup>
 ```
 
-#### Bootstrap 4
+## Buttons
+The SubmitButton only requires a text string as children props (see below example).
+The SubmitButton will be disabled until all form fields are validated.
+ ```typescript jsx
+
+ import {SubmitButton} from "react-base-forms";
+
+ <SubmitButton>Submit</SubmitButton>
+```
+
+## Bootstrap 4
 Bootstrap 4 doesn't come with React Bare Forms so that you can obtain the smallest bundle size possible!
 
 There are several ways to include Bootstrap 4. the simplist (but not the best) is to import it directly from the cdn in your index.html file. For example

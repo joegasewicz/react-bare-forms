@@ -272,7 +272,7 @@ export interface IRadioGroupProps {
 }
 
 /**
- *
+ * @props {@link IRadioGroupProps}
  * @param props The `RadioGroup` component takes a single props of `name`, which
  * must be a unique to a form. See {@link RadioField}.
  * @constructor
@@ -296,8 +296,35 @@ export function RadioGroup(props: IRadioGroupProps) {
 
 /**
  *
- * @param props
+ * @param props {@link IRadioField}
  * @constructor
+ * `RadioField` inputs are designed to be used with the {@link RadioGroup} component.
+ *  To use this component, add or nest it within a {@link RadioGroup} component as children.
+ *  It's possible to also use validators with a RadioGroup, as shown below:
+ * @example
+ * ```
+ *  import {isRadioChecked, RadioField, RadioGroup} from "react-base-forms";
+ *
+ *  const state = { male: true, female: false };
+ *
+ *  <RadioGroup name="group1">
+ *    <RadioField
+ *      name="male"
+ *      checked={state.male}
+ *      hint="Click to agree"
+ *      labelText="Agree to terms & conditions"
+ *    />
+ *
+ *    <RadioField
+ *      name="female"
+ *      checked={state.female}
+ *      hint="Click to agree"
+ *      labelText="Agree to terms & conditions"
+ *      validators={[isRadioChecked()]}
+ *    />
+ *
+ *  </RadioGroup>
+ * ```
  */
 export const RadioField = (props: IRadioField) => {
     const radio = new _RadioField(FIELD_NAMES.RADIO, props);
@@ -305,9 +332,22 @@ export const RadioField = (props: IRadioField) => {
 };
 
 /**
- *
- * @param props
+ * A component to render a select field element.
+ * @param props {@link ISelectField}
  * @constructor
+ * @example
+ * ```
+ *  import {SelectField} from "react-base-forms";
+ *
+ *  const state = { fruitChoice: "" };
+ *
+ * <SelectField
+ *   size="lg"
+ *   value={state.fruitChoice}
+ *   name="fruitChoice"
+ *   options={["banana", "apple", "orange"]}
+ *  />
+ * ```
  */
 export const SelectField = (props: ISelectField) => {
     const select = new _SelectField(FIELD_NAMES.SELECT, props);
@@ -315,9 +355,16 @@ export const SelectField = (props: ISelectField) => {
 };
 
 /**
- *
- * @param props
+ * The SubmitButton only requires a text string as children props (see below example).
+ * The SubmitButton will be disabled until all form fields are validated.
+ * @param props {@link ISubmitButtonProps}
  * @constructor
+ * @example
+ * ```
+ * import {SubmitButton} from "react-base-forms";
+ *
+ * <SubmitButton>Submit</SubmitButton>
+ * ```
  */
 export const FileField = React.forwardRef((props: IFileField, ref: React.RefObject<HTMLFormElement>|any) => {
     let _props = {...props, ref };
