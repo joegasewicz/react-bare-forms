@@ -3,7 +3,7 @@
 React library using React Hooks to build forms & let you switch in & out Bootstrap 4 styling.
 **React Bare Forms** library is compatible with both React functional & class components 🎉
 
-Docs are [here](https://joegasewicz.github.io/react-bare-forms/) 
+📚 Docs are [here](https://joegasewicz.github.io/react-bare-forms/) 
 ## Install
 ```
 npm install react-bare-forms
