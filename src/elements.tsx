@@ -203,16 +203,19 @@ export const PasswordField = (props: IPasswordField) => {
  * {@link ICheckBoxField}.
  * ```
  * // A bare form example ... remember to set the {@link Form.bare} property to `true`
+ *  import {CheckBoxField} from "react-base-forms";
+ *
+ *  const state = { password: "", confirmPassword: "" };
  *
  * <CheckBoxField
  *   name="terms"
- *   checked={this.state.terms}
+ *   checked={state.terms}
  * />
  *
  * // Example with Bootstrap styling (Bootstrap styling comes as default)
  * <CheckBoxField
  *   name="terms"
- *   checked={this.state.terms}
+ *   checked={state.terms}
  *   hint="Click to agree"
  *   labelText="Agree to terms & conditions"
  * />

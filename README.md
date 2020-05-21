@@ -1,6 +1,7 @@
 ![ReactBareForms](images/rbf_logo3.png?raw=true "React Bare Forms")
 
-React library to build forms & let you switch in & out Bootstrap 4 styling.
+React library using built with Typescript, using React Hooks to build forms & let you switch in & out Bootstrap 4 styling.
+**React Bare Forms** library is compatible with both React functional & class components!
 
 Docs are [here](https://joegasewicz.github.io/react-bare-forms/) 
 ## Install
@@ -189,15 +190,27 @@ name as an argument).
 />
 ```
 
-#### Checkbox Input _field
+#### CheckBoxField
+The **CheckBoxField** component takes a `checked` prop instead of the usual `value` prop. 
 ```typescript jsx
-<CheckBoxField
-    name="terms"
-    checked={this.state.terms}
-    hint="Click to agree"
-    labelText="Agree to terms & conditions"
-/>
+  import {CheckBoxField} from "react-base-forms";
+
+  const state = { password: "", confirmPassword: "" };
+
+ <CheckBoxField
+   name="terms"
+   checked={this.state.terms}
+ />
+
+ // Example with Bootstrap styling (Bootstrap styling comes as default)
+ <CheckBoxField
+   name="terms"
+   checked={state.terms}
+   hint="Click to agree"
+   labelText="Agree to terms & conditions"
+ />
 ```
+
 ### Other Field Elements
 The rest of the single input *fields.
 
