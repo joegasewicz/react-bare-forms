@@ -46,9 +46,13 @@ export const areFieldsEqual: IValidationVariable = customValidator((passwordKey,
  * value. If they are equal or the `minLength` is greater than the form element value then
  * this element is not valid & a message is displayed.
  * @example
+ * import {TextInputField, isFieldEmpty} from "react-base-forms"
+ *
+ * const state = { username: "" }
  * ```
  *  <TextInputField
- *        // other props...
+ *        value={state.username}
+ *        name="username"
  *        validators={[isFieldEmpty(5)]}
  *   />
  *   // message: Must be at least 5 characters
@@ -65,6 +69,9 @@ export const isFieldEmpty: IValidationVariable = customValidator((minLength, fie
 /**
  * This validator doesn't require any arguments to be passed in.
  * @example
+ * import {EmailField, isEmailValid} from "react-base-forms"
+ *
+ * const state = { terms: false }
  * ```
  *  <EmailField
  *    // other props...
@@ -82,7 +89,8 @@ export const isEmailValid: IValidationVariable = customValidator((_ , fieldValue
 
 /**
  * This validator will display the warning if a user has selected a file but then reselected
- * nothing (by clicking the cancel button in the file popup window).
+ * nothing (by clicking the cancel button in the file popup window). This validator doesn't
+ * require any arguments to be passed in.
  * @example
  * ```
  * import {createFileRef, FileField, isFile} from "react-bare-forms";
@@ -107,23 +115,24 @@ export const isFile: IValidationVariable = customValidator((_, name, context) =>
 /**
  * To use the `isRadioChecked`, select the `RadioField` component you wish the user to select
  * & add the validator function to the `validators` prop. This will now display a warning if
- * the user has deselected the required option.
- @example
- import {RadioGroup, RadioField} from "react-base-forms"
-
- const state = { male: true, female: false }
-
- <RadioGroup name="group1">
-     <RadioField
-         name="male"
-        checked={state.female}
-        validators={[isRadioChecked()]}
-     />
-     <RadioField
-        name="female"
-        checked={state.female}
-     />
- </RadioGroup>
+ * the user has deselected the required option. This validator doesn't
+ * require any arguments to be passed in.
+ * @example
+ * import {RadioGroup, RadioField} from "react-base-forms"
+ *
+ * const state = { male: true, female: false }
+ *
+ * <RadioGroup name="group1">
+ *     <RadioField
+ *       name="male"
+ *       checked={state.female}
+ *       validators={[isRadioChecked()]}
+ *    />
+ *    <RadioField
+ *       name="female"
+ *       checked={state.female}
+ *    />
+ * </RadioGroup>
  */
 export const isRadioChecked: IValidationVariable = customValidator((_ , value, context) => {
     if(!value) {
@@ -132,7 +141,19 @@ export const isRadioChecked: IValidationVariable = customValidator((_ , value, c
 });
 
 /**
+ * The `isChecked` validator will display a warning if the user has selected the checkbox &
+ * then deselected it. This requires a *boolean* type to be set in your state, see below.
+ * This validator doesn't require any arguments to be passed in.
+ * @example
+ * import {CheckBoxField, isChecked} from "react-base-forms"
  *
+ * const state = { terms: false }
+ *
+ * <CheckBoxField
+ *    name="terms"
+ *    checked={this.state.terms}
+ *    validators={[isChecked()]}
+ * />
  */
 export const isChecked: IValidationVariable = customValidator((_, fieldValue, context) => {
     if(fieldValue === false) {

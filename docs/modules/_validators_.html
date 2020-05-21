@@ -98,7 +98,7 @@
 					<div class="tsd-signature tsd-kind-icon">are<wbr>Fields<wbr>Equal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((passwordKey, fieldValue, context) &#x3D;&gt; {if(fieldValue !&#x3D;&#x3D; context.state[passwordKey]) {return [&#x60;Fields do not match&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/100ba58/src/validators.ts#L38">src/validators.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/3e11a67/src/validators.ts#L38">src/validators.ts:38</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -132,9 +132,27 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Checked<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((_, fieldValue, context) &#x3D;&gt; {if(fieldValue &#x3D;&#x3D;&#x3D; false) {return [&#x60;Must be checked&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/100ba58/src/validators.ts#L137">src/validators.ts:137</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/3e11a67/src/validators.ts#L158">src/validators.ts:158</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The <code>isChecked</code> validator will display a warning if the user has selected the checkbox &amp;
+								then deselected it. This requires a <em>boolean</em> type to be set in your state, see below.
+							This validator doesn&#39;t require any arguments to be passed in.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>example</dt>
+							<dd><p>import {CheckBoxField, isChecked} from &quot;react-base-forms&quot;</p>
+								<p>const state = { terms: false }</p>
+								<p><CheckBoxField
+									name="terms"
+									checked={this.state.terms}
+									validators={[isChecked()]}
+								/></p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
 					<a name="isemailvalid" class="tsd-anchor"></a>
@@ -142,7 +160,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Email<wbr>Valid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((_ , fieldValue, context) &#x3D;&gt; {const isValid &#x3D; EMAIL_REGEX.test(String(fieldValue).toLowerCase());if(!isValid) {return [&#x60;Must be a valid email&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/100ba58/src/validators.ts#L76">src/validators.ts:76</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/3e11a67/src/validators.ts#L83">src/validators.ts:83</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -151,7 +169,9 @@
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>example</dt>
-							<dd><pre><code> &lt;EmailField
+							<dd><p>import {EmailField, isEmailValid} from &quot;react-base-forms&quot;</p>
+								<p>const state = { terms: false }</p>
+								<pre><code> &lt;EmailField
    <span class="hljs-regexp">//</span> other props...
    validators={[isEmailValid()]}
  /&gt;
@@ -165,7 +185,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Field<wbr>Empty<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((minLength, fieldValue, _) &#x3D;&gt; {const isValid &#x3D; (fieldValue &amp;&amp; fieldValue.length &gt;&#x3D; minLength);if(!isValid) {return [&#x60;Must be at least ${minLength} characters&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/100ba58/src/validators.ts#L58">src/validators.ts:58</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/3e11a67/src/validators.ts#L62">src/validators.ts:62</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -176,11 +196,14 @@
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>example</dt>
-							<dd><pre><code> &lt;TextInputField
-       <span class="hljs-regexp">//</span> other props...
+							<dd><p>import {TextInputField, isFieldEmpty} from &quot;react-base-forms&quot;</p>
+								<p>const state = { username: &quot;&quot; }</p>
+								<pre><code> &lt;TextInputField
+       <span class="hljs-keyword">value</span>={state.username}
+      <span class="hljs-built_in"> name</span>=<span class="hljs-string">"username"</span>
        validators={[isFieldEmpty(<span class="hljs-number">5</span>)]}
   /&gt;
-  <span class="hljs-regexp">//</span> message: Must be at least <span class="hljs-number">5</span> characters</code></pre></dd>
+  // message: Must be <span class="hljs-keyword">at</span> <span class="hljs-keyword">least</span> <span class="hljs-number">5</span> characters</code></pre></dd>
 							<dt>param</dt>
 							<dd><p>The minimum length of the form field value</p>
 							</dd>
@@ -193,13 +216,14 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>File<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((_, name, context) &#x3D;&gt; {if(!name) {return [&#x60;Must be a file type&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/100ba58/src/validators.ts#L101">src/validators.ts:101</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/3e11a67/src/validators.ts#L109">src/validators.ts:109</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>This validator will display the warning if a user has selected a file but then reselected
-							nothing (by clicking the cancel button in the file popup window).</p>
+								nothing (by clicking the cancel button in the file popup window). This validator doesn&#39;t
+							require any arguments to be passed in.</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>example</dt>
@@ -223,14 +247,15 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Radio<wbr>Checked<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((_ , value, context) &#x3D;&gt; {if(!value) {return [&#x60;This option must be selected&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/100ba58/src/validators.ts#L128">src/validators.ts:128</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/3e11a67/src/validators.ts#L137">src/validators.ts:137</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>To use the <code>isRadioChecked</code>, select the <code>RadioField</code> component you wish the user to select
 								&amp; add the validator function to the <code>validators</code> prop. This will now display a warning if
-							the user has deselected the required option.</p>
+								the user has deselected the required option. This validator doesn&#39;t
+							require any arguments to be passed in.</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>example</dt>
@@ -264,7 +289,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/100ba58/src/validators.ts#L175">src/validators.ts:175</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/3e11a67/src/validators.ts#L196">src/validators.ts:196</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
