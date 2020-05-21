@@ -97,15 +97,31 @@ To create your own custom hooks use:
 - [customValidator](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#customvalidator)
 
 ## Form Fields
+There are 4 components that cover the `input` field element:
+
+- [TextInputField](https://joegasewicz.github.io/react-bare-forms/modules/_elements_.html#textinputfield)
+- [EmailField](https://joegasewicz.github.io/react-bare-forms/modules/_elements_.html#emailfield)
+- [PasswordField](https://joegasewicz.github.io/react-bare-forms/modules/_elements_.html#passwordfield)
+- [CheckBoxField](https://joegasewicz.github.io/react-bare-forms/modules/_elements_.html#checkboxfield) 
 
 #### Text Input _field
 ```typescript jsx
+import {TextInputField} from "react-bare-forms";
+
+const state = { username: "" }
+// A bare form example ... remember to set the {@link Form.bare} property to `true`
 <TextInputField
-    value={this.state.password}
+    value={this.state.username}
     name="username"
-    hint="Enter your username"
+/>
+
+// Example with Bootstrap styling (Bootstrap styling comes as default)
+
+<TextInputField
+    value={state.username}
+    name="username"
+    hint="Needs to be at least 50 characters long"
     labelText="Username"
-    validators={[isFieldEmpty(5)]}
 />
 ```
 #### Email Input _field
