@@ -1,6 +1,6 @@
 {
   "name": "react-bare-forms",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A bare minimal React form library for quick & simple forms.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -60,8 +60,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "peerDependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
