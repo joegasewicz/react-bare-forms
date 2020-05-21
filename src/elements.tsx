@@ -273,7 +273,7 @@ export interface IRadioGroupProps {
 
 /**
  *
- * @param props the `RadioGroup` component takes a single props of `name`, which
+ * @param props The `RadioGroup` component takes a single props of `name`, which
  * must be a unique to a form. See {@link RadioField}.
  * @constructor
  *

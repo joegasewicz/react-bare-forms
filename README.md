@@ -225,8 +225,19 @@ The rest of the single input *fields.
     validators={[isFieldEmpty(20)]}
 />
 
+```
+### Radio Buttons
 
-#### Radio Buttons
+#### RadioGroup
+The `RadioGroup` component takes a single props of `name`, which
+ * must be a unique to a form. See {@link RadioField}.
+```typescript jsx
+   import {CheckBoxField} from "react-base-forms";
+ 
+   <RadioGroup name="group1">
+     // place RadioFields components here...
+   </RadioGroup>
+ ```
 
 ```typescript jsx
 <RadioGroup name="group1">
