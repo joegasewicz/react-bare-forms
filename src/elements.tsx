@@ -201,6 +201,7 @@ export const PasswordField = (props: IPasswordField) => {
 /**
  * The CheckBoxField requires a *checked* prop instead of a *value* prop. See
  * {@link ICheckBoxField}.
+ *
  * ```
  * // A bare form example ... remember to set the {@link Form.bare} property to `true`
  *  import {CheckBoxField} from "react-base-forms";
@@ -267,6 +268,8 @@ export interface IRadioGroupProps {
  *
  * @param props
  * @constructor
+ * @example
+ *
  */
 export function RadioGroup(props: IRadioGroupProps) {
     const contextValue: IRadioGroupParentContext = {parent: {name: props.name}, children: props.children};
