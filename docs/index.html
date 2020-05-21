@@ -68,26 +68,98 @@
 				<p>React library to build forms &amp; let you switch in &amp; out Bootstrap 4 styling.</p>
 				<p>Docs are <a href="https://joegasewicz.github.io/react-bare-forms/">here</a> </p>
 				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
-					<h4>Install</h4>
+					<h2>Install</h2>
 				</a>
 				<pre><code>npm <span class="hljs-keyword">install</span> react-bare-forms</code></pre>
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
-					<h4>Usage</h4>
+					<h2>Usage</h2>
 				</a>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> ReactBareForms <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bare-forms"</span>;
+				<p>A basic form example with a text input field &amp; submit button. Also, note how imported <code>isFieldEmpty</code> function
+					from <code>react-bare-forms</code>. This is a validator &amp; can be used to validate a single or group (such as radio buttons) field(s).
+				There are different validators available but there is also a custom validator factor function to make is super easy tro create your own validator functions.</p>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {Form, isFieldEmpty, SubmitButton, TextInputField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bare-forms"</span>;
 
+<span class="hljs-keyword">const</span> state = { age: <span class="hljs-number">0</span> }
 
-    &lt;ReactBareForms.Form state={<span class="hljs-keyword">this</span>.state} formKey=<span class="hljs-string">"myForm1"</span>&gt;
+&lt;Form
+    state={state}
+    bare={<span class="hljs-literal">false</span>}
+    autoComplete=<span class="hljs-string">"off"</span>
+    callback={<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Form submitted!"</span>)}&gt;
 
-        &lt;ReactBareForms._field
-            name=<span class="hljs-string">"message"</span>
-            hint=<span class="hljs-string">"Must be at least 5 characters long"</span>
-            label=<span class="hljs-string">"Your Name"</span>
-            validators={[ReactBareForms.isFieldEmpty(<span class="hljs-number">5</span>)]}
-        &gt;&lt;/ReactBareForms._field&gt;
+    &lt;TextInputField
+        value={state.age}
+        name=<span class="hljs-string">"age"</span>
+        hint=<span class="hljs-string">"Enter your age"</span>
+        labelText=<span class="hljs-string">"Age"</span>
+        validators={[isFieldEmpty(<span class="hljs-number">2</span>)]} /&gt;
 
-        &lt;ReactBareForms.Submit&gt;Submit&lt;/Submit&gt;
-    &lt;/ReactBareForms.Form&gt;</code></pre>
+    &lt;SubmitButton&gt;Submit Form&lt;/SubmitButton&gt;
+&lt;/Form&gt;</code></pre>
+				<a href="#file-ref" id="file-ref" style="color: inherit; text-decoration: none;">
+					<h2>File Ref</h2>
+				</a>
+				<p>RBF&#39;s provides a function that returns a React ref to access your file object. To use, simply assign the returned ref from
+				the <code>createFileRef</code> function to a variable &amp; pass this variable to <code>FileField</code>&#39;s ref prop. For example:</p>
+				<pre><code class="language-typescript"> <span class="hljs-keyword">import</span> {createFileRef, FileField, isFile} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bare-forms"</span>;
+
+ <span class="hljs-keyword">const</span> myFileRef = createFileRef();
+
+ &lt;FileField
+     ref={myFileRef}
+     hint=<span class="hljs-string">"Must be a file"</span>
+     labelText=<span class="hljs-string">"Upload your file"</span>
+     name=<span class="hljs-string">"myFileTest"</span>
+     validators={[isFile()]}
+ /&gt;
+
+ <span class="hljs-comment">// Now myFileRef has access to the file object once it's been selected by the user</span></code></pre>
+				<a href="#form-consumer" id="form-consumer" style="color: inherit; text-decoration: none;">
+					<h2>Form Consumer</h2>
+				</a>
+				<p>RBF&#39;s provides the <code>FormConsumer</code> for you to debug visually your form. Below is an example of a form container a single text input field.</p>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {Form, FormConsumer, IFormContext, isFieldEmpty, TextInputField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bare-forms"</span>;
+
+<span class="hljs-keyword">const</span> state = { age: <span class="hljs-number">0</span> }
+
+&lt;Form&gt;
+    &lt;TextInputField
+        value={state.age}
+        name=<span class="hljs-string">"age"</span>
+        hint=<span class="hljs-string">"Enter your age"</span>
+        labelText=<span class="hljs-string">"Age"</span>
+        validators={[isFieldEmpty(<span class="hljs-number">5</span>)]}
+    /&gt;
+    &lt;FormConsumer&gt;
+        {<span class="hljs-function">(<span class="hljs-params">context: IFormContext</span>) =&gt;</span> {
+            <span class="hljs-keyword">return</span> &lt;code&gt;{<span class="hljs-built_in">JSON</span>.stringify(context.state)}&lt;/code&gt;;
+        }}
+    &lt;/FormConsumer&gt;
+&lt;/Form&gt;
+</code></pre>
+				<p>The <code>context</code> object return from the <code>FormConsumer</code> has a <code>metadata</code> property which gives you detailed
+				values of the current state of that form field element.</p>
+				<pre><code class="language-json">{<span class="hljs-attr">"inputs"</span>:{<span class="hljs-attr">"state"</span>:{<span class="hljs-attr">"age"</span>:{<span class="hljs-attr">"name"</span>:<span class="hljs-string">"age"</span>,<span class="hljs-attr">"validation"</span>:[{<span class="hljs-attr">"isValid"</span>:<span class="hljs-literal">false</span>,<span class="hljs-attr">"messages"</span>:[<span class="hljs-string">"Must be at least 2 characters"</span>]}],<span class="hljs-attr">"isTouched"</span>:<span class="hljs-literal">false</span>,<span class="hljs-attr">"fieldValues"</span>:{<span class="hljs-attr">"type"</span>:<span class="hljs-string">"value"</span>,<span class="hljs-attr">"currentValue"</span>:<span class="hljs-number">0</span>}}},<span class="hljs-attr">"metaType"</span>:<span class="hljs-string">"inputs"</span>,<span class="hljs-attr">"defaultState"</span>:{},<span class="hljs-attr">"_name"</span>:<span class="hljs-string">"age"</span>,<span class="hljs-attr">"_fieldType"</span>:<span class="hljs-string">"text"</span>},<span class="hljs-attr">"checkboxes"</span>:{<span class="hljs-attr">"state"</span>:{},<span class="hljs-attr">"metaType"</span>:<span class="hljs-string">"checkboxes"</span>,<span class="hljs-attr">"defaultState"</span>:{}},<span class="hljs-attr">"files"</span>:{<span class="hljs-attr">"state"</span>:{},<span class="hljs-attr">"metaType"</span>:<span class="hljs-string">"files"</span>,<span class="hljs-attr">"defaultState"</span>:{}},<span class="hljs-attr">"radioGroups"</span>:{<span class="hljs-attr">"state"</span>:{},<span class="hljs-attr">"metaType"</span>:<span class="hljs-string">"radioGroups"</span>,<span class="hljs-attr">"defaultState"</span>:{}}}</code></pre>
+				<a href="#validators" id="validators" style="color: inherit; text-decoration: none;">
+					<h2>Validators</h2>
+				</a>
+				<p>There are validators available to handle all the basic common form validation requirements. Below is a list
+				of the current validators available but this list should grow in the near future!</p>
+				<ul>
+					<li>areFieldsEqual,</li>
+					<li>isChecked,</li>
+					<li>isEmailValid,</li>
+					<li>isFieldEmpty,</li>
+					<li>isFile,</li>
+					<li>isRadioChecked,</li>
+				</ul>
+				<p>To create your own custom hooks use:</p>
+				<ul>
+					<li>customValidator</li>
+				</ul>
+				<a href="#form-fields" id="form-fields" style="color: inherit; text-decoration: none;">
+					<h2>Form Fields</h2>
+				</a>
 				<a href="#text-input-_field" id="text-input-_field" style="color: inherit; text-decoration: none;">
 					<h4>Text Input _field</h4>
 				</a>
@@ -217,12 +289,6 @@
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_classes__radiofield_.html">&quot;classes/_<wbr><wbr>Radio<wbr>Field&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_classes__submitbutton_.html">&quot;classes/_<wbr><wbr>Submit<wbr>Button&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
 						<a href="modules/_core__errors_.html">&quot;core/_<wbr>errors&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -230,6 +296,12 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_elements_.html">&quot;elements&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_field_classes__radiofield_.html">&quot;field_<wbr>classes/_<wbr><wbr>Radio<wbr>Field&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_field_classes__submitbutton_.html">&quot;field_<wbr>classes/_<wbr><wbr>Submit<wbr>Button&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_form_.html">&quot;form&quot;</a>

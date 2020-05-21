@@ -81,7 +81,22 @@ export const isEmailValid: IValidationVariable = customValidator((_ , fieldValue
 });
 
 /**
+ * This validator will display the warning if a user has selected a file but then reselected
+ * nothing (by clicking the cancel button in the file popup window).
  * @example
+ * ```
+ * import {createFileRef, FileField, isFile} from "react-bare-forms";
+ *
+ * const myFileRef = createFileRef();
+ *
+ * <FileField
+ *    ref={myFileRef}
+ *    hint="Must be a file"
+ *    labelText="Upload your file"
+ *    name="myFileTest"
+ *    validators={[isFile()]}
+ * />
+ * ```
  */
 export const isFile: IValidationVariable = customValidator((_, name, context) => {
     if(!name) {
@@ -90,7 +105,25 @@ export const isFile: IValidationVariable = customValidator((_, name, context) =>
 });
 
 /**
- *
+ * To use the `isRadioChecked`, select the `RadioField` component you wish the user to select
+ * & add the validator function to the `validators` prop. This will now display a warning if
+ * the user has deselected the required option.
+ @example
+ import {RadioGroup, RadioField} from "react-base-forms"
+
+ const state = { male: true, female: false }
+
+ <RadioGroup name="group1">
+     <RadioField
+         name="male"
+        checked={state.female}
+        validators={[isRadioChecked()]}
+     />
+     <RadioField
+        name="female"
+        checked={state.female}
+     />
+ </RadioGroup>
  */
 export const isRadioChecked: IValidationVariable = customValidator((_ , value, context) => {
     if(!value) {
