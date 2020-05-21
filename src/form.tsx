@@ -155,9 +155,15 @@ export const handleSubmit = (props: IForm) =>
     };
 
 /**
- * The main Form component
- * @param props
+ * The main Form component that is required to wrap all *RBF* components.
+ * If the component that uses the Form component is a functional component then
+ * only the state props is required. If you are calling Form component from a
+ * class component then you must pass your local context or `this` keyword to
+ * the `context` prop.
+ * @param props {@link IForm}
  *
+ * An example using *RBF* Form component in a functional component
+ * @example
  * ```
  * // Minimal setup for a RBF's Form component
  *
@@ -166,6 +172,19 @@ export const handleSubmit = (props: IForm) =>
  *  }
  *
  *  <Form state={myState}></Form>
+ * ```
+ *
+ * To use *RBF* Form component from a class component you must pass in your
+ * local state of `this` keyword.
+ * @example
+ * ```
+ * // Minimal setup for a RBF's Form component for a class component
+ *
+ *  this.state = { // in the constructor
+ *      username: '',
+ *  }
+ *
+ *  <Form state={this.state} context={this}></Form>
  * ```
  * @constructor
  */

@@ -99,7 +99,7 @@
 					<div class="tsd-signature tsd-kind-icon">Form<wbr>Consumer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ExoticComponent</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ConsumerProps</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IFormContext</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = FormContext.Consumer</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/0bc9300/src/form.tsx#L143">src/form.tsx:143</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/f331a90/src/form.tsx#L143">src/form.tsx:143</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -132,13 +132,37 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/0bc9300/src/form.tsx#L172">src/form.tsx:172</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/f331a90/src/form.tsx#L191">src/form.tsx:191</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>The main Form component</p>
+									<p>The main Form component that is required to wrap all <em>RBF</em> components.
+										If the component that uses the Form component is a functional component then
+										only the state props is required. If you are calling Form component from a
+										class component then you must pass your local context or <code>this</code> keyword to
+									the <code>context</code> prop.</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code><span class="hljs-comment">// Minimal setup for a RBF's Form component</span>
+
+ <span class="hljs-keyword">const</span> myState = {
+     username: '',
+ }
+
+ &lt;<span class="hljs-keyword">Form</span> state={myState}&gt;&lt;/<span class="hljs-keyword">Form</span>&gt;</code></pre><p>To use <em>RBF</em> Form component from a class component you must pass in your
+										local state of <code>this</code> keyword.</p>
+									</dd>
+									<dt>example</dt>
+									<dd><pre><code><span class="hljs-comment">// Minimal setup for a RBF's Form component for a class component</span>
+
+ <span class="hljs-keyword">this</span>.state = { <span class="hljs-comment">// in the constructor</span>
+     username: <span class="hljs-string">''</span>,
+ }
+
+ &lt;Form state={<span class="hljs-keyword">this</span>.state} context={<span class="hljs-keyword">this</span>}&gt;&lt;/Form&gt;</code></pre></dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -146,13 +170,8 @@
 									<h5>props: <a href="../interfaces/_form_.iform.html" class="tsd-signature-type">IForm</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<pre><code><span class="hljs-comment">// Minimal setup for a RBF's Form component</span>
-
- <span class="hljs-keyword">const</span> myState = {
-     username: '',
- }
-
- &lt;<span class="hljs-keyword">Form</span> state={myState}&gt;&lt;/<span class="hljs-keyword">Form</span>&gt;</code></pre>
+											<p><a href="../interfaces/_form_.iform.html">IForm</a></p>
+											<p>An example using <em>RBF</em> Form component in a functional component</p>
 										</div>
 									</div>
 								</li>

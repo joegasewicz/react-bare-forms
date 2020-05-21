@@ -104,6 +104,41 @@ To create your own custom validator use:
 - [customValidator](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#customvalidator)
 
 ## Form Fields
+
+#### Form component
+The main Form component that is required to wrap allRBF* components.
+If the component that uses the Form component is a functional component then
+only the state props is required. If you are calling Form component from a
+class component then you must pass your local context or `this` keyword to
+the `context` prop.
+
+An example usingRBF* Form component in a functional component
+
+```typescript jsx
+// Minimal setup for a RBF's Form component
+
+const myState = {
+  username: '',
+}
+
+<Form state={myState}></Form>
+```
+
+To useRBF* Form component from a class component you must pass in your
+local state of `this` keyword.
+
+```typescript jsx
+// Minimal setup for a RBF's Form component for a class component
+
+const this.state = { // in the constructor
+  username: '',
+}
+
+<Form state={this.state} context={this}></Form>
+
+```
+
+## Input Field components
 There are 4 components that cover the `input` field element:
 
 - [TextInputField](https://joegasewicz.github.io/react-bare-forms/modules/_elements_.html#textinputfield)
