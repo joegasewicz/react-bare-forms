@@ -53,7 +53,8 @@ the `createFileRef` function to a variable & pass this variable to `FileField`'s
  // Now myFileRef has access to the file object once it's been selected by the user
 ````
 ## Form Consumer
-RBF's provides the `FormConsumer` for you to debug visually your form. Below is an example of a form container a single text input field.
+RBF's provides the `FormConsumer` for you to debug visually your form.
+Below is an example of a form containing a single text input field.
 ````typescript jsx
 import {Form, FormConsumer, IFormContext, isFieldEmpty, TextInputField} from "react-bare-forms";
 
