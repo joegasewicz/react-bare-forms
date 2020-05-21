@@ -124,8 +124,8 @@ const myState = {
 <Form state={myState}></Form>
 ```
 
-To useRBF* Form component from a class component you must pass in your
-local state of `this` keyword.
+To use *RBF* Form component from a class component, you must pass in your
+local context or `this` keyword.
 
 ```typescript jsx
 // Minimal setup for a RBF's Form component for a class component
