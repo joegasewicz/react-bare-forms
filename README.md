@@ -47,6 +47,8 @@ the `createFileRef` function to a variable & pass this variable to `FileField`'s
      name="myFileTest"
      validators={[isFile()]}
  />
+ 
+ // Now myFileRef has access to the file object once it's been selected by the user
 ````
 ## Consumer
 
