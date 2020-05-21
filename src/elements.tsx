@@ -88,16 +88,20 @@ export interface ISelectField extends IField {
  *
  * @param props
  * ```
+ *  import {TextInputField} from "react-base-forms"
+ *
+ *  const state = { username: "" }
+ *
  * // A bare form example ... remember to set the {@link Form.bare} property to `true`
  * <TextInputField
- *    value={this.state.username}
+ *    value={state.username}
  *    name="username"
  * />
  *
  * // Example with Bootstrap styling (Bootstrap styling comes as default)
  *
  * <TextInputField
- *    value={this.state.username}
+ *    value={state.username}
  *    name="username"
  *    hint="Needs to be at least 50 characters long"
  *    labelText="Username"
@@ -111,20 +115,24 @@ export const TextInputField = (props: ITextInputField) => {
 };
 
 /**
+ *@param props
  *
- * @param props
  * ```
+ *  import {EmailField} from "react-base-forms"
+ *
+ *  const state = { email: "" }
+ *
  * // A bare form example ... remember to set the {@link Form.bare} property to `true`
- * <TextInputField
- *    value={this.state.username}
- *    name="username"
+ * <EmailField
+ *    value={state.email}
+ *    name="email"
  * />
  *
  * // Example with Bootstrap styling (Bootstrap styling comes as default)
  *
- * <TextInputField
- *    value={this.state.username}
- *    name="username"
+ * <EmailField
+ *    value={state.email}
+ *    name="email"
  *    hint="Needs to be at least 50 characters long"
  *    labelText="Username"
  *  />

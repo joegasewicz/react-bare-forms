@@ -109,7 +109,7 @@ There are 4 components that cover the `input` field element:
 import {TextInputField} from "react-bare-forms";
 
 const state = { username: "" }
-// A bare form example ... remember to set the {@link Form.bare} property to `true`
+// A bare form example ... remember to set the Form.bare property to `true`
 <TextInputField
     value={this.state.username}
     name="username"
@@ -126,13 +126,23 @@ const state = { username: "" }
 ```
 #### Email Input _field
 ```typescript jsx
-<EmailField
+  import {EmailField} from "react-base-forms"
+
+  const state = { email: "" }
+
+ // A bare form example ... remember to set the Form.bare property to `true`
+ <EmailField
+    value={state.email}
     name="email"
-    value={this.state.email}
-    hint="Your email"
-    labelText="Please enter your email"
-    validators={[isEmailValid()]}
-/>
+ />
+
+ // Example with Bootstrap styling (Bootstrap styling comes as default)
+ <EmailField
+    value={state.email}
+    name="email"
+    hint="Needs to be at least 50 characters long"
+    labelText="Username"
+  />
 ```
 #### Password Input _field
 ```typescript jsx
@@ -151,15 +161,6 @@ const state = { username: "" }
     validators={[isFieldEmpty(5), areFieldsEqual("password")]}
 />
 ```
-#### TextArea Input _field
-```typescript jsx
-<TextAreaField
-    name="about"
-    value={this.state.about}
-    hint="Your email"
-    labelText="Must be at least 20 characters"
-    validators={[isFieldEmpty(20)]}
-/>
 ```
 #### Checkbox Input _field
 ```typescript jsx
@@ -170,6 +171,19 @@ const state = { username: "" }
     labelText="Agree to terms & conditions"
 />
 ```
+### Other Field Elements
+The rest of thesingle input fields.
+
+#### TextArea Input _field
+```typescript jsx
+<TextAreaField
+    name="about"
+    value={this.state.about}
+    hint="Your email"
+    labelText="Must be at least 20 characters"
+    validators={[isFieldEmpty(20)]}
+/>
+
 
 #### Radio Buttons
 
@@ -250,5 +264,7 @@ And finally import your sass into your React application:
 ```jsx
 import "./mystyles.scss";
 ```
+
+<sup>**Fields that are not part of a RBF's form group*</sup>
 
 Licence MIT
