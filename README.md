@@ -9,7 +9,7 @@ Docs are [here](https://joegasewicz.github.io/react-bare-forms/)
 npm install react-bare-forms
 ```
 
-Warning: ***The library is still in a beta stage***
+⚠️ Warning: ***The library is still in a beta stage***
 
 ## Usage
 A basic form example with a text input field & submit button. Also, note how imported `isFieldEmpty` function 
