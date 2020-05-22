@@ -114,7 +114,7 @@ only the state props are required. If you are calling the *RBF* Form component f
 class component then you must pass your local context or `this` keyword to
 the `context` prop.
 
-An example usingRBF* Form component in a functional component
+An example using *RBF* Form component in a functional component
 
 ```typescript jsx
 // Minimal setup for a RBF's Form component
