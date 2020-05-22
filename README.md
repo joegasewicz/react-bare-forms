@@ -84,7 +84,7 @@ const state = { age: 0 }
 
 ````
 The `context` object return from the `FormConsumer` has a `metadata` property which gives you detailed
-values of the current state of that form field element.
+values of the current state of all the form fields & validation state.
 ````json
 {"inputs":{"state":{"age":{"name":"age","validation":[{"isValid":false,"messages":["Must be at least 2 characters"]}],"isTouched":false,"fieldValues":{"type":"value","currentValue":0}}},"metaType":"inputs","defaultState":{},"_name":"age","_fieldType":"text"},"checkboxes":{"state":{},"metaType":"checkboxes","defaultState":{}},"files":{"state":{},"metaType":"files","defaultState":{}},"radioGroups":{"state":{},"metaType":"radioGroups","defaultState":{}}}
 ````
