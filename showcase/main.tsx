@@ -94,7 +94,6 @@ export class Main extends React.Component<IProps, IState> {
                                     name="password"
                                     value={this.state.password}
                                     labelText="Pasword"
-                                    validators={[isFieldEmpty(5)]}
                                 />
 
                                 <PasswordField
@@ -102,7 +101,7 @@ export class Main extends React.Component<IProps, IState> {
                                 value={this.state.confirmPassword}
                                 hint="Password must match"
                                 labelText="Confirm Password"
-                                validators={[isFieldEmpty(5), areFieldsEqual("password")]}
+                                validators={[areFieldsEqual("password")]}
                             />
 
                                 <EmailField

@@ -54,6 +54,7 @@ export class SubmitButton implements Button<ISubmitButtonProps> {
                         }
                     }
                 } else {
+                    // Handle group metadata validation checks
                     for(let field of Object.keys(metaField)) {
                         for(let childField of Object.keys(metaField[field])) {
                             let _child = (metaField[field] as any)[childField];

@@ -37,7 +37,7 @@ export type IValidationVariable = (arg?: any) => IValidationFunction;
  * @function
  */
 export const areFieldsEqual: IValidationVariable = customValidator((passwordKey, fieldValue, context) => {
-    if(fieldValue !== context.state[passwordKey]) {
+    if(fieldValue !== context.state[passwordKey] && fieldValue !== "") {
         return [`Fields do not match`];
     }
 });
@@ -62,7 +62,7 @@ export const areFieldsEqual: IValidationVariable = customValidator((passwordKey,
  * @function
  */
 export const isFieldEmpty: IValidationVariable = customValidator((minLength, fieldValue, _) => {
-    const isValid = (fieldValue && fieldValue.length >= minLength);
+    const isValid = (typeof fieldValue !== "undefined" && fieldValue.length >= minLength);
     if(!isValid) {
         return [`Must be at least ${minLength} characters`];
     }
