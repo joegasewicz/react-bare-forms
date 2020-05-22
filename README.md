@@ -1,6 +1,7 @@
 ![npm](https://img.shields.io/npm/v/react-bare-forms)
 ![NPM](https://img.shields.io/npm/l/react-bare-forms)
 [![Build Status](https://travis-ci.org/joegasewicz/react-bare-forms.svg?branch=master)](https://travis-ci.org/joegasewicz/react-bare-forms)
+[![GitHub issues](https://img.shields.io/github/issues/joegasewicz/react-bare-forms)](https://github.com/joegasewicz/react-bare-forms/issues)
 
 ![ReactBareForms](images/rbf_logo3.png?raw=true "React Bare Forms")
 
