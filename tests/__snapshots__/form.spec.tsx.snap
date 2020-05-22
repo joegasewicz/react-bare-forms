@@ -17,6 +17,7 @@ exports[`<Form /> should render a form element with bootstrap extra tags 1`] = `
       name="username"
       onChange={[Function]}
       type="text"
+      value="joebloggs"
     />
   </div>
 </form>
@@ -39,6 +40,7 @@ exports[`<Form /> should render a form element with no extra tags 1`] = `
       name="username"
       onChange={[Function]}
       type="text"
+      value="joebloggs"
     />
   </div>
 </form>
