@@ -328,7 +328,7 @@ The `RadioGroup` component takes a single props of `name`, which
 
 ## Buttons
 The SubmitButton only requires a text string as children props (see below example).
-The SubmitButton will be disabled until all form fields are validated.
+The SubmitButton will be disabled until all form fields with a *validators* prop are validated.
  ```typescript jsx
 
  import {SubmitButton} from "react-base-forms";
