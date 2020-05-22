@@ -3,7 +3,9 @@
 
 ![ReactBareForms](images/rbf_logo3.png?raw=true "React Bare Forms")
 
-React library using React Hooks to build forms & let you switch in & out Bootstrap 4 styling.
+React library using React Hooks to build forms & let you switch in & out Bootstrap 4 styling. **React Bare Forms** aka *RBF* aims
+to be the simplest form library for React as possible.
+
 **React Bare Forms** library is compatible with both React functional & class components 🎉
 
 📚 Docs are [here](https://joegasewicz.github.io/react-bare-forms/) 
@@ -15,9 +17,9 @@ npm install react-bare-forms
 ⚠️ Warning: ***The library is still in a beta stage***
 
 ## Usage
-A basic form example with a text input field & submit button. Also, note how imported `isFieldEmpty` function 
-from `react-bare-forms`. This is a validator & can be used to validate a single or group (such as radio buttons) field(s).
-There are different validators available but there is also a custom validator factor function to make is super easy tro create your own validator functions.
+A basic form example with a text input field & submit button. Also, note how we import the `isFieldEmpty` function
+from `react-bare-forms`. This is a validator & can be used to validate a single or *group (such as radio buttons) field(s).
+There are different validators available & also a custom validator factor function to create your own validators.
 ```typescript jsx
 import {Form, isFieldEmpty, SubmitButton, TextInputField} from "react-bare-forms";
 
