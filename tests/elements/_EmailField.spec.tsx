@@ -4,7 +4,7 @@ import {
     EmailField, Form,
 } from "../../src";
 
-import {isEmailValid, isFieldEmpty} from "../../src";
+import {isEmailValid} from "../../src";
 
 
 
