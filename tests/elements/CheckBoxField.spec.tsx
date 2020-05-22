@@ -1,21 +1,20 @@
 import * as React from "react";
 import renderer from "react-test-renderer";
 import {
-    Form, isFieldEmpty,
-    TextInputField,
+    Form, CheckBoxField, isChecked
 } from "../../src";
 
 
 
-describe("#TextInputField()", () => {
+describe("#CheckBoxField()", () => {
     it("should render an input field with the bootstrap styled tags", () => {
         let state = {
-            username: "joe",
+            terms: false,
         };
 
         let component = renderer.create(
             <Form state={state}>
-                <TextInputField name="username" value={state.username} />
+                <CheckBoxField name="username" checked={state.terms} />
             </Form>
         );
 
@@ -25,11 +24,11 @@ describe("#TextInputField()", () => {
 
     it("should render a single input tag with no bootstrap styles", () => {
         let state = {
-            username: "",
+            terms: false,
         };
         let component = renderer.create(
             <Form state={state}>
-                <TextInputField name="username" value={state.username} />
+                <CheckBoxField name="username" checked={state.terms} />
             </Form>
         );
 
@@ -40,31 +39,31 @@ describe("#TextInputField()", () => {
 
     it("it should pass in props", () => {
         let state = {
-            username: "joebloggs"
+            terms: true,
         };
 
         let testFormRederer: any = renderer.create(
             <Form state={state}>
-                <TextInputField name="username" value={state.username} />
+                <CheckBoxField name="username" checked={state.terms} />
             </Form>
         );
 
         const testFormInstance = testFormRederer.root;
-        expect(testFormInstance.props.state.username).toEqual(state.username);
+        expect(testFormInstance.props.state.terms).toEqual(state.terms);
 
     });
 
     it("it should display validation errors", () => {
         let state = {
-            username: "a",
+            terms: false,
         };
 
         let component = renderer.create(
             <Form state={state} name="myForm">
-                <TextInputField
-                    name="username"
-                    value={state.username}
-                    validators={[isFieldEmpty(5)]}
+                <CheckBoxField
+                    name="terms"
+                    checked={state.terms}
+                    validators={[isChecked()]}
                 />
             </Form>
         );
@@ -75,22 +74,22 @@ describe("#TextInputField()", () => {
 
     it("it should pass validation props", () => {
         let state = {
-            username: "a",
+            terms: true,
         };
 
 
         let testFormRenderer: any = renderer.create(
-                <Form state={state} name="myForm">
-                <TextInputField
-                    name="username"
-                    value={state.username}
-                    validators={[isFieldEmpty(5)]}
+            <Form state={state} name="myForm">
+                <CheckBoxField
+                    name="terms"
+                    checked={state.terms}
+                    validators={[isChecked()]}
                 />
-                </Form>
+            </Form>
         );
 
         const testFormInstance = testFormRenderer.root;
-        expect(testFormInstance.props.state.username).toEqual(state.username);
+        expect(testFormInstance.props.state.terms).toEqual(state.terms);
     });
 
 });
