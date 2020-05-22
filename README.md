@@ -4,7 +4,7 @@
 ![ReactBareForms](images/rbf_logo3.png?raw=true "React Bare Forms")
 
 React library using React Hooks to build forms & let you switch in & out Bootstrap 4 styling. **React Bare Forms** aka *RBF* aims
-to be the simplest form library for React as possible.
+to be the easiest to use form library for React.
 
 **React Bare Forms** library is compatible with both React functional & class components 🎉
 
