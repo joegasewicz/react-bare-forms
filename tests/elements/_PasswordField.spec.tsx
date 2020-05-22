@@ -1,12 +1,10 @@
 import * as React from "react";
 import renderer from "react-test-renderer";
 import {
-    EmailField, Form,
-    PasswordField, TextAreaField,
-    TextInputField,
+    Form,
+    PasswordField,
+    isFieldEmpty,
 } from "../../src";
-import {FormProvider} from "../../src/form";
-import {isEmailValid, isFieldEmpty} from "../../src";
 
 
 describe("#PasswordField()", () => {
