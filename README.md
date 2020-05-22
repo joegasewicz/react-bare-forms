@@ -1,5 +1,6 @@
 ![npm](https://img.shields.io/npm/v/react-bare-forms)
 ![NPM](https://img.shields.io/npm/l/react-bare-forms)
+![npm](https://travis-ci.org/joegasewicz/react-bare-forms.svg?branch=master)
 
 ![ReactBareForms](images/rbf_logo3.png?raw=true "React Bare Forms")
 
