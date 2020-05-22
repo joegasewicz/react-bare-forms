@@ -1,7 +1,6 @@
 ![npm](https://img.shields.io/npm/v/react-bare-forms)
 ![NPM](https://img.shields.io/npm/l/react-bare-forms)
 [![Build Status](https://travis-ci.org/joegasewicz/react-bare-forms.svg?branch=master)](https://travis-ci.org/joegasewicz/react-bare-forms)
-[![GitHub issues](https://img.shields.io/github/issues/joegasewicz/react-bare-forms)](https://github.com/joegasewicz/react-bare-forms/issues)
 ![npm type definitions](https://img.shields.io/npm/types/react-bare-forms)
 [![codecov](https://codecov.io/gh/joegasewicz/react-bare-forms/branch/master/graph/badge.svg)](https://codecov.io/gh/joegasewicz/react-bare-forms)
 
@@ -396,7 +395,11 @@ import "./mystyles.scss";
 <sup>**Fields that are not part of a RBF's form group*</sup>
 
 ## Contributors
-If you wish to add a feature to *RBF* then open an issue & wait for it to be approved by an admin before submitting any pull requests, thank you.
+[![GitHub issues](https://img.shields.io/github/issues/joegasewicz/react-bare-forms)](https://github.com/joegasewicz/react-bare-forms/issues)
 
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+Please make sure to update tests as appropriate.
+
+## Lincence 
 Licence MIT
