@@ -1,5 +1,6 @@
 import {EMAIL_REGEX} from "./core";
 import {IFormContext} from "./form";
+import {IEmailField, IField, IPasswordField, ITextAreaField, ITextInputField} from "./elements";
 
 
 /** @internal */
@@ -36,11 +37,23 @@ export type IValidationVariable = (arg?: any) => IValidationFunction;
  * @param `passwordKey` The name of the password form element you watch to match against
  * @function
  */
-export const areFieldsEqual: IValidationVariable = customValidator((passwordKey, fieldValue, context) => {
-    if(fieldValue !== context.state[passwordKey] && fieldValue !== "") {
-        return [`Fields do not match`];
+export const areFieldsEqual: IValidationVariable = customValidator((fieldKey, fieldValue, context: IFormContext) => {
+    let testField: IField;
+    let message = [`Fields do not match`];
+    if(fieldKey in context.state) {
+        testField = context.state[fieldKey];
+        if(!testField || !fieldValue  || fieldValue !== context.state[fieldKey]) {
+            return message;
+        }
+    } else {
+        throw new Error(
+            `React-BareForms Error: No Field with name of ${fieldKey} exists when calling 'areFieldsEqual' `
+            + `validator function.\n For more info, visit: `
+            + `https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#arefieldsequal`,
+        );
     }
 });
+
 
 /**
  * The `isFieldEmpty` validator performs a comparison against `minLength` & the field element
@@ -61,7 +74,7 @@ export const areFieldsEqual: IValidationVariable = customValidator((passwordKey,
  * @param minLength The minimum length of the form field value
  * @function
  */
-export const isFieldEmpty: IValidationVariable = customValidator((minLength, fieldValue, _) => {
+export const isFieldEmpty: IValidationVariable = customValidator((minLength, fieldValue, context: IFormContext) => {
     const isValid = (typeof fieldValue !== "undefined" && fieldValue.length >= minLength);
     if(!isValid) {
         return [`Must be at least ${minLength} characters`];
