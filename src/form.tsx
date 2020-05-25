@@ -46,7 +46,7 @@ export type TypeFormMetadata =
     | TypeRadioGroupMetadata
     | TypeCheckboxesMetadata
     | TypeFileMetadata;
-/** @internal */
+
 export interface IMetadata {
     radioGroups: TypeRadioGroupMetadata;
     inputs: TypeInputMetadata;

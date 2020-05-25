@@ -348,7 +348,7 @@ There are several ways to include Bootstrap 4. the simplist (but not the best) i
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 ``` 
 
-But a much better way is to use Sass, so them we can choose which Bootstrap 4 Sass components we want our our React app to use.
+But a much better way is to use Sass, so then we can choose which Bootstrap 4 Sass components we want our React app to use.
 
 ```
     npm install bootstrap
