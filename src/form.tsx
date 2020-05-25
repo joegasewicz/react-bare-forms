@@ -83,7 +83,7 @@ export interface IForm extends React.FormHTMLAttributes<HTMLFormElement> {
     /** Callback function wil be called on form submission if all validators pass */
     readonly callback?: Function;
 }
-/** @internal */
+
 export interface IFormContext {
     readonly bare?: boolean;
     readonly debug?: boolean;
