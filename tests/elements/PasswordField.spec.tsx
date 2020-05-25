@@ -209,7 +209,7 @@ describe("#PasswordField()", () => {
             )
         });
 
-       // expect(tree.children[2].props.disabled).toEqual(true);
+       expect(tree.children[2].props.disabled).toEqual(true);
 
     });
 
