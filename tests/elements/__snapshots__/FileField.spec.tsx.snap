@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#<FileField /> it should display validation errors 1`] = `
+<form
+  onSubmit={[Function]}
+  state={
+    Object {
+      "my_file": null,
+    }
+  }
+>
+  <div
+    className="form-group"
+  >
+    <input
+      className="form-control-file "
+      onChange={[Function]}
+      type="file"
+    />
+  </div>
+</form>
+`;
+
+exports[`#<FileField /> should render a single input tag with no bootstrap styles 1`] = `
+<form
+  onSubmit={[Function]}
+  state={
+    Object {
+      "my_file": null,
+    }
+  }
+>
+  <div
+    className="form-group"
+  >
+    <input
+      className="form-control-file "
+      onChange={[Function]}
+      type="file"
+    />
+  </div>
+</form>
+`;
+
+exports[`#<FileField /> should render an input field with the bootstrap styled tags 1`] = `
+<form
+  onSubmit={[Function]}
+  state={
+    Object {
+      "my_file": null,
+    }
+  }
+>
+  <div
+    className="form-group"
+  >
+    <input
+      className="form-control-file "
+      onChange={[Function]}
+      type="file"
+    />
+  </div>
+</form>
+`;

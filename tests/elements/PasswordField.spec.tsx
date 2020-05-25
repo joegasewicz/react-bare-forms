@@ -1,10 +1,13 @@
 import * as React from "react";
-import renderer from "react-test-renderer";
+import {create, act} from "react-test-renderer";
 import {
     Form,
     PasswordField,
-    isFieldEmpty,
+    isFieldEmpty, areFieldsEqual,
 } from "../../src";
+import {IFormContext} from "../../src/form";
+import {useEffect, useState} from "react";
+
 
 
 describe("#PasswordField()", () => {
@@ -13,7 +16,7 @@ describe("#PasswordField()", () => {
             password: "joe",
         };
 
-        let component = renderer.create(
+        let component = create(
             <Form state={state}>
                 <PasswordField name="password" value={state.password} />
             </Form>
@@ -28,7 +31,7 @@ describe("#PasswordField()", () => {
             password: "",
         };
 
-        let component = renderer.create(
+        let component = create(
             <Form state={state}>
                 <PasswordField name="password" value={state.password} />
             </Form>
@@ -44,7 +47,7 @@ describe("#PasswordField()", () => {
             password: "joebloggs"
         };
 
-        let testFormRederer: any = renderer.create(
+        let testFormRederer: any = create(
             <Form state={state}>
                 <PasswordField name="password" value={state.password} />
             </Form>
@@ -60,7 +63,7 @@ describe("#PasswordField()", () => {
             password: "a",
         };
 
-        let component = renderer.create(
+        let component = create(
             <Form state={state}>
                 <PasswordField
                     name="password"
@@ -80,7 +83,7 @@ describe("#PasswordField()", () => {
         };
 
 
-        let testFormRederer: any = renderer.create(
+        let testFormRederer: any = create(
             <div>
                 <Form state={state}>
                     <PasswordField
@@ -94,6 +97,71 @@ describe("#PasswordField()", () => {
 
         const testFormInstance = testFormRederer.root;
         expect(testFormInstance)
+
+    });
+
+    it("should confirm passwords are equal", () => {
+        let state = {
+            password: "wizard",
+            confirmPassword: "wizard",
+        };
+
+        let component = create(
+            <Form state={state}>
+                <PasswordField name="password" value={state.password} />
+                <PasswordField
+                    name="confirmPassword"
+                    value={state.confirmPassword}
+                    validators={[areFieldsEqual("password")]} />
+            </Form>
+        );
+
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+
+    it("should how message that passwords are not equal", () => {
+        let state = {
+            password: "wizard",
+            confirmPassword: "w",
+        };
+
+        let root = create(
+            <Form state={state}>
+                <PasswordField
+                    name="password"
+                    value={state.password}
+                    />
+                <PasswordField
+                    name="confirmPassword"
+                    value={state.confirmPassword}
+                    validators={[areFieldsEqual("password")]} />
+            </Form>
+        );
+
+        let tree = root.toJSON();
+        expect(tree).toMatchSnapshot();
+
+
+        act(() => {
+            state.confirmPassword = "wi";
+
+            root.update(
+                <Form state={state}>
+                    <PasswordField
+                        name="password"
+                        value={state.password}
+                    />
+                    <PasswordField
+                        name="confirmPassword"
+                        value={state.confirmPassword}
+                        validators={[areFieldsEqual("password")]} />
+                </Form>
+            )
+        });
+
+        tree = root.toJSON();
+        expect(tree).toMatchSnapshot();
 
     });
 });
