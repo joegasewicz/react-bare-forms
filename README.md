@@ -80,13 +80,14 @@ const state = { age: 0 }
     />
     <FormConsumer>
         {(context: IFormContext) => {
-            return <code>{JSON.stringify(context.state)}</code>;
+            return <code>{JSON.stringify(context.metadata)}</code>;
         }}
     </FormConsumer>
 </Form>
 
 ````
-The `context` object return from the `FormConsumer` has a `metadata` property which gives you detailed
+The `context` object is available using the `FormConsumer` component. You can access the entire form context 
+from the callback's [**IFormContext**](https://joegasewicz.github.io/react-bare-forms/interfaces/_form_.iform.html) type argument. The context includes a `metadata` property which gives you detailed
 values of the current state of all the form fields & validation state.
 ````json
 {"inputs":{"state":{"age":{"name":"age","validation":[{"isValid":false,"messages":["Must be at least 2 characters"]}],"isTouched":false,"fieldValues":{"type":"value","currentValue":0}}},"metaType":"inputs","defaultState":{},"_name":"age","_fieldType":"text"},"checkboxes":{"state":{},"metaType":"checkboxes","defaultState":{}},"files":{"state":{},"metaType":"files","defaultState":{}},"radioGroups":{"state":{},"metaType":"radioGroups","defaultState":{}}}
