@@ -4,7 +4,7 @@
 ![npm type definitions](https://img.shields.io/npm/types/react-bare-forms)
 [![codecov](https://codecov.io/gh/joegasewicz/react-bare-forms/branch/master/graph/badge.svg)](https://codecov.io/gh/joegasewicz/react-bare-forms)
 
-![ReactBareForms](/rbf_logo3.png)
+![ReactBareForms](/images/rbf_logo3.png)
 
 React library using React Hooks to build forms & let you switch in & out Bootstrap 4 styling. **React Bare Forms** aka *RBF* aims
 to be the easiest to use form library for React.

@@ -11,7 +11,7 @@
     "watch:prod": "webpack --watch --env.mode production --entry=./src/index.ts --output-path=lib --output-filename=index.js",
     "start": "webpack-dev-server --config webpack.config.dev.js --output-path=dist --output-filename=bundle.js",
     "test": "jest",
-    "typedoc": "typedoc --mode modules --ignoreCompilerErrors --stripInternal --out docs src && touch docs/.nojekyll"
+    "typedoc": "typedoc --mode modules --ignoreCompilerErrors --stripInternal --out docs src && touch docs/.nojekyll && cp -r images docs/images"
   },
   "jest": {
     "setupFiles": [
