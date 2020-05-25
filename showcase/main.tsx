@@ -93,7 +93,7 @@ export class Main extends React.Component<IProps, IState> {
                                 <PasswordField
                                     name="password"
                                     value={this.state.password}
-                                    labelText="Pasword"
+                                    labelText="Password"
                                 />
 
                                 <PasswordField

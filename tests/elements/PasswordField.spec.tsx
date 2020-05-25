@@ -3,10 +3,11 @@ import {create, act} from "react-test-renderer";
 import {
     Form,
     PasswordField,
-    isFieldEmpty, areFieldsEqual,
+    isFieldEmpty, areFieldsEqual, SubmitButton,
 } from "../../src";
 import {IFormContext} from "../../src/form";
 import {useEffect, useState} from "react";
+import {expression} from "@babel/template";
 
 
 
@@ -164,5 +165,53 @@ describe("#PasswordField()", () => {
         expect(tree).toMatchSnapshot();
 
     });
+
+    it("should maintain a disabled submit button with both password fields not matching", () => {
+        let state = {
+            password: "",
+            confirmPassword: "",
+        };
+
+        let root = create(
+            <Form state={state}>
+                <PasswordField
+                    name="password"
+                    value={state.password}
+                />
+                <PasswordField
+                    name="confirmPassword"
+                    value={state.confirmPassword}
+                    validators={[areFieldsEqual("password")]} />
+                <SubmitButton>Submit Form</SubmitButton>
+            </Form>
+        );
+
+        let tree: any = root.toJSON();
+        expect(tree).toMatchSnapshot();
+        expect(tree.children[2].props.disabled).toEqual(true);
+
+        act(() => {
+            state.password = "";
+            state.confirmPassword = "";
+
+            root.update(
+                <Form state={state}>
+                    <PasswordField
+                        name="password"
+                        value={state.password}
+                    />
+                    <PasswordField
+                        name="confirmPassword"
+                        value={state.confirmPassword}
+                        validators={[areFieldsEqual("password")]} />
+                    <SubmitButton>Submit Form</SubmitButton>
+                </Form>
+            )
+        });
+
+       // expect(tree.children[2].props.disabled).toEqual(true);
+
+    });
+
 });
 
