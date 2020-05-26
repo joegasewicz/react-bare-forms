@@ -358,21 +358,21 @@ export const RadioField = (props: IRadioField) => {
  * ```
  * // This is your option data
  * let selectData = [
- *  {id: 1, name: "first"},
- *  {id: 2, name: "second"},
+ *   {id: 1, name: "first"},
+ *   {id: 2, name: "second"},
  * ];
  * // The state which will receive the update
  * let state = {
- *   select_data_id: undefined as any,
+ *    select_data_id: undefined as any,
  * };
  *
  * <SelectField
- *  size="lg"
- *  value={state.select_data_id}
- *  name="fruitChoice"
- *  objectKey="id" // This is the property state will update state.select_data_id
- *  objectValue="name" // This is the value that will be displayed to the user
- *  options={selectData}
+ *   size="lg"
+ *   value={state.select_data_id}
+ *   name="fruitChoice"
+ *   objectKey="id" // This is the property state will update state.select_data_id
+ *   objectValue="name" // This is the value that will be displayed to the user
+ *   options={selectData}
  * />
  * ```
  */
