@@ -128,11 +128,20 @@ export class Main extends React.Component<IProps, IState> {
                                     validators={[isChecked()]}
                                 />
 
+                                {/*<SelectField*/}
+                                {/*    size="lg"*/}
+                                {/*    value={this.state.fruitChoice}*/}
+                                {/*    name="fruitChoice"*/}
+                                {/*    options={["banana", "apple", "orange"]}*/}
+                                {/*/>*/}
+
                                 <SelectField
                                     size="lg"
                                     value={this.state.fruitChoice}
                                     name="fruitChoice"
-                                    options={["banana", "apple", "orange"]}
+                                    objectKey="id"
+                                    objectValue="fruit"
+                                    options={[{id: 1, fruit: "banana"}, {id: 2, fruit: "apple"}]}
                                 />
 
                                 <FileField

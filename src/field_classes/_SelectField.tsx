@@ -37,7 +37,7 @@ export class SelectField<T extends IField & ISelectField> extends AbstractField<
 
     public getField() {
         const {options = [], size = "default"} = this.props;
-
+        const selectData = this._getOptions(options);
         return () => {
             return (
                 <select
@@ -45,7 +45,7 @@ export class SelectField<T extends IField & ISelectField> extends AbstractField<
                     name={this.props.name}
                     className={AbstractField.mergeDefaultCssWithProps(this.getSelectCssName((this.props as any).size), this.props.className, (this.context as any).bare)}
                 >
-                    {this._getOptions(options)}
+                    {selectData ? selectData: null}
                 </select>
             );
         }
