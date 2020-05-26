@@ -370,8 +370,8 @@ export const RadioField = (props: IRadioField) => {
  *   size="lg"
  *   value={state.select_data_id}
  *   name="fruitChoice"
- *   objectKey="id" // This is the property state will update state.select_data_id
- *   objectValue="name" // This is the value that will be displayed to the user
+ *   objectKey="id" // Value will update state.select_data_id e.g *1, 2...*
+ *   objectValue="name" // Value will be displayed in the select field e.g *first, second...*
  *   options={selectData}
  * />
  * ```
