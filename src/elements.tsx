@@ -80,8 +80,10 @@ export type TypeSelectCssSizeName = |"sm"|"default"|"lg";
 
 export interface ISelectField extends IField {
     value: any;
-    options: Array<string>;
+    options: Array<string|{[k: string]: any}>;
     size?: TypeSelectCssSizeName;
+    objectKey?: string;
+    objectValue?: string;
 }
 
 /**
@@ -347,6 +349,31 @@ export const RadioField = (props: IRadioField) => {
  *   name="fruitChoice"
  *   options={["banana", "apple", "orange"]}
  *  />
+ * ```
+ *
+ * You can also pass an array of objects but you must use both the
+ * *objectKey* & *objectValue* props. the `objectKey` will update your state
+ * value & the `objectValue` is what is displayed to the user as an option.
+ * @example
+ * ```
+ * // This is your option data
+ * let selectData = [
+ *   {id: 1, name: "first"},
+ *   {id: 2, name: "second"},
+ * ];
+ * // The state which will receive the update
+ * let state = {
+ *    select_data_id: undefined as any,
+ * };
+ *
+ * <SelectField
+ *   size="lg"
+ *   value={state.select_data_id}
+ *   name="fruitChoice"
+ *   objectKey="id" // Value will update state.select_data_id e.g *1, 2...*
+ *   objectValue="name" // Value will be displayed in the select field e.g *first, second...*
+ *   options={selectData}
+ * />
  * ```
  */
 export const SelectField = (props: ISelectField) => {
