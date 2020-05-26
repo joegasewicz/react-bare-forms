@@ -21,8 +21,23 @@ export class SelectField<T extends IField & ISelectField> extends AbstractField<
         return _genericFormGroup<T>(this.props, children);
     }
 
+    private _getOptions(options: Array<any> = []) {
+        if(this.props.objectKey && this.props.objectValue) {
+            return options.map((optVal: string, i: number) => {
+                return <option value={optVal[this.props.objectKey as any]} key={i}
+                >{optVal[this.props.objectValue as any]}</option>
+            })
+        } else {
+            return options.map((optVal: string, i: number) => {
+                return <option value={optVal} key={i}>{optVal}</option>
+            });
+        }
+
+    }
+
     public getField() {
         const {options = [], size = "default"} = this.props;
+
         return () => {
             return (
                 <select
@@ -30,9 +45,7 @@ export class SelectField<T extends IField & ISelectField> extends AbstractField<
                     name={this.props.name}
                     className={AbstractField.mergeDefaultCssWithProps(this.getSelectCssName((this.props as any).size), this.props.className, (this.context as any).bare)}
                 >
-                    {options.map((optVal: string, i: number) => {
-                        return <option value={optVal} key={i}>{optVal}</option>
-                    })}
+                    {this._getOptions(options)}
                 </select>
             );
         }
