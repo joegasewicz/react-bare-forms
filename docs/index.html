@@ -108,7 +108,7 @@
 				</a>
 				<p>RBF&#39;s provides a function that returns a React ref to access your file object. To use, simply assign the returned ref from
 				the <code>createFileRef</code> function to a variable &amp; pass this variable to <code>FileField</code>&#39;s ref prop. For example:</p>
-				<pre><code class="language-typescript"> <span class="hljs-keyword">import</span> {createFileRef, FileField, isFile} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bare-forms"</span>;
+				<pre><code class="language-typescript"> <span class="hljs-keyword">import</span> {createFileRef, FileField, isFile, getFileFromRef} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bare-forms"</span>;
 
  <span class="hljs-keyword">const</span> myFileRef = createFileRef();
 
@@ -120,7 +120,11 @@
      validators={[isFile()]}
  /&gt;
 
+ <span class="hljs-keyword">let</span> formData = {
+   myFile: getFileFromRef(myFileRef)  
+ };
  <span class="hljs-comment">// Now myFileRef has access to the file object once it's been selected by the user</span></code></pre>
+				<p>to access your file object pass your React ref to the <code>getFileFromRef</code> function (as shown above).</p>
 				<a href="#form-consumer" id="form-consumer" style="color: inherit; text-decoration: none;">
 					<h2>Form Consumer</h2>
 				</a>
@@ -335,6 +339,27 @@
    name=<span class="hljs-string">"fruitChoice"</span>
    options={[<span class="hljs-string">"banana"</span>, <span class="hljs-string">"apple"</span>, <span class="hljs-string">"orange"</span>]}
   /&gt;</code></pre>
+				<p>You can also pass an array of objects but you must use both the
+					<em>objectKey</em> &amp; <em>objectValue</em> props. the <code>objectKey</code> will update your state
+				value &amp; the <code>objectValue</code> is what is displayed to the user as an option.</p>
+				<pre><code class="language-typescript"><span class="hljs-comment">// This is your option data</span>
+<span class="hljs-keyword">let</span> selectData = [
+  {id: <span class="hljs-number">1</span>, name: <span class="hljs-string">"first"</span>},
+  {id: <span class="hljs-number">2</span>, name: <span class="hljs-string">"second"</span>},
+];
+<span class="hljs-comment">// The state which will receive the update</span>
+<span class="hljs-keyword">let</span> state = {
+   select_data_id: <span class="hljs-literal">undefined</span> <span class="hljs-keyword">as</span> <span class="hljs-built_in">any</span>,
+};
+
+&lt;SelectField
+  size=<span class="hljs-string">"lg"</span>
+  value={state.select_data_id}
+  name=<span class="hljs-string">"fruitChoice"</span>
+  objectKey=<span class="hljs-string">"id"</span> <span class="hljs-comment">// Value will update state.select_data_id e.g *1, 2...*</span>
+  objectValue=<span class="hljs-string">"name"</span> <span class="hljs-comment">// Value will be displayed in the select field e.g *first, second...*</span>
+  options={selectData}
+/&gt;</code></pre>
 				<a href="#radio-buttons" id="radio-buttons" style="color: inherit; text-decoration: none;">
 					<h3>Radio Buttons</h3>
 				</a>

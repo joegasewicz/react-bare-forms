@@ -92,13 +92,33 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/61ff377/src/uncrontrolled.ts#L10">src/uncrontrolled.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/e6a8f41/src/uncrontrolled.ts#L29">src/uncrontrolled.ts:29</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>RBF&#39;s provides a function that returns a React ref to access your file object.
+										To use, simply assign the returned ref from the createFileRef function to a
+									variable &amp; pass this variable to FileField&#39;s ref prop.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code>
+ <span class="hljs-keyword">import</span> {createFileRef, FileField, isFile, getFileFromRef} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bare-forms"</span>;
+
+ <span class="hljs-keyword">const</span> myFileRef = createFileRef();
+
+ <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">FileField</span>
+    <span class="hljs-attr">ref</span>=<span class="hljs-string">{myFileRef}</span>
+    <span class="hljs-attr">hint</span>=<span class="hljs-string">"Must be a file"</span>
+    <span class="hljs-attr">labelText</span>=<span class="hljs-string">"Upload your file"</span>
+    <span class="hljs-attr">name</span>=<span class="hljs-string">"myFileTest"</span>
+    <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isFile()]}</span>
+ /&gt;</span></span>
+</code></pre></dd>
+								</dl>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">RefObject</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">HTMLFormElement</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>a React Ref</p>
 						</li>
 					</ul>
 				</section>
@@ -112,17 +132,43 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/61ff377/src/uncrontrolled.ts#L18">src/uncrontrolled.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/e6a8f41/src/uncrontrolled.ts#L60">src/uncrontrolled.ts:60</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>To get a file object back from the react ref, you can use <code>getFileFromRef</code> function.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>params</dt>
+									<dd><p>The React ref returned from <a href="_uncrontrolled_.html#createfileref">createFileRef</a></p>
+									</dd>
+									<dt>example</dt>
+									<dd><pre><code>
+ <span class="hljs-keyword">import</span> {createFileRef, FileField, isFile, getFileFromRef} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bare-forms"</span>;
+
+ <span class="hljs-keyword">const</span> myFileRef = createFileRef();
+
+ <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">FileField</span>
+    <span class="hljs-attr">ref</span>=<span class="hljs-string">{myFileRef}</span>
+    <span class="hljs-attr">hint</span>=<span class="hljs-string">"Must be a file"</span>
+    <span class="hljs-attr">labelText</span>=<span class="hljs-string">"Upload your file"</span>
+    <span class="hljs-attr">name</span>=<span class="hljs-string">"myFileTest"</span>
+    <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isFile()]}</span>
+ /&gt;</span></span>
+
+ <span class="hljs-keyword">let</span> fileData = {
+     <span class="hljs-attr">myFile</span>: getFileFromRef(myFileRef)
+ };
+
+ <span class="hljs-comment">// fileData.myFile is your Javascript File object.</span>
+</code></pre></dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>fileRef: <span class="tsd-signature-type">RefObject</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">HTMLFormElement</span><span class="tsd-signature-symbol">&gt;</span></h5>
-									<div class="tsd-comment tsd-typography">
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">IFile</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
