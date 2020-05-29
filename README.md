@@ -46,7 +46,9 @@ const state = { age: 0 }
 ```
 ## File Ref
 RBF's provides a function that returns a React ref to access your file object. To use, simply assign the returned ref from
-the `createFileRef` function to a variable & pass this variable to `FileField`'s ref prop. For example:
+the `createFileRef` function to a variable & pass this variable to `FileField`'s ref prop.
+To access your file object, pass your React ref to the `getFileFromRef` function.
+For example:
 ````typescript jsx
  import {createFileRef, FileField, isFile, getFileFromRef} from "react-bare-forms";
 
@@ -60,17 +62,12 @@ the `createFileRef` function to a variable & pass this variable to `FileField`'s
      validators={[isFile()]}
  />
  
-  // Now myFileRef has access to the file object once it's been selected by the user
- 
+ // To access the File object use `getFileFromRef` helper function:
  let formData = {
    myFile: getFileFromRef(myFileRef)  
  };
-    
- // formData.myFile if your javascript File object
+
 ````
-to access your file object pass your React ref to the `getFileFromRef` function (as shown above).
-
-
 
 ## Form Consumer
 RBF's provides the `FormConsumer`, which gives access to field information.
