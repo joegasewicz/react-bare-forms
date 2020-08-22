@@ -38,6 +38,27 @@ interface IState{
     fruitChoice: string;
 }
 
+export function FPForm() {
+    const state = { age: 0 }
+    return <>
+        <Form
+            state={state}
+            bare={false}
+            autoComplete="off"
+            callback={() => console.log("Form submitted!")}>
+
+            <TextInputField
+                value={state.age}
+                name="age"
+                hint="Enter your age"
+                labelText="Age"
+                validators={[isFieldEmpty(2)]} />
+                    
+            <SubmitButton>Submit Form</SubmitButton>
+        </Form>
+    </>;
+}
+
 
 export class Main extends React.Component<IProps, IState> {
 
@@ -61,12 +82,6 @@ export class Main extends React.Component<IProps, IState> {
     public render(): React.ReactElement {
         return (
             <>
-            <div>
-                <h1>React Bare Forms Showcase</h1>
-                <div>
-                    <div className="container">
-                        <div className="container">
-
                             <Form
                                 state={this.state}
                                 context={this}
@@ -206,16 +221,11 @@ export class Main extends React.Component<IProps, IState> {
                                 </FormConsumer>
                             </Form>
 
-                        </div>
+              
                         <br />
                         <div className="container">
                             <code><var>State</var>: {JSON.stringify(this.state)}</code>
                         </div>
-
-
-                    </div>
-                </div>
-            </div>
         </>
     );
     }
