@@ -40,21 +40,31 @@ interface IState{
 
 export function FPForm() {
     const state = { age: 0 }
+
+    const [fpState, fpSetState] = React.useState(state);
     return <>
         <Form
-            state={state}
+            state={fpState}
+            context={fpSetState}
             bare={false}
             autoComplete="off"
             callback={() => console.log("Form submitted!")}>
 
             <TextInputField
-                value={state.age}
+                value={fpState.age}
                 name="age"
                 hint="Enter your age"
                 labelText="Age"
                 validators={[isFieldEmpty(2)]} />
                     
             <SubmitButton>Submit Form</SubmitButton>
+            <br />
+            <FormConsumer>
+                {(context: any) => {
+                    // this.setState({...context});
+                    return <div className="container"><code><var>metadata</var>: {JSON.stringify(context.metadata)}</code></div>;
+                }}
+            </FormConsumer>
         </Form>
     </>;
 }

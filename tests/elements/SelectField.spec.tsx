@@ -1,6 +1,7 @@
 import * as React from "react";
 import {create} from "react-test-renderer";
 import {Form, SelectField} from "../../src";
+import { MockComponent } from "../form.spec";
 
 
 describe("#<SelectField>", () => {
@@ -10,14 +11,14 @@ describe("#<SelectField>", () => {
         };
 
         let component = create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <SelectField
                     size="lg"
                     value={state.select_data_id}
                     name="fruitChoice"
                     options={["banana", "apple", "orange"]}
                 />
-            </Form>
+            </MockComponent>
         );
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
@@ -33,7 +34,7 @@ describe("#<SelectField>", () => {
         };
 
         let component = create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <SelectField
                     size="lg"
                     value={state.select_data_id}
@@ -42,7 +43,7 @@ describe("#<SelectField>", () => {
                     objectValue="name"
                     options={selectData}
                 />
-            </Form>
+            </MockComponent>
         );
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();

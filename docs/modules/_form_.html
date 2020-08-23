@@ -101,7 +101,7 @@
 					<div class="tsd-signature tsd-kind-icon">Form<wbr>Consumer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ExoticComponent</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ConsumerProps</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_form_.iformcontext.html" class="tsd-signature-type">IFormContext</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = FormContext.Consumer</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/e6a8f41/src/form.tsx#L143">src/form.tsx:143</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/c4bf3c4/src/form.tsx#L144">src/form.tsx:144</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -134,26 +134,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/e6a8f41/src/form.tsx#L191">src/form.tsx:191</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/c4bf3c4/src/form.tsx#L193">src/form.tsx:193</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>The main Form component that is required to wrap all <em>RBF</em> components.
 										If the component that uses the Form component is a functional component then
-										only the state props is required. If you are calling Form component from a
-										class component then you must pass your local context or <code>this</code> keyword to
+										only the state props &amp; state update function returned from the useState hook are
+										required. If you are calling Form component from a class component then you must
+										pass your local context or <code>this</code> keyword to
 									the <code>context</code> prop.</p>
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>example</dt>
-									<dd><pre><code><span class="hljs-comment">// Minimal setup for a RBF's Form component</span>
+									<dd><pre><code>// Minimal setup <span class="hljs-keyword">for</span> a RBF's Form component
 
  <span class="hljs-keyword">const</span> myState = {
      username: '',
  }
-
- &lt;<span class="hljs-keyword">Form</span> state={myState}&gt;&lt;/<span class="hljs-keyword">Form</span>&gt;</code></pre><p>To use <em>RBF</em> Form component from a class component you must pass in your
+ <span class="hljs-keyword">const</span> [<span class="hljs-keyword">state</span>, <span class="hljs-built_in">set</span>State] = React.useState(<span class="hljs-keyword">state</span>);
+ <span class="hljs-variable">&lt;Form state={myState} context={setState}&gt;</span>&lt;/Form&gt;</code></pre><p>To use <em>RBF</em> Form component from a class component you must pass in your
 										local state of <code>this</code> keyword.</p>
 									</dd>
 									<dt>example</dt>

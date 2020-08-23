@@ -26,10 +26,12 @@ There are different validators available & also a custom validator factor functi
 ```typescript jsx
 import {Form, isFieldEmpty, SubmitButton, TextInputField} from "react-bare-forms";
 
-const state = { age: 0 }
+const myState = { age: 0 }
+const [state, setState] = React.useState(myState);
 
 <Form
     state={state}
+    context={setState}
     bare={false}
     autoComplete="off"
     callback={() => console.log("Form submitted!")}>
@@ -75,11 +77,12 @@ Below is an example of a form containing a single text input field.
 ````typescript jsx
 import {Form, FormConsumer, IFormContext, isFieldEmpty, TextInputField} from "react-bare-forms";
 
-const state = { age: 0 }
+// Example within a class component
+state = { age: 0 }
 
-<Form>
+<Form state={myState} context={this}>
     <TextInputField
-        value={state.age}
+        value={this.state.age}
         name="age"
         hint="Enter your age"
         labelText="Age"
@@ -119,11 +122,7 @@ To create your own custom validator use:
 ## Form Fields
 
 #### Form component
-The main Form component that is required to wrap all *RBF* components.
-If the component that uses the Form component is a functional component then
-only the state props are required. If you are calling the *RBF* Form component from a
-class component then you must pass your local context or `this` keyword to
-the `context` prop.
+The main Form component that is required to wrap all RBF components. If the component that uses the Form component is a functional component then only the state props & state update function returned from the useState hook are required. If you are calling Form component from a class component then you must pass your local context or this keyword to the context prop.
 
 An example using *RBF* Form component in a functional component
 
@@ -134,7 +133,8 @@ const myState = {
   username: '',
 }
 
-<Form state={myState}></Form>
+ const [state, setState] = React.useState(state);
+ <Form state={myState} context={setState}></Form>>
 ```
 
 To use *RBF* Form component from a class component, you must pass in your
@@ -388,7 +388,7 @@ But a much better way is to use Sass, so then we can choose which Bootstrap 4 Sa
 
 Then install the loaders
 ```
-npm install style-loader css-loader sass-loader --save-dev
+npm install sass style-loader css-loader sass-loader --save-dev
 
 # In your webpack.config.js:
 
@@ -409,6 +409,9 @@ If you want to keep bundle sizes to a minimum, React Bare Forms only requires th
 You can import them like this:
 ```scss
 // - mystyles.scss
+// If you want all the styles
+@import "~bootstrap";
+// Even better, just import the bootstrap components you need
 // Required
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";

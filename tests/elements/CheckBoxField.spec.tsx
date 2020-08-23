@@ -3,6 +3,7 @@ import renderer from "react-test-renderer";
 import {
     Form, CheckBoxField, isChecked
 } from "../../src";
+import { MockComponent } from "../form.spec";
 
 
 
@@ -13,9 +14,9 @@ describe("#CheckBoxField()", () => {
         };
 
         let component = renderer.create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <CheckBoxField name="username" checked={state.terms} />
-            </Form>
+            </MockComponent>
         );
 
         let tree = component.toJSON();
@@ -27,9 +28,9 @@ describe("#CheckBoxField()", () => {
             terms: false,
         };
         let component = renderer.create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <CheckBoxField name="username" checked={state.terms} />
-            </Form>
+            </MockComponent>
         );
 
         let tree = component.toJSON();
@@ -43,9 +44,9 @@ describe("#CheckBoxField()", () => {
         };
 
         let testFormRederer: any = renderer.create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <CheckBoxField name="username" checked={state.terms} />
-            </Form>
+            </MockComponent>
         );
 
         const testFormInstance = testFormRederer.root;
@@ -59,13 +60,13 @@ describe("#CheckBoxField()", () => {
         };
 
         let component = renderer.create(
-            <Form state={state} name="myForm">
+            <MockComponent state={state} name="myForm">
                 <CheckBoxField
                     name="terms"
                     checked={state.terms}
                     validators={[isChecked()]}
                 />
-            </Form>
+            </MockComponent>
         );
 
         let tree = component.toJSON();
@@ -79,13 +80,13 @@ describe("#CheckBoxField()", () => {
 
 
         let testFormRenderer: any = renderer.create(
-            <Form state={state} name="myForm">
+            <MockComponent state={state} name="myForm">
                 <CheckBoxField
                     name="terms"
                     checked={state.terms}
                     validators={[isChecked()]}
                 />
-            </Form>
+            </MockComponent>
         );
 
         const testFormInstance = testFormRenderer.root;

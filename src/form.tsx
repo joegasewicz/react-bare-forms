@@ -1,5 +1,5 @@
 import {default as React, useEffect, useState} from "react";
-import {updateRadioGroupStateFromPassedInContext, updateParentState} from "./core";
+import {updateRadioGroupStateFromPassedInContext, updateParentState, _FieldEmptyErrorMsg} from "./core";
 import {IValidation} from "./validators";
 import {
     AbstractMetadata,
@@ -7,6 +7,7 @@ import {
     MetadataFile,
     MetadataGroup,
 } from "./field_classes";
+import { _noContextError } from "./core/_errors";
 
 /** @internal */
 export type TypeFieldValueTypes = "value"|"checked"|"file";
@@ -157,8 +158,9 @@ export const handleSubmit = (props: IForm) =>
 /**
  * The main Form component that is required to wrap all *RBF* components.
  * If the component that uses the Form component is a functional component then
- * only the state props is required. If you are calling Form component from a
- * class component then you must pass your local context or `this` keyword to
+ * only the state props & state update function returned from the useState hook are
+ * required. If you are calling Form component from a class component then you must 
+ * pass your local context or `this` keyword to
  * the `context` prop.
  * @param props {@link IForm}
  *
@@ -170,8 +172,8 @@ export const handleSubmit = (props: IForm) =>
  *  const myState = {
  *      username: '',
  *  }
- *
- *  <Form state={myState}></Form>
+ *  const [state, setState] = React.useState(state);
+ *  <Form state={myState} context={setState}></Form>
  * ```
  *
  * To use *RBF* Form component from a class component you must pass in your
@@ -196,12 +198,21 @@ export const Form = (props: IForm) => {
     const [fileState, updateFileState] = useState(FILES_STATE);
     const [radioState, updateRadioState] = useState(RADIO_GROUPS_STATE);
     // If the parentName component is a class component, then the state needs to be updated from the parentName context
-    if(props.context) {
+    // Functions component must use useState hook. See https://joegasewicz.github.io/react-bare-forms/modules/_form_.html
+    if(props.context && "setState" in props.context) {
         useEffect(() => {
             props.context.setState({
                 ...parentState,
             });
         }, [parentState]);
+    } else if (props.context) {
+        useEffect(() => {
+            props.context({
+                ...parentState,
+            });
+        }, [parentState]);
+    } else {
+        throw new _FieldEmptyErrorMsg(_noContextError);
     }
     // State Hooks
     const _providerContext: IFormContext = {
