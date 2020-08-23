@@ -4,6 +4,7 @@ import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 import {Form, FileField, isFile, createFileRef} from "../../src";
 import {file} from "@babel/types";
+import { MockComponent } from "../form.spec";
 
 
 let container: any = null;
@@ -31,9 +32,9 @@ describe("#<FileField />", () => {
 
 
         let component = renderer.create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <FileField name="my_file" ref={myFileRef} />
-            </Form>
+            </MockComponent>
         );
 
         let tree = component.toJSON();
@@ -46,9 +47,9 @@ describe("#<FileField />", () => {
         };
 
         let component = renderer.create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <FileField name="about_text" ref={myFileRef} />
-            </Form>
+            </MockComponent>
         );
 
         let tree = component.toJSON();
@@ -78,12 +79,12 @@ describe("#<FileField />", () => {
         };
 
         let component = renderer.create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <FileField name="my_file" ref={mockRef} />
-            </Form>
+            </MockComponent>
         );
-        const testFormInstance = component.root;
-        // expect(testFormInstance.props.state).toEqual({});
+        const testMockComponentInstance = component.root;
+        // expect(testMockComponentInstance.props.state).toEqual({});
     //
 
     });
@@ -94,13 +95,13 @@ describe("#<FileField />", () => {
         };
 
         let component = renderer.create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <FileField
                     name="about_text"
                     ref={myFileRef}
                     validators={[isFile()]}
                 />
-            </Form>
+            </MockComponent>
         );
 
         let tree = component.toJSON();
@@ -113,13 +114,13 @@ describe("#<FileField />", () => {
         };
 
         let testFormRederer: any = renderer.create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <FileField
                     name="about_text"
                     ref={myFileRef}
                     validators={[isFile()]}
                 />
-            </Form>
+            </MockComponent>
         );
 
         const testFormInstance = testFormRederer.root;

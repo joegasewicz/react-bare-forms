@@ -22,4 +22,11 @@ export const _isFieldEmptyErrorMsg = _throwNewErrorMsg(
     "Missing argument: minLength (number)"
 );
 
-export class _FieldEmptyErrorMsg extends Error {}
+export class _FieldEmptyErrorMsg extends Error { }
+
+export const _noContextError = _throwNewErrorMsg(
+    "Required Props",
+    "context",
+    "You must pass in a context prop. Class components use 'state' " +
+    "& functional components must use useState hook. See https://joegasewicz.github.io/react-bare-forms/modules/_form_.html"
+);

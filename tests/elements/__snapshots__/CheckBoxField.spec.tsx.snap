@@ -2,7 +2,8 @@
 
 exports[`#CheckBoxField() it should display validation errors 1`] = `
 <form
-  name="myForm"
+  bare="false"
+  context={[Function]}
   onSubmit={[Function]}
   state={
     Object {
@@ -10,22 +11,20 @@ exports[`#CheckBoxField() it should display validation errors 1`] = `
     }
   }
 >
-  <div
-    className="form-group form-check"
-  >
-    <input
-      checked={false}
-      className="form-check-input "
-      name="terms"
-      onChange={[Function]}
-      type="checkbox"
-    />
-  </div>
+  <input
+    checked={false}
+    className=""
+    name="terms"
+    onChange={[Function]}
+    type="checkbox"
+  />
 </form>
 `;
 
 exports[`#CheckBoxField() should render a single input tag with no bootstrap styles 1`] = `
 <form
+  bare="false"
+  context={[Function]}
   onSubmit={[Function]}
   state={
     Object {
@@ -33,22 +32,20 @@ exports[`#CheckBoxField() should render a single input tag with no bootstrap sty
     }
   }
 >
-  <div
-    className="form-group form-check"
-  >
-    <input
-      checked={false}
-      className="form-check-input "
-      name="username"
-      onChange={[Function]}
-      type="checkbox"
-    />
-  </div>
+  <input
+    checked={false}
+    className=""
+    name="username"
+    onChange={[Function]}
+    type="checkbox"
+  />
 </form>
 `;
 
 exports[`#CheckBoxField() should render an input field with the bootstrap styled tags 1`] = `
 <form
+  bare="false"
+  context={[Function]}
   onSubmit={[Function]}
   state={
     Object {
@@ -56,16 +53,38 @@ exports[`#CheckBoxField() should render an input field with the bootstrap styled
     }
   }
 >
-  <div
-    className="form-group form-check"
-  >
-    <input
-      checked={false}
-      className="form-check-input "
-      name="username"
-      onChange={[Function]}
-      type="checkbox"
-    />
-  </div>
+  <input
+    checked={false}
+    className=""
+    name="username"
+    onChange={[Function]}
+    type="checkbox"
+  />
 </form>
+`;
+
+exports[`<Form /> should render a form element with bootstrap extra tags 1`] = `
+<form
+  bare={false}
+  context={[Function]}
+  onSubmit={[Function]}
+  state={
+    Object {
+      "username": "joebloggs",
+    }
+  }
+/>
+`;
+
+exports[`<Form /> should render a form element with no extra tags 1`] = `
+<form
+  bare="false"
+  context={[Function]}
+  onSubmit={[Function]}
+  state={
+    Object {
+      "username": "joebloggs",
+    }
+  }
+/>
 `;
