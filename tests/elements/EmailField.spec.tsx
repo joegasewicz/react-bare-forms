@@ -5,6 +5,7 @@ import {
 } from "../../src";
 
 import {isEmailValid} from "../../src";
+import { MockComponent } from "../form.spec";
 
 
 
@@ -15,9 +16,9 @@ describe("#EmailField()", () => {
         };
 
         let component = renderer.create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <EmailField name="email" value={state.email} />
-            </Form>
+            </MockComponent>
         );
 
         let tree = component.toJSON();
@@ -30,9 +31,9 @@ describe("#EmailField()", () => {
         };
 
         let component = renderer.create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <EmailField name="email" value={state.email} />
-            </Form>
+            </MockComponent>
         );
 
         let tree = component.toJSON();
@@ -46,9 +47,9 @@ describe("#EmailField()", () => {
         };
 
         let testFormRederer: any = renderer.create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <EmailField name="email" value={state.email} />
-            </Form>
+            </MockComponent>
         );
 
         const testFormInstance = testFormRederer.root;
@@ -63,13 +64,13 @@ describe("#EmailField()", () => {
 
 
         let component = renderer.create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <EmailField
                     name="email"
                     value={state.email}
                     validators={[isEmailValid()]}
                 />
-            </Form>
+            </MockComponent>
         );
 
         let tree = component.toJSON();
@@ -84,13 +85,13 @@ describe("#EmailField()", () => {
 
 
         let testFormRederer: any = renderer.create(
-                <Form state={state}>
+                <MockComponent state={state}>
                     <EmailField
                         name="email"
                         value={state.email}
                         validators={[isEmailValid()]}
                     />
-                </Form>
+                </MockComponent>
         );
 
         const testFormInstance = testFormRederer.root;

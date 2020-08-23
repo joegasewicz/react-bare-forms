@@ -1,6 +1,7 @@
 import * as React from "react";
 import renderer from "react-test-renderer";
 import {Form, TextAreaField,isFieldEmpty} from "../../src";
+import { MockComponent } from "../form.spec";
 
 
 
@@ -12,9 +13,9 @@ describe("#<TextAreaField />", () => {
 
 
         let component = renderer.create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <TextAreaField name="about_text" value={state.about_text} />
-            </Form>
+            </MockComponent>
         );
 
         let tree = component.toJSON();
@@ -27,9 +28,9 @@ describe("#<TextAreaField />", () => {
         };
 
         let component = renderer.create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <TextAreaField name="about_text" value={state.about_text} />
-            </Form>
+            </MockComponent>
         );
 
         let tree = component.toJSON();
@@ -43,9 +44,9 @@ describe("#<TextAreaField />", () => {
         };
 
         let testFormRederer: any = renderer.create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <TextAreaField name="about_text" value={state.about_text} />
-            </Form>
+            </MockComponent>
         );
 
         const testFormInstance = testFormRederer.root;
@@ -59,14 +60,14 @@ describe("#<TextAreaField />", () => {
         };
 
         let component = renderer.create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <TextAreaField
                     rows={20}
                     name="about_text"
                     value={state.about_text}
                     validators={[isFieldEmpty(5)]}
                 />
-            </Form>
+            </MockComponent>
         );
 
         let tree = component.toJSON();
@@ -79,14 +80,14 @@ describe("#<TextAreaField />", () => {
         };
 
         let testFormRederer: any = renderer.create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <TextAreaField
                     rows={10}
                     name="about_text"
                     value={state.about_text}
                     validators={[isFieldEmpty(5)]}
                 />
-            </Form>
+            </MockComponent>
         );
 
         const testFormInstance = testFormRederer.root;

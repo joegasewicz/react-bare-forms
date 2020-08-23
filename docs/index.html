@@ -86,10 +86,12 @@
 				There are different validators available &amp; also a custom validator factor function to create your own validators.</p>
 				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {Form, isFieldEmpty, SubmitButton, TextInputField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bare-forms"</span>;
 
-<span class="hljs-keyword">const</span> state = { age: <span class="hljs-number">0</span> }
+<span class="hljs-keyword">const</span> myState = { age: <span class="hljs-number">0</span> }
+<span class="hljs-keyword">const</span> [state, setState] = React.useState(myState);
 
 &lt;Form
     state={state}
+    context={setState}
     bare={<span class="hljs-literal">false</span>}
     autoComplete=<span class="hljs-string">"off"</span>
     callback={<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Form submitted!"</span>)}&gt;
@@ -107,7 +109,9 @@
 					<h2>File Ref</h2>
 				</a>
 				<p>RBF&#39;s provides a function that returns a React ref to access your file object. To use, simply assign the returned ref from
-				the <code>createFileRef</code> function to a variable &amp; pass this variable to <code>FileField</code>&#39;s ref prop. For example:</p>
+					the <code>createFileRef</code> function to a variable &amp; pass this variable to <code>FileField</code>&#39;s ref prop.
+					To access your file object, pass your React ref to the <code>getFileFromRef</code> function.
+				For example:</p>
 				<pre><code class="language-typescript"> <span class="hljs-keyword">import</span> {createFileRef, FileField, isFile, getFileFromRef} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bare-forms"</span>;
 
  <span class="hljs-keyword">const</span> myFileRef = createFileRef();
@@ -120,11 +124,11 @@
      validators={[isFile()]}
  /&gt;
 
+ <span class="hljs-comment">// To access the File object use `getFileFromRef` helper function:</span>
  <span class="hljs-keyword">let</span> formData = {
    myFile: getFileFromRef(myFileRef)  
  };
- <span class="hljs-comment">// Now myFileRef has access to the file object once it's been selected by the user</span></code></pre>
-				<p>to access your file object pass your React ref to the <code>getFileFromRef</code> function (as shown above).</p>
+</code></pre>
 				<a href="#form-consumer" id="form-consumer" style="color: inherit; text-decoration: none;">
 					<h2>Form Consumer</h2>
 				</a>
@@ -132,11 +136,12 @@
 				Below is an example of a form containing a single text input field.</p>
 				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {Form, FormConsumer, IFormContext, isFieldEmpty, TextInputField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bare-forms"</span>;
 
-<span class="hljs-keyword">const</span> state = { age: <span class="hljs-number">0</span> }
+<span class="hljs-comment">// Example within a class component</span>
+state = { age: <span class="hljs-number">0</span> }
 
-&lt;Form&gt;
+&lt;Form state={myState} context={<span class="hljs-keyword">this</span>}&gt;
     &lt;TextInputField
-        value={state.age}
+        value={<span class="hljs-keyword">this</span>.state.age}
         name=<span class="hljs-string">"age"</span>
         hint=<span class="hljs-string">"Enter your age"</span>
         labelText=<span class="hljs-string">"Age"</span>
@@ -176,11 +181,7 @@
 				<a href="#form-component" id="form-component" style="color: inherit; text-decoration: none;">
 					<h4>Form component</h4>
 				</a>
-				<p>The main Form component that is required to wrap all <em>RBF</em> components.
-					If the component that uses the Form component is a functional component then
-					only the state props are required. If you are calling the <em>RBF</em> Form component from a
-					class component then you must pass your local context or <code>this</code> keyword to
-				the <code>context</code> prop.</p>
+				<p>The main Form component that is required to wrap all RBF components. If the component that uses the Form component is a functional component then only the state props &amp; state update function returned from the useState hook are required. If you are calling Form component from a class component then you must pass your local context or this keyword to the context prop.</p>
 				<p>An example using <em>RBF</em> Form component in a functional component</p>
 				<pre><code class="language-typescript"><span class="hljs-comment">// Minimal setup for a RBF's Form component</span>
 
@@ -188,7 +189,8 @@
   username: <span class="hljs-string">''</span>,
 }
 
-&lt;Form state={myState}&gt;&lt;/Form&gt;</code></pre>
+ <span class="hljs-keyword">const</span> [state, setState] = React.useState(state);
+ &lt;Form state={myState} context={setState}&gt;&lt;/Form&gt;&gt;</code></pre>
 				<p>To use <em>RBF</em> Form component from a class component, you must pass in your
 				local context or <code>this</code> keyword.</p>
 				<pre><code class="language-typescript"><span class="hljs-comment">// Minimal setup for a RBF's Form component for a class component</span>
@@ -420,7 +422,7 @@
 				<pre><code class="language-html">      <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"</span> <span class="hljs-attr">integrity</span>=<span class="hljs-string">"sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"</span> <span class="hljs-attr">crossorigin</span>=<span class="hljs-string">"anonymous"</span>&gt;</span></code></pre>
 				<p>But a much better way is to use Sass, so then we can choose which Bootstrap 4 Sass components we want our React app to use.</p>
 				<pre><code>    npm <span class="hljs-keyword">install</span> bootstrap</code></pre><p>Then install the loaders</p>
-				<pre><code>npm <span class="hljs-keyword">install</span> <span class="hljs-keyword">style</span>-loader css-loader sass-loader <span class="hljs-comment">--save-dev</span>
+				<pre><code>npm <span class="hljs-keyword">install</span> sass <span class="hljs-keyword">style</span>-loader css-loader sass-loader <span class="hljs-comment">--save-dev</span>
 
 <span class="hljs-comment"># In your webpack.config.js:</span>
 
@@ -439,6 +441,9 @@
 				</ul>
 				<p>You can import them like this:</p>
 				<pre><code class="language-scss"><span class="hljs-comment">// - mystyles.scss</span>
+<span class="hljs-comment">// If you want all the styles</span>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">"~bootstrap"</span>;
+<span class="hljs-comment">// Even better, just import the bootstrap components you need</span>
 <span class="hljs-comment">// Required</span>
 <span class="hljs-keyword">@import</span> <span class="hljs-string">"~bootstrap/scss/functions"</span>;
 <span class="hljs-keyword">@import</span> <span class="hljs-string">"~bootstrap/scss/variables"</span>;

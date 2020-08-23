@@ -4,7 +4,7 @@ import {
     Form, isFieldEmpty,
     TextInputField,
 } from "../../src";
-
+import { MockComponent } from "../form.spec";
 
 
 describe("#TextInputField()", () => {
@@ -13,11 +13,7 @@ describe("#TextInputField()", () => {
             username: "joe",
         };
 
-        let component = renderer.create(
-            <Form state={state}>
-                <TextInputField name="username" value={state.username} />
-            </Form>
-        );
+        let component = renderer.create(<MockComponent state={state} />);
 
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
@@ -27,11 +23,7 @@ describe("#TextInputField()", () => {
         let state = {
             username: "",
         };
-        let component = renderer.create(
-            <Form state={state}>
-                <TextInputField name="username" value={state.username} />
-            </Form>
-        );
+        let component = renderer.create(<MockComponent state={state} bare={true} />);
 
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
@@ -43,11 +35,7 @@ describe("#TextInputField()", () => {
             username: "joebloggs"
         };
 
-        let testFormRederer: any = renderer.create(
-            <Form state={state}>
-                <TextInputField name="username" value={state.username} />
-            </Form>
-        );
+        let testFormRederer: any = renderer.create(<MockComponent state={state} />);
 
         const testFormInstance = testFormRederer.root;
         expect(testFormInstance.props.state.username).toEqual(state.username);
@@ -60,13 +48,12 @@ describe("#TextInputField()", () => {
         };
 
         let component = renderer.create(
-            <Form state={state} name="myForm">
-                <TextInputField
+            <MockComponent state={state}
+                children={<TextInputField
                     name="username"
                     value={state.username}
                     validators={[isFieldEmpty(5)]}
-                />
-            </Form>
+                />} />
         );
 
         let tree = component.toJSON();
@@ -80,13 +67,12 @@ describe("#TextInputField()", () => {
 
 
         let testFormRenderer: any = renderer.create(
-                <Form state={state} name="myForm">
-                <TextInputField
-                    name="username"
-                    value={state.username}
-                    validators={[isFieldEmpty(5)]}
-                />
-                </Form>
+            <MockComponent state={state}
+            children={<TextInputField
+                name="username"
+                value={state.username}
+                validators={[isFieldEmpty(5)]}
+            />} />
         );
 
         const testFormInstance = testFormRenderer.root;

@@ -8,6 +8,7 @@ import {
 import {IFormContext} from "../../src/form";
 import {useEffect, useState} from "react";
 import {expression} from "@babel/template";
+import { MockComponent } from "../form.spec";
 
 
 
@@ -18,9 +19,9 @@ describe("#PasswordField()", () => {
         };
 
         let component = create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <PasswordField name="password" value={state.password} />
-            </Form>
+            </MockComponent>
         );
 
         let tree = component.toJSON();
@@ -33,9 +34,9 @@ describe("#PasswordField()", () => {
         };
 
         let component = create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <PasswordField name="password" value={state.password} />
-            </Form>
+            </MockComponent>
         );
 
         let tree = component.toJSON();
@@ -49,9 +50,9 @@ describe("#PasswordField()", () => {
         };
 
         let testFormRederer: any = create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <PasswordField name="password" value={state.password} />
-            </Form>
+            </MockComponent>
         );
 
         const testFormInstance = testFormRederer.root;
@@ -65,13 +66,13 @@ describe("#PasswordField()", () => {
         };
 
         let component = create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <PasswordField
                     name="password"
                     value={state.password}
                     validators={[isFieldEmpty(5)]}
                 />
-            </Form>
+            </MockComponent>
         );
 
         let tree = component.toJSON();
@@ -86,13 +87,13 @@ describe("#PasswordField()", () => {
 
         let testFormRederer: any = create(
             <div>
-                <Form state={state}>
+                <MockComponent state={state}>
                     <PasswordField
                         name="password"
                         value={state.password}
                         validators={[isFieldEmpty(5)]}
                     />
-                </Form>
+                </MockComponent>
             </div>
         );
 
@@ -108,13 +109,13 @@ describe("#PasswordField()", () => {
         };
 
         let component = create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <PasswordField name="password" value={state.password} />
                 <PasswordField
                     name="confirmPassword"
                     value={state.confirmPassword}
                     validators={[areFieldsEqual("password")]} />
-            </Form>
+            </MockComponent>
         );
 
         let tree = component.toJSON();
@@ -128,7 +129,7 @@ describe("#PasswordField()", () => {
         };
 
         let root = create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <PasswordField
                     name="password"
                     value={state.password}
@@ -137,7 +138,7 @@ describe("#PasswordField()", () => {
                     name="confirmPassword"
                     value={state.confirmPassword}
                     validators={[areFieldsEqual("password")]} />
-            </Form>
+            </MockComponent>
         );
 
         let tree = root.toJSON();
@@ -148,7 +149,7 @@ describe("#PasswordField()", () => {
             state.confirmPassword = "wi";
 
             root.update(
-                <Form state={state}>
+                <MockComponent state={state}>
                     <PasswordField
                         name="password"
                         value={state.password}
@@ -157,7 +158,7 @@ describe("#PasswordField()", () => {
                         name="confirmPassword"
                         value={state.confirmPassword}
                         validators={[areFieldsEqual("password")]} />
-                </Form>
+                </MockComponent>
             )
         });
 
@@ -173,7 +174,7 @@ describe("#PasswordField()", () => {
         };
 
         let root = create(
-            <Form state={state}>
+            <MockComponent state={state}>
                 <PasswordField
                     name="password"
                     value={state.password}
@@ -182,8 +183,8 @@ describe("#PasswordField()", () => {
                     name="confirmPassword"
                     value={state.confirmPassword}
                     validators={[areFieldsEqual("password")]} />
-                <SubmitButton>Submit Form</SubmitButton>
-            </Form>
+                <SubmitButton>Submit MockComponent</SubmitButton>
+            </MockComponent>
         );
 
         let tree: any = root.toJSON();
@@ -195,7 +196,7 @@ describe("#PasswordField()", () => {
             state.confirmPassword = "";
 
             root.update(
-                <Form state={state}>
+                <MockComponent state={state}>
                     <PasswordField
                         name="password"
                         value={state.password}
@@ -204,8 +205,8 @@ describe("#PasswordField()", () => {
                         name="confirmPassword"
                         value={state.confirmPassword}
                         validators={[areFieldsEqual("password")]} />
-                    <SubmitButton>Submit Form</SubmitButton>
-                </Form>
+                    <SubmitButton>Submit MockComponent</SubmitButton>
+                </MockComponent>
             )
         });
 
