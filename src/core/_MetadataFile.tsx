@@ -3,6 +3,7 @@ import {IValidation} from "../validators";
 import {getFieldValueType, IFile} from "./index";
 import {FIELD_NAMES} from "../elements";
 import {AbstractMetadata} from "./_AbstractMetadata";
+import { useEffect } from "react";
 
 
 /** @internal **/
@@ -33,7 +34,9 @@ export class MetadataFile<T extends IFieldValidation> extends AbstractMetadata<T
                     },
                 },
             };
-            this.updateState(state);
+            useEffect(() => {
+                this.updateState(state);
+            }, [state]);
             return;
         }
         if(this.state[this.name]) {

@@ -102,7 +102,6 @@ export class Main extends React.Component<IProps, IState> {
                             <Form
                                 state={this.state}
                                 context={this}
-                                bare={false}
                                 autoComplete="off"
                                 callback={() => console.log("Form submitted ----> ", getFileFromRef(this.myFileRef))}>
 
@@ -114,7 +113,7 @@ export class Main extends React.Component<IProps, IState> {
                                     validators={[isFieldEmpty(2)]}
                                 />
 
-                                <TextInputField
+                               <TextInputField
                                     value={this.state.username}
                                     name="username"
                                     hint="Enter your username"
@@ -136,7 +135,7 @@ export class Main extends React.Component<IProps, IState> {
                                 validators={[areFieldsEqual("password")]}
                             />
 
-                                <EmailField
+                               <EmailField
                                     name="email"
                                     value={this.state.email}
                                     hint="Your email"
@@ -150,7 +149,7 @@ export class Main extends React.Component<IProps, IState> {
                                     hint="Your email"
                                     labelText="Must be at least 20 characters"
                                     validators={[isFieldEmpty(20)]}
-                                />
+                                /> 
 
                                 <CheckBoxField
                                     name="terms"
@@ -159,13 +158,6 @@ export class Main extends React.Component<IProps, IState> {
                                     labelText="Agree to terms & conditions"
                                     validators={[isChecked()]}
                                 />
-
-                                {/*<SelectField*/}
-                                {/*    size="lg"*/}
-                                {/*    value={this.state.fruitChoice}*/}
-                                {/*    name="fruitChoice"*/}
-                                {/*    options={["banana", "apple", "orange"]}*/}
-                                {/*/>*/}
 
                                 <SelectField
                                     size="lg"

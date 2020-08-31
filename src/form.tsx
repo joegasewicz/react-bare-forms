@@ -246,10 +246,9 @@ export const Form = (props: IForm) => {
             ),
         },
     };
-
     return (
         <FormProvider value={_providerContext}>
-            <form onSubmit={handleSubmit(props)} {...props}>{props.children}</form>
+            <form onSubmit={handleSubmit(props)}>{props.children}</form>
         </FormProvider>
     );
 };

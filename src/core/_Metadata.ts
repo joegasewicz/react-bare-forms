@@ -3,6 +3,7 @@ import {IValidation} from "../validators";
 import {getFieldValueType} from "./index";
 import {FIELD_NAMES} from "../elements";
 import {AbstractMetadata} from "./_AbstractMetadata";
+import { useEffect } from "react";
 
 
 /** @internal **/
@@ -33,7 +34,9 @@ export class Metadata<T extends IFieldValidation> extends AbstractMetadata<T> {
                     },
                 },
             };
-            this.updateState(state);
+            useEffect(() => {
+                this.updateState(state);
+            }, [state]);
         } else if(this.state[this.name] && value !== this.state[this.name].fieldValues.currentValue) {
             state = {
                 ...this.state,
@@ -47,7 +50,9 @@ export class Metadata<T extends IFieldValidation> extends AbstractMetadata<T> {
                     isTouched: true,
                 },
             };
-            this.updateState(state);
+            useEffect(() => {
+                this.updateState(state);
+            }, [state]);
         }
     }
 }

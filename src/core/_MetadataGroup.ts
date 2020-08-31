@@ -4,6 +4,7 @@ import {getFieldValueType} from "./index";
 import {FIELD_NAMES} from "../elements";
 import {AbstractMetadata} from "./_AbstractMetadata";
 import {TypeMetadataRadioGroupValue} from "../field_classes/_RadioField";
+import { useEffect } from "react";
 
 
 /** @internal **/
@@ -51,15 +52,21 @@ export class MetadataGroup<T> extends AbstractMetadata<T> {
         let state = {};
         if(!this.state[current.parentName]) {
             state = this._createGroupState(current, validation, false);
-            this.updateState(state);
+            useEffect(() => {
+                this.updateState(state);
+            });
         } else if(this.state[current.parentName] && !(this.name in this.state[current.parentName])) {
             // For readability - keep this clause & the next, separate please
             state = this._createGroupState(current, validation);
-            this.updateState(state);
+            useEffect(() => {
+                this.updateState(state);
+            });
         } else if((this.state[current.parentName] as any)[this.name] &&
             (this.state[current.parentName] as any)[this.name].fieldValues.value !== current.value) {
             state = this._createGroupState(current, validation);
-            this.updateState(state);
+            useEffect(() => {
+                this.updateState(state);
+            });
         }
     }
 
