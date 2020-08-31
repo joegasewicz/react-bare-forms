@@ -61,6 +61,7 @@ export function FPForm() {
                 name="password"
                 value={fpState.password}
                 labelText="Password"
+                validators={[isFieldEmpty(2)]}
             />
                     
             <SubmitButton>Submit Form</SubmitButton>
