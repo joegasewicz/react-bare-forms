@@ -2,71 +2,65 @@
 
 exports[`#<SelectField> should render props 1`] = `
 <form
-  bare="false"
-  context={[Function]}
   onSubmit={[Function]}
-  state={
-    Object {
-      "select_data_id": undefined,
-    }
-  }
 >
-  <select
-    className=""
-    name="fruitChoice"
-    onChange={[Function]}
+  <div
+    className="form-group"
   >
-    <option
-      value="banana"
+    <select
+      className="form-control form-control-lg "
+      name="fruitChoice"
+      onChange={[Function]}
     >
-      banana
-    </option>
-    <option
-      value="apple"
-    >
-      apple
-    </option>
-    <option
-      value="orange"
-    >
-      orange
-    </option>
-  </select>
+      <option
+        value="banana"
+      >
+        banana
+      </option>
+      <option
+        value="apple"
+      >
+        apple
+      </option>
+      <option
+        value="orange"
+      >
+        orange
+      </option>
+    </select>
+  </div>
 </form>
 `;
 
 exports[`#<SelectField> should render props from object keys 1`] = `
 <form
-  bare="false"
-  context={[Function]}
   onSubmit={[Function]}
-  state={
-    Object {
-      "select_data_id": undefined,
-    }
-  }
 >
-  <select
-    className=""
-    name="fruitChoice"
-    onChange={[Function]}
+  <div
+    className="form-group"
   >
-    <option
-      value={1}
+    <select
+      className="form-control form-control-lg "
+      name="fruitChoice"
+      onChange={[Function]}
     >
-      first
-    </option>
-    <option
-      value={2}
-    >
-      second
-    </option>
-    <option
-      value={3}
-    >
-      third
-    </option>
-  </select>
+      <option
+        value={1}
+      >
+        first
+      </option>
+      <option
+        value={2}
+      >
+        second
+      </option>
+      <option
+        value={3}
+      >
+        third
+      </option>
+    </select>
+  </div>
 </form>
 `;
 
@@ -85,13 +79,6 @@ exports[`<Form /> should render a form element with bootstrap extra tags 1`] = `
 
 exports[`<Form /> should render a form element with no extra tags 1`] = `
 <form
-  bare="false"
-  context={[Function]}
   onSubmit={[Function]}
-  state={
-    Object {
-      "username": "joebloggs",
-    }
-  }
 />
 `;

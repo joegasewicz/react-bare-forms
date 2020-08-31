@@ -2,58 +2,49 @@
 
 exports[`#<FileField /> it should display validation errors 1`] = `
 <form
-  bare="false"
-  context={[Function]}
   onSubmit={[Function]}
-  state={
-    Object {
-      "my_file": null,
-    }
-  }
 >
-  <input
-    className=""
-    onChange={[Function]}
-    type="file"
-  />
+  <div
+    className="form-group"
+  >
+    <input
+      className="form-control-file "
+      onChange={[Function]}
+      type="file"
+    />
+  </div>
 </form>
 `;
 
 exports[`#<FileField /> should render a single input tag with no bootstrap styles 1`] = `
 <form
-  bare="false"
-  context={[Function]}
   onSubmit={[Function]}
-  state={
-    Object {
-      "my_file": null,
-    }
-  }
 >
-  <input
-    className=""
-    onChange={[Function]}
-    type="file"
-  />
+  <div
+    className="form-group"
+  >
+    <input
+      className="form-control-file "
+      onChange={[Function]}
+      type="file"
+    />
+  </div>
 </form>
 `;
 
 exports[`#<FileField /> should render an input field with the bootstrap styled tags 1`] = `
 <form
-  bare="false"
-  context={[Function]}
   onSubmit={[Function]}
-  state={
-    Object {
-      "my_file": null,
-    }
-  }
 >
-  <input
-    className=""
-    onChange={[Function]}
-    type="file"
-  />
+  <div
+    className="form-group"
+  >
+    <input
+      className="form-control-file "
+      onChange={[Function]}
+      type="file"
+    />
+  </div>
 </form>
 `;
 
@@ -72,13 +63,6 @@ exports[`<Form /> should render a form element with bootstrap extra tags 1`] = `
 
 exports[`<Form /> should render a form element with no extra tags 1`] = `
 <form
-  bare="false"
-  context={[Function]}
   onSubmit={[Function]}
-  state={
-    Object {
-      "username": "joebloggs",
-    }
-  }
 />
 `;

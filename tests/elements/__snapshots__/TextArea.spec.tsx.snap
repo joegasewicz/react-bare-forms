@@ -2,64 +2,55 @@
 
 exports[`#<TextAreaField /> it should display validation errors 1`] = `
 <form
-  bare="false"
-  context={[Function]}
   onSubmit={[Function]}
-  state={
-    Object {
-      "about_text": "a",
-    }
-  }
 >
-  <textarea
-    className=""
-    name="about_text"
-    onChange={[Function]}
-    rows={20}
-    value="a"
-  />
+  <div
+    className="form-group"
+  >
+    <textarea
+      className="form-control "
+      name="about_text"
+      onChange={[Function]}
+      rows={20}
+      value="a"
+    />
+  </div>
 </form>
 `;
 
 exports[`#<TextAreaField /> should render a single input tag with no bootstrap styles 1`] = `
 <form
-  bare="false"
-  context={[Function]}
   onSubmit={[Function]}
-  state={
-    Object {
-      "about_text": "",
-    }
-  }
 >
-  <textarea
-    className=""
-    name="about_text"
-    onChange={[Function]}
-    rows={5}
-    value=""
-  />
+  <div
+    className="form-group"
+  >
+    <textarea
+      className="form-control "
+      name="about_text"
+      onChange={[Function]}
+      rows={5}
+      value=""
+    />
+  </div>
 </form>
 `;
 
 exports[`#<TextAreaField /> should render an input field with the bootstrap styled tags 1`] = `
 <form
-  bare="false"
-  context={[Function]}
   onSubmit={[Function]}
-  state={
-    Object {
-      "about_text": "joe",
-    }
-  }
 >
-  <textarea
-    className=""
-    name="about_text"
-    onChange={[Function]}
-    rows={5}
-    value="joe"
-  />
+  <div
+    className="form-group"
+  >
+    <textarea
+      className="form-control "
+      name="about_text"
+      onChange={[Function]}
+      rows={5}
+      value="joe"
+    />
+  </div>
 </form>
 `;
 
@@ -78,13 +69,6 @@ exports[`<Form /> should render a form element with bootstrap extra tags 1`] = `
 
 exports[`<Form /> should render a form element with no extra tags 1`] = `
 <form
-  bare="false"
-  context={[Function]}
   onSubmit={[Function]}
-  state={
-    Object {
-      "username": "joebloggs",
-    }
-  }
 />
 `;

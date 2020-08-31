@@ -2,48 +2,31 @@
 
 exports[`#TextInputField() it should display validation errors 1`] = `
 <form
-  bare="false"
-  context={[Function]}
   onSubmit={[Function]}
-  state={
-    Object {
-      "username": "a",
-    }
-  }
 >
-  <input
-    className=""
-    name="username"
-    onChange={[Function]}
-    type="text"
-    value="a"
-  />
+  <div
+    className="form-group"
+  >
+    <input
+      className="form-control "
+      name="username"
+      onChange={[Function]}
+      type="text"
+      value="a"
+    />
+  </div>
 </form>
 `;
 
 exports[`#TextInputField() should render a single input tag with no bootstrap styles 1`] = `
 <form
-  bare={true}
-  context={[Function]}
   onSubmit={[Function]}
-  state={
-    Object {
-      "username": "",
-    }
-  }
 />
 `;
 
 exports[`#TextInputField() should render an input field with the bootstrap styled tags 1`] = `
 <form
-  bare="false"
-  context={[Function]}
   onSubmit={[Function]}
-  state={
-    Object {
-      "username": "joe",
-    }
-  }
 />
 `;
 
@@ -62,13 +45,6 @@ exports[`<Form /> should render a form element with bootstrap extra tags 1`] = `
 
 exports[`<Form /> should render a form element with no extra tags 1`] = `
 <form
-  bare="false"
-  context={[Function]}
   onSubmit={[Function]}
-  state={
-    Object {
-      "username": "joebloggs",
-    }
-  }
 />
 `;

@@ -2,64 +2,55 @@
 
 exports[`#EmailField() it should display validation errors 1`] = `
 <form
-  bare="false"
-  context={[Function]}
   onSubmit={[Function]}
-  state={
-    Object {
-      "email": "joejoe",
-    }
-  }
 >
-  <input
-    className=""
-    name="email"
-    onChange={[Function]}
-    type="email"
-    value="joejoe"
-  />
+  <div
+    className="form-group"
+  >
+    <input
+      className="form-control "
+      name="email"
+      onChange={[Function]}
+      type="email"
+      value="joejoe"
+    />
+  </div>
 </form>
 `;
 
 exports[`#EmailField() should render a single input tag with no bootstrap styles 1`] = `
 <form
-  bare="false"
-  context={[Function]}
   onSubmit={[Function]}
-  state={
-    Object {
-      "email": "email@email.com",
-    }
-  }
 >
-  <input
-    className=""
-    name="email"
-    onChange={[Function]}
-    type="email"
-    value="email@email.com"
-  />
+  <div
+    className="form-group"
+  >
+    <input
+      className="form-control "
+      name="email"
+      onChange={[Function]}
+      type="email"
+      value="email@email.com"
+    />
+  </div>
 </form>
 `;
 
 exports[`#EmailField() should render an email field with the bootstrap styled tags 1`] = `
 <form
-  bare="false"
-  context={[Function]}
   onSubmit={[Function]}
-  state={
-    Object {
-      "email": "joe@joe.com",
-    }
-  }
 >
-  <input
-    className=""
-    name="email"
-    onChange={[Function]}
-    type="email"
-    value="joe@joe.com"
-  />
+  <div
+    className="form-group"
+  >
+    <input
+      className="form-control "
+      name="email"
+      onChange={[Function]}
+      type="email"
+      value="joe@joe.com"
+    />
+  </div>
 </form>
 `;
 
@@ -78,13 +69,6 @@ exports[`<Form /> should render a form element with bootstrap extra tags 1`] = `
 
 exports[`<Form /> should render a form element with no extra tags 1`] = `
 <form
-  bare="false"
-  context={[Function]}
   onSubmit={[Function]}
-  state={
-    Object {
-      "username": "joebloggs",
-    }
-  }
 />
 `;

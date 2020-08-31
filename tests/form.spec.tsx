@@ -15,7 +15,7 @@ import { shallow, render } from 'enzyme';
 let container: any = null;
 
 export function MockComponent(props: any) {
-    const {state = {}, bare = "false" , children } = props;
+    const {state = {}, bare = false , children } = props;
     const [_state, setState] = React.useState(state);
     return (
     <Form state={_state} context={setState} bare={bare}>
