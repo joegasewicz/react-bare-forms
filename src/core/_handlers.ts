@@ -10,6 +10,7 @@ type TypeHandler = (e: React.ChangeEvent<any>, name: string) => void;
 export function updateParentState(parentState: any, setParentState: Function): TypeHandler {
     return (e: React.ChangeEvent<any>, name: string) => {
         setParentState({
+            ...parentState,
             [name]: e.target.value,
         });
     };

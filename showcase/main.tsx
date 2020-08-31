@@ -39,7 +39,7 @@ interface IState{
 }
 
 export function FPForm() {
-    const state = { age: 0 }
+    const state = { age: 0, password: "" }
 
     const [fpState, fpSetState] = React.useState(state);
     return <>
@@ -56,6 +56,12 @@ export function FPForm() {
                 hint="Enter your age"
                 labelText="Age"
                 validators={[isFieldEmpty(2)]} />
+
+            <PasswordField
+                name="password"
+                value={fpState.password}
+                labelText="Password"
+            />
                     
             <SubmitButton>Submit Form</SubmitButton>
             <br />
