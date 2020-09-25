@@ -1,6 +1,6 @@
 {
   "name": "react-bare-forms",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "A bare minimal React form library for quick & simple forms.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
