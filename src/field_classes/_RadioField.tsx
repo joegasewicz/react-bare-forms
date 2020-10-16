@@ -50,7 +50,7 @@ export class RadioField<T extends IRadioField> extends AbstractField<T> implemen
         return () => {
             return <input
                 type={this.type}
-                checked={(this.context as IFormContext).state[this.props.name] || false}
+                checked={this.getStatePositionFromFormKey()[this.props.name] || false}
                 name={this.props.name}
                 onChange={e => this.handleOnChange(e, (this.radioContext as IRadioGroupParentContext))}
                 className={AbstractField.mergeDefaultCssWithProps("form-check-input", this.props.className, (this.context as any).bare)}
