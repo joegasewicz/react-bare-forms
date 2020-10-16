@@ -12,7 +12,8 @@
     "start": "webpack-dev-server --open \"Brave Browser\" --watch --config webpack.config.dev.js --output-path=dist --output-filename=bundle.js",
     "test": "jest",
     "test:update": "jest --updateSnapshot",
-    "typedoc": "typedoc --mode modules --ignoreCompilerErrors --stripInternal --out docs src && touch docs/.nojekyll && cp -r images docs/images"
+    "typedoc": "typedoc --mode modules --ignoreCompilerErrors --stripInternal --out docs src && touch docs/.nojekyll && cp -r images docs/images",
+    "release": "npm publish"
   },
   "jest": {
     "setupFiles": [
