@@ -92,8 +92,8 @@ export interface IFormContext {
     readonly formKey?: string;
     metadata: IMetadata;
     state: any;
-    updateParentState?: (e: React.ChangeEvent<any>, name: string) => void;
-    updateRadioGroupStateFromPassedInContext?: (e: React.ChangeEvent<any>, name: string, radioGroup: any) => void;
+    updateParentState?: (e: React.ChangeEvent<any>, name: string, formKey?: string) => void;
+    updateRadioGroupStateFromPassedInContext?: (e: React.ChangeEvent<any>, name: string, radioGroup: any, formKey?: string) => void;
 }
 /** @internal */
 const INPUTS_STATE: TypeInputMetadata = {} as any;
@@ -203,8 +203,9 @@ export const Form = (props: IForm) => {
         useEffect(() => {
             props.context.setState({
                 ...parentState,
+                formData: parentState.formData,
             });
-        }, [parentState]);
+        }, [parentState.formData]);
     } else if (props.context) {
         useEffect(() => {
             props.context({
@@ -221,8 +222,8 @@ export const Form = (props: IForm) => {
         formKey: props.formKey,
         debug: props.debug || context.debug,
         dynamic: props.dynamic || context.dynamic,
-        updateParentState: updateParentState(parentState, setParentState),
-        updateRadioGroupStateFromPassedInContext: updateRadioGroupStateFromPassedInContext(parentState, setParentState),
+        updateParentState: updateParentState(parentState, setParentState, props.formKey),
+        updateRadioGroupStateFromPassedInContext: updateRadioGroupStateFromPassedInContext(parentState, setParentState, props.formKey),
         metadata: {
             [METADATA_NAMES.INPUTS]: new Metadata<IInputFieldMetadata>(
                 inputState as {},

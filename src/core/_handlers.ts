@@ -7,29 +7,47 @@ import {IRadioGroupParentContext} from "../form";
 type TypeHandler = (e: React.ChangeEvent<any>, name: string) => void;
 
 /** @internal */
-export function updateParentState(parentState: any, setParentState: Function): TypeHandler {
+function _getCorrectStatePositionFromFormKey(parentState: any, formKey: string = "", obj: any = {}): {[key: string]: any} {
+    if(formKey) {
+       let res =  {
+            [formKey]: {
+                ...parentState[formKey],
+                ...obj,
+            },
+        }
+        return res;
+    } else {
+        return {
+            ...parentState,
+            ...obj,
+        }
+    }
+}
+
+/** @internal */
+export function updateParentState(parentState: any, setParentState: Function, formKey: string = ""): TypeHandler {
     return (e: React.ChangeEvent<any>, name: string) => {
         setParentState({
             ...parentState,
-            [name]: e.target.value,
+            ..._getCorrectStatePositionFromFormKey(parentState, formKey, {[name]: e.target.value}),
         });
     };
 }
 
 /** @internal */
-export function updateRadioGroupStateFromPassedInContext(parentState: any, setParentState: Function) {
+export function updateRadioGroupStateFromPassedInContext(parentState: any, setParentState: Function, formKey: string = "") {
     return (e: React.ChangeEvent<any>, name: string, radioGroup: IRadioGroupParentContext) => {
         if (radioGroup) {
             let newState = {
                 ...parentState,
-                [name]: true,
+                ..._getCorrectStatePositionFromFormKey(parentState, formKey, {[name]: e.target.value}),
             };
-            let parentName = (radioGroup as any).parent.name;
+            let parentName = (radioGroup as any).parent.name; // TODO remove if not used...
             for(let children of radioGroup.children) {
                 if(children.props.name !== name) {
                     newState = {
                         ...newState,
-                        [children.props.name]: false,
+                        ..._getCorrectStatePositionFromFormKey(parentState, formKey, {[children.props.name]: false}),
                     }
                 }
             }

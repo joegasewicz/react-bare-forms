@@ -25,17 +25,20 @@ import {
 interface IProps{}
 
 interface IState{
-    username: string;
-    "age": number;
-    password: string;
-    confirmPassword: string;
-    email: string;
-    about: string;
-    terms: boolean;
-    radio1: boolean;
-    radio2: boolean;
-    radio3: boolean;
-    fruitChoice: string;
+
+    formData: {
+        username: string;
+        age: number;
+        password: string;
+        confirmPassword: string;
+        email: string;
+        about: string;
+        terms: boolean;
+        radio1: boolean;
+        radio2: boolean;
+        radio3: boolean;
+        fruitChoice: string;
+    }
 }
 
 export function FPForm() {
@@ -83,17 +86,20 @@ export class Main extends React.Component<IProps, IState> {
     myFileRef = createFileRef();
 
     state = {
-        username: "",
-        age: 0,
-        password: "",
-        confirmPassword: "",
-        email: "",
-        about: "",
-        terms: false,
-        radio1: false,
-        radio2: true,
-        radio3: false,
-        fruitChoice: "",
+        formData: {
+          username: "",
+            age: 0,
+            password: "",
+            confirmPassword: "",
+            email: "",
+            about: "",
+            terms: false,
+            radio1: false,
+            radio2: true,
+            radio3: false,
+            fruitChoice: "",
+        }
+
     };
 
     public render(): React.ReactElement {
@@ -101,12 +107,13 @@ export class Main extends React.Component<IProps, IState> {
             <>
                             <Form
                                 state={this.state}
+                                formKey="formData"
                                 context={this}
                                 autoComplete="off"
                                 callback={() => console.log("Form submitted ----> ", getFileFromRef(this.myFileRef))}>
 
                                 <TextInputField
-                                    value={this.state.age}
+                                    value={this.state.formData.age}
                                     name="age"
                                     hint="Enter your age"
                                     labelText="Age"
@@ -114,30 +121,30 @@ export class Main extends React.Component<IProps, IState> {
                                 />
 
                                <TextInputField
-                                    value={this.state.username}
+                                    value={this.state.formData.username}
                                     name="username"
                                     hint="Enter your username"
                                     labelText="Username"
                                     validators={[isFieldEmpty(5)]}
                                 />
 
-                                <PasswordField
-                                    name="password"
-                                    value={this.state.password}
-                                    labelText="Password"
-                                />
+                                {/*<PasswordField*/}
+                                {/*    name="password"*/}
+                                {/*    value={this.state.formData.password}*/}
+                                {/*    labelText="Password"*/}
+                                {/*/>*/}
 
-                                <PasswordField
-                                name="confirmPassword"
-                                value={this.state.confirmPassword}
-                                hint="Password must match"
-                                labelText="Confirm Password"
-                                validators={[areFieldsEqual("password")]}
-                            />
+                                {/*<PasswordField*/}
+                                {/*    name="confirmPassword"*/}
+                                {/*    value={this.state.formData.confirmPassword}*/}
+                                {/*    hint="Password must match"*/}
+                                {/*    labelText="Confirm Password"*/}
+                                {/*    validators={[areFieldsEqual("password")]}*/}
+                                {/*/>*/}
 
                                <EmailField
                                     name="email"
-                                    value={this.state.email}
+                                    value={this.state.formData.email}
                                     hint="Your email"
                                     labelText="Please enter your email"
                                     validators={[isEmailValid()]}
@@ -145,7 +152,7 @@ export class Main extends React.Component<IProps, IState> {
 
                                 <TextAreaField
                                     name="about"
-                                    value={this.state.about}
+                                    value={this.state.formData.about}
                                     hint="Your email"
                                     labelText="Must be at least 20 characters"
                                     validators={[isFieldEmpty(20)]}
@@ -153,7 +160,7 @@ export class Main extends React.Component<IProps, IState> {
 
                                 <CheckBoxField
                                     name="terms"
-                                    checked={this.state.terms}
+                                    checked={this.state.formData.terms}
                                     hint="Click to agree"
                                     labelText="Agree to terms & conditions"
                                     validators={[isChecked()]}
@@ -161,7 +168,7 @@ export class Main extends React.Component<IProps, IState> {
 
                                 <SelectField
                                     size="lg"
-                                    value={this.state.fruitChoice}
+                                    value={this.state.formData.fruitChoice}
                                     name="fruitChoice"
                                     objectKey="id"
                                     objectValue="fruit"
@@ -179,7 +186,7 @@ export class Main extends React.Component<IProps, IState> {
                                 <RadioGroup name="group1">
                                     <RadioField
                                         name="radio1"
-                                        checked={this.state.radio1}
+                                        checked={this.state.formData.radio1}
                                         hint="Click to agree"
                                         labelText="Agree to terms & conditions"
 
@@ -187,7 +194,7 @@ export class Main extends React.Component<IProps, IState> {
 
                                     <RadioField
                                         name="radio2"
-                                        checked={this.state.radio2}
+                                        checked={this.state.formData.radio2}
                                         hint="Click to agree"
                                         labelText="Agree to terms & conditions"
                                         validators={[isRadioChecked()]}
@@ -195,7 +202,7 @@ export class Main extends React.Component<IProps, IState> {
 
                                     <RadioField
                                         name="radio3"
-                                        checked={this.state.radio3}
+                                        checked={this.state.formData.radio3}
                                         hint="Click to agree"
                                         labelText="Agree to terms & conditions"
                                     />
