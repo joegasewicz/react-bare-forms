@@ -40,9 +40,10 @@ export type IValidationVariable = (arg?: any) => IValidationFunction;
 export const areFieldsEqual: IValidationVariable = customValidator((fieldKey, fieldValue, context: IFormContext) => {
     let testField: IField;
     let message = [`Fields do not match`];
-    if(fieldKey in context.state) {
-        testField = context.state[fieldKey];
-        if(!testField || !fieldValue  || fieldValue !== context.state[fieldKey]) {
+    let contextState = getFormStateFromContext(context);
+    if(fieldKey in contextState) {
+        testField = contextState[fieldKey];
+        if(!testField || !fieldValue  || fieldValue !== contextState[fieldKey]) {
             return message;
         }
     } else {
@@ -239,4 +240,21 @@ export function customValidator(callback: ICustomValidatorCallback): (arg: any) 
             return validationData;
         }
     }
+}
+
+/**
+ * Helper function to get correct state from the context object within a validator:
+ *  - **arg** context {IFormContext}
+ *  @example
+ *  ```
+ *  let contextState = getFormStateFromContext(context);
+ * ```
+ * @param context
+ * @function
+ */
+export function getFormStateFromContext(context: IFormContext) {
+    if(context.formKey) {
+        return context.state[context.formKey];
+    }
+    return context.state;
 }

@@ -32,7 +32,7 @@ export class CheckBoxField<T extends IField> extends AbstractField<T> implements
         return () => (<>{<input
                 type={this.type}
                 checked={this.getStatePositionFromFormKey()[this.props.name] || false}
-                onChange={(e) => (this.context as any).updateParentState(this.overrideEvent(e, (this.context as IFormContext).state[this.props.name]), this.props.name)}
+                onChange={(e) => (this.context as any).updateParentState(this.overrideEvent(e, this.getStatePositionFromFormKey()[this.props.name]), this.props.name)}
                 name={this.props.name}
                 className={AbstractField.mergeDefaultCssWithProps("form-check-input", this.props.className, (this.context as any).bare)}
         />}</>);

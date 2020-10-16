@@ -85,6 +85,7 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_validators_.html#customvalidator" class="tsd-kind-icon">custom<wbr>Validator</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_validators_.html#getformstatefromcontext" class="tsd-kind-icon">get<wbr>Form<wbr>State<wbr>From<wbr>Context</a></li>
 							</ul>
 						</section>
 					</div>
@@ -95,10 +96,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
 					<a name="arefieldsequal" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> are<wbr>Fields<wbr>Equal</h3>
-					<div class="tsd-signature tsd-kind-icon">are<wbr>Fields<wbr>Equal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((fieldKey, fieldValue, context: IFormContext) &#x3D;&gt; {let testField: IField;let message &#x3D; [&#x60;Fields do not match&#x60;];if(fieldKey in context.state) {testField &#x3D; context.state[fieldKey];if(!testField || !fieldValue  || fieldValue !&#x3D;&#x3D; context.state[fieldKey]) {return message;}} else {throw new Error(&#x60;React-BareForms Error: No Field with name of ${fieldKey} exists when calling &#x27;areFieldsEqual&#x27; &#x60;+ &#x60;validator function.\n For more info, visit: &#x60;+ &#x60;https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#arefieldsequal&#x60;,);}})</span></div>
+					<div class="tsd-signature tsd-kind-icon">are<wbr>Fields<wbr>Equal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((fieldKey, fieldValue, context: IFormContext) &#x3D;&gt; {let testField: IField;let message &#x3D; [&#x60;Fields do not match&#x60;];let contextState &#x3D; getFormStateFromContext(context);if(fieldKey in contextState) {testField &#x3D; contextState[fieldKey];if(!testField || !fieldValue  || fieldValue !&#x3D;&#x3D; contextState[fieldKey]) {return message;}} else {throw new Error(&#x60;React-BareForms Error: No Field with name of ${fieldKey} exists when calling &#x27;areFieldsEqual&#x27; &#x60;+ &#x60;validator function.\n For more info, visit: &#x60;+ &#x60;https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#arefieldsequal&#x60;,);}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/2d8bd19/src/validators.ts#L40">src/validators.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/8b87c20/src/validators.ts#L40">src/validators.ts:40</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -111,15 +112,15 @@
 						<dl class="tsd-comment-tags">
 							<dt>example</dt>
 							<dd><pre><code> &lt;PasswordField
-     <span class="hljs-regexp">//</span> other props...
+     <span class="hljs-string">//</span> other props.<span class="hljs-string">..</span>
      name=<span class="hljs-string">"myPassword"</span>
  /&gt;
 
  &lt;ConfirmPasswordField
-       <span class="hljs-regexp">//</span> other props...
-       validators={[areFieldsEqual(<span class="hljs-string">"myPassword"</span>)]}
+       <span class="hljs-string">//</span> other props.<span class="hljs-string">..</span>
+       validators={[areFieldsEqual<span class="hljs-params">("myPassword")</span>]}
   /&gt;
-  <span class="hljs-regexp">//</span> message: Fields <span class="hljs-keyword">do</span> not match</code></pre></dd>
+  <span class="hljs-string">//</span> message: Fields do not match</code></pre></dd>
 							<dt>param</dt>
 							<dd><p>The name of the password form element you watch to match against</p>
 							</dd>
@@ -134,7 +135,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Checked<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((_, fieldValue, context) &#x3D;&gt; {if(fieldValue &#x3D;&#x3D;&#x3D; false) {return [&#x60;Must be checked&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/2d8bd19/src/validators.ts#L181">src/validators.ts:181</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/8b87c20/src/validators.ts#L182">src/validators.ts:182</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -164,7 +165,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Email<wbr>Valid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((_ , fieldValue, context) &#x3D;&gt; {const isValid &#x3D; EMAIL_REGEX.test(String(fieldValue).toLowerCase());if(!isValid) {return [&#x60;Must be a valid email&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/2d8bd19/src/validators.ts#L100">src/validators.ts:100</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/8b87c20/src/validators.ts#L101">src/validators.ts:101</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -176,10 +177,10 @@
 							<dd><p>import {EmailField, isEmailValid} from &quot;react-base-forms&quot;</p>
 								<p>const state = { terms: false }</p>
 								<pre><code> &lt;EmailField
-   <span class="hljs-regexp">//</span> other props...
-   validators={[isEmailValid()]}
+   <span class="hljs-comment">// other props...</span>
+   validators={[isEmailValid<span class="hljs-comment">()</span>]}
  /&gt;
- <span class="hljs-regexp">//</span> message: Must be a valid email</code></pre></dd>
+ <span class="hljs-comment">// message: Must be a valid email</span></code></pre></dd>
 							<dt>function</dt>
 							<dd></dd>
 						</dl>
@@ -191,7 +192,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Field<wbr>Empty<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((minLength, fieldValue, context: IFormContext) &#x3D;&gt; {const isValid &#x3D; (typeof fieldValue !&#x3D;&#x3D; &quot;undefined&quot; &amp;&amp; fieldValue.length &gt;&#x3D; minLength);if(!isValid) {return [&#x60;Must be at least ${minLength} characters&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/2d8bd19/src/validators.ts#L77">src/validators.ts:77</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/8b87c20/src/validators.ts#L78">src/validators.ts:78</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -224,7 +225,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>File<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((_, name, context) &#x3D;&gt; {if(!name) {return [&#x60;Must be a file type&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/2d8bd19/src/validators.ts#L128">src/validators.ts:128</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/8b87c20/src/validators.ts#L129">src/validators.ts:129</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -257,7 +258,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Radio<wbr>Checked<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((_ , value, context) &#x3D;&gt; {if(!value) {return [&#x60;This option must be selected&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/2d8bd19/src/validators.ts#L158">src/validators.ts:158</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/8b87c20/src/validators.ts#L159">src/validators.ts:159</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -301,7 +302,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/2d8bd19/src/validators.ts#L220">src/validators.ts:220</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/8b87c20/src/validators.ts#L221">src/validators.ts:221</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -368,6 +369,43 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="getformstatefromcontext" class="tsd-anchor"></a>
+					<h3>get<wbr>Form<wbr>State<wbr>From<wbr>Context</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Form<wbr>State<wbr>From<wbr>Context<span class="tsd-signature-symbol">(</span>context<span class="tsd-signature-symbol">: </span><a href="../interfaces/_form_.iformcontext.html" class="tsd-signature-type">IFormContext</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/8b87c20/src/validators.ts#L255">src/validators.ts:255</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Helper function to get correct state from the context object within a validator:</p>
+									<ul>
+										<li><strong>arg</strong> context {IFormContext}</li>
+									</ul>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code> <span class="hljs-keyword">let</span> contextState = get<span class="hljs-constructor">FormStateFromContext(<span class="hljs-params">context</span>)</span>;</code></pre></dd>
+									<dt>function</dt>
+									<dd></dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>context: <a href="../interfaces/_form_.iformcontext.html" class="tsd-signature-type">IFormContext</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -424,6 +462,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_validators_.html#customvalidator" class="tsd-kind-icon">custom<wbr>Validator</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_validators_.html#getformstatefromcontext" class="tsd-kind-icon">get<wbr>Form<wbr>State<wbr>From<wbr>Context</a>
 					</li>
 				</ul>
 			</nav>

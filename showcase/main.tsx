@@ -128,19 +128,19 @@ export class Main extends React.Component<IProps, IState> {
                                     validators={[isFieldEmpty(5)]}
                                 />
 
-                                {/*<PasswordField*/}
-                                {/*    name="password"*/}
-                                {/*    value={this.state.formData.password}*/}
-                                {/*    labelText="Password"*/}
-                                {/*/>*/}
+                                <PasswordField
+                                    name="password"
+                                    value={this.state.formData.password}
+                                    labelText="Password"
+                                />
 
-                                {/*<PasswordField*/}
-                                {/*    name="confirmPassword"*/}
-                                {/*    value={this.state.formData.confirmPassword}*/}
-                                {/*    hint="Password must match"*/}
-                                {/*    labelText="Confirm Password"*/}
-                                {/*    validators={[areFieldsEqual("password")]}*/}
-                                {/*/>*/}
+                                <PasswordField
+                                    name="confirmPassword"
+                                    value={this.state.formData.confirmPassword}
+                                    hint="Password must match"
+                                    labelText="Confirm Password"
+                                    validators={[areFieldsEqual("password")]}
+                                />
 
                                <EmailField
                                     name="email"

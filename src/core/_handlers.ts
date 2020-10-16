@@ -9,18 +9,17 @@ type TypeHandler = (e: React.ChangeEvent<any>, name: string) => void;
 /** @internal */
 function _getCorrectStatePositionFromFormKey(parentState: any, formKey: string = "", obj: any = {}): {[key: string]: any} {
     if(formKey) {
-       let res =  {
+       return {
             [formKey]: {
                 ...parentState[formKey],
                 ...obj,
             },
-        }
-        return res;
+        };
     } else {
         return {
             ...parentState,
             ...obj,
-        }
+        };
     }
 }
 
@@ -40,14 +39,13 @@ export function updateRadioGroupStateFromPassedInContext(parentState: any, setPa
         if (radioGroup) {
             let newState = {
                 ...parentState,
-                ..._getCorrectStatePositionFromFormKey(parentState, formKey, {[name]: e.target.value}),
+                 ..._getCorrectStatePositionFromFormKey(parentState, formKey, {[name]: true}),
             };
-            let parentName = (radioGroup as any).parent.name; // TODO remove if not used...
             for(let children of radioGroup.children) {
                 if(children.props.name !== name) {
                     newState = {
                         ...newState,
-                        ..._getCorrectStatePositionFromFormKey(parentState, formKey, {[children.props.name]: false}),
+                        ..._getCorrectStatePositionFromFormKey(newState, formKey, {[children.props.name]: false}),
                     }
                 }
             }
