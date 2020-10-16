@@ -48,4 +48,7 @@ export declare abstract class AbstractField<T extends IField> {
     abstract getField(): (context: IFormContext) => ReactElement;
     static mergeDefaultCssWithProps(defaultValue: string, cssProps: any, bare: boolean): string;
     overrideEvent(e: any, value: any): React.ChangeEvent<any>;
+    getStatePositionFromFormKey(): {
+        [key: string]: any;
+    };
 }

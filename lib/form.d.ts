@@ -80,8 +80,8 @@ export interface IFormContext {
     readonly formKey?: string;
     metadata: IMetadata;
     state: any;
-    updateParentState?: (e: React.ChangeEvent<any>, name: string) => void;
-    updateRadioGroupStateFromPassedInContext?: (e: React.ChangeEvent<any>, name: string, radioGroup: any) => void;
+    updateParentState?: (e: React.ChangeEvent<any>, name: string, formKey?: string) => void;
+    updateRadioGroupStateFromPassedInContext?: (e: React.ChangeEvent<any>, name: string, radioGroup: any, formKey?: string) => void;
 }
 /** @internal */
 export interface IRadioGroupParentContext {

@@ -170,3 +170,14 @@ export declare const isChecked: IValidationVariable;
  * @function
  */
 export declare function customValidator(callback: ICustomValidatorCallback): (arg: any) => IValidationFunction;
+/**
+ * Helper function to get correct state from the context object within a validator:
+ *  - **arg** context {IFormContext}
+ *  @example
+ *  ```
+ *  let contextState = getFormStateFromContext(context);
+ * ```
+ * @param context
+ * @function
+ */
+export declare function getFormStateFromContext(context: IFormContext): any;
