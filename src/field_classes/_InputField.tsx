@@ -25,7 +25,7 @@ export class InputField<T extends IField> extends AbstractField<T> implements IA
     public getField() {
         return () => <>{<input
             type={this.type}
-            value={(this.context as IFormContext).state[this.props.name]|| ""}
+            value={this.getStatePositionFromFormKey()[this.props.name]|| ""}
             onChange={(e) => (this.context as any).updateParentState(e, this.props.name)}
             name={this.props.name}
             className={AbstractField.mergeDefaultCssWithProps("form-control", this.props.className, this.bare)}

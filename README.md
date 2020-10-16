@@ -19,7 +19,7 @@ npm install react-bare-forms
 
 ⚠️ Warning: ***The library is still in a beta stage***
 
-## Usage
+## Usage - Functional Component with Hooks
 A basic form example with a text input field & submit button. Also, note how we import the `isFieldEmpty` function
 from `react-bare-forms`. This is a validator & can be used to validate a single or *group (such as radio buttons) field(s).
 There are different validators available & also a custom validator factor function to create your own validators.
@@ -46,6 +46,79 @@ const [state, setState] = React.useState(myState);
     <SubmitButton>Submit Form</SubmitButton>
 </Form>
 ```
+
+## Usage - Class Component
+Similiar to the functional component above but now we are using a Class component with 
+local state example:
+```typescript jsx
+import {Form, isFieldEmpty, SubmitButton, TextInputField} from "react-bare-forms";
+class MyForm {
+    
+    state = {
+        "age": 0,
+    }
+    
+    myForm() {
+            return(<Form
+            state={this.state}
+            context={this}
+            bare={false}
+            autoComplete="off"
+            callback={() => console.log("Form submitted!")}>
+        
+            <TextInputField
+                value={state.age}
+                name="age"
+                hint="Enter your age"
+                labelText="Age"
+                validators={[isFieldEmpty(2)]} />
+                       
+            <SubmitButton>Submit Form</SubmitButton>
+        </Form>);
+    }
+
+
+}
+
+```
+
+## Usage - Class Component with Nested State
+Same as the Class component above but with nested state example:
+```typescript jsx
+import {Form, isFieldEmpty, SubmitButton, TextInputField} from "react-bare-forms";
+class MyForm {
+    
+    state = {
+        "formData": { // <-- Note we are nesting out form state
+            "age": 0,
+        }
+    }
+    
+    myForm() {
+            return(<Form
+            state={this.state}
+            context={this}
+            formKey="formData" // <-- Required: Name of our for formData attribute in the state object
+            bare={false}
+            autoComplete="off"
+            callback={() => console.log("Form submitted!")}>
+        
+            <TextInputField
+                value={state.age}
+                name="age"
+                hint="Enter your age"
+                labelText="Age"
+                validators={[isFieldEmpty(2)]} />
+                       
+            <SubmitButton>Submit Form</SubmitButton>
+        </Form>);
+    }
+
+
+}
+
+```
+
 ## File Ref
 RBF's provides a function that returns a React ref to access your file object. To use, simply assign the returned ref from
 the `createFileRef` function to a variable & pass this variable to `FileField`'s ref prop.

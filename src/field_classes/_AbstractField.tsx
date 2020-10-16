@@ -76,6 +76,7 @@ export abstract class AbstractField<T extends IField> {
 
     private init(): void {
         this.context = useContext<IFormContext>(FormContext);
+        // this.stateFromFormKey =
         this.metadata = this.context.metadata[getMetadataNameType(this.type)];
         this.metadata.init(this.props.name, this.type);
         this.bare = Boolean(this.context.bare);
@@ -161,4 +162,12 @@ export abstract class AbstractField<T extends IField> {
             }
         }
     }
+
+    public getStatePositionFromFormKey(): {[key: string]: any} {
+        if (this.context?.formKey) {
+            return this.context.state[this.context.formKey];
+        }
+        return this.context?.state;
+    }
+
 }

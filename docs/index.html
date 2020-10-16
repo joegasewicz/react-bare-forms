@@ -69,7 +69,7 @@
 					<a href="https://travis-ci.org/joegasewicz/react-bare-forms"><img src="https://travis-ci.org/joegasewicz/react-bare-forms.svg?branch=master" alt="Build Status"></a>
 					<img src="https://img.shields.io/npm/types/react-bare-forms" alt="npm type definitions">
 				<a href="https://codecov.io/gh/joegasewicz/react-bare-forms"><img src="https://codecov.io/gh/joegasewicz/react-bare-forms/branch/master/graph/badge.svg" alt="codecov"></a></p>
-				<p><img src="./images/rbf_logo3.png" alt="ReactBareForms"></p>
+				<p><img src="./images/rbf_logo4.png" alt="ReactBareForms"></p>
 				<p>React library using React Hooks to build forms &amp; let you switch in &amp; out Bootstrap 4 styling. <strong>React Bare Forms</strong> aka <em>RBF</em> aims
 				to be the easiest to use form library for React.</p>
 				<p><strong>React Bare Forms</strong> library is compatible with both React functional &amp; class components 🎉</p>
@@ -84,24 +84,24 @@
 				<p>A basic form example with a text input field &amp; submit button. Also, note how we import the <code>isFieldEmpty</code> function
 					from <code>react-bare-forms</code>. This is a validator &amp; can be used to validate a single or *group (such as radio buttons) field(s).
 				There are different validators available &amp; also a custom validator factor function to create your own validators.</p>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {Form, isFieldEmpty, SubmitButton, TextInputField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bare-forms"</span>;
+				<pre><code class="language-typescript">import {Form, isFieldEmpty, SubmitButton, TextInputField} from "react-bare-forms";
 
-<span class="hljs-keyword">const</span> myState = { age: <span class="hljs-number">0</span> }
-<span class="hljs-keyword">const</span> [state, setState] = React.useState(myState);
+const myState = { age: 0 }
+const [state, setState] = React.useState(myState);
 
 &lt;Form
     state={state}
     context={setState}
-    bare={<span class="hljs-literal">false</span>}
-    autoComplete=<span class="hljs-string">"off"</span>
-    callback={<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Form submitted!"</span>)}&gt;
+    bare={false}
+    autoComplete="off"
+    callback={() =&gt; console.log("Form submitted!")}&gt;
 
     &lt;TextInputField
         value={state.age}
-        name=<span class="hljs-string">"age"</span>
-        hint=<span class="hljs-string">"Enter your age"</span>
-        labelText=<span class="hljs-string">"Age"</span>
-        validators={[isFieldEmpty(<span class="hljs-number">2</span>)]} /&gt;
+        name="age"
+        hint="Enter your age"
+        labelText="Age"
+        validators={[isFieldEmpty(2)]} /&gt;
 
     &lt;SubmitButton&gt;Submit Form&lt;/SubmitButton&gt;
 &lt;/Form&gt;</code></pre>
@@ -134,22 +134,22 @@
 				</a>
 				<p>RBF&#39;s provides the <code>FormConsumer</code>, which gives access to field information.
 				Below is an example of a form containing a single text input field.</p>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {Form, FormConsumer, IFormContext, isFieldEmpty, TextInputField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bare-forms"</span>;
+				<pre><code class="language-typescript">import {Form, FormConsumer, IFormContext, isFieldEmpty, TextInputField} from "react-bare-forms";
 
-<span class="hljs-comment">// Example within a class component</span>
-state = { age: <span class="hljs-number">0</span> }
+// Example within a class component
+state = { age: 0 }
 
-&lt;Form state={myState} context={<span class="hljs-keyword">this</span>}&gt;
+&lt;Form state={myState} context={this}&gt;
     &lt;TextInputField
-        value={<span class="hljs-keyword">this</span>.state.age}
-        name=<span class="hljs-string">"age"</span>
-        hint=<span class="hljs-string">"Enter your age"</span>
-        labelText=<span class="hljs-string">"Age"</span>
-        validators={[isFieldEmpty(<span class="hljs-number">5</span>)]}
+        value={this.state.age}
+        name="age"
+        hint="Enter your age"
+        labelText="Age"
+        validators={[isFieldEmpty(5)]}
     /&gt;
     &lt;FormConsumer&gt;
-        {<span class="hljs-function">(<span class="hljs-params">context: IFormContext</span>) =&gt;</span> {
-            <span class="hljs-keyword">return</span> &lt;code&gt;{<span class="hljs-built_in">JSON</span>.stringify(context.metadata)}&lt;/code&gt;;
+        {(context: IFormContext) =&gt; {
+            return &lt;code&gt;{JSON.stringify(context.metadata)}&lt;/code&gt;;
         }}
     &lt;/FormConsumer&gt;
 &lt;/Form&gt;
@@ -190,16 +190,16 @@ state = { age: <span class="hljs-number">0</span> }
 }
 
  <span class="hljs-keyword">const</span> [state, setState] = React.useState(state);
- &lt;Form state={myState} context={setState}&gt;&lt;/Form&gt;&gt;</code></pre>
+ &lt;Form state={myState} context={setState}&gt;&lt;<span class="hljs-regexp">/Form&gt;&gt;</span></code></pre>
 				<p>To use <em>RBF</em> Form component from a class component, you must pass in your
 				local context or <code>this</code> keyword.</p>
-				<pre><code class="language-typescript"><span class="hljs-comment">// Minimal setup for a RBF's Form component for a class component</span>
+				<pre><code class="language-typescript">// Minimal setup for a RBF's Form component for a class component
 
-<span class="hljs-keyword">const</span> <span class="hljs-keyword">this</span>.state = { <span class="hljs-comment">// in the constructor</span>
-  username: <span class="hljs-string">''</span>,
+const this.state = { // in the constructor
+  username: '',
 }
 
-&lt;Form state={<span class="hljs-keyword">this</span>.state} context={<span class="hljs-keyword">this</span>}&gt;&lt;/Form&gt;
+&lt;Form state={this.state} context={this}&gt;&lt;/Form&gt;
 </code></pre>
 				<a href="#input-field-components" id="input-field-components" style="color: inherit; text-decoration: none;">
 					<h2>Input Field components</h2>
@@ -278,7 +278,7 @@ state = { age: <span class="hljs-number">0</span> }
 				<p>Also we can create two <em>PasswordField</em> components to confirm passwords are equal. Please see
 					<a href="modules/_validators_.html#arefieldsequal">areFieldsEqual</a> for more info.
 					The first <em>PasswordField</em> has has a <em>name</em> prop of <strong>password</strong> &amp; the second <em>PasswordField</em> a name
-					prop of <em>confirmPassword*. Then we can add a *areFieldsEqual</em> validator to the <em>PasswordField</em>
+					prop of <em>confirmPassword</em>. Then we can add a <em>areFieldsEqual</em> validator to the <em>PasswordField</em>
 					with the <em>confirmPassword</em> name props <em>areFieldsEqual</em> takes the first <em>PasswordField</em>
 				name as an argument).</p>
 				<pre><code class="language-typescript">&lt;PasswordField
@@ -375,7 +375,7 @@ state = { age: <span class="hljs-number">0</span> }
 
 &lt;RadioGroup name=<span class="hljs-string">"group1"</span>&gt;
   <span class="hljs-comment">// place RadioFields components here...</span>
-&lt;/RadioGroup&gt;</code></pre>
+&lt;<span class="hljs-regexp">/RadioGroup&gt;</span></code></pre>
 					</li>
 				</ul>
 				<a href="#radiofield" id="radiofield" style="color: inherit; text-decoration: none;">
@@ -404,7 +404,7 @@ state = { age: <span class="hljs-number">0</span> }
      validators={[isRadioChecked()]}
    /&gt;
 
- &lt;/RadioGroup&gt;</code></pre>
+ &lt;<span class="hljs-regexp">/RadioGroup&gt;</span></code></pre>
 				<a href="#buttons" id="buttons" style="color: inherit; text-decoration: none;">
 					<h2>Buttons</h2>
 				</a>
@@ -413,7 +413,7 @@ state = { age: <span class="hljs-number">0</span> }
 				<pre><code class="language-typescript">
  <span class="hljs-keyword">import</span> {SubmitButton} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
 
- &lt;SubmitButton&gt;Submit&lt;/SubmitButton&gt;</code></pre>
+ &lt;SubmitButton&gt;Submit&lt;<span class="hljs-regexp">/SubmitButton&gt;</span></code></pre>
 				<a href="#bootstrap-4" id="bootstrap-4" style="color: inherit; text-decoration: none;">
 					<h2>Bootstrap 4</h2>
 				</a>
@@ -455,7 +455,7 @@ state = { age: <span class="hljs-number">0</span> }
 <span class="hljs-keyword">@import</span> <span class="hljs-string">"~bootstrap/scss/buttons"</span>;</code></pre>
 				<p>And finally import your sass into your React application:</p>
 				<pre><code class="language-jsx"><span class="hljs-keyword">import</span> <span class="hljs-string">"./mystyles.scss"</span>;</code></pre>
-				<p><sup>*<em>Fields that are not part of a RBF&#39;s form group</em></sup></p>
+				<p><sup><em>*Fields that are not part of a RBF&#39;s form group</em></sup></p>
 				<a href="#contributors" id="contributors" style="color: inherit; text-decoration: none;">
 					<h2>Contributors</h2>
 				</a>
