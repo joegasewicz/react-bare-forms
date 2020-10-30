@@ -138,7 +138,20 @@ For example:
  
  // To access the File object use `getFileFromRef` helper function:
 let myFile = getFileFromRef(myFileRef);
+
+// Example callback:
+const myCallback = () => {
+    const myFile = getFileFromRef(myFileRef);
+    const formData = new FormData();
+    formData.append("tmyFile", myFile);
+}
+
+// then add to the RBF's Form component:
+<Form
+    callback={myCallback}
+    // ... .etc
 ````
+
 
 ## Form Consumer
 RBF's provides the `FormConsumer`, which gives access to field information.
