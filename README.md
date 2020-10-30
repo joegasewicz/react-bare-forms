@@ -133,15 +133,11 @@ For example:
      ref={myFileRef}
      hint="Must be a file"
      labelText="Upload your file"
-     name="myFileTest"
      validators={[isFile()]}
  />
  
  // To access the File object use `getFileFromRef` helper function:
- let formData = {
-   myFile: getFileFromRef(myFileRef)  
- };
-
+let myFile = getFileFromRef(myFileRef);
 ````
 
 ## Form Consumer
