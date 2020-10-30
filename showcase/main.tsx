@@ -24,6 +24,8 @@ import {
 
 interface IProps{}
 
+const myFileRef = createFileRef();
+
 interface IState{
 
     formData: {
@@ -38,6 +40,7 @@ interface IState{
         radio2: boolean;
         radio3: boolean;
         fruitChoice: string;
+        myFileTest?: any;
     }
 }
 
@@ -83,8 +86,6 @@ export function FPForm() {
 export class Main extends React.Component<IProps, IState> {
 
 
-    myFileRef = createFileRef();
-
     state = {
         formData: {
           username: "",
@@ -98,6 +99,7 @@ export class Main extends React.Component<IProps, IState> {
             radio2: true,
             radio3: false,
             fruitChoice: "",
+            myFileTest: getFileFromRef(myFileRef),
         }
 
     };
@@ -110,7 +112,7 @@ export class Main extends React.Component<IProps, IState> {
                                 formKey="formData"
                                 context={this}
                                 autoComplete="off"
-                                callback={() => console.log("Form submitted ----> ", getFileFromRef(this.myFileRef))}>
+                                callback={() => console.log("Form submitted ----> ", getFileFromRef(myFileRef))}>
 
                                 <TextInputField
                                     value={this.state.formData.age}
@@ -176,7 +178,7 @@ export class Main extends React.Component<IProps, IState> {
                                 />
 
                                 <FileField
-                                    ref={this.myFileRef}
+                                    ref={myFileRef}
                                     hint="Must be a file"
                                     labelText="Upload your file"
                                     name="myFileTest"
