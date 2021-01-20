@@ -184,14 +184,12 @@ export class Main extends React.Component<IProps, IState> {
                                     hint="Must be a file"
                                     labelText="Upload your file"
                                     name="myFileTest"
-                                    validators={[isFile()]}
                                 />
                                 <FileField
                                     ref={myFileRef2}
                                     hint="Must be a file"
                                     labelText="Upload your file"
                                     name="myFileTest"
-                                    validators={[isFile()]}
                                 />
 
                                 <RadioGroup name="group1">
