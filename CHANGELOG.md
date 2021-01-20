@@ -2,6 +2,5 @@
 
 ### Changed
 
-**Release 0.0.2** - 2020-05-20
-
-Initial working release
+**Release 0.0.26** - 2021-01-20
+-  Multiple FileRef calls creates infinite loop error 🐛 [Issue #96](https://github.com/joegasewicz/react-bare-forms/issues/96)
