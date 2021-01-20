@@ -25,6 +25,7 @@ import {
 interface IProps{}
 
 const myFileRef = createFileRef();
+const myFileRef2 = createFileRef();
 
 interface IState{
 
@@ -100,6 +101,7 @@ export class Main extends React.Component<IProps, IState> {
             radio3: false,
             fruitChoice: "",
             myFileTest: getFileFromRef(myFileRef),
+            myFileTest2: getFileFromRef(myFileRef2),
         }
 
     };
@@ -179,6 +181,13 @@ export class Main extends React.Component<IProps, IState> {
 
                                 <FileField
                                     ref={myFileRef}
+                                    hint="Must be a file"
+                                    labelText="Upload your file"
+                                    name="myFileTest"
+                                    validators={[isFile()]}
+                                />
+                                <FileField
+                                    ref={myFileRef2}
                                     hint="Must be a file"
                                     labelText="Upload your file"
                                     name="myFileTest"

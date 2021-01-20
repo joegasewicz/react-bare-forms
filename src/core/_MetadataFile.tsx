@@ -54,7 +54,9 @@ export class MetadataFile<T extends IFieldValidation> extends AbstractMetadata<T
                         isTouched: true,
                     },
                 };
-                this.updateState(state);
+                useEffect(() => {
+                   this.updateState(state);
+                }, [state]);
             }
         }
     }
