@@ -46,10 +46,11 @@ interface IState{
 }
 
 export function FPForm() {
-    const state = { age: 0, password: "" }
+    const state = { age: 0, password: "", radio1: false, radio2: true, radio3: false }
 
     const [fpState, fpSetState] = React.useState(state);
     return <>
+        <h2>Form with hooks</h2>
         <Form
             state={fpState}
             context={fpSetState}
@@ -70,15 +71,46 @@ export function FPForm() {
                 labelText="Password"
                 validators={[isFieldEmpty(2)]}
             />
+
+            <RadioGroup name="group1">
+                <RadioField
+                    name="radio1"
+                    checked={state.radio1}
+                    hint="Click to agree"
+                    labelText="Radio 1"
+                />
+                <RadioField
+                    name="radio2"
+                    checked={state.radio2}
+                    hint="Click to agree"
+                    labelText="Radio 2"
+                    validators={[isRadioChecked()]}
+                />
+
+                <RadioField
+                    name="radio3"
+                    checked={state.radio3}
+                    hint="Click to agree"
+                    labelText="Radio 3"
+                />
+                </RadioGroup>
                     
             <SubmitButton>Submit Form</SubmitButton>
             <br />
             <FormConsumer>
                 {(context: any) => {
                     // this.setState({...context});
-                    return <div className="container"><code><var>metadata</var>: {JSON.stringify(context.metadata)}</code></div>;
+                    return <div className="container"><code><var>metadata</var>: {JSON.stringify(context.metadata.radioGroup)}</code></div>;
                 }}
             </FormConsumer>
+            <br/>
+            <br/>
+                <FormConsumer>
+                    {(context: any) => {
+                        // this.setState({...context});
+                        return <div className="container"><code><var>state</var>: {JSON.stringify(context.state)}</code></div>;
+                    }}
+                </FormConsumer>
         </Form>
     </>;
 }
@@ -109,6 +141,7 @@ export class Main extends React.Component<IProps, IState> {
     public render(): React.ReactElement {
         return (
             <>
+                <h2>Form with Class Component</h2>
                             <Form
                                 state={this.state}
                                 formKey="formData"
@@ -160,7 +193,7 @@ export class Main extends React.Component<IProps, IState> {
                                     hint="Your email"
                                     labelText="Must be at least 20 characters"
                                     validators={[isFieldEmpty(20)]}
-                                /> 
+                                />
 
                                 <CheckBoxField
                                     name="terms"
@@ -233,7 +266,7 @@ export class Main extends React.Component<IProps, IState> {
                                 <FormConsumer>
                                     {(context: any) => {
                                         // this.setState({...context});
-                                        return <div className="container"><code><var>metadata</var>: {JSON.stringify(context.metadata.radioGroups)}</code></div>;
+                                        return <div className="container"><code><var>RADIO GROUP METADATA</var>: {JSON.stringify(context.metadata.radioGroups)}</code></div>;
                                     }}
                                 </FormConsumer>
                                 <br />
@@ -241,7 +274,7 @@ export class Main extends React.Component<IProps, IState> {
                                 <FormConsumer>
                                     {(context: any) => {
                                         // this.setState({...context});
-                                        return <div className="container"><code><var>metadata</var>: {JSON.stringify(context.metadata)}</code></div>;
+                                        return <div className="container"><code><var>Radio Group</var>: {JSON.stringify(context.metadata.radioGroup)}</code></div>;
                                     }}
                                 </FormConsumer>
                             </Form>
