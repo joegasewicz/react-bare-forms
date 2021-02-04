@@ -443,8 +443,8 @@ The `RadioGroup` component takes a single props of `name`, which
    
  </RadioGroup>
 ```
-Warning: Currently `RadioField` fields must be nested directly within the `RadioGroup` component.
-There is an issue is currently open that will enable nested jsx elements between the `RadioField` & `RadioGroup` component.
+Warning: Currently `RadioField` compoments must be nested directly within a `RadioGroup`.
+There is an issue currently open that will enable nested jsx elements between a `RadioField` it's `RadioGroup`.
 See [issue #102](https://github.com/joegasewicz/react-bare-forms/issues/102)
 
 ## Buttons
