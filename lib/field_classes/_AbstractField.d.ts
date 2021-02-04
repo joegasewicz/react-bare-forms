@@ -43,6 +43,11 @@ export declare abstract class AbstractField<T extends IField> {
      * there are some edge cases where it needs to be called by a child class that extends AbstractField.
      */
     validate(): Array<IValidation>;
+    /**
+     * @internal
+     * @param props
+     * @description This is overridden in the RadioField sub class
+     */
     getFieldValue(props: T): any;
     abstract formGroup(children: any): ReactElement;
     abstract getField(): (context: IFormContext) => ReactElement;

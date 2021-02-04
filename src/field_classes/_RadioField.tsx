@@ -73,9 +73,6 @@ export class RadioField<T extends IRadioField> extends AbstractField<T> implemen
      * the form element can be derived directly from props.
      */
     public getFieldValue(props: T): any {
-        if (this.context && "setState" in this.context) {
-            return super.getFieldValue(props);
-        }
         const formKey = this.context?.formKey;
         if (formKey) {
             return this.context?.state[formKey][this.props.name] || false;
