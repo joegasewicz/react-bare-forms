@@ -78,8 +78,8 @@
 					<h2>Install</h2>
 				</a>
 				<pre><code>npm <span class="hljs-keyword">install</span> react-bare-forms</code></pre><p>⚠️ Warning: <strong><em>The library is still in a beta stage</em></strong></p>
-				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
-					<h2>Usage</h2>
+				<a href="#usage---functional-component-with-hooks" id="usage---functional-component-with-hooks" style="color: inherit; text-decoration: none;">
+					<h2>Usage - Functional Component with Hooks</h2>
 				</a>
 				<p>A basic form example with a text input field &amp; submit button. Also, note how we import the <code>isFieldEmpty</code> function
 					from <code>react-bare-forms</code>. This is a validator &amp; can be used to validate a single or *group (such as radio buttons) field(s).
@@ -105,6 +105,76 @@ const [state, setState] = React.useState(myState);
 
     &lt;SubmitButton&gt;Submit Form&lt;/SubmitButton&gt;
 &lt;/Form&gt;</code></pre>
+				<a href="#usage---class-component" id="usage---class-component" style="color: inherit; text-decoration: none;">
+					<h2>Usage - Class Component</h2>
+				</a>
+				<p>Similiar to the functional component above but now we are using a Class component with
+				local state example:</p>
+				<pre><code class="language-typescript">import {Form, isFieldEmpty, SubmitButton, TextInputField} from "react-bare-forms";
+class MyForm {
+
+    state = {
+        "age": 0,
+    }
+
+    myForm() {
+            return(&lt;Form
+            state={this.state}
+            context={this}
+            bare={false}
+            autoComplete="off"
+            callback={() =&gt; console.log("Form submitted!")}&gt;
+
+            &lt;TextInputField
+                value={state.age}
+                name="age"
+                hint="Enter your age"
+                labelText="Age"
+                validators={[isFieldEmpty(2)]} /&gt;
+
+            &lt;SubmitButton&gt;Submit Form&lt;/SubmitButton&gt;
+        &lt;/Form&gt;);
+    }
+
+
+}
+</code></pre>
+				<a href="#usage---class-component-with-nested-state" id="usage---class-component-with-nested-state" style="color: inherit; text-decoration: none;">
+					<h2>Usage - Class Component with Nested State</h2>
+				</a>
+				<p>Same as the Class component above but with nested state example:</p>
+				<pre><code class="language-typescript">import {Form, isFieldEmpty, SubmitButton, TextInputField} from "react-bare-forms";
+class MyForm {
+
+    state = {
+        "formData": { // &lt;-- Note we are nesting out form state
+            "age": 0,
+        }
+    }
+
+    myForm() {
+            return(&lt;Form
+            state={this.state}
+            context={this}
+            formKey="formData" // &lt;-- Required: Name of our for formData attribute in the state object
+            bare={false}
+            autoComplete="off"
+            callback={() =&gt; console.log("Form submitted!")}&gt;
+
+            &lt;TextInputField
+                value={state.age}
+                name="age"
+                hint="Enter your age"
+                labelText="Age"
+                validators={[isFieldEmpty(2)]} /&gt;
+
+            &lt;SubmitButton&gt;Submit Form&lt;/SubmitButton&gt;
+        &lt;/Form&gt;);
+    }
+
+
+}
+</code></pre>
 				<a href="#file-ref" id="file-ref" style="color: inherit; text-decoration: none;">
 					<h2>File Ref</h2>
 				</a>
@@ -120,15 +190,23 @@ const [state, setState] = React.useState(myState);
      ref={myFileRef}
      hint=<span class="hljs-string">"Must be a file"</span>
      labelText=<span class="hljs-string">"Upload your file"</span>
-     name=<span class="hljs-string">"myFileTest"</span>
      validators={[isFile()]}
  /&gt;
 
  <span class="hljs-comment">// To access the File object use `getFileFromRef` helper function:</span>
- <span class="hljs-keyword">let</span> formData = {
-   myFile: getFileFromRef(myFileRef)  
- };
-</code></pre>
+<span class="hljs-keyword">let</span> myFile = getFileFromRef(myFileRef);
+
+<span class="hljs-comment">// Example callback:</span>
+<span class="hljs-keyword">const</span> myCallback = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">const</span> myFile = getFileFromRef(myFileRef);
+    <span class="hljs-keyword">const</span> formData = <span class="hljs-keyword">new</span> FormData();
+    formData.append(<span class="hljs-string">"tmyFile"</span>, myFile);
+}
+
+<span class="hljs-comment">// then add to the RBF's Form component:</span>
+&lt;Form
+    callback={myCallback}
+    <span class="hljs-comment">// ... .etc</span></code></pre>
 				<a href="#form-consumer" id="form-consumer" style="color: inherit; text-decoration: none;">
 					<h2>Form Consumer</h2>
 				</a>
