@@ -443,6 +443,9 @@ The `RadioGroup` component takes a single props of `name`, which
    
  </RadioGroup>
 ```
+Warning: Currently `RadioField` fields must be nested directly within the `RadioGroup` component.
+There is an issue is currently open that will enable nested jsx elements between the `RadioField` & `RadioGroup` component.
+See [issue #102](https://github.com/joegasewicz/react-bare-forms/issues/102)
 
 ## Buttons
 The SubmitButton only requires a text string as children props (see below example).
