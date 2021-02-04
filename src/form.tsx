@@ -203,9 +203,7 @@ export const Form = (props: IForm) => {
         useEffect(() => {
             props.context.setState({
                 ...parentState,
-                // formData: parentState.formData,
             });
-        // }, [parentState.formData]);
         }, [parentState]);
     } else if (props.context) {
         useEffect(() => {

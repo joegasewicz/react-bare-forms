@@ -133,6 +133,11 @@ export abstract class AbstractField<T extends IField> {
         return validation;
     }
 
+    /**
+     * @internal
+     * @param props
+     * @description This is overridden in the RadioField sub class
+     */
     public getFieldValue(props: T): any {
         let type = getFieldValueType(this.type);
         return (this.props as T & TypeFieldValueTypes)[type as any];
