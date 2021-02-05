@@ -123,6 +123,7 @@ class MyForm {
 RBF's provides a function that returns a React ref to access your file object. To use, simply assign the returned ref from
 the `createFileRef` function to a variable & pass this variable to `FileField`'s ref prop.
 To access your file object, pass your React ref to the `getFileFromRef` function.
+*Make sure you assign a `name` prop if you use the validators (`isFile()` for example).*
 For example:
 ````typescript jsx
  import {createFileRef, FileField, isFile, getFileFromRef} from "react-bare-forms";
@@ -131,6 +132,7 @@ For example:
  
  <FileField
      ref={myFileRef}
+     name="myFile" // You must assign a name to use the validators
      hint="Must be a file"
      labelText="Upload your file"
      validators={[isFile()]}
