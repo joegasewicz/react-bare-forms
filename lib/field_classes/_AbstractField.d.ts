@@ -27,7 +27,9 @@ export declare abstract class AbstractField<T extends IField> {
     _metadata?: TypeFormMetadata;
     _bare?: boolean;
     context?: IFormContext;
-    parentName?: string;
+    private _parentName?;
+    get parentName(): string | undefined;
+    set parentName(value: string | undefined);
     protected constructor(props: T, type: FIELD_NAMES);
     get bare(): boolean;
     set bare(val: boolean);

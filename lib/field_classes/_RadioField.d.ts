@@ -10,7 +10,7 @@ export declare type TypeMetadataRadioGroupValue = {
 };
 /** @internal */
 export declare class RadioField<T extends IRadioField> extends AbstractField<T> implements IAbstractField<T> {
-    private _parentName?;
+    private __parentName?;
     props: any;
     type: any;
     radioContext?: IRadioGroupParentContext;
