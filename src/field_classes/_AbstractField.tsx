@@ -1,7 +1,7 @@
 import {default as React, ReactElement, useContext, useEffect} from "react";
 
 
-import {FIELD_NAMES, IField} from "../elements";
+import {FIELD_NAMES, IField, IFieldBase} from "../elements";
 import {IValidation} from "../validators";
 import {
     FormElementValidators,
@@ -32,7 +32,7 @@ export interface IAbstractField<T> {
 }
 
 /** @internal */
-export function _genericFormGroup<T extends IField>(props: T, children: any) {
+export function _genericFormGroup<T extends IFieldBase>(props: T, children: any) {
     return (
         <div className="form-group">
             {props.labelText && <label>{props.labelText}</label>}
@@ -43,7 +43,7 @@ export function _genericFormGroup<T extends IField>(props: T, children: any) {
 }
 
 /** @internal */
-export abstract class AbstractField<T extends IField> {
+export abstract class AbstractField<T extends IFieldBase> {
     public type: FIELD_NAMES;
     public props: T;
     public parent?: string;

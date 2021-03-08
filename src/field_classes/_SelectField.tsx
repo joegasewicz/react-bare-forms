@@ -1,11 +1,11 @@
 import {default as React} from "react";
 
 import {_genericFormGroup, AbstractField, IAbstractField} from "./_AbstractField";
-import {FIELD_NAMES, IField, ISelectField, TypeSelectCssSizeName} from "../elements";
+import {FIELD_NAMES, IField, IFieldBase, ISelectField, TypeSelectCssSizeName} from "../elements";
 
 
 /** @internal */
-export class SelectField<T extends IField & ISelectField> extends AbstractField<T> implements IAbstractField<T> {
+export class SelectField<T extends IFieldBase & ISelectField> extends AbstractField<T> implements IAbstractField<T> {
 
     constructor(type: FIELD_NAMES, props: T) {
         super(props, type);

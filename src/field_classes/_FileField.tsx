@@ -9,7 +9,7 @@ import {createFileObject, IFile} from "../core/index";
  * The main difference of this class is that the onChange event is used only
  * to carry out the validation (which is set manually in FileField._updateFieldValidation).
  */
-export class FileField<T extends IField> extends AbstractField<T> implements IAbstractField<T> {
+export class FileField<T extends IField<HTMLInputElement>> extends AbstractField<T> implements IAbstractField<T> {
 
     _file?: IFile|null;
 
