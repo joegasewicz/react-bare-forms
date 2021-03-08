@@ -9,8 +9,14 @@ exports[`#<FileField /> it should display validation errors 1`] = `
   >
     <input
       className="form-control-file "
+      name="about_text"
       onChange={[Function]}
       type="file"
+      validators={
+        Array [
+          [Function],
+        ]
+      }
     />
   </div>
 </form>
@@ -25,6 +31,7 @@ exports[`#<FileField /> should render a single input tag with no bootstrap style
   >
     <input
       className="form-control-file "
+      name="about_text"
       onChange={[Function]}
       type="file"
     />
@@ -41,6 +48,7 @@ exports[`#<FileField /> should render an input field with the bootstrap styled t
   >
     <input
       className="form-control-file "
+      name="my_file"
       onChange={[Function]}
       type="file"
     />

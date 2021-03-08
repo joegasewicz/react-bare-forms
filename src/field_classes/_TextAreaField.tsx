@@ -25,6 +25,7 @@ export class TextAreaField<T extends ITextAreaField> extends AbstractField<T> im
         return () => {
             return (
                 <textarea
+                    {...this.props}
                     className={mergeDefaultCssWithProps("form-control", this.props.className, (this.context as any).bare)}
                     rows={rows}
                     value={this.getStatePositionFromFormKey()[this.props.name] || ""}

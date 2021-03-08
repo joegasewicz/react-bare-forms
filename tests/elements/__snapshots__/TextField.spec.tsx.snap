@@ -12,6 +12,11 @@ exports[`#TextInputField() it should display validation errors 1`] = `
       name="username"
       onChange={[Function]}
       type="text"
+      validators={
+        Array [
+          [Function],
+        ]
+      }
       value="a"
     />
   </div>

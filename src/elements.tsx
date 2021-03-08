@@ -84,6 +84,7 @@ export interface ISelectField extends IField {
     size?: TypeSelectCssSizeName;
     objectKey?: string;
     objectValue?: string;
+
 }
 
 /**

@@ -13,6 +13,11 @@ exports[`#CheckBoxField() it should display validation errors 1`] = `
       name="terms"
       onChange={[Function]}
       type="checkbox"
+      validators={
+        Array [
+          [Function],
+        ]
+      }
     />
   </div>
 </form>

@@ -24,6 +24,7 @@ export class InputField<T extends IField> extends AbstractField<T> implements IA
 
     public getField() {
         return () => <>{<input
+            {...this.props}
             type={this.type}
             value={this.getStatePositionFromFormKey()[this.props.name]|| ""}
             onChange={(e) => (this.context as any).updateParentState(e, this.props.name)}

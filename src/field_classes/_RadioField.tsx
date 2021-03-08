@@ -50,6 +50,7 @@ export class RadioField<T extends IRadioField> extends AbstractField<T> implemen
     public getField() {
         return () => {
             return <input
+                {...this.props}
                 type={this.type}
                 checked={this.getStatePositionFromFormKey()[this.props.name] || false}
                 name={this.props.name}
