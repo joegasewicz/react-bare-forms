@@ -11,6 +11,14 @@ exports[`#<SelectField> should render props 1`] = `
       className="form-control form-control-lg "
       name="fruitChoice"
       onChange={[Function]}
+      options={
+        Array [
+          "banana",
+          "apple",
+          "orange",
+        ]
+      }
+      size="lg"
     >
       <option
         value="banana"
@@ -42,7 +50,26 @@ exports[`#<SelectField> should render props from object keys 1`] = `
     <select
       className="form-control form-control-lg "
       name="fruitChoice"
+      objectKey="id"
+      objectValue="name"
       onChange={[Function]}
+      options={
+        Array [
+          Object {
+            "id": 1,
+            "name": "first",
+          },
+          Object {
+            "id": 2,
+            "name": "second",
+          },
+          Object {
+            "id": 3,
+            "name": "third",
+          },
+        ]
+      }
+      size="lg"
     >
       <option
         value={1}

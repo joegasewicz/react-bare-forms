@@ -70,6 +70,7 @@ export class SubmitButton implements Button<ISubmitButtonProps> {
            }
 
            return (<button
+               {...props}
                disabled={isDisabled}
                className={className}
            >{props.children}</button>);

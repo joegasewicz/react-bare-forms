@@ -41,6 +41,7 @@ export class SelectField<T extends IField & ISelectField> extends AbstractField<
         return () => {
             return (
                 <select
+                    {...(this.props as any)}
                     onChange={(e) => (this.context as any).updateParentState(e, this.props.name)}
                     name={this.props.name}
                     className={AbstractField.mergeDefaultCssWithProps(this.getSelectCssName((this.props as any).size), this.props.className, (this.context as any).bare)}

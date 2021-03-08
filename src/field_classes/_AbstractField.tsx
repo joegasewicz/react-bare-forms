@@ -50,7 +50,14 @@ export abstract class AbstractField<T extends IField> {
     public _metadata?: TypeFormMetadata;
     public _bare?: boolean;
     public context?: IFormContext;
-    public parentName?: string;
+    private _parentName?: string | undefined;
+
+    public get parentName(): string | undefined {
+        return this._parentName;
+    }
+    public set parentName(value: string | undefined) {
+        this._parentName = value;
+    }
 
     protected constructor(props: T, type: FIELD_NAMES) {
         this.type = type;

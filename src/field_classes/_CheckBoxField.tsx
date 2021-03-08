@@ -30,6 +30,7 @@ export class CheckBoxField<T extends IField> extends AbstractField<T> implements
 
     public getField() {
         return () => (<>{<input
+                {...this.props}
                 type={this.type}
                 checked={this.getStatePositionFromFormKey()[this.props.name] || false}
                 onChange={(e) => (this.context as any).updateParentState(this.overrideEvent(e, this.getStatePositionFromFormKey()[this.props.name]), this.props.name)}

@@ -37,6 +37,7 @@ export class FileField<T extends IField> extends AbstractField<T> implements IAb
 
     public getField() {
         return () => <>{<input
+            {...this.props}
             ref={(this.props as any).ref}
             type={this.type}
             onChange={this._updateFieldValidation.bind(this)}
