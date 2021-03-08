@@ -9,7 +9,7 @@ export type TypeMetadataRadioGroupValue = { value: boolean, parentName: string, 
 
 /** @internal */
 export class RadioField<T extends IRadioField> extends AbstractField<T> implements IAbstractField<T> {
-    private _parentName?: string;
+    private __parentName?: string;
     public props: any;
     public type: any;
     public radioContext?: IRadioGroupParentContext; // TODO if more groups are required then make this abstract
@@ -26,11 +26,11 @@ export class RadioField<T extends IRadioField> extends AbstractField<T> implemen
     }
 
     get parentName(): string|undefined {
-        return this._parentName;
+        return this.__parentName;
     }
 
     set parentName(val: string|undefined) {
-        this._parentName = val;
+        this.__parentName = val;
     }
 
     public create() {
