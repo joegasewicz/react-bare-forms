@@ -1,6 +1,6 @@
 import {EMAIL_REGEX} from "./core";
 import {IFormContext} from "./form";
-import {IEmailField, IField, IPasswordField, ITextAreaField, ITextInputField} from "./elements";
+import {IEmailField, IField, IFieldBase, IPasswordField, ITextAreaField, ITextInputField} from "./elements";
 
 
 /** @internal */
@@ -38,7 +38,7 @@ export type IValidationVariable = (arg?: any) => IValidationFunction;
  * @function
  */
 export const areFieldsEqual: IValidationVariable = customValidator((fieldKey, fieldValue, context: IFormContext) => {
-    let testField: IField;
+    let testField: IFieldBase;
     let message = [`Fields do not match`];
     let contextState = getFormStateFromContext(context);
     if(fieldKey in contextState) {

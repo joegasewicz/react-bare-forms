@@ -1,5 +1,5 @@
 import { default as React, ReactElement } from "react";
-import { FIELD_NAMES, IField } from "../elements";
+import { FIELD_NAMES, IFieldBase } from "../elements";
 import { IValidation } from "../validators";
 import { IFormContext, TypeFormMetadata } from "../form";
 /**
@@ -18,16 +18,18 @@ export interface IAbstractField<T> {
     doValidation: (value: any) => Array<IValidation>;
 }
 /** @internal */
-export declare function _genericFormGroup<T extends IField>(props: T, children: any): JSX.Element;
+export declare function _genericFormGroup<T extends IFieldBase>(props: T, children: any): JSX.Element;
 /** @internal */
-export declare abstract class AbstractField<T extends IField> {
+export declare abstract class AbstractField<T extends IFieldBase> {
     type: FIELD_NAMES;
     props: T;
     parent?: string;
     _metadata?: TypeFormMetadata;
     _bare?: boolean;
     context?: IFormContext;
-    parentName?: string;
+    private _parentName?;
+    get parentName(): string | undefined;
+    set parentName(value: string | undefined);
     protected constructor(props: T, type: FIELD_NAMES);
     get bare(): boolean;
     set bare(val: boolean);
