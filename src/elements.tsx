@@ -29,7 +29,7 @@ export enum FIELD_NAMES {
     FILE = "file",
 }
 
-export interface IField {
+export interface IFieldBase {
     /** The name of the form element (this should match the state property that you want be updated by this form element) */
     name: string;
     /** If *bare* (see {@link IForm.bare}) is set to true then *labelText* will be inserted within **label** tags. */
@@ -42,49 +42,61 @@ export interface IField {
     className?: string;
 }
 
-export interface ITextInputField extends IField {
+export interface IField<T> extends React.InputHTMLAttributes<T> {
+    /** The name of the form element (this should match the state property that you want be updated by this form element) */
+    name: string;
+    /** If *bare* (see {@link IForm.bare}) is set to true then *labelText* will be inserted within **label** tags. */
+    labelText?: string;
+    /** If *bare* (see {@link Form.bare}) is set to true then *hint* will be inserted within **small** tags. */
+    hint?: string;
+    /** These are the {@link IValidators} that you can pass in the validate the form element. */
+    validators?: IValidators;
+    /** Add additional css */
+    className?: string;
+}
+
+export interface ITextInputField extends IField<HTMLInputElement> {
     /** The state property that gets updated by this input field */
     value: any;
 }
 
-export interface IPasswordField extends IField {
+export interface IPasswordField extends IField<HTMLInputElement> {
     /** The state property that gets updated by this input field */
     value: any;
 }
 
-export interface IEmailField extends IField {
+export interface IEmailField extends IField<HTMLInputElement> {
     /** The state property that gets updated by this input field */
     value: any;
 }
 
-export interface ICheckBoxField extends IField {
+export interface ICheckBoxField extends IField<HTMLInputElement> {
     checked: boolean;
 }
 
-export interface ITextAreaField extends IField {
+export interface ITextAreaField extends IField<HTMLTextAreaElement> {
     rows?: number;
     /** The state property that gets updated by this input field */
     value: any;
 }
 
-export interface IRadioField extends IField {
+export interface IRadioField extends IField<HTMLInputElement> {
     checked: boolean;
     disabled?: boolean;
 }
 
-export interface IFileField extends IField {
+export interface IFileField extends IField<HTMLInputElement> {
     ref: React.RefObject<HTMLFormElement>;
 }
 
 export type TypeSelectCssSizeName = |"sm"|"default"|"lg";
 
-export interface ISelectField extends IField {
+export interface ISelectField extends IFieldBase {
     value: any;
     options: Array<string|{[k: string]: any}>;
     size?: TypeSelectCssSizeName;
     objectKey?: string;
     objectValue?: string;
-
 }
 
 /**

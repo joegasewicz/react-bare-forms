@@ -6,7 +6,7 @@ import {_genericFormGroup, AbstractField, IAbstractField} from "./_AbstractField
 
 
 /** @internal */
-export class InputField<T extends IField> extends AbstractField<T> implements IAbstractField<T> {
+export class InputField<T extends IField<HTMLInputElement>> extends AbstractField<T> implements IAbstractField<T> {
 
     constructor(type: FIELD_NAMES, props: T) {
         super(props, type);

@@ -11,7 +11,7 @@ export declare enum FIELD_NAMES {
     SELECT = "select",
     FILE = "file"
 }
-export interface IField {
+export interface IFieldBase {
     /** The name of the form element (this should match the state property that you want be updated by this form element) */
     name: string;
     /** If *bare* (see {@link IForm.bare}) is set to true then *labelText* will be inserted within **label** tags. */
@@ -23,35 +23,47 @@ export interface IField {
     /** Add additional css */
     className?: string;
 }
-export interface ITextInputField extends IField {
+export interface IField<T> extends React.InputHTMLAttributes<T> {
+    /** The name of the form element (this should match the state property that you want be updated by this form element) */
+    name: string;
+    /** If *bare* (see {@link IForm.bare}) is set to true then *labelText* will be inserted within **label** tags. */
+    labelText?: string;
+    /** If *bare* (see {@link Form.bare}) is set to true then *hint* will be inserted within **small** tags. */
+    hint?: string;
+    /** These are the {@link IValidators} that you can pass in the validate the form element. */
+    validators?: IValidators;
+    /** Add additional css */
+    className?: string;
+}
+export interface ITextInputField extends IField<HTMLInputElement> {
     /** The state property that gets updated by this input field */
     value: any;
 }
-export interface IPasswordField extends IField {
+export interface IPasswordField extends IField<HTMLInputElement> {
     /** The state property that gets updated by this input field */
     value: any;
 }
-export interface IEmailField extends IField {
+export interface IEmailField extends IField<HTMLInputElement> {
     /** The state property that gets updated by this input field */
     value: any;
 }
-export interface ICheckBoxField extends IField {
+export interface ICheckBoxField extends IField<HTMLInputElement> {
     checked: boolean;
 }
-export interface ITextAreaField extends IField {
+export interface ITextAreaField extends IField<HTMLTextAreaElement> {
     rows?: number;
     /** The state property that gets updated by this input field */
     value: any;
 }
-export interface IRadioField extends IField {
+export interface IRadioField extends IField<HTMLInputElement> {
     checked: boolean;
     disabled?: boolean;
 }
-export interface IFileField extends IField {
+export interface IFileField extends IField<HTMLInputElement> {
     ref: React.RefObject<HTMLFormElement>;
 }
 export declare type TypeSelectCssSizeName = "sm" | "default" | "lg";
-export interface ISelectField extends IField {
+export interface ISelectField extends IFieldBase {
     value: any;
     options: Array<string | {
         [k: string]: any;
@@ -332,5 +344,5 @@ export declare const SelectField: (props: ISelectField) => JSX.Element;
  * <SubmitButton>Submit</SubmitButton>
  * ```
  */
-export declare const FileField: React.ForwardRefExoticComponent<Pick<IFileField, "name" | "labelText" | "hint" | "validators" | "className"> & React.RefAttributes<unknown>>;
+export declare const FileField: React.ForwardRefExoticComponent<Pick<IFileField, "list" | "step" | "name" | "labelText" | "hint" | "validators" | "className" | "accept" | "alt" | "autoComplete" | "autoFocus" | "capture" | "checked" | "crossOrigin" | "disabled" | "form" | "formAction" | "formEncType" | "formMethod" | "formNoValidate" | "formTarget" | "height" | "max" | "maxLength" | "min" | "minLength" | "multiple" | "pattern" | "placeholder" | "readOnly" | "required" | "size" | "src" | "type" | "value" | "width" | "onChange" | "defaultChecked" | "defaultValue" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "contentEditable" | "contextMenu" | "dir" | "draggable" | "hidden" | "id" | "lang" | "slot" | "spellCheck" | "style" | "tabIndex" | "title" | "translate" | "radioGroup" | "role" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "color" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-expanded" | "aria-flowto" | "aria-grabbed" | "aria-haspopup" | "aria-hidden" | "aria-invalid" | "aria-keyshortcuts" | "aria-label" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "children" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDown" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClick" | "onClickCapture" | "onContextMenu" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseEnter" | "onMouseLeave" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture"> & React.RefAttributes<unknown>>;
 export declare const SubmitButton: (props: import("./field_classes/_SubmitButton").ISubmitButtonProps) => JSX.Element;
