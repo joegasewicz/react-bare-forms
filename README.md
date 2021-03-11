@@ -398,7 +398,7 @@ let state = {
 <SelectField
   size="lg"
   value={state.select_data_id}
-  name="fruitChoice"
+  name="select_data_id"
   objectKey="id" // Value will update state.select_data_id e.g *1, 2...*
   objectValue="name" // Value will be displayed in the select field e.g *first, second...*
   options={selectData}
