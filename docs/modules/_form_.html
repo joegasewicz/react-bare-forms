@@ -101,7 +101,7 @@
 					<div class="tsd-signature tsd-kind-icon">Form<wbr>Consumer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ExoticComponent</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ConsumerProps</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_form_.iformcontext.html" class="tsd-signature-type">IFormContext</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = FormContext.Consumer</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dc28b49/src/form.tsx#L144">src/form.tsx:144</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9716e30/src/form.tsx#L144">src/form.tsx:144</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -134,7 +134,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dc28b49/src/form.tsx#L193">src/form.tsx:193</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9716e30/src/form.tsx#L193">src/form.tsx:193</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -148,20 +148,20 @@
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>example</dt>
-									<dd><pre><code>// Minimal setup <span class="hljs-keyword">for</span> a RBF's Form component
+									<dd><pre><code>// Minimal setup <span class="hljs-keyword">for</span> a RBF&#x27;s Form component
 
- const myState = {
-     username: '',
+ <span class="hljs-keyword">const</span> myState = {
+     username: &#x27;&#x27;,
  }
- const [<span class="hljs-keyword">state</span>, <span class="hljs-built_in">set</span>State] = React.useState(<span class="hljs-keyword">state</span>);
+ <span class="hljs-keyword">const</span> [<span class="hljs-keyword">state</span>, <span class="hljs-built_in">set</span>State] = React.useState(<span class="hljs-keyword">state</span>);
  <span class="hljs-variable">&lt;Form state={myState} context={setState}&gt;</span>&lt;/Form&gt;</code></pre><p>To use <em>RBF</em> Form component from a class component you must pass in your
 										local state of <code>this</code> keyword.</p>
 									</dd>
 									<dt>example</dt>
-									<dd><pre><code><span class="hljs-comment">// Minimal setup for a RBF's Form component for a class component</span>
+									<dd><pre><code><span class="hljs-comment">// Minimal setup for a RBF&#x27;s Form component for a class component</span>
 
  <span class="hljs-keyword">this</span>.state = { <span class="hljs-comment">// in the constructor</span>
-     username: <span class="hljs-string">''</span>,
+     username: <span class="hljs-string">&#x27;&#x27;</span>,
  }
 
  &lt;Form state={<span class="hljs-keyword">this</span>.state} context={<span class="hljs-keyword">this</span>}&gt;&lt;/Form&gt;</code></pre></dd>
@@ -264,6 +264,5 @@
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>

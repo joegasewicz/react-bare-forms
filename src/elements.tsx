@@ -91,7 +91,7 @@ export interface IFileField extends IField<HTMLInputElement> {
 
 export type TypeSelectCssSizeName = |"sm"|"default"|"lg";
 
-export interface ISelectField extends IFieldBase {
+export interface ISelectField extends Omit<IField<HTMLSelectElement>, "size"> {
     value: any;
     options: Array<string|{[k: string]: any}>;
     size?: TypeSelectCssSizeName;

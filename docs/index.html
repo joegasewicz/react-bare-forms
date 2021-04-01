@@ -84,56 +84,56 @@
 				<p>A basic form example with a text input field &amp; submit button. Also, note how we import the <code>isFieldEmpty</code> function
 					from <code>react-bare-forms</code>. This is a validator &amp; can be used to validate a single or *group (such as radio buttons) field(s).
 				There are different validators available &amp; also a custom validator factor function to create your own validators.</p>
-				<pre><code class="language-typescript">import {Form, isFieldEmpty, SubmitButton, TextInputField} from "react-bare-forms";
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {Form, isFieldEmpty, SubmitButton, TextInputField} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-bare-forms&quot;</span>;
 
-const myState = { age: 0 }
-const [state, setState] = React.useState(myState);
+<span class="hljs-keyword">const</span> myState = { <span class="hljs-attr">age</span>: <span class="hljs-number">0</span> }
+<span class="hljs-keyword">const</span> [state, setState] = React.useState(myState);
 
-&lt;Form
-    state={state}
-    context={setState}
-    bare={false}
-    autoComplete="off"
-    callback={() =&gt; console.log("Form submitted!")}&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Form</span>
+    <span class="hljs-attr">state</span>=<span class="hljs-string">{state}</span>
+    <span class="hljs-attr">context</span>=<span class="hljs-string">{setState}</span>
+    <span class="hljs-attr">bare</span>=<span class="hljs-string">{false}</span>
+    <span class="hljs-attr">autoComplete</span>=<span class="hljs-string">&quot;off&quot;</span>
+    <span class="hljs-attr">callback</span>=<span class="hljs-string">{()</span> =&gt;</span> console.log(&quot;Form submitted!&quot;)}&gt;
 
-    &lt;TextInputField
-        value={state.age}
-        name="age"
-        hint="Enter your age"
-        labelText="Age"
-        validators={[isFieldEmpty(2)]} /&gt;
+    <span class="hljs-tag">&lt;<span class="hljs-name">TextInputField</span>
+        <span class="hljs-attr">value</span>=<span class="hljs-string">{state.age}</span>
+        <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;age&quot;</span>
+        <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Enter your age&quot;</span>
+        <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Age&quot;</span>
+        <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isFieldEmpty(2)]}</span> /&gt;</span>
 
-    &lt;SubmitButton&gt;Submit Form&lt;/SubmitButton&gt;
-&lt;/Form&gt;</code></pre>
+    <span class="hljs-tag">&lt;<span class="hljs-name">SubmitButton</span>&gt;</span>Submit Form<span class="hljs-tag">&lt;/<span class="hljs-name">SubmitButton</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Form</span>&gt;</span></span></code></pre>
 				<a href="#usage---class-component" id="usage---class-component" style="color: inherit; text-decoration: none;">
 					<h2>Usage - Class Component</h2>
 				</a>
 				<p>Similiar to the functional component above but now we are using a Class component with
 				local state example:</p>
-				<pre><code class="language-typescript">import {Form, isFieldEmpty, SubmitButton, TextInputField} from "react-bare-forms";
-class MyForm {
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {Form, isFieldEmpty, SubmitButton, TextInputField} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-bare-forms&quot;</span>;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyForm</span> </span>{
 
     state = {
-        "age": 0,
+        <span class="hljs-string">&quot;age&quot;</span>: <span class="hljs-number">0</span>,
     }
 
-    myForm() {
-            return(&lt;Form
-            state={this.state}
-            context={this}
-            bare={false}
-            autoComplete="off"
-            callback={() =&gt; console.log("Form submitted!")}&gt;
+    <span class="hljs-function"><span class="hljs-title">myForm</span>(<span class="hljs-params"></span>)</span> {
+            <span class="hljs-keyword">return</span>(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Form</span>
+            <span class="hljs-attr">state</span>=<span class="hljs-string">{this.state}</span>
+            <span class="hljs-attr">context</span>=<span class="hljs-string">{this}</span>
+            <span class="hljs-attr">bare</span>=<span class="hljs-string">{false}</span>
+            <span class="hljs-attr">autoComplete</span>=<span class="hljs-string">&quot;off&quot;</span>
+            <span class="hljs-attr">callback</span>=<span class="hljs-string">{()</span> =&gt;</span> console.log(&quot;Form submitted!&quot;)}&gt;
 
-            &lt;TextInputField
-                value={state.age}
-                name="age"
-                hint="Enter your age"
-                labelText="Age"
-                validators={[isFieldEmpty(2)]} /&gt;
+            <span class="hljs-tag">&lt;<span class="hljs-name">TextInputField</span>
+                <span class="hljs-attr">value</span>=<span class="hljs-string">{state.age}</span>
+                <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;age&quot;</span>
+                <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Enter your age&quot;</span>
+                <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Age&quot;</span>
+                <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isFieldEmpty(2)]}</span> /&gt;</span>
 
-            &lt;SubmitButton&gt;Submit Form&lt;/SubmitButton&gt;
-        &lt;/Form&gt;);
+            <span class="hljs-tag">&lt;<span class="hljs-name">SubmitButton</span>&gt;</span>Submit Form<span class="hljs-tag">&lt;/<span class="hljs-name">SubmitButton</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Form</span>&gt;</span></span>);
     }
 
 
@@ -143,67 +143,69 @@ class MyForm {
 					<h2>Usage - Class Component with Nested State</h2>
 				</a>
 				<p>Same as the Class component above but with nested state example:</p>
-				<pre><code class="language-typescript">import {Form, isFieldEmpty, SubmitButton, TextInputField} from "react-bare-forms";
-class MyForm {
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {Form, isFieldEmpty, SubmitButton, TextInputField} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-bare-forms&quot;</span>;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyForm</span> </span>{
 
     state = {
-        "formData": { // &lt;-- Note we are nesting out form state
-            "age": 0,
+        <span class="hljs-string">&quot;formData&quot;</span>: { <span class="hljs-comment">// &lt;-- Note we are nesting out form state</span>
+            <span class="hljs-string">&quot;age&quot;</span>: <span class="hljs-number">0</span>,
         }
     }
 
-    myForm() {
-            return(&lt;Form
-            state={this.state}
-            context={this}
-            formKey="formData" // &lt;-- Required: Name of our for formData attribute in the state object
-            bare={false}
-            autoComplete="off"
-            callback={() =&gt; console.log("Form submitted!")}&gt;
+    <span class="hljs-function"><span class="hljs-title">myForm</span>(<span class="hljs-params"></span>)</span> {
+            <span class="hljs-keyword">return</span>(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Form</span>
+            <span class="hljs-attr">state</span>=<span class="hljs-string">{this.state}</span>
+            <span class="hljs-attr">context</span>=<span class="hljs-string">{this}</span>
+            <span class="hljs-attr">formKey</span>=<span class="hljs-string">&quot;formData&quot;</span> // &lt;<span class="hljs-attr">--</span> <span class="hljs-attr">Required:</span> <span class="hljs-attr">Name</span> <span class="hljs-attr">of</span> <span class="hljs-attr">our</span> <span class="hljs-attr">for</span> <span class="hljs-attr">formData</span> <span class="hljs-attr">attribute</span> <span class="hljs-attr">in</span> <span class="hljs-attr">the</span> <span class="hljs-attr">state</span> <span class="hljs-attr">object</span>
+            <span class="hljs-attr">bare</span>=<span class="hljs-string">{false}</span>
+            <span class="hljs-attr">autoComplete</span>=<span class="hljs-string">&quot;off&quot;</span>
+            <span class="hljs-attr">callback</span>=<span class="hljs-string">{()</span> =&gt;</span> console.log(&quot;Form submitted!&quot;)}&gt;
 
-            &lt;TextInputField
-                value={state.age}
-                name="age"
-                hint="Enter your age"
-                labelText="Age"
-                validators={[isFieldEmpty(2)]} /&gt;
+            <span class="hljs-tag">&lt;<span class="hljs-name">TextInputField</span>
+                <span class="hljs-attr">value</span>=<span class="hljs-string">{state.age}</span>
+                <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;age&quot;</span>
+                <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Enter your age&quot;</span>
+                <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Age&quot;</span>
+                <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isFieldEmpty(2)]}</span> /&gt;</span>
 
-            &lt;SubmitButton&gt;Submit Form&lt;/SubmitButton&gt;
-        &lt;/Form&gt;);
+            <span class="hljs-tag">&lt;<span class="hljs-name">SubmitButton</span>&gt;</span>Submit Form<span class="hljs-tag">&lt;/<span class="hljs-name">SubmitButton</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Form</span>&gt;</span>);
     }
 
 
 }
-</code></pre>
+</span></code></pre>
 				<a href="#file-ref" id="file-ref" style="color: inherit; text-decoration: none;">
 					<h2>File Ref</h2>
 				</a>
 				<p>RBF&#39;s provides a function that returns a React ref to access your file object. To use, simply assign the returned ref from
 					the <code>createFileRef</code> function to a variable &amp; pass this variable to <code>FileField</code>&#39;s ref prop.
 					To access your file object, pass your React ref to the <code>getFileFromRef</code> function.
+					<em>Make sure you assign a <code>name</code> prop if you use the validators (<code>isFile()</code> for example).</em>
 				For example:</p>
-				<pre><code class="language-typescript"> <span class="hljs-keyword">import</span> {createFileRef, FileField, isFile, getFileFromRef} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bare-forms"</span>;
+				<pre><code class="language-typescript"> <span class="hljs-keyword">import</span> {createFileRef, FileField, isFile, getFileFromRef} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-bare-forms&quot;</span>;
 
  <span class="hljs-keyword">const</span> myFileRef = createFileRef();
 
- &lt;FileField
-     ref={myFileRef}
-     hint=<span class="hljs-string">"Must be a file"</span>
-     labelText=<span class="hljs-string">"Upload your file"</span>
-     validators={[isFile()]}
- /&gt;
+ <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">FileField</span>
+     <span class="hljs-attr">ref</span>=<span class="hljs-string">{myFileRef}</span>
+     <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;myFile&quot;</span> // <span class="hljs-attr">You</span> <span class="hljs-attr">must</span> <span class="hljs-attr">assign</span> <span class="hljs-attr">a</span> <span class="hljs-attr">name</span> <span class="hljs-attr">to</span> <span class="hljs-attr">use</span> <span class="hljs-attr">the</span> <span class="hljs-attr">validators</span>
+     <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Must be a file&quot;</span>
+     <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Upload your file&quot;</span>
+     <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isFile()]}</span>
+ /&gt;</span></span>
 
  <span class="hljs-comment">// To access the File object use `getFileFromRef` helper function:</span>
 <span class="hljs-keyword">let</span> myFile = getFileFromRef(myFileRef);
 
 <span class="hljs-comment">// Example callback:</span>
-<span class="hljs-keyword">const</span> myCallback = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+<span class="hljs-keyword">const</span> myCallback = <span class="hljs-function">() =&gt;</span> {
     <span class="hljs-keyword">const</span> myFile = getFileFromRef(myFileRef);
     <span class="hljs-keyword">const</span> formData = <span class="hljs-keyword">new</span> FormData();
-    formData.append(<span class="hljs-string">"tmyFile"</span>, myFile);
+    formData.append(<span class="hljs-string">&quot;tmyFile&quot;</span>, myFile);
 }
 
-<span class="hljs-comment">// then add to the RBF's Form component:</span>
+<span class="hljs-comment">// then add to the RBF&#x27;s Form component:</span>
 &lt;Form
     callback={myCallback}
     <span class="hljs-comment">// ... .etc</span></code></pre>
@@ -212,30 +214,30 @@ class MyForm {
 				</a>
 				<p>RBF&#39;s provides the <code>FormConsumer</code>, which gives access to field information.
 				Below is an example of a form containing a single text input field.</p>
-				<pre><code class="language-typescript">import {Form, FormConsumer, IFormContext, isFieldEmpty, TextInputField} from "react-bare-forms";
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {Form, FormConsumer, IFormContext, isFieldEmpty, TextInputField} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-bare-forms&quot;</span>;
 
-// Example within a class component
-state = { age: 0 }
+<span class="hljs-comment">// Example within a class component</span>
+state = { <span class="hljs-attr">age</span>: <span class="hljs-number">0</span> }
 
-&lt;Form state={myState} context={this}&gt;
-    &lt;TextInputField
-        value={this.state.age}
-        name="age"
-        hint="Enter your age"
-        labelText="Age"
-        validators={[isFieldEmpty(5)]}
-    /&gt;
-    &lt;FormConsumer&gt;
+&lt;Form state={myState} context={<span class="hljs-built_in">this</span>}&gt;
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TextInputField</span>
+        <span class="hljs-attr">value</span>=<span class="hljs-string">{this.state.age}</span>
+        <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;age&quot;</span>
+        <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Enter your age&quot;</span>
+        <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Age&quot;</span>
+        <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isFieldEmpty(5)]}</span>
+    /&gt;</span></span>
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">FormConsumer</span>&gt;</span>
         {(context: IFormContext) =&gt; {
-            return &lt;code&gt;{JSON.stringify(context.metadata)}&lt;/code&gt;;
+            return <span class="hljs-tag">&lt;<span class="hljs-name">code</span>&gt;</span>{JSON.stringify(context.metadata)}<span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span>;
         }}
-    &lt;/FormConsumer&gt;
+    <span class="hljs-tag">&lt;/<span class="hljs-name">FormConsumer</span>&gt;</span></span>
 &lt;/Form&gt;
 </code></pre>
 				<p>The <code>context</code> object is available using the <code>FormConsumer</code> component. You can access the entire form context
 					from the callback&#39;s <a href="https://joegasewicz.github.io/react-bare-forms/interfaces/_form_.iformcontext.html"><strong>IFormContext</strong></a> type argument. The context includes a <code>metadata</code> property which gives you detailed
 				values of the current state of all the form fields &amp; validation state.</p>
-				<pre><code class="language-json">{<span class="hljs-attr">"inputs"</span>:{<span class="hljs-attr">"state"</span>:{<span class="hljs-attr">"age"</span>:{<span class="hljs-attr">"name"</span>:<span class="hljs-string">"age"</span>,<span class="hljs-attr">"validation"</span>:[{<span class="hljs-attr">"isValid"</span>:<span class="hljs-literal">false</span>,<span class="hljs-attr">"messages"</span>:[<span class="hljs-string">"Must be at least 2 characters"</span>]}],<span class="hljs-attr">"isTouched"</span>:<span class="hljs-literal">false</span>,<span class="hljs-attr">"fieldValues"</span>:{<span class="hljs-attr">"type"</span>:<span class="hljs-string">"value"</span>,<span class="hljs-attr">"currentValue"</span>:<span class="hljs-number">0</span>}}},<span class="hljs-attr">"metaType"</span>:<span class="hljs-string">"inputs"</span>,<span class="hljs-attr">"defaultState"</span>:{},<span class="hljs-attr">"_name"</span>:<span class="hljs-string">"age"</span>,<span class="hljs-attr">"_fieldType"</span>:<span class="hljs-string">"text"</span>},<span class="hljs-attr">"checkboxes"</span>:{<span class="hljs-attr">"state"</span>:{},<span class="hljs-attr">"metaType"</span>:<span class="hljs-string">"checkboxes"</span>,<span class="hljs-attr">"defaultState"</span>:{}},<span class="hljs-attr">"files"</span>:{<span class="hljs-attr">"state"</span>:{},<span class="hljs-attr">"metaType"</span>:<span class="hljs-string">"files"</span>,<span class="hljs-attr">"defaultState"</span>:{}},<span class="hljs-attr">"radioGroups"</span>:{<span class="hljs-attr">"state"</span>:{},<span class="hljs-attr">"metaType"</span>:<span class="hljs-string">"radioGroups"</span>,<span class="hljs-attr">"defaultState"</span>:{}}}</code></pre>
+				<pre><code class="language-json">{<span class="hljs-attr">&quot;inputs&quot;</span>:{<span class="hljs-attr">&quot;state&quot;</span>:{<span class="hljs-attr">&quot;age&quot;</span>:{<span class="hljs-attr">&quot;name&quot;</span>:<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-attr">&quot;validation&quot;</span>:[{<span class="hljs-attr">&quot;isValid&quot;</span>:<span class="hljs-literal">false</span>,<span class="hljs-attr">&quot;messages&quot;</span>:[<span class="hljs-string">&quot;Must be at least 2 characters&quot;</span>]}],<span class="hljs-attr">&quot;isTouched&quot;</span>:<span class="hljs-literal">false</span>,<span class="hljs-attr">&quot;fieldValues&quot;</span>:{<span class="hljs-attr">&quot;type&quot;</span>:<span class="hljs-string">&quot;value&quot;</span>,<span class="hljs-attr">&quot;currentValue&quot;</span>:<span class="hljs-number">0</span>}}},<span class="hljs-attr">&quot;metaType&quot;</span>:<span class="hljs-string">&quot;inputs&quot;</span>,<span class="hljs-attr">&quot;defaultState&quot;</span>:{},<span class="hljs-attr">&quot;_name&quot;</span>:<span class="hljs-string">&quot;age&quot;</span>,<span class="hljs-attr">&quot;_fieldType&quot;</span>:<span class="hljs-string">&quot;text&quot;</span>},<span class="hljs-attr">&quot;checkboxes&quot;</span>:{<span class="hljs-attr">&quot;state&quot;</span>:{},<span class="hljs-attr">&quot;metaType&quot;</span>:<span class="hljs-string">&quot;checkboxes&quot;</span>,<span class="hljs-attr">&quot;defaultState&quot;</span>:{}},<span class="hljs-attr">&quot;files&quot;</span>:{<span class="hljs-attr">&quot;state&quot;</span>:{},<span class="hljs-attr">&quot;metaType&quot;</span>:<span class="hljs-string">&quot;files&quot;</span>,<span class="hljs-attr">&quot;defaultState&quot;</span>:{}},<span class="hljs-attr">&quot;radioGroups&quot;</span>:{<span class="hljs-attr">&quot;state&quot;</span>:{},<span class="hljs-attr">&quot;metaType&quot;</span>:<span class="hljs-string">&quot;radioGroups&quot;</span>,<span class="hljs-attr">&quot;defaultState&quot;</span>:{}}}</code></pre>
 				<a href="#validators" id="validators" style="color: inherit; text-decoration: none;">
 					<h2>Validators</h2>
 				</a>
@@ -261,23 +263,23 @@ state = { age: 0 }
 				</a>
 				<p>The main Form component that is required to wrap all RBF components. If the component that uses the Form component is a functional component then only the state props &amp; state update function returned from the useState hook are required. If you are calling Form component from a class component then you must pass your local context or this keyword to the context prop.</p>
 				<p>An example using <em>RBF</em> Form component in a functional component</p>
-				<pre><code class="language-typescript"><span class="hljs-comment">// Minimal setup for a RBF's Form component</span>
+				<pre><code class="language-typescript"><span class="hljs-comment">// Minimal setup for a RBF&#x27;s Form component</span>
 
 <span class="hljs-keyword">const</span> myState = {
-  username: <span class="hljs-string">''</span>,
+  <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;&#x27;</span>,
 }
 
  <span class="hljs-keyword">const</span> [state, setState] = React.useState(state);
- &lt;Form state={myState} context={setState}&gt;&lt;<span class="hljs-regexp">/Form&gt;&gt;</span></code></pre>
+ <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Form</span> <span class="hljs-attr">state</span>=<span class="hljs-string">{myState}</span> <span class="hljs-attr">context</span>=<span class="hljs-string">{setState}</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Form</span>&gt;</span></span>&gt;</code></pre>
 				<p>To use <em>RBF</em> Form component from a class component, you must pass in your
 				local context or <code>this</code> keyword.</p>
-				<pre><code class="language-typescript">// Minimal setup for a RBF's Form component for a class component
+				<pre><code class="language-typescript"><span class="hljs-comment">// Minimal setup for a RBF&#x27;s Form component for a class component</span>
 
-const this.state = { // in the constructor
-  username: '',
+<span class="hljs-keyword">const</span> <span class="hljs-built_in">this</span>.state = { <span class="hljs-comment">// in the constructor</span>
+  <span class="hljs-attr">username</span>: <span class="hljs-string">&#x27;&#x27;</span>,
 }
 
-&lt;Form state={this.state} context={this}&gt;&lt;/Form&gt;
+&lt;Form state={<span class="hljs-built_in">this</span>.state} context={<span class="hljs-built_in">this</span>}&gt;&lt;/Form&gt;
 </code></pre>
 				<a href="#input-field-components" id="input-field-components" style="color: inherit; text-decoration: none;">
 					<h2>Input Field components</h2>
@@ -292,104 +294,104 @@ const this.state = { // in the constructor
 				<a href="#textinputfield" id="textinputfield" style="color: inherit; text-decoration: none;">
 					<h4>TextInputField</h4>
 				</a>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {TextInputField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bare-forms"</span>;
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {TextInputField} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-bare-forms&quot;</span>;
 
-<span class="hljs-keyword">const</span> state = { username: <span class="hljs-string">""</span> }
+<span class="hljs-keyword">const</span> state = { <span class="hljs-attr">username</span>: <span class="hljs-string">&quot;&quot;</span> }
 <span class="hljs-comment">// A bare form example ... remember to set the Form.bare property to `true`</span>
 &lt;TextInputField
-    value={<span class="hljs-keyword">this</span>.state.username}
-    name=<span class="hljs-string">"username"</span>
+    value={<span class="hljs-built_in">this</span>.state.username}
+    name=<span class="hljs-string">&quot;username&quot;</span>
 /&gt;
 
 <span class="hljs-comment">// Example with Bootstrap styling (Bootstrap styling comes as default)</span>
 
-&lt;TextInputField
-    value={state.username}
-    name=<span class="hljs-string">"username"</span>
-    hint=<span class="hljs-string">"Needs to be at least 50 characters long"</span>
-    labelText=<span class="hljs-string">"Username"</span>
-/&gt;</code></pre>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TextInputField</span>
+    <span class="hljs-attr">value</span>=<span class="hljs-string">{state.username}</span>
+    <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;username&quot;</span>
+    <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Needs to be at least 50 characters long&quot;</span>
+    <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Username&quot;</span>
+/&gt;</span></span></code></pre>
 				<a href="#emailfield" id="emailfield" style="color: inherit; text-decoration: none;">
 					<h4>EmailField</h4>
 				</a>
-				<pre><code class="language-typescript">  <span class="hljs-keyword">import</span> {EmailField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>
+				<pre><code class="language-typescript">  <span class="hljs-keyword">import</span> {EmailField} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-base-forms&quot;</span>
 
-  <span class="hljs-keyword">const</span> state = { email: <span class="hljs-string">""</span> }
+  <span class="hljs-keyword">const</span> state = { <span class="hljs-attr">email</span>: <span class="hljs-string">&quot;&quot;</span> }
 
  <span class="hljs-comment">// A bare form example ... remember to set the Form.bare property to `true`</span>
  &lt;EmailField
     value={state.email}
-    name=<span class="hljs-string">"email"</span>
+    name=<span class="hljs-string">&quot;email&quot;</span>
  /&gt;
 
  <span class="hljs-comment">// Example with Bootstrap styling (Bootstrap styling comes as default)</span>
- &lt;EmailField
-    value={state.email}
-    name=<span class="hljs-string">"email"</span>
-    hint=<span class="hljs-string">"Needs to be at least 50 characters long"</span>
-    labelText=<span class="hljs-string">"Username"</span>
-  /&gt;</code></pre>
+ <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">EmailField</span>
+    <span class="hljs-attr">value</span>=<span class="hljs-string">{state.email}</span>
+    <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;email&quot;</span>
+    <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Needs to be at least 50 characters long&quot;</span>
+    <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Username&quot;</span>
+  /&gt;</span></span></code></pre>
 				<a href="#passwordfield" id="passwordfield" style="color: inherit; text-decoration: none;">
 					<h4>PasswordField</h4>
 				</a>
 				<p>The <code>PasswordField</code> works the same as the <code>EmailField</code> &amp; <code>TextInputField</code>&#39;s.</p>
 				<pre><code class="language-typescript">
-<span class="hljs-keyword">import</span> {areFieldsEqual, isFieldEmpty, PasswordField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
+<span class="hljs-keyword">import</span> {areFieldsEqual, isFieldEmpty, PasswordField} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-base-forms&quot;</span>;
 
-<span class="hljs-keyword">const</span> state = { password: <span class="hljs-string">""</span>, confirmPassword: <span class="hljs-string">""</span> };
+<span class="hljs-keyword">const</span> state = { <span class="hljs-attr">password</span>: <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-attr">confirmPassword</span>: <span class="hljs-string">&quot;&quot;</span> };
 
 <span class="hljs-comment">// A bare form example ... remember to set the {@link Form.bare} property to `true`</span>
-&lt;PasswordField
-  value={state.password}
-  name=<span class="hljs-string">"username"</span>
-  validators={[isFieldEmpty(<span class="hljs-number">8</span>)]}
-/&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">PasswordField</span>
+  <span class="hljs-attr">value</span>=<span class="hljs-string">{state.password}</span>
+  <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;username&quot;</span>
+  <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isFieldEmpty(8)]}</span>
+/&gt;</span></span>
 
 <span class="hljs-comment">// Example with Bootstrap styling (Bootstrap styling comes as default)</span>
 
-&lt;PasswordField
-  value={state.confirmPassword}
-  name=<span class="hljs-string">"password"</span>
-  hint=<span class="hljs-string">"Needs to be at least 8 characters long"</span>
-  labelText=<span class="hljs-string">"Password"</span>
-/&gt;</code></pre>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">PasswordField</span>
+  <span class="hljs-attr">value</span>=<span class="hljs-string">{state.confirmPassword}</span>
+  <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;password&quot;</span>
+  <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Needs to be at least 8 characters long&quot;</span>
+  <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Password&quot;</span>
+/&gt;</span></span></code></pre>
 				<p>Also we can create two <em>PasswordField</em> components to confirm passwords are equal. Please see
 					<a href="modules/_validators_.html#arefieldsequal">areFieldsEqual</a> for more info.
 					The first <em>PasswordField</em> has has a <em>name</em> prop of <strong>password</strong> &amp; the second <em>PasswordField</em> a name
-					prop of <em>confirmPassword</em>. Then we can add a <em>areFieldsEqual</em> validator to the <em>PasswordField</em>
+					prop of <em>confirmPassword*. Then we can add a *areFieldsEqual</em> validator to the <em>PasswordField</em>
 					with the <em>confirmPassword</em> name props <em>areFieldsEqual</em> takes the first <em>PasswordField</em>
 				name as an argument).</p>
 				<pre><code class="language-typescript">&lt;PasswordField
-    name=<span class="hljs-string">"password"</span>
+    name=<span class="hljs-string">&quot;password&quot;</span>
     <span class="hljs-comment">// other props...</span>
 
 /&gt;
 
-&lt;PasswordField
-    name=<span class="hljs-string">"confirmPassword"</span>
-    <span class="hljs-comment">// other props...</span>
-    validators={[areFieldsEqual(<span class="hljs-string">"password"</span>)]}
-/&gt;</code></pre>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">PasswordField</span>
+    <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;confirmPassword&quot;</span>
+    // <span class="hljs-attr">other</span> <span class="hljs-attr">props...</span>
+    <span class="hljs-attr">validators</span>=<span class="hljs-string">{[areFieldsEqual(</span>&quot;<span class="hljs-attr">password</span>&quot;)]}
+/&gt;</span></span></code></pre>
 				<a href="#checkboxfield" id="checkboxfield" style="color: inherit; text-decoration: none;">
 					<h4>CheckBoxField</h4>
 				</a>
 				<p>The <strong>CheckBoxField</strong> component takes a <code>checked</code> prop instead of the usual <code>value</code> prop. </p>
-				<pre><code class="language-typescript">  <span class="hljs-keyword">import</span> {CheckBoxField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
+				<pre><code class="language-typescript">  <span class="hljs-keyword">import</span> {CheckBoxField} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-base-forms&quot;</span>;
 
-  <span class="hljs-keyword">const</span> state = { password: <span class="hljs-string">""</span>, confirmPassword: <span class="hljs-string">""</span> };
+  <span class="hljs-keyword">const</span> state = { <span class="hljs-attr">password</span>: <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-attr">confirmPassword</span>: <span class="hljs-string">&quot;&quot;</span> };
 
- &lt;CheckBoxField
-   name=<span class="hljs-string">"terms"</span>
-   checked={<span class="hljs-keyword">this</span>.state.terms}
- /&gt;
+ <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">CheckBoxField</span>
+   <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;terms&quot;</span>
+   <span class="hljs-attr">checked</span>=<span class="hljs-string">{this.state.terms}</span>
+ /&gt;</span></span>
 
  <span class="hljs-comment">// Example with Bootstrap styling (Bootstrap styling comes as default)</span>
- &lt;CheckBoxField
-   name=<span class="hljs-string">"terms"</span>
-   checked={state.terms}
-   hint=<span class="hljs-string">"Click to agree"</span>
-   labelText=<span class="hljs-string">"Agree to terms &amp; conditions"</span>
- /&gt;</code></pre>
+ <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">CheckBoxField</span>
+   <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;terms&quot;</span>
+   <span class="hljs-attr">checked</span>=<span class="hljs-string">{state.terms}</span>
+   <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Click to agree&quot;</span>
+   <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Agree to terms &amp; conditions&quot;</span>
+ /&gt;</span></span></code></pre>
 				<a href="#other-field-elements" id="other-field-elements" style="color: inherit; text-decoration: none;">
 					<h3>Other Field Elements</h3>
 				</a>
@@ -398,10 +400,10 @@ const this.state = { // in the constructor
 					<h4>TextArea Input _field</h4>
 				</a>
 				<pre><code class="language-typescript">&lt;TextAreaField
-    name=<span class="hljs-string">"about"</span>
-    value={<span class="hljs-keyword">this</span>.state.about}
-    hint=<span class="hljs-string">"Your email"</span>
-    labelText=<span class="hljs-string">"Must be at least 20 characters"</span>
+    name=<span class="hljs-string">&quot;about&quot;</span>
+    value={<span class="hljs-built_in">this</span>.state.about}
+    hint=<span class="hljs-string">&quot;Your email&quot;</span>
+    labelText=<span class="hljs-string">&quot;Must be at least 20 characters&quot;</span>
     validators={[isFieldEmpty(<span class="hljs-number">20</span>)]}
 /&gt;
 </code></pre>
@@ -409,37 +411,37 @@ const this.state = { // in the constructor
 					<h4>SelectField</h4>
 				</a>
 				<p>A component to render a select field element.</p>
-				<pre><code class="language-typescript">  <span class="hljs-keyword">import</span> {SelectField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
+				<pre><code class="language-typescript">  <span class="hljs-keyword">import</span> {SelectField} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-base-forms&quot;</span>;
 
-  <span class="hljs-keyword">const</span> state = { fruitChoice: <span class="hljs-string">""</span> };
+  <span class="hljs-keyword">const</span> state = { <span class="hljs-attr">fruitChoice</span>: <span class="hljs-string">&quot;&quot;</span> };
 
- &lt;SelectField
-   size=<span class="hljs-string">"lg"</span>
-   value={state.fruitChoice}
-   name=<span class="hljs-string">"fruitChoice"</span>
-   options={[<span class="hljs-string">"banana"</span>, <span class="hljs-string">"apple"</span>, <span class="hljs-string">"orange"</span>]}
-  /&gt;</code></pre>
+ <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">SelectField</span>
+   <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;lg&quot;</span>
+   <span class="hljs-attr">value</span>=<span class="hljs-string">{state.fruitChoice}</span>
+   <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;fruitChoice&quot;</span>
+   <span class="hljs-attr">options</span>=<span class="hljs-string">{[</span>&quot;<span class="hljs-attr">banana</span>&quot;, &quot;<span class="hljs-attr">apple</span>&quot;, &quot;<span class="hljs-attr">orange</span>&quot;]}
+  /&gt;</span></span></code></pre>
 				<p>You can also pass an array of objects but you must use both the
 					<em>objectKey</em> &amp; <em>objectValue</em> props. the <code>objectKey</code> will update your state
 				value &amp; the <code>objectValue</code> is what is displayed to the user as an option.</p>
 				<pre><code class="language-typescript"><span class="hljs-comment">// This is your option data</span>
 <span class="hljs-keyword">let</span> selectData = [
-  {id: <span class="hljs-number">1</span>, name: <span class="hljs-string">"first"</span>},
-  {id: <span class="hljs-number">2</span>, name: <span class="hljs-string">"second"</span>},
+  {<span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;first&quot;</span>},
+  {<span class="hljs-attr">id</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;second&quot;</span>},
 ];
 <span class="hljs-comment">// The state which will receive the update</span>
 <span class="hljs-keyword">let</span> state = {
-   select_data_id: <span class="hljs-literal">undefined</span> <span class="hljs-keyword">as</span> <span class="hljs-built_in">any</span>,
+   <span class="hljs-attr">select_data_id</span>: <span class="hljs-literal">undefined</span> <span class="hljs-keyword">as</span> <span class="hljs-built_in">any</span>,
 };
 
-&lt;SelectField
-  size=<span class="hljs-string">"lg"</span>
-  value={state.select_data_id}
-  name=<span class="hljs-string">"fruitChoice"</span>
-  objectKey=<span class="hljs-string">"id"</span> <span class="hljs-comment">// Value will update state.select_data_id e.g *1, 2...*</span>
-  objectValue=<span class="hljs-string">"name"</span> <span class="hljs-comment">// Value will be displayed in the select field e.g *first, second...*</span>
-  options={selectData}
-/&gt;</code></pre>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">SelectField</span>
+  <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;lg&quot;</span>
+  <span class="hljs-attr">value</span>=<span class="hljs-string">{state.select_data_id}</span>
+  <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;select_data_id&quot;</span>
+  <span class="hljs-attr">objectKey</span>=<span class="hljs-string">&quot;id&quot;</span> // <span class="hljs-attr">Value</span> <span class="hljs-attr">will</span> <span class="hljs-attr">update</span> <span class="hljs-attr">state.select_data_id</span> <span class="hljs-attr">e.g</span> *<span class="hljs-attr">1</span>, <span class="hljs-attr">2...</span>*
+  <span class="hljs-attr">objectValue</span>=<span class="hljs-string">&quot;name&quot;</span> // <span class="hljs-attr">Value</span> <span class="hljs-attr">will</span> <span class="hljs-attr">be</span> <span class="hljs-attr">displayed</span> <span class="hljs-attr">in</span> <span class="hljs-attr">the</span> <span class="hljs-attr">select</span> <span class="hljs-attr">field</span> <span class="hljs-attr">e.g</span> *<span class="hljs-attr">first</span>, <span class="hljs-attr">second...</span>*
+  <span class="hljs-attr">options</span>=<span class="hljs-string">{selectData}</span>
+/&gt;</span></span></code></pre>
 				<a href="#radio-buttons" id="radio-buttons" style="color: inherit; text-decoration: none;">
 					<h3>Radio Buttons</h3>
 				</a>
@@ -449,11 +451,11 @@ const this.state = { // in the constructor
 				<p>The <code>RadioGroup</code> component takes a single props of <code>name</code>, which</p>
 				<ul>
 					<li><p>must be a unique to a form. See <a href="modules/_elements_.html#radiofield">RadioField</a>.</p>
-						<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {CheckBoxField} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
+						<pre><code class="language-typescript"><span class="hljs-keyword">import</span> {CheckBoxField} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-base-forms&quot;</span>;
 
-&lt;RadioGroup name=<span class="hljs-string">"group1"</span>&gt;
-  <span class="hljs-comment">// place RadioFields components here...</span>
-&lt;<span class="hljs-regexp">/RadioGroup&gt;</span></code></pre>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">RadioGroup</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;group1&quot;</span>&gt;</span>
+  // place RadioFields components here...
+<span class="hljs-tag">&lt;/<span class="hljs-name">RadioGroup</span>&gt;</span></span></code></pre>
 					</li>
 				</ul>
 				<a href="#radiofield" id="radiofield" style="color: inherit; text-decoration: none;">
@@ -462,54 +464,57 @@ const this.state = { // in the constructor
 				<p><code>RadioField</code> inputs are designed to be used with the <strong>RadioGroup</strong> component.
 					To use this component, add or nest it within a <strong>RadioGroup</strong> component as children.
 				It&#39;s possible to also use the <strong>isRadioChecked</strong> validator with a RadioGroup, as shown below:</p>
-				<pre><code class="language-typescript"> <span class="hljs-keyword">import</span> {isRadioChecked, RadioField, RadioGroup} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
+				<pre><code class="language-typescript"> <span class="hljs-keyword">import</span> {isRadioChecked, RadioField, RadioGroup} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-base-forms&quot;</span>;
 
- <span class="hljs-keyword">const</span> state = { male: <span class="hljs-literal">true</span>, female: <span class="hljs-literal">false</span> };
+ <span class="hljs-keyword">const</span> state = { <span class="hljs-attr">male</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">female</span>: <span class="hljs-literal">false</span> };
 
- &lt;RadioGroup name=<span class="hljs-string">"group1"</span>&gt;
-   &lt;RadioField
-     name=<span class="hljs-string">"male"</span>
-     checked={state.male}
-     hint=<span class="hljs-string">"Click to agree"</span>
-     labelText=<span class="hljs-string">"Agree to terms &amp; conditions"</span>
-   /&gt;
+ <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">RadioGroup</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;group1&quot;</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">RadioField</span>
+     <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;male&quot;</span>
+     <span class="hljs-attr">checked</span>=<span class="hljs-string">{state.male}</span>
+     <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Click to agree&quot;</span>
+     <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Agree to terms &amp; conditions&quot;</span>
+   /&gt;</span>
 
-   &lt;RadioField
-     name=<span class="hljs-string">"female"</span>
-     checked={state.female}
-     hint=<span class="hljs-string">"Click to agree"</span>
-     labelText=<span class="hljs-string">"Agree to terms &amp; conditions"</span>
-     validators={[isRadioChecked()]}
-   /&gt;
+   <span class="hljs-tag">&lt;<span class="hljs-name">RadioField</span>
+     <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;female&quot;</span>
+     <span class="hljs-attr">checked</span>=<span class="hljs-string">{state.female}</span>
+     <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Click to agree&quot;</span>
+     <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Agree to terms &amp; conditions&quot;</span>
+     <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isRadioChecked()]}</span>
+   /&gt;</span>
 
- &lt;<span class="hljs-regexp">/RadioGroup&gt;</span></code></pre>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">RadioGroup</span>&gt;</span></span></code></pre>
+				<p>Warning: Currently <code>RadioField</code> compoments must be nested directly within a <code>RadioGroup</code>.
+					There is an issue currently open that will enable nested jsx elements between a <code>RadioField</code> it&#39;s <code>RadioGroup</code>.
+				See <a href="https://github.com/joegasewicz/react-bare-forms/issues/102">issue #102</a></p>
 				<a href="#buttons" id="buttons" style="color: inherit; text-decoration: none;">
 					<h2>Buttons</h2>
 				</a>
 				<p>The SubmitButton only requires a text string as children props (see below example).
 				The SubmitButton will be disabled until all form fields with a <em>validators</em> prop are validated.</p>
 				<pre><code class="language-typescript">
- <span class="hljs-keyword">import</span> {SubmitButton} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-base-forms"</span>;
+ <span class="hljs-keyword">import</span> {SubmitButton} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-base-forms&quot;</span>;
 
- &lt;SubmitButton&gt;Submit&lt;<span class="hljs-regexp">/SubmitButton&gt;</span></code></pre>
+ <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">SubmitButton</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">SubmitButton</span>&gt;</span></span></code></pre>
 				<a href="#bootstrap-4" id="bootstrap-4" style="color: inherit; text-decoration: none;">
 					<h2>Bootstrap 4</h2>
 				</a>
 				<p>Bootstrap 4 doesn&#39;t come with React Bare Forms so that you can obtain the smallest bundle size possible!</p>
 				<p>There are several ways to include Bootstrap 4. the simplist (but not the best) is to import it directly from the cdn in your index.html file. For example</p>
-				<pre><code class="language-html">      <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"</span> <span class="hljs-attr">integrity</span>=<span class="hljs-string">"sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"</span> <span class="hljs-attr">crossorigin</span>=<span class="hljs-string">"anonymous"</span>&gt;</span></code></pre>
+				<pre><code class="language-html">      <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&quot;</span> <span class="hljs-attr">integrity</span>=<span class="hljs-string">&quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&quot;</span> <span class="hljs-attr">crossorigin</span>=<span class="hljs-string">&quot;anonymous&quot;</span>&gt;</span></code></pre>
 				<p>But a much better way is to use Sass, so then we can choose which Bootstrap 4 Sass components we want our React app to use.</p>
 				<pre><code>    npm <span class="hljs-keyword">install</span> bootstrap</code></pre><p>Then install the loaders</p>
-				<pre><code>npm <span class="hljs-keyword">install</span> sass <span class="hljs-keyword">style</span>-loader css-loader sass-loader <span class="hljs-comment">--save-dev</span>
+				<pre><code>npm install sass style-loader css-loader sass-loader --save-dev
 
 <span class="hljs-comment"># In your webpack.config.js:</span>
 
     {
-             <span class="hljs-keyword">test</span>: /\.scss$/,
-             <span class="hljs-keyword">use</span>: [
-                 <span class="hljs-string">"style-loader"</span>, // creates <span class="hljs-keyword">style</span> nodes <span class="hljs-keyword">from</span> JS strings
-                 <span class="hljs-string">"css-loader"</span>, // translates CSS <span class="hljs-keyword">into</span> CommonJS
-                 <span class="hljs-string">"sass-loader"</span> // compiles Sass <span class="hljs-keyword">to</span> CSS, <span class="hljs-keyword">using</span> Node Sass <span class="hljs-keyword">by</span> <span class="hljs-keyword">default</span>
+             test: <span class="hljs-regexp">/\.scss$/</span>,
+             use: [
+                 <span class="hljs-string">&quot;style-loader&quot;</span>, <span class="hljs-regexp">//</span> creates style nodes from JS strings
+                 <span class="hljs-string">&quot;css-loader&quot;</span>, <span class="hljs-regexp">//</span> translates CSS into CommonJS
+                 <span class="hljs-string">&quot;sass-loader&quot;</span> <span class="hljs-regexp">//</span> compiles Sass to CSS, using Node Sass by default
              ]
     }</code></pre><p>If you want to keep bundle sizes to a minimum, React Bare Forms only requires the following bootstrap 4 components:</p>
 				<ul>
@@ -520,20 +525,20 @@ const this.state = { // in the constructor
 				<p>You can import them like this:</p>
 				<pre><code class="language-scss"><span class="hljs-comment">// - mystyles.scss</span>
 <span class="hljs-comment">// If you want all the styles</span>
-<span class="hljs-keyword">@import</span> <span class="hljs-string">"~bootstrap"</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;~bootstrap&quot;</span>;
 <span class="hljs-comment">// Even better, just import the bootstrap components you need</span>
 <span class="hljs-comment">// Required</span>
-<span class="hljs-keyword">@import</span> <span class="hljs-string">"~bootstrap/scss/functions"</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">"~bootstrap/scss/variables"</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">"~bootstrap/scss/mixins"</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;~bootstrap/scss/functions&quot;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;~bootstrap/scss/variables&quot;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;~bootstrap/scss/mixins&quot;</span>;
 
 <span class="hljs-comment">// Optional</span>
-<span class="hljs-keyword">@import</span> <span class="hljs-string">"~bootstrap/scss/forms"</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">"~bootstrap/scss/alert"</span>;
-<span class="hljs-keyword">@import</span> <span class="hljs-string">"~bootstrap/scss/buttons"</span>;</code></pre>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;~bootstrap/scss/forms&quot;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;~bootstrap/scss/alert&quot;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;~bootstrap/scss/buttons&quot;</span>;</code></pre>
 				<p>And finally import your sass into your React application:</p>
-				<pre><code class="language-jsx"><span class="hljs-keyword">import</span> <span class="hljs-string">"./mystyles.scss"</span>;</code></pre>
-				<p><sup><em>*Fields that are not part of a RBF&#39;s form group</em></sup></p>
+				<pre><code class="language-jsx"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./mystyles.scss&quot;</span>;</code></pre>
+				<p><sup>*<em>Fields that are not part of a RBF&#39;s form group</em></sup></p>
 				<a href="#contributors" id="contributors" style="color: inherit; text-decoration: none;">
 					<h2>Contributors</h2>
 				</a>
@@ -610,6 +615,5 @@ const this.state = { // in the constructor
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>
