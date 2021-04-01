@@ -96,10 +96,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
 					<a name="arefieldsequal" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> are<wbr>Fields<wbr>Equal</h3>
-					<div class="tsd-signature tsd-kind-icon">are<wbr>Fields<wbr>Equal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((fieldKey, fieldValue, context: IFormContext) &#x3D;&gt; {let testField: IField;let message &#x3D; [&#x60;Fields do not match&#x60;];let contextState &#x3D; getFormStateFromContext(context);if(fieldKey in contextState) {testField &#x3D; contextState[fieldKey];if(!testField || !fieldValue  || fieldValue !&#x3D;&#x3D; contextState[fieldKey]) {return message;}} else {throw new Error(&#x60;React-BareForms Error: No Field with name of ${fieldKey} exists when calling &#x27;areFieldsEqual&#x27; &#x60;+ &#x60;validator function.\n For more info, visit: &#x60;+ &#x60;https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#arefieldsequal&#x60;,);}})</span></div>
+					<div class="tsd-signature tsd-kind-icon">are<wbr>Fields<wbr>Equal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((fieldKey, fieldValue, context: IFormContext) &#x3D;&gt; {let testField: IFieldBase;let message &#x3D; [&#x60;Fields do not match&#x60;];let contextState &#x3D; getFormStateFromContext(context);if(fieldKey in contextState) {testField &#x3D; contextState[fieldKey];if(!testField || !fieldValue  || fieldValue !&#x3D;&#x3D; contextState[fieldKey]) {return message;}} else {throw new Error(&#x60;React-BareForms Error: No Field with name of ${fieldKey} exists when calling &#x27;areFieldsEqual&#x27; &#x60;+ &#x60;validator function.\n For more info, visit: &#x60;+ &#x60;https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#arefieldsequal&#x60;,);}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dc28b49/src/validators.ts#L40">src/validators.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9716e30/src/validators.ts#L40">src/validators.ts:40</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -112,15 +112,15 @@
 						<dl class="tsd-comment-tags">
 							<dt>example</dt>
 							<dd><pre><code> &lt;PasswordField
-     <span class="hljs-string">//</span> other props.<span class="hljs-string">..</span>
-     name=<span class="hljs-string">"myPassword"</span>
+     <span class="hljs-regexp">//</span> other props...
+     name=<span class="hljs-string">&quot;myPassword&quot;</span>
  /&gt;
 
  &lt;ConfirmPasswordField
-       <span class="hljs-string">//</span> other props.<span class="hljs-string">..</span>
-       validators={[areFieldsEqual<span class="hljs-params">("myPassword")</span>]}
+       <span class="hljs-regexp">//</span> other props...
+       validators={[areFieldsEqual(<span class="hljs-string">&quot;myPassword&quot;</span>)]}
   /&gt;
-  <span class="hljs-string">//</span> message: Fields do not match</code></pre></dd>
+  <span class="hljs-regexp">//</span> message: Fields <span class="hljs-keyword">do</span> not match</code></pre></dd>
 							<dt>param</dt>
 							<dd><p>The name of the password form element you watch to match against</p>
 							</dd>
@@ -135,7 +135,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Checked<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((_, fieldValue, context) &#x3D;&gt; {if(fieldValue &#x3D;&#x3D;&#x3D; false) {return [&#x60;Must be checked&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dc28b49/src/validators.ts#L182">src/validators.ts:182</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9716e30/src/validators.ts#L182">src/validators.ts:182</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -165,7 +165,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Email<wbr>Valid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((_ , fieldValue, context) &#x3D;&gt; {const isValid &#x3D; EMAIL_REGEX.test(String(fieldValue).toLowerCase());if(!isValid) {return [&#x60;Must be a valid email&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dc28b49/src/validators.ts#L101">src/validators.ts:101</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9716e30/src/validators.ts#L101">src/validators.ts:101</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -177,10 +177,10 @@
 							<dd><p>import {EmailField, isEmailValid} from &quot;react-base-forms&quot;</p>
 								<p>const state = { terms: false }</p>
 								<pre><code> &lt;EmailField
-   <span class="hljs-comment">// other props...</span>
-   validators={[isEmailValid<span class="hljs-comment">()</span>]}
+   <span class="hljs-regexp">//</span> other props...
+   validators={[isEmailValid()]}
  /&gt;
- <span class="hljs-comment">// message: Must be a valid email</span></code></pre></dd>
+ <span class="hljs-regexp">//</span> message: Must be a valid email</code></pre></dd>
 							<dt>function</dt>
 							<dd></dd>
 						</dl>
@@ -192,7 +192,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Field<wbr>Empty<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((minLength, fieldValue, context: IFormContext) &#x3D;&gt; {const isValid &#x3D; (typeof fieldValue !&#x3D;&#x3D; &quot;undefined&quot; &amp;&amp; fieldValue.length &gt;&#x3D; minLength);if(!isValid) {return [&#x60;Must be at least ${minLength} characters&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dc28b49/src/validators.ts#L78">src/validators.ts:78</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9716e30/src/validators.ts#L78">src/validators.ts:78</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -205,12 +205,12 @@
 							<dt>example</dt>
 							<dd><p>import {TextInputField, isFieldEmpty} from &quot;react-base-forms&quot;</p>
 								<p>const state = { username: &quot;&quot; }</p>
-								<pre><code> &lt;TextInputField
-       <span class="hljs-keyword">value</span>={state.username}
-      <span class="hljs-built_in"> name</span>=<span class="hljs-string">"username"</span>
-       validators={[isFieldEmpty(<span class="hljs-number">5</span>)]}
-  /&gt;
-  // message: Must be <span class="hljs-keyword">at</span> <span class="hljs-keyword">least</span> <span class="hljs-number">5</span> characters</code></pre></dd>
+								<pre><code> <span class="hljs-tag">&lt;<span class="hljs-name">TextInputField</span>
+       <span class="hljs-attr">value</span>=<span class="hljs-string">{state.username}</span>
+       <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;username&quot;</span>
+       <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isFieldEmpty(5)]}</span>
+  /&gt;</span>
+  // message: Must be at least 5 characters</code></pre></dd>
 							<dt>param</dt>
 							<dd><p>The minimum length of the form field value</p>
 							</dd>
@@ -225,7 +225,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>File<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((_, name, context) &#x3D;&gt; {if(!name) {return [&#x60;Must be a file type&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dc28b49/src/validators.ts#L129">src/validators.ts:129</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9716e30/src/validators.ts#L129">src/validators.ts:129</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -236,15 +236,15 @@
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>example</dt>
-							<dd><pre><code><span class="hljs-keyword">import</span> {createFileRef, FileField, isFile} <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bare-forms"</span>;
+							<dd><pre><code><span class="hljs-keyword">import</span> {createFileRef, FileField, isFile} <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react-bare-forms&quot;</span>;
 
 <span class="hljs-keyword">const</span> myFileRef = createFileRef();
 
 <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">FileField</span>
    <span class="hljs-attr">ref</span>=<span class="hljs-string">{myFileRef}</span>
-   <span class="hljs-attr">hint</span>=<span class="hljs-string">"Must be a file"</span>
-   <span class="hljs-attr">labelText</span>=<span class="hljs-string">"Upload your file"</span>
-   <span class="hljs-attr">name</span>=<span class="hljs-string">"myFileTest"</span>
+   <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Must be a file&quot;</span>
+   <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Upload your file&quot;</span>
+   <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;myFileTest&quot;</span>
    <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isFile()]}</span>
 /&gt;</span></span></code></pre></dd>
 							<dt>function</dt>
@@ -258,7 +258,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Radio<wbr>Checked<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((_ , value, context) &#x3D;&gt; {if(!value) {return [&#x60;This option must be selected&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dc28b49/src/validators.ts#L159">src/validators.ts:159</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9716e30/src/validators.ts#L159">src/validators.ts:159</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -302,7 +302,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dc28b49/src/validators.ts#L221">src/validators.ts:221</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9716e30/src/validators.ts#L221">src/validators.ts:221</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -317,11 +317,11 @@
 								</ul>
 								<dl class="tsd-comment-tags">
 									<dt>example</dt>
-									<dd><pre><code> <span class="hljs-keyword">const</span> myArg = <span class="hljs-number">5</span>;`
+									<dd><pre><code> const myArg = <span class="hljs-number">5</span>;`
 
  &lt;TextInputField
-   <span class="hljs-comment">// other props...</span>
-   validators={[myValidator(myArg)]} <span class="hljs-comment">// &lt;- `myArg`</span>
+   <span class="hljs-regexp">//</span> other props...
+   validators={[myValidator(myArg)]} <span class="hljs-regexp">//</span> &lt;- `myArg`
  /&gt;</code></pre><ul>
 											<li><strong>fieldValue</strong> This is the current form element value being passed to the validator</li>
 											<li><strong>context</strong> This is the context object that contains the state
@@ -379,7 +379,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/dc28b49/src/validators.ts#L255">src/validators.ts:255</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/9716e30/src/validators.ts#L255">src/validators.ts:255</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -496,6 +496,5 @@
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>

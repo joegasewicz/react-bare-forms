@@ -63,7 +63,7 @@ export interface IFileField extends IField<HTMLInputElement> {
     ref: React.RefObject<HTMLFormElement>;
 }
 export declare type TypeSelectCssSizeName = "sm" | "default" | "lg";
-export interface ISelectField extends IFieldBase {
+export interface ISelectField extends Omit<IField<HTMLSelectElement>, "size"> {
     value: any;
     options: Array<string | {
         [k: string]: any;
