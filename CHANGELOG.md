@@ -1,7 +1,7 @@
 # Changelog
 
 ### Changed
-**Release 0.0.35** - 2021-04-01
+**Release 0.0.36** - 2021-04-01
 - Extend Select input interface to include React events 🐛 [Issue #110](https://github.com/joegasewicz/react-bare-forms/issues/110)
 
 **Release 0.0.32 - 34** - 2021-02-04
