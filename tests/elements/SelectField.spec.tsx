@@ -39,8 +39,8 @@ describe("#<SelectField>", () => {
                     size="lg"
                     value={state.select_data_id}
                     name="fruitChoice"
-                    objectKey="id"
-                    objectValue="name"
+                    objectkey="id"
+                    objectvalue="name"
                     options={selectData}
                 />
             </MockComponent>

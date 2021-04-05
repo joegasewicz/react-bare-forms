@@ -95,8 +95,8 @@ export interface ISelectField extends Omit<IField<HTMLSelectElement>, "size"> {
     value: any;
     options: Array<string|{[k: string]: any}>;
     size?: TypeSelectCssSizeName;
-    objectKey?: string;
-    objectValue?: string;
+    objectkey?: string;
+    objectvalue?: string;
 }
 
 /**
@@ -365,8 +365,8 @@ export const RadioField = (props: IRadioField) => {
  * ```
  *
  * You can also pass an array of objects but you must use both the
- * *objectKey* & *objectValue* props. the `objectKey` will update your state
- * value & the `objectValue` is what is displayed to the user as an option.
+ * *objectKey* & *objectvalue* props. the `objectKey` will update your state
+ * value & the `objectvalue` is what is displayed to the user as an option.
  * @example
  * ```
  * // This is your option data
@@ -383,8 +383,8 @@ export const RadioField = (props: IRadioField) => {
  *   size="lg"
  *   value={state.select_data_id}
  *   name="fruitChoice"
- *   objectKey="id" // Value will update state.select_data_id e.g *1, 2...*
- *   objectValue="name" // Value will be displayed in the select field e.g *first, second...*
+ *   objectkey="id" // Value will update state.select_data_id e.g *1, 2...*
+ *   objectvalue="name" // Value will be displayed in the select field e.g *first, second...*
  *   options={selectData}
  * />
  * ```

@@ -18,5 +18,5 @@
 
 
 ### Unreleased
-**Release 0.0.38** - 2021-04-05
+**Release 0.1.0** - 2021-04-05
 - Compatibility with NextJS 🐛 [Issue #112](https://github.com/joegasewicz/react-bare-forms/issues/112)

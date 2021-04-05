@@ -422,7 +422,7 @@ state = { <span class="hljs-attr">age</span>: <span class="hljs-number">0</span>
    <span class="hljs-attr">options</span>=<span class="hljs-string">{[</span>&quot;<span class="hljs-attr">banana</span>&quot;, &quot;<span class="hljs-attr">apple</span>&quot;, &quot;<span class="hljs-attr">orange</span>&quot;]}
   /&gt;</span></span></code></pre>
 				<p>You can also pass an array of objects but you must use both the
-					<em>objectKey</em> &amp; <em>objectValue</em> props. the <code>objectKey</code> will update your state
+					<em>objectkey</em> &amp; <em>objectValue</em> props. the <code>objectkey</code> will update your state
 				value &amp; the <code>objectValue</code> is what is displayed to the user as an option.</p>
 				<pre><code class="language-typescript"><span class="hljs-comment">// This is your option data</span>
 <span class="hljs-keyword">let</span> selectData = [
@@ -438,8 +438,8 @@ state = { <span class="hljs-attr">age</span>: <span class="hljs-number">0</span>
   <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;lg&quot;</span>
   <span class="hljs-attr">value</span>=<span class="hljs-string">{state.select_data_id}</span>
   <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;select_data_id&quot;</span>
-  <span class="hljs-attr">objectKey</span>=<span class="hljs-string">&quot;id&quot;</span> // <span class="hljs-attr">Value</span> <span class="hljs-attr">will</span> <span class="hljs-attr">update</span> <span class="hljs-attr">state.select_data_id</span> <span class="hljs-attr">e.g</span> *<span class="hljs-attr">1</span>, <span class="hljs-attr">2...</span>*
-  <span class="hljs-attr">objectValue</span>=<span class="hljs-string">&quot;name&quot;</span> // <span class="hljs-attr">Value</span> <span class="hljs-attr">will</span> <span class="hljs-attr">be</span> <span class="hljs-attr">displayed</span> <span class="hljs-attr">in</span> <span class="hljs-attr">the</span> <span class="hljs-attr">select</span> <span class="hljs-attr">field</span> <span class="hljs-attr">e.g</span> *<span class="hljs-attr">first</span>, <span class="hljs-attr">second...</span>*
+  <span class="hljs-attr">objectkey</span>=<span class="hljs-string">&quot;id&quot;</span> // <span class="hljs-attr">Value</span> <span class="hljs-attr">will</span> <span class="hljs-attr">update</span> <span class="hljs-attr">state.select_data_id</span> <span class="hljs-attr">e.g</span> *<span class="hljs-attr">1</span>, <span class="hljs-attr">2...</span>*
+  <span class="hljs-attr">objectvalue</span>=<span class="hljs-string">&quot;name&quot;</span> // <span class="hljs-attr">Value</span> <span class="hljs-attr">will</span> <span class="hljs-attr">be</span> <span class="hljs-attr">displayed</span> <span class="hljs-attr">in</span> <span class="hljs-attr">the</span> <span class="hljs-attr">select</span> <span class="hljs-attr">field</span> <span class="hljs-attr">e.g</span> *<span class="hljs-attr">first</span>, <span class="hljs-attr">second...</span>*
   <span class="hljs-attr">options</span>=<span class="hljs-string">{selectData}</span>
 /&gt;</span></span></code></pre>
 				<a href="#radio-buttons" id="radio-buttons" style="color: inherit; text-decoration: none;">

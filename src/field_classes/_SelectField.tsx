@@ -22,10 +22,10 @@ export class SelectField<T extends IFieldBase & ISelectField> extends AbstractFi
     }
 
     private _getOptions(options: Array<any> = []) {
-        if(this.props.objectKey && this.props.objectValue) {
+        if(this.props.objectkey && this.props.objectvalue) {
             return options.map((optVal: string, i: number) => {
-                return <option value={optVal[this.props.objectKey as any]} key={i}
-                >{optVal[this.props.objectValue as any]}</option>
+                return <option value={optVal[this.props.objectkey as any]} key={i}
+                >{optVal[this.props.objectvalue as any]}</option>
             })
         } else {
             return options.map((optVal: string, i: number) => {
