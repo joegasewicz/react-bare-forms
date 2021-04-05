@@ -15,3 +15,8 @@
 
 **Release 0.0.26 - 0.0.29** - 2021-01-20
 -  Multiple FileRef calls creates infinite loop error 🐛 [Issue #96](https://github.com/joegasewicz/react-bare-forms/issues/96)
+
+
+### Unreleased
+**Release 0.0.38** - 2021-04-05
+- Compatibility with NextJS 🐛 [Issue #112](https://github.com/joegasewicz/react-bare-forms/issues/112)
