@@ -22,7 +22,7 @@ export class CheckBoxField<T extends IFieldBase> extends AbstractField<T> implem
         return (
             <div className="form-group form-check">
                 {children}
-                {this.props.labelText && <label className="form-check-label">{this.props.labelText}</label>}
+                {this.props.labeltext && <label className="form-check-label">{this.props.labeltext}</label>}
                 {this.props.hint && <small className="form-text text-muted">{this.props.hint}</small>}
             </div>
         );

@@ -27,7 +27,7 @@ export interface IAbstractField<T> {
     bare: boolean;
     overrideEvent: (e: any, value: any) => React.ChangeEvent<any>;
     getFieldValue: (props: any) => any
-    validate: () => Array<IValidation>;
+    validate?: () => Array<IValidation>;
     doValidation: (value: any) => Array<IValidation>;
 }
 
@@ -35,7 +35,7 @@ export interface IAbstractField<T> {
 export function _genericFormGroup<T extends IFieldBase>(props: T, children: any) {
     return (
         <div className="form-group">
-            {props.labelText && <label>{props.labelText}</label>}
+            {props.labeltext && <label>{props.labeltext}</label>}
             {children}
             {props.hint && <small className="form-text text-muted">{props.hint}</small>}
         </div>
@@ -114,7 +114,7 @@ export abstract class AbstractField<T extends IFieldBase> {
    public doValidation(value: any): Array<IValidation> {
        let validation: Array<IValidation> = [];
        // Carry out the validation
-       if(this.props.validators) {
+       if (this.props.validators) {
            for(let validate of this.props.validators) {
                validation = [
                    ...validation,

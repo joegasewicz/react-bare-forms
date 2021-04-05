@@ -12,9 +12,12 @@ export {
     FormElementValidators,
     getFieldValueType,
     getMetadataNameType,
-    IFile,
     updateParentState,
     mergeDefaultCssWithProps,
     updateRadioGroupStateFromPassedInContext,
     ValidationResults,
 };
+
+export type {
+    IFile,
+}
