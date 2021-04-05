@@ -44,15 +44,8 @@ export {
     isRadioChecked,
     // Context API
     FormConsumer,
-    // Interfaces
-    ICheckBoxField,
-    IEmailField,
-    IField,
-    IPasswordField,
-    IRadioField,
-    ITextAreaField,
-    ITextInputField,
-    ISelectField,
+
+
     // Form Components
     CheckBoxField,
     EmailField,
@@ -64,5 +57,17 @@ export {
     SubmitButton,
     TextAreaField,
     TextInputField,
-    SelectField,
-}
+    SelectField
+};
+export type {
+    // Interfaces
+    ICheckBoxField,
+    IEmailField,
+    IField,
+    IPasswordField,
+    IRadioField,
+    ITextAreaField,
+    ITextInputField,
+    ISelectField
+};
+

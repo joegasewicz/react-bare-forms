@@ -32,8 +32,8 @@ export enum FIELD_NAMES {
 export interface IFieldBase {
     /** The name of the form element (this should match the state property that you want be updated by this form element) */
     name: string;
-    /** If *bare* (see {@link IForm.bare}) is set to true then *labelText* will be inserted within **label** tags. */
-    labelText?: string;
+    /** If *bare* (see {@link IForm.bare}) is set to true then *labeltext* will be inserted within **label** tags. */
+    labeltext?: string;
     /** If *bare* (see {@link Form.bare}) is set to true then *hint* will be inserted within **small** tags. */
     hint?: string;
     /** These are the {@link IValidators} that you can pass in the validate the form element. */
@@ -45,8 +45,8 @@ export interface IFieldBase {
 export interface IField<T> extends React.InputHTMLAttributes<T> {
     /** The name of the form element (this should match the state property that you want be updated by this form element) */
     name: string;
-    /** If *bare* (see {@link IForm.bare}) is set to true then *labelText* will be inserted within **label** tags. */
-    labelText?: string;
+    /** If *bare* (see {@link IForm.bare}) is set to true then *labeltext* will be inserted within **label** tags. */
+    labeltext?: string;
     /** If *bare* (see {@link Form.bare}) is set to true then *hint* will be inserted within **small** tags. */
     hint?: string;
     /** These are the {@link IValidators} that you can pass in the validate the form element. */
@@ -95,8 +95,8 @@ export interface ISelectField extends Omit<IField<HTMLSelectElement>, "size"> {
     value: any;
     options: Array<string|{[k: string]: any}>;
     size?: TypeSelectCssSizeName;
-    objectKey?: string;
-    objectValue?: string;
+    objectkey?: string;
+    objectvalue?: string;
 }
 
 /**
@@ -120,7 +120,7 @@ export interface ISelectField extends Omit<IField<HTMLSelectElement>, "size"> {
  *    value={state.username}
  *    name="username"
  *    hint="Needs to be at least 50 characters long"
- *    labelText="Username"
+ *    labeltext="Username"
  *  />
  * ```
  * @constructor
@@ -150,7 +150,7 @@ export const TextInputField = (props: ITextInputField) => {
  *    value={state.email}
  *    name="email"
  *    hint="Needs to be at least 50 characters long"
- *    labelText="Username"
+ *    labeltext="Username"
  *  />
  * ```
  * @constructor
@@ -182,7 +182,7 @@ export const EmailField = (props: IEmailField) => {
  *    value={state.confirmPassword}
  *    name="password"
  *    hint="Needs to be at least 8 characters long"
- *    labelText="Password"
+ *    labeltext="Password"
  *  />
  *  ```
  * Also we can create two *PasswordField* components to confirm passwords are equal. Please see
@@ -236,7 +236,7 @@ export const PasswordField = (props: IPasswordField) => {
  *   name="terms"
  *   checked={state.terms}
  *   hint="Click to agree"
- *   labelText="Agree to terms & conditions"
+ *   labeltext="Agree to terms & conditions"
  * />
  * ```
  * @param props {@link ICheckBoxField}
@@ -269,7 +269,7 @@ export const CheckBoxField = (props: ICheckBoxField) => {
  *    name="about"
  *    value={state.about}
  *    hint="Must be at least 20 characters"
- *    labelText="About you..."
+ *    labeltext="About you..."
  *    validators={[isFieldEmpty(20)]}
  * />
  * ```
@@ -327,14 +327,14 @@ export function RadioGroup(props: IRadioGroupProps) {
  *      name="male"
  *      checked={state.male}
  *      hint="Click to agree"
- *      labelText="Agree to terms & conditions"
+ *      labeltext="Agree to terms & conditions"
  *    />
  *
  *    <RadioField
  *      name="female"
  *      checked={state.female}
  *      hint="Click to agree"
- *      labelText="Agree to terms & conditions"
+ *      labeltext="Agree to terms & conditions"
  *      validators={[isRadioChecked()]}
  *    />
  *
@@ -365,8 +365,8 @@ export const RadioField = (props: IRadioField) => {
  * ```
  *
  * You can also pass an array of objects but you must use both the
- * *objectKey* & *objectValue* props. the `objectKey` will update your state
- * value & the `objectValue` is what is displayed to the user as an option.
+ * *objectKey* & *objectvalue* props. the `objectKey` will update your state
+ * value & the `objectvalue` is what is displayed to the user as an option.
  * @example
  * ```
  * // This is your option data
@@ -383,8 +383,8 @@ export const RadioField = (props: IRadioField) => {
  *   size="lg"
  *   value={state.select_data_id}
  *   name="fruitChoice"
- *   objectKey="id" // Value will update state.select_data_id e.g *1, 2...*
- *   objectValue="name" // Value will be displayed in the select field e.g *first, second...*
+ *   objectkey="id" // Value will update state.select_data_id e.g *1, 2...*
+ *   objectvalue="name" // Value will be displayed in the select field e.g *first, second...*
  *   options={selectData}
  * />
  * ```

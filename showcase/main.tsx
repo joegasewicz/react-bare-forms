@@ -62,13 +62,13 @@ export function FPForm() {
                 value={fpState.age}
                 name="age"
                 hint="Enter your age"
-                labelText="Age"
+                labeltext="Age"
                 validators={[isFieldEmpty(2)]} />
 
             <PasswordField
                 name="password"
                 value={fpState.password}
-                labelText="Password"
+                labeltext="Password"
                 validators={[isFieldEmpty(2)]}
             />
 
@@ -77,13 +77,13 @@ export function FPForm() {
                     name="radio1"
                     checked={state.radio1}
                     hint="Click to agree"
-                    labelText="Radio 1"
+                    labeltext="Radio 1"
                 />
                 <RadioField
                     name="radio2"
                     checked={state.radio2}
                     hint="Click to agree"
-                    labelText="Radio 2"
+                    labeltext="Radio 2"
                     validators={[isRadioChecked()]}
                 />
 
@@ -91,7 +91,7 @@ export function FPForm() {
                     name="radio3"
                     checked={state.radio3}
                     hint="Click to agree"
-                    labelText="Radio 3"
+                    labeltext="Radio 3"
                 />
                 </RadioGroup>
                     
@@ -153,7 +153,7 @@ export class Main extends React.Component<IProps, IState> {
                                     value={this.state.formData.age}
                                     name="age"
                                     hint="Enter your age"
-                                    labelText="Age"
+                                    labeltext="Age"
                                     validators={[isFieldEmpty(2)]}
                                 />
 
@@ -161,21 +161,21 @@ export class Main extends React.Component<IProps, IState> {
                                     value={this.state.formData.username}
                                     name="username"
                                     hint="Enter your username"
-                                    labelText="Username"
+                                    labeltext="Username"
                                     validators={[isFieldEmpty(5)]}
                                 />
 
                                 <PasswordField
                                     name="password"
                                     value={this.state.formData.password}
-                                    labelText="Password"
+                                    labeltext="Password"
                                 />
 
                                 <PasswordField
                                     name="confirmPassword"
                                     value={this.state.formData.confirmPassword}
                                     hint="Password must match"
-                                    labelText="Confirm Password"
+                                    labeltext="Confirm Password"
                                     validators={[areFieldsEqual("password")]}
                                 />
 
@@ -183,7 +183,7 @@ export class Main extends React.Component<IProps, IState> {
                                     name="email"
                                     value={this.state.formData.email}
                                     hint="Your email"
-                                    labelText="Please enter your email"
+                                    labeltext="Please enter your email"
                                     validators={[isEmailValid()]}
                                 />
 
@@ -191,7 +191,7 @@ export class Main extends React.Component<IProps, IState> {
                                     name="about"
                                     value={this.state.formData.about}
                                     hint="Your email"
-                                    labelText="Must be at least 20 characters"
+                                    labeltext="Must be at least 20 characters"
                                     validators={[isFieldEmpty(20)]}
                                 />
 
@@ -199,7 +199,7 @@ export class Main extends React.Component<IProps, IState> {
                                     name="terms"
                                     checked={this.state.formData.terms}
                                     hint="Click to agree"
-                                    labelText="Agree to terms & conditions"
+                                    labeltext="Agree to terms & conditions"
                                     validators={[isChecked()]}
                                 />
 
@@ -207,21 +207,21 @@ export class Main extends React.Component<IProps, IState> {
                                     size="lg"
                                     value={this.state.formData.fruitChoice}
                                     name="fruitChoice"
-                                    objectKey="id"
-                                    objectValue="fruit"
+                                    objectkey="id"
+                                    objectvalue="fruit"
                                     options={[{id: 1, fruit: "banana"}, {id: 2, fruit: "apple"}]}
                                 />
 
                                 <FileField
                                     ref={myFileRef}
                                     hint="Must be a file"
-                                    labelText="Upload your file"
+                                    labeltext="Upload your file"
                                     name="myFileTest"
                                 />
                                 <FileField
                                     ref={myFileRef2}
                                     hint="Must be a file"
-                                    labelText="Upload your file"
+                                    labeltext="Upload your file"
                                     name="myFileTest"
                                 />
 
@@ -230,7 +230,7 @@ export class Main extends React.Component<IProps, IState> {
                                         name="radio1"
                                         checked={this.state.formData.radio1}
                                         hint="Click to agree"
-                                        labelText="Agree to terms & conditions"
+                                        labeltext="Agree to terms & conditions"
 
                                     />
 
@@ -238,7 +238,7 @@ export class Main extends React.Component<IProps, IState> {
                                         name="radio2"
                                         checked={this.state.formData.radio2}
                                         hint="Click to agree"
-                                        labelText="Agree to terms & conditions"
+                                        labeltext="Agree to terms & conditions"
                                         validators={[isRadioChecked()]}
                                     />
 
@@ -246,7 +246,7 @@ export class Main extends React.Component<IProps, IState> {
                                         name="radio3"
                                         checked={this.state.formData.radio3}
                                         hint="Click to agree"
-                                        labelText="Agree to terms & conditions"
+                                        labeltext="Agree to terms & conditions"
                                     />
                                 </RadioGroup>
 

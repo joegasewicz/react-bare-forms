@@ -19,7 +19,7 @@ import {IFile} from "./core";
  *  <FileField
  *     ref={myFileRef}
  *     hint="Must be a file"
- *     labelText="Upload your file"
+ *     labeltext="Upload your file"
  *     name="myFileTest"
  *     validators={[isFile()]}
  *  />
@@ -44,7 +44,7 @@ export function createFileRef(): React.RefObject<HTMLFormElement> {
  *  <FileField
  *     ref={myFileRef}
  *     hint="Must be a file"
- *     labelText="Upload your file"
+ *     labelrext="Upload your file"
  *     name="myFileTest"
  *     validators={[isFile()]}
  *  />

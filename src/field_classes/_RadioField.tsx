@@ -41,7 +41,7 @@ export class RadioField<T extends IRadioField> extends AbstractField<T> implemen
         return (
             <div className="form-group form-check">
                 {children}
-                {this.props.labelText && <label className="form-check-label">{this.props.labelText}</label>}
+                {this.props.labeltext && <label className="form-check-label">{this.props.labelText}</label>}
                 {this.props.hint && <small className="form-text text-muted">{this.props.hint}</small>}
             </div>
         );

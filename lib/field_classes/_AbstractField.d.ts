@@ -14,7 +14,7 @@ export interface IAbstractField<T> {
     bare: boolean;
     overrideEvent: (e: any, value: any) => React.ChangeEvent<any>;
     getFieldValue: (props: any) => any;
-    validate: () => Array<IValidation>;
+    validate?: () => Array<IValidation>;
     doValidation: (value: any) => Array<IValidation>;
 }
 /** @internal */

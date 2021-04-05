@@ -118,7 +118,7 @@ export const isEmailValid: IValidationVariable = customValidator((_ , fieldValue
  * <FileField
  *    ref={myFileRef}
  *    hint="Must be a file"
- *    labelText="Upload your file"
+ *    labeltext="Upload your file"
  *    name="myFileTest"
  *    validators={[isFile()]}
  * />
