@@ -72,6 +72,7 @@
 				<p><img src="./images/rbf_logo4.png" alt="ReactBareForms"></p>
 				<p>React library using React Hooks to build forms &amp; let you switch in &amp; out Bootstrap 4 styling. <strong>React Bare Forms</strong> aka <em>RBF</em> aims
 				to be the easiest to use form library for React.</p>
+				<p>Compatible with <code>Next.js</code></p>
 				<p><strong>React Bare Forms</strong> library is compatible with both React functional &amp; class components 🎉</p>
 				<p>📚 Docs are <a href="https://joegasewicz.github.io/react-bare-forms/">here</a> </p>
 				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
@@ -100,7 +101,7 @@
         <span class="hljs-attr">value</span>=<span class="hljs-string">{state.age}</span>
         <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;age&quot;</span>
         <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Enter your age&quot;</span>
-        <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Age&quot;</span>
+        <span class="hljs-attr">labeltext</span>=<span class="hljs-string">&quot;Age&quot;</span>
         <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isFieldEmpty(2)]}</span> /&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">SubmitButton</span>&gt;</span>Submit Form<span class="hljs-tag">&lt;/<span class="hljs-name">SubmitButton</span>&gt;</span>
@@ -129,7 +130,7 @@
                 <span class="hljs-attr">value</span>=<span class="hljs-string">{state.age}</span>
                 <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;age&quot;</span>
                 <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Enter your age&quot;</span>
-                <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Age&quot;</span>
+                <span class="hljs-attr">labeltext</span>=<span class="hljs-string">&quot;Age&quot;</span>
                 <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isFieldEmpty(2)]}</span> /&gt;</span>
 
             <span class="hljs-tag">&lt;<span class="hljs-name">SubmitButton</span>&gt;</span>Submit Form<span class="hljs-tag">&lt;/<span class="hljs-name">SubmitButton</span>&gt;</span>
@@ -165,7 +166,7 @@
                 <span class="hljs-attr">value</span>=<span class="hljs-string">{state.age}</span>
                 <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;age&quot;</span>
                 <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Enter your age&quot;</span>
-                <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Age&quot;</span>
+                <span class="hljs-attr">labeltext</span>=<span class="hljs-string">&quot;Age&quot;</span>
                 <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isFieldEmpty(2)]}</span> /&gt;</span>
 
             <span class="hljs-tag">&lt;<span class="hljs-name">SubmitButton</span>&gt;</span>Submit Form<span class="hljs-tag">&lt;/<span class="hljs-name">SubmitButton</span>&gt;</span>
@@ -191,7 +192,7 @@
      <span class="hljs-attr">ref</span>=<span class="hljs-string">{myFileRef}</span>
      <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;myFile&quot;</span> // <span class="hljs-attr">You</span> <span class="hljs-attr">must</span> <span class="hljs-attr">assign</span> <span class="hljs-attr">a</span> <span class="hljs-attr">name</span> <span class="hljs-attr">to</span> <span class="hljs-attr">use</span> <span class="hljs-attr">the</span> <span class="hljs-attr">validators</span>
      <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Must be a file&quot;</span>
-     <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Upload your file&quot;</span>
+     <span class="hljs-attr">labeltext</span>=<span class="hljs-string">&quot;Upload your file&quot;</span>
      <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isFile()]}</span>
  /&gt;</span></span>
 
@@ -224,7 +225,7 @@ state = { <span class="hljs-attr">age</span>: <span class="hljs-number">0</span>
         <span class="hljs-attr">value</span>=<span class="hljs-string">{this.state.age}</span>
         <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;age&quot;</span>
         <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Enter your age&quot;</span>
-        <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Age&quot;</span>
+        <span class="hljs-attr">labeltext</span>=<span class="hljs-string">&quot;Age&quot;</span>
         <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isFieldEmpty(5)]}</span>
     /&gt;</span></span>
     <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">FormConsumer</span>&gt;</span>
@@ -309,7 +310,7 @@ state = { <span class="hljs-attr">age</span>: <span class="hljs-number">0</span>
     <span class="hljs-attr">value</span>=<span class="hljs-string">{state.username}</span>
     <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;username&quot;</span>
     <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Needs to be at least 50 characters long&quot;</span>
-    <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Username&quot;</span>
+    <span class="hljs-attr">labeltext</span>=<span class="hljs-string">&quot;Username&quot;</span>
 /&gt;</span></span></code></pre>
 				<a href="#emailfield" id="emailfield" style="color: inherit; text-decoration: none;">
 					<h4>EmailField</h4>
@@ -329,7 +330,7 @@ state = { <span class="hljs-attr">age</span>: <span class="hljs-number">0</span>
     <span class="hljs-attr">value</span>=<span class="hljs-string">{state.email}</span>
     <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;email&quot;</span>
     <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Needs to be at least 50 characters long&quot;</span>
-    <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Username&quot;</span>
+    <span class="hljs-attr">labeltext</span>=<span class="hljs-string">&quot;Username&quot;</span>
   /&gt;</span></span></code></pre>
 				<a href="#passwordfield" id="passwordfield" style="color: inherit; text-decoration: none;">
 					<h4>PasswordField</h4>
@@ -353,7 +354,7 @@ state = { <span class="hljs-attr">age</span>: <span class="hljs-number">0</span>
   <span class="hljs-attr">value</span>=<span class="hljs-string">{state.confirmPassword}</span>
   <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;password&quot;</span>
   <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Needs to be at least 8 characters long&quot;</span>
-  <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Password&quot;</span>
+  <span class="hljs-attr">labeltext</span>=<span class="hljs-string">&quot;Password&quot;</span>
 /&gt;</span></span></code></pre>
 				<p>Also we can create two <em>PasswordField</em> components to confirm passwords are equal. Please see
 					<a href="modules/_validators_.html#arefieldsequal">areFieldsEqual</a> for more info.
@@ -390,7 +391,7 @@ state = { <span class="hljs-attr">age</span>: <span class="hljs-number">0</span>
    <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;terms&quot;</span>
    <span class="hljs-attr">checked</span>=<span class="hljs-string">{state.terms}</span>
    <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Click to agree&quot;</span>
-   <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Agree to terms &amp; conditions&quot;</span>
+   <span class="hljs-attr">labeltext</span>=<span class="hljs-string">&quot;Agree to terms &amp; conditions&quot;</span>
  /&gt;</span></span></code></pre>
 				<a href="#other-field-elements" id="other-field-elements" style="color: inherit; text-decoration: none;">
 					<h3>Other Field Elements</h3>
@@ -403,7 +404,7 @@ state = { <span class="hljs-attr">age</span>: <span class="hljs-number">0</span>
     name=<span class="hljs-string">&quot;about&quot;</span>
     value={<span class="hljs-built_in">this</span>.state.about}
     hint=<span class="hljs-string">&quot;Your email&quot;</span>
-    labelText=<span class="hljs-string">&quot;Must be at least 20 characters&quot;</span>
+    labeltext=<span class="hljs-string">&quot;Must be at least 20 characters&quot;</span>
     validators={[isFieldEmpty(<span class="hljs-number">20</span>)]}
 /&gt;
 </code></pre>
@@ -438,8 +439,8 @@ state = { <span class="hljs-attr">age</span>: <span class="hljs-number">0</span>
   <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;lg&quot;</span>
   <span class="hljs-attr">value</span>=<span class="hljs-string">{state.select_data_id}</span>
   <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;select_data_id&quot;</span>
-  <span class="hljs-attr">objectkey</span>=<span class="hljs-string">&quot;id&quot;</span> // <span class="hljs-attr">Value</span> <span class="hljs-attr">will</span> <span class="hljs-attr">update</span> <span class="hljs-attr">state.select_data_id</span> <span class="hljs-attr">e.g</span> *<span class="hljs-attr">1</span>, <span class="hljs-attr">2...</span>*
-  <span class="hljs-attr">objectvalue</span>=<span class="hljs-string">&quot;name&quot;</span> // <span class="hljs-attr">Value</span> <span class="hljs-attr">will</span> <span class="hljs-attr">be</span> <span class="hljs-attr">displayed</span> <span class="hljs-attr">in</span> <span class="hljs-attr">the</span> <span class="hljs-attr">select</span> <span class="hljs-attr">field</span> <span class="hljs-attr">e.g</span> *<span class="hljs-attr">first</span>, <span class="hljs-attr">second...</span>*
+  <span class="hljs-attr">objectkey</span>=<span class="hljs-string">&quot;id&quot;</span> // <span class="hljs-attr">Value</span> <span class="hljs-attr">will</span> <span class="hljs-attr">update</span> <span class="hljs-attr">state.select_data_id</span> <span class="hljs-attr">e.g</span> *<span class="hljs-attr">1</span>, <span class="hljs-attr">2...</span>* 
+  <span class="hljs-attr">objectvalue</span>=<span class="hljs-string">&quot;name&quot;</span> // <span class="hljs-attr">Value</span> <span class="hljs-attr">will</span> <span class="hljs-attr">be</span> <span class="hljs-attr">displayed</span> <span class="hljs-attr">in</span> <span class="hljs-attr">the</span> <span class="hljs-attr">select</span> <span class="hljs-attr">field</span> <span class="hljs-attr">e.g</span> *<span class="hljs-attr">first</span>, <span class="hljs-attr">second...</span>*  
   <span class="hljs-attr">options</span>=<span class="hljs-string">{selectData}</span>
 /&gt;</span></span></code></pre>
 				<a href="#radio-buttons" id="radio-buttons" style="color: inherit; text-decoration: none;">
@@ -473,14 +474,14 @@ state = { <span class="hljs-attr">age</span>: <span class="hljs-number">0</span>
      <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;male&quot;</span>
      <span class="hljs-attr">checked</span>=<span class="hljs-string">{state.male}</span>
      <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Click to agree&quot;</span>
-     <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Agree to terms &amp; conditions&quot;</span>
+     <span class="hljs-attr">labeltext</span>=<span class="hljs-string">&quot;Agree to terms &amp; conditions&quot;</span>
    /&gt;</span>
 
    <span class="hljs-tag">&lt;<span class="hljs-name">RadioField</span>
      <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;female&quot;</span>
      <span class="hljs-attr">checked</span>=<span class="hljs-string">{state.female}</span>
      <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Click to agree&quot;</span>
-     <span class="hljs-attr">labelText</span>=<span class="hljs-string">&quot;Agree to terms &amp; conditions&quot;</span>
+     <span class="hljs-attr">labeltext</span>=<span class="hljs-string">&quot;Agree to terms &amp; conditions&quot;</span>
      <span class="hljs-attr">validators</span>=<span class="hljs-string">{[isRadioChecked()]}</span>
    /&gt;</span>
 

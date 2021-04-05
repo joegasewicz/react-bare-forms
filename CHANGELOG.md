@@ -1,6 +1,9 @@
 # Changelog
 
 ### Changed
+**Release 0.1.0** - 2021-04-05
+- Compatibility with NextJS 🐛 [Issue #112](https://github.com/joegasewicz/react-bare-forms/issues/112)
+
 **Release 0.0.37** - 2021-04-01
 - Fix type definitions 🐛
 
@@ -18,5 +21,3 @@
 
 
 ### Unreleased
-**Release 0.1.0** - 2021-04-05
-- Compatibility with NextJS 🐛 [Issue #112](https://github.com/joegasewicz/react-bare-forms/issues/112)

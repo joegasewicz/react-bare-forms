@@ -9,6 +9,8 @@
 React library using React Hooks to build forms & let you switch in & out Bootstrap 4 styling. **React Bare Forms** aka *RBF* aims
 to be the easiest to use form library for React.
 
+Compatible with `Next.js`
+
 **React Bare Forms** library is compatible with both React functional & class components 🎉
 
 📚 Docs are [here](https://joegasewicz.github.io/react-bare-forms/) 
@@ -40,7 +42,7 @@ const [state, setState] = React.useState(myState);
         value={state.age}
         name="age"
         hint="Enter your age"
-        labelText="Age"
+        labeltext="Age"
         validators={[isFieldEmpty(2)]} />
                
     <SubmitButton>Submit Form</SubmitButton>
@@ -70,7 +72,7 @@ class MyForm {
                 value={state.age}
                 name="age"
                 hint="Enter your age"
-                labelText="Age"
+                labeltext="Age"
                 validators={[isFieldEmpty(2)]} />
                        
             <SubmitButton>Submit Form</SubmitButton>
@@ -107,7 +109,7 @@ class MyForm {
                 value={state.age}
                 name="age"
                 hint="Enter your age"
-                labelText="Age"
+                labeltext="Age"
                 validators={[isFieldEmpty(2)]} />
                        
             <SubmitButton>Submit Form</SubmitButton>
@@ -134,7 +136,7 @@ For example:
      ref={myFileRef}
      name="myFile" // You must assign a name to use the validators
      hint="Must be a file"
-     labelText="Upload your file"
+     labeltext="Upload your file"
      validators={[isFile()]}
  />
  
@@ -169,7 +171,7 @@ state = { age: 0 }
         value={this.state.age}
         name="age"
         hint="Enter your age"
-        labelText="Age"
+        labeltext="Age"
         validators={[isFieldEmpty(5)]}
     />
     <FormConsumer>
@@ -260,7 +262,7 @@ const state = { username: "" }
     value={state.username}
     name="username"
     hint="Needs to be at least 50 characters long"
-    labelText="Username"
+    labeltext="Username"
 />
 ```
 #### EmailField
@@ -280,7 +282,7 @@ const state = { username: "" }
     value={state.email}
     name="email"
     hint="Needs to be at least 50 characters long"
-    labelText="Username"
+    labeltext="Username"
   />
 ```
 #### PasswordField
@@ -304,7 +306,7 @@ const state = { password: "", confirmPassword: "" };
   value={state.confirmPassword}
   name="password"
   hint="Needs to be at least 8 characters long"
-  labelText="Password"
+  labeltext="Password"
 />
 ```
 Also we can create two *PasswordField* components to confirm passwords are equal. Please see
@@ -345,7 +347,7 @@ The **CheckBoxField** component takes a `checked` prop instead of the usual `val
    name="terms"
    checked={state.terms}
    hint="Click to agree"
-   labelText="Agree to terms & conditions"
+   labeltext="Agree to terms & conditions"
  />
 ```
 
@@ -358,7 +360,7 @@ The rest of the single input *fields.
     name="about"
     value={this.state.about}
     hint="Your email"
-    labelText="Must be at least 20 characters"
+    labeltext="Must be at least 20 characters"
     validators={[isFieldEmpty(20)]}
 />
 
@@ -399,8 +401,8 @@ let state = {
   size="lg"
   value={state.select_data_id}
   name="select_data_id"
-  objectkey="id" // Value will update state.select_data_id e.g *1, 2...*
-  objectvalue="name" // Value will be displayed in the select field e.g *first, second...*
+  objectkey="id" // Value will update state.select_data_id e.g *1, 2...* 
+  objectvalue="name" // Value will be displayed in the select field e.g *first, second...*  
   options={selectData}
 />
 ```
@@ -432,14 +434,14 @@ The `RadioGroup` component takes a single props of `name`, which
      name="male"
      checked={state.male}
      hint="Click to agree"
-     labelText="Agree to terms & conditions"
+     labeltext="Agree to terms & conditions"
    />
  
    <RadioField
      name="female"
      checked={state.female}
      hint="Click to agree"
-     labelText="Agree to terms & conditions"
+     labeltext="Agree to terms & conditions"
      validators={[isRadioChecked()]}
    />
    
