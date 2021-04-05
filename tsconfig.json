@@ -3,9 +3,9 @@
     "outDir": "lib",
     "sourceMap": true,
     "noImplicitAny": true,
-    "lib": ["dom", "esnext"],
-    "module": "esnext",
-    "target": "es5",
+    "lib": ["es2019", "es2020.bigint", "es2020.string", "es2020.symbol.wellknown"],
+    "module": "commonjs",
+    "target": "es2019",
     "strict": true,
     "jsx": "react",
     "allowJs": true,
@@ -13,7 +13,7 @@
     "moduleResolution": "node",
     "typeRoots": [
       "node_modules/@types/",
-      "dist/src/index.d.ts"
+      "lib/src/index.d.ts"
     ],
     "esModuleInterop": true
   },
