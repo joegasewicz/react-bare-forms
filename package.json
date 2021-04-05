@@ -1,13 +1,13 @@
 {
   "name": "react-bare-forms",
-  "version": "0.1.1rc4",
+  "version": "0.1.1rc6",
   "description": "A bare minimal React form library for quick & simple forms.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "module": "lib/index.js",
   "scripts": {
-    "build:dev": "webpack --env.mode devlopment --entry=./src/index.ts --output-path=dist --output-filename=index.js",
-    "build:prod": "webpack --env.mode production --entry=./src/index.ts --output-path=lib --output-filename=index.js",
+    "build:dev": "webpack --env.mode devlopment --entry=./src/index.ts --output-path=dist ---output-filename=index.js",
+    "build:prod": "webpack --env.mode production --entry=./src/index.ts --output-path=lib -output-filename=index.js",
     "watch:prod": "webpack --watch --env.mode production --entry=./src/index.ts --output-path=lib --output-filename=index.js",
     "start": "webpack-dev-server --watch --config webpack.config.dev.js --output-path=dist --output-filename=bundle.js",
     "test": "jest",
