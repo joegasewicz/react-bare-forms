@@ -36,7 +36,7 @@ export class InputField<T extends IField<HTMLInputElement>> extends AbstractFiel
                 value={this.getStatePositionFromFormKey()[this.props.name]|| ""}
                 onChange={(e) => this.handleOnChange(e, cursorPositions, updateCursorPositionState)}
                 onKeyUp={(e) => {
-                    if (this.type === FIELD_NAMES.EMAIL) {
+                    if (this.type !== FIELD_NAMES.EMAIL) {
                         e.currentTarget.selectionStart = cursorPositions[this.props.name].cursorPosition;
                         e.currentTarget.selectionEnd = cursorPositions[this.props.name].cursorPosition;
                     }

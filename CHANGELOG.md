@@ -1,7 +1,7 @@
 # Changelog
 
 ### Changed
-**Release 0.1.4** - 2021-04-06
+**Release 0.1.5-6** - 2021-04-06
 - Failed to set the 'selectionStart' property on 'HTMLInputElement'  🐛 [Issue #116](https://github.com/joegasewicz/react-bare-forms/issues/116)
 
 **Release 0.1.4** - 2021-04-06
