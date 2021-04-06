@@ -6,5 +6,6 @@ export declare class InputField<T extends IField<HTMLInputElement>> extends Abst
     constructor(type: FIELD_NAMES, props: T);
     create(): JSX.Element;
     formGroup(children: any): ReactElement;
+    private handleOnChange;
     getField(): () => JSX.Element;
 }

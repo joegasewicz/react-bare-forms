@@ -73,13 +73,22 @@ export interface IForm extends React.FormHTMLAttributes<HTMLFormElement> {
     /** Callback function wil be called on form submission if all validators pass */
     readonly callback?: Function;
 }
+export interface ICursorPositionState {
+    cursorPosition: number;
+    fieldName: string;
+}
+export declare type TypeCursorPositionState = {
+    [key: string]: ICursorPositionState;
+};
 export interface IFormContext {
     readonly bare?: boolean;
     readonly debug?: boolean;
     readonly dynamic?: boolean;
     readonly formKey?: string;
+    cursorPositions: TypeCursorPositionState;
     metadata: IMetadata;
     state: any;
+    updateCursorPositionState: (fieldName: string, cursorPosition: number) => void;
     updateParentState?: (e: React.ChangeEvent<any>, name: string, formKey?: string) => void;
     updateRadioGroupStateFromPassedInContext?: (e: React.ChangeEvent<any>, name: string, radioGroup: any, formKey?: string) => void;
 }
