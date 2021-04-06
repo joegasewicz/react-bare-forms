@@ -123,7 +123,7 @@
 					<div class="tsd-signature tsd-kind-icon">Type<wbr>Select<wbr>Css<wbr>Size<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"sm"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"default"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"lg"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/37a61c9/src/elements.tsx#L92">src/elements.tsx:92</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/a1c94a9/src/elements.tsx#L92">src/elements.tsx:92</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -136,7 +136,7 @@
 					<div class="tsd-signature tsd-kind-icon">File<wbr>Field<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ForwardRefExoticComponent</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">RefAttributes</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = React.forwardRef((props: IFileField, ref: React.RefObject&lt;HTMLFormElement&gt;|any) &#x3D;&gt; {let _props &#x3D; {...props, ref };const file &#x3D; new _FileField&lt;IFileField&gt;(FIELD_NAMES.FILE, _props);return file.create();})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/37a61c9/src/elements.tsx#L409">src/elements.tsx:409</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/a1c94a9/src/elements.tsx#L423">src/elements.tsx:423</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -161,7 +161,7 @@
 					<div class="tsd-signature tsd-kind-icon">Submit<wbr>Button<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = new _SubmitButton().create()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/37a61c9/src/elements.tsx#L416">src/elements.tsx:416</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/a1c94a9/src/elements.tsx#L430">src/elements.tsx:430</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -178,7 +178,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/37a61c9/src/elements.tsx#L245">src/elements.tsx:245</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/a1c94a9/src/elements.tsx#L259">src/elements.tsx:259</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -232,7 +232,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/37a61c9/src/elements.tsx#L158">src/elements.tsx:158</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/a1c94a9/src/elements.tsx#L172">src/elements.tsx:172</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -255,7 +255,17 @@
    name=&quot;email&quot;
    hint=&quot;Needs to be at least 50 characters long&quot;
    labeltext=&quot;Username&quot;
- /&gt;</span></code></pre></dd>
+ /&gt;</span></code></pre><p>There is a bug when working with React &amp; input fields. See <a href="https://github.com/facebook/react/issues/955">https://github.com/facebook/react/issues/955</a>
+											We have provided a fix for <a href="_elements_.html#textinputfield">TextInputField</a> and <a href="_elements_.html#passwordfield">PasswordField</a> fields but not <a href="_elements_.html#emailfield">EmailField</a> fields.
+											If you wish to avoid the cursor jumping <em>bug</em>, then use a <a href="_elements_.html#textinputfield">TextInputField</a> with the <a href="_validators_.html#isemailvalid">isEmailValid</a>
+										validator. For example:</p>
+										<pre><code class="language-typescript">   &lt;TextInputField
+      value={state.email}
+      name=<span class="hljs-string">&quot;Must be a valid email&quot;</span>
+      labeltext=<span class="hljs-string">&quot;Email&quot;</span>
+     validators={[isEmailValid()]}
+   /&gt;</code></pre>
+									</dd>
 								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -283,7 +293,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/37a61c9/src/elements.tsx#L212">src/elements.tsx:212</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/a1c94a9/src/elements.tsx#L226">src/elements.tsx:226</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -356,7 +366,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/37a61c9/src/elements.tsx#L344">src/elements.tsx:344</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/a1c94a9/src/elements.tsx#L358">src/elements.tsx:358</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -410,7 +420,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/37a61c9/src/elements.tsx#L307">src/elements.tsx:307</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/a1c94a9/src/elements.tsx#L321">src/elements.tsx:321</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -452,7 +462,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/37a61c9/src/elements.tsx#L392">src/elements.tsx:392</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/a1c94a9/src/elements.tsx#L406">src/elements.tsx:406</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -520,7 +530,7 @@ let state = {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/37a61c9/src/elements.tsx#L279">src/elements.tsx:279</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/a1c94a9/src/elements.tsx#L293">src/elements.tsx:293</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -577,7 +587,7 @@ let state = {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/37a61c9/src/elements.tsx#L128">src/elements.tsx:128</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/a1c94a9/src/elements.tsx#L128">src/elements.tsx:128</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

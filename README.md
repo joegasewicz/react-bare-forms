@@ -283,6 +283,18 @@ const state = { username: "" }
     labeltext="Username"
   />
 ```
+There is a bug when working with React & input fields. See [Cursor jumps to end of controlled input](https://github.com/facebook/react/issues/955) 
+We have provided a fix for `text` and `password` fields but not `email` fields. If you wish to avoid the
+cursor jumping *bug*, then use a `TextInputField` with the `isEmailValid()` validator. For example:
+
+```typescript jsx
+<TextInputField
+    value={state.email}
+    name="Must be a valid email"
+    labeltext="Email"
+    validators={[isEmailValid()]}
+/>
+```
 #### PasswordField
 The `PasswordField` works the same as the `EmailField` & `TextInputField`'s.
 ```typescript jsx
