@@ -2,6 +2,9 @@
 
 ### Changed
 **Release 0.1.4** - 2021-04-06
+- Failed to set the 'selectionStart' property on 'HTMLInputElement'  🐛 [Issue #116](https://github.com/joegasewicz/react-bare-forms/issues/116)
+
+**Release 0.1.4** - 2021-04-06
 - Cursor jumps to end of line  🐛 [Issue #108](https://github.com/joegasewicz/react-bare-forms/issues/108)
 
 **Release 0.1.0** - 2021-04-05
@@ -24,5 +27,3 @@
 
 
 ### Unreleased
-**Release 0.1.4** - 2021-04-06
-- Failed to set the 'selectionStart' property on 'HTMLInputElement': The input element's type ('email') does not support selection  🐛 [Issue #116](https://github.com/joegasewicz/react-bare-forms/issues/116)

@@ -122,6 +122,20 @@ export declare const TextInputField: (props: ITextInputField) => JSX.Element;
  *    labeltext="Username"
  *  />
  * ```
+ *
+ * There is a bug when working with React & input fields. See https://github.com/facebook/react/issues/955
+ * We have provided a fix for {@link TextInputField} and {@link PasswordField} fields but not {@link EmailField} fields.
+ * If you wish to avoid the cursor jumping *bug*, then use a {@link TextInputField} with the {@link isEmailValid}
+ * validator. For example:
+ *
+ * ```typescript jsx
+ *    <TextInputField
+ *       value={state.email}
+ *       name="Must be a valid email"
+ *       labeltext="Email"
+ *      validators={[isEmailValid()]}
+ *    />
+ * ```
  * @constructor
  */
 export declare const EmailField: (props: IEmailField) => JSX.Element;
