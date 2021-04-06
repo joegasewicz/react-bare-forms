@@ -11,6 +11,7 @@ exports[`#EmailField() it should display validation errors 1`] = `
       className="form-control "
       name="email"
       onChange={[Function]}
+      onKeyUp={[Function]}
       type="email"
       validators={
         Array [
@@ -34,6 +35,7 @@ exports[`#EmailField() should render a single input tag with no bootstrap styles
       className="form-control "
       name="email"
       onChange={[Function]}
+      onKeyUp={[Function]}
       type="email"
       value="email@email.com"
     />
@@ -52,6 +54,7 @@ exports[`#EmailField() should render an email field with the bootstrap styled ta
       className="form-control "
       name="email"
       onChange={[Function]}
+      onKeyUp={[Function]}
       type="email"
       value="joe@joe.com"
     />

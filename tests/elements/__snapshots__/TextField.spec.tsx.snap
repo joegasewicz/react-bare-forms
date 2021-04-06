@@ -11,6 +11,7 @@ exports[`#TextInputField() it should display validation errors 1`] = `
       className="form-control "
       name="username"
       onChange={[Function]}
+      onKeyUp={[Function]}
       type="text"
       validators={
         Array [
