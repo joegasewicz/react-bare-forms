@@ -24,3 +24,5 @@
 
 
 ### Unreleased
+**Release 0.1.4** - 2021-04-06
+- Failed to set the 'selectionStart' property on 'HTMLInputElement': The input element's type ('email') does not support selection  🐛 [Issue #116](https://github.com/joegasewicz/react-bare-forms/issues/116)

@@ -331,6 +331,15 @@ state = { <span class="hljs-attr">age</span>: <span class="hljs-number">0</span>
     <span class="hljs-attr">hint</span>=<span class="hljs-string">&quot;Needs to be at least 50 characters long&quot;</span>
     <span class="hljs-attr">labeltext</span>=<span class="hljs-string">&quot;Username&quot;</span>
   /&gt;</span></span></code></pre>
+				<p>There is a bug when working with React &amp; input fields. See <a href="https://github.com/facebook/react/issues/955">Cursor jumps to end of controlled input</a>
+					We have provided a fix for <code>text</code> and <code>password</code> fields but not <code>email</code> fields. If you wish to avoid the
+				cursor jumping <em>bug</em>, then use a <code>TextInputField</code> with the <code>isEmailValid()</code> validator. For example:</p>
+				<pre><code class="language-typescript">&lt;TextInputField
+    value={state.email}
+    name=<span class="hljs-string">&quot;Must be a valid email&quot;</span>
+    labeltext=<span class="hljs-string">&quot;Email&quot;</span>
+    validators={[isEmailValid()]}
+/&gt;</code></pre>
 				<a href="#passwordfield" id="passwordfield" style="color: inherit; text-decoration: none;">
 					<h4>PasswordField</h4>
 				</a>
