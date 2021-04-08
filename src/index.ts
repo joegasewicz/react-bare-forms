@@ -10,13 +10,15 @@ import {
     IRadioField, ISelectField,
     ITextAreaField,
     ITextInputField,
+    IDatePicker,
     PasswordField,
     RadioField,
     RadioGroup,
     SelectField,
     SubmitButton,
     TextAreaField,
-    TextInputField
+    TextInputField,
+    DatePickerField,
 } from "./elements";
 import {
     areFieldsEqual,
@@ -26,6 +28,7 @@ import {
     isFieldEmpty,
     isFile,
     isRadioChecked,
+    isValidDate,
 } from "./validators";
 import {createFileRef, getFileFromRef} from "./uncrontrolled";
 
@@ -42,6 +45,7 @@ export {
     isFieldEmpty,
     isFile,
     isRadioChecked,
+    isValidDate,
     // Context API
     FormConsumer,
 
@@ -57,7 +61,8 @@ export {
     SubmitButton,
     TextAreaField,
     TextInputField,
-    SelectField
+    SelectField,
+    DatePickerField,
 };
 export type {
     // Interfaces
@@ -68,6 +73,7 @@ export type {
     IRadioField,
     ITextAreaField,
     ITextInputField,
-    ISelectField
+    ISelectField,
+    IDatePicker,
 };
 

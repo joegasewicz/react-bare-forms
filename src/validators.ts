@@ -1,6 +1,7 @@
 import {EMAIL_REGEX} from "./core";
 import {IFormContext} from "./form";
-import {IEmailField, IField, IFieldBase, IPasswordField, ITextAreaField, ITextInputField} from "./elements";
+import {IField, IFieldBase} from "./elements";
+import {_DateValidatorArgsError, _DateValidatorArgsErrorMsg} from "./core/_errors";
 
 
 /** @internal */
@@ -75,7 +76,7 @@ export const areFieldsEqual: IValidationVariable = customValidator((fieldKey, fi
  * @param minLength The minimum length of the form field value
  * @function
  */
-export const isFieldEmpty: IValidationVariable = customValidator((minLength, fieldValue, context: IFormContext) => {
+export const isFieldEmpty: IValidationVariable = customValidator((minLength, fieldValue, _) => {
     const isValid = (typeof fieldValue !== "undefined" && fieldValue.length >= minLength);
     if(!isValid) {
         return [`Must be at least ${minLength} characters`];
@@ -185,6 +186,42 @@ export const isChecked: IValidationVariable = customValidator((_, fieldValue, co
     }
 });
 
+/**
+ * To use the {@link isValidDate} pass in an array containing
+ * either a from or to date string OR both OR none.
+ * @example
+ * ```
+ *    <DatePickerField
+ *        value={fpState.date}
+ *        name="date"
+ *        // Optional validators
+ *        validators={[isValidDate(["2021-01-10", "2021-03-10"])]}
+ *    />
+ * ```
+ * @function
+ */
+export const isValidDate: IValidationVariable = customValidator((args: [string, string], fieldValue: Date, _) => {
+    let isValid = false;
+    if (!fieldValue) {
+        return [`Must be a valid date`];
+    }
+    if (!args || !args.length) {
+        throw new _DateValidatorArgsError(_DateValidatorArgsErrorMsg);
+    }
+    const [from, to] = args;
+    const fromDate = from ? new Date(from) : null;
+    const toDate = to ? new Date(to) : null;
+
+    if (fromDate && toDate) {
+        if(fieldValue > fromDate && fieldValue < toDate) {
+            isValid = true;
+        }
+    }
+
+    if(!isValid) {
+        return [`Must be a valid date`];
+    }
+});
 /**
  * Function that takes a callback which contains the callers own validation logic
  * & returns an array of string(s) which are the validation error message or *undefined*. Below is an

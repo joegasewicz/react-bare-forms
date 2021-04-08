@@ -2,6 +2,7 @@ const path = require("path");
 
 module.exports =  function(env, argv) {
     return {
+
         mode: env.mode ? "production" : "development",
         entry: argv["entry"],
         devtool: env.mode ? "inline-source-map" : "eval",
@@ -11,11 +12,15 @@ module.exports =  function(env, argv) {
                     test: /\.tsx?$/,
                     use: "ts-loader",
                     exclude: [/node_modules/, path.resolve(__dirname, "./showcase")],
+                },
+                {
+                    test: /\.css$/i,
+                    use: ["style-loader", "css-loader"],
                 }
             ],
         },
         resolve: {
-            extensions: [".tsx", ".ts", ".js"],
+            extensions: [".tsx", ".ts", ".js", ".css"],
         },
         externals: ["react", "react-dom"],
         output: {

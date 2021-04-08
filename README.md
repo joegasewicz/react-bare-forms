@@ -192,12 +192,13 @@ values of the current state of all the form fields & validation state.
 There are validators available to handle all the basic common form validation requirements. Below is a list
 of the current validators available but this list should grow in the near future!
 
-- [areFieldsEqual](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#arefieldsequal),
-- [isChecked](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#ischecked),
-- [isEmailValid](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#isemailvalid),
-- [isFieldEmpty](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#isfieldempty),
-- [isFile](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#isfile),
-- [isRadioChecked](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#isradiochecked),
+- [areFieldsEqual](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#arefieldsequal)
+- [isChecked](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#ischecked)
+- [isEmailValid](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#isemailvalid)
+- [isFieldEmpty](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#isfieldempty)
+- [isFile](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#isfile)
+- [isRadioChecked](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#isradiochecked)
+- [isValidDate](https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#isvaliddate)
 
 To create your own custom validator use:
 
@@ -242,6 +243,7 @@ There are 4 components that cover the `input` field element:
 - [EmailField](https://joegasewicz.github.io/react-bare-forms/modules/_elements_.html#emailfield)
 - [PasswordField](https://joegasewicz.github.io/react-bare-forms/modules/_elements_.html#passwordfield)
 - [CheckBoxField](https://joegasewicz.github.io/react-bare-forms/modules/_elements_.html#checkboxfield) 
+- [DatePickerField](https://joegasewicz.github.io/react-bare-forms/modules/_elements_.html#datepickerfield)
 
 #### TextInputField
 ```typescript jsx
@@ -339,6 +341,18 @@ name as an argument).
     validators={[areFieldsEqual("password")]}
 />
 ```
+#### DatePickerField
+A Date picker with optional validation
+The Datepicker field is already styled & includes optional validation for to & from dates.
+To use the `isValidDate` pass in an array containing either a from or to date string OR both OR none.
+ ```typescript jsx
+    <DatePickerField
+        value={fpState.date}
+        name="date"
+        // Optional validators
+        validators={[isValidDate(["2021-01-10", "2021-03-10"])]}
+    />
+ ```
 
 #### CheckBoxField
 The **CheckBoxField** component takes a `checked` prop instead of the usual `value` prop. 
