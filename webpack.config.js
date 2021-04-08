@@ -1,9 +1,11 @@
 const path = require("path");
+const webpack = require("webpack");
+
 
 module.exports =  function(env, argv) {
+    const mode = env.mode ? "production" : "development";
     return {
-
-        mode: env.mode ? "production" : "development",
+        mode,
         entry: argv["entry"],
         devtool: env.mode ? "inline-source-map" : "eval",
         module: {
@@ -29,5 +31,11 @@ module.exports =  function(env, argv) {
             library: "react-bare-lib",
             libraryTarget: "umd",
         },
-};
+        optimization: {
+            splitChunks: {
+                chunks: 'all',
+            },
+        },
+        plugins: [new webpack.IgnorePlugin(/^\.\/locale$/, /react-day-picker$/),]
+    };
 };

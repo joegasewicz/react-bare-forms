@@ -18,8 +18,6 @@ import {
     DatePickerField as _DatePickerField,
 
 } from "./field_classes";
-import {Simulate} from "react-dom/test-utils";
-import select = Simulate.select;
 
 /** @internal */
 export enum FIELD_NAMES {

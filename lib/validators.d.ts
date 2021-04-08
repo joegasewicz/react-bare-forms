@@ -137,6 +137,21 @@ export declare const isRadioChecked: IValidationVariable;
  */
 export declare const isChecked: IValidationVariable;
 /**
+ * To use the {@link isValidDate} pass in an array containing
+ * either a from or to date string OR both OR none.
+ * @example
+ * ```
+ *    <DatePickerField
+ *        value={fpState.date}
+ *        name="date"
+ *        // Optional validators
+ *        validators={[isValidDate(["2021-01-10", "2021-03-10"])]}
+ *    />
+ * ```
+ * @function
+ */
+export declare const isValidDate: IValidationVariable;
+/**
  * Function that takes a callback which contains the callers own validation logic
  * & returns an array of string(s) which are the validation error message or *undefined*. Below is an
  * example of creating a custom validator to test if a field has a string length of nth.

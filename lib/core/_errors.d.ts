@@ -10,3 +10,6 @@ export declare const _isFieldEmptyErrorMsg: string;
 export declare class _FieldEmptyErrorMsg extends Error {
 }
 export declare const _noContextError: string;
+export declare const _DateValidatorArgsErrorMsg: string;
+export declare class _DateValidatorArgsError extends Error {
+}

@@ -9,7 +9,8 @@ export declare enum FIELD_NAMES {
     RADIO = "radio",
     CHECKBOX = "checkbox",
     SELECT = "select",
-    FILE = "file"
+    FILE = "file",
+    DATE = "date"
 }
 export interface IFieldBase {
     /** The name of the form element (this should match the state property that you want be updated by this form element) */
@@ -53,6 +54,9 @@ export interface ICheckBoxField extends IField<HTMLInputElement> {
 export interface ITextAreaField extends IField<HTMLTextAreaElement> {
     rows?: number;
     /** The state property that gets updated by this input field */
+    value: any;
+}
+export interface IDatePicker extends IField<HTMLInputElement> {
     value: any;
 }
 export interface IRadioField extends IField<HTMLInputElement> {
@@ -346,6 +350,24 @@ export declare const RadioField: (props: IRadioField) => JSX.Element;
  * ```
  */
 export declare const SelectField: (props: ISelectField) => JSX.Element;
+/**
+ * @description A Date picker with optional validation
+ * @param props {@link IDatePicker}
+ * @constructor
+ * The Datepicker field is already styled & includes optional validation for
+ * to & from dates. To use the {@link isValidDate} pass in an array containing
+ * either a from or to date string OR both OR none.
+ * @example
+ * ```
+ *    <DatePickerField
+ *        value={fpState.date}
+ *        name="date"
+ *        // Optional validators
+ *        validators={[isValidDate(["2021-01-10", "2021-03-10"])]}
+ *    />
+ * ```
+ */
+export declare const DatePickerField: (props: IDatePicker) => JSX.Element;
 /**
  * The SubmitButton only requires a text string as children props (see below example).
  * The SubmitButton will be disabled until all form fields are validated.

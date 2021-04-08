@@ -10,4 +10,5 @@ import { RadioField } from "./_RadioField";
 import { SelectField } from "./_SelectField";
 import { SubmitButton } from "./_SubmitButton";
 import { TextAreaField } from "./_TextAreaField";
-export { AbstractField, AbstractMetadata, CheckBoxField, FileField, InputField, Metadata, MetadataFile, MetadataGroup, RadioField, SelectField, SubmitButton, TextAreaField, };
+import { DatePickerField } from "./_DatePickerField";
+export { AbstractField, AbstractMetadata, CheckBoxField, FileField, InputField, Metadata, MetadataFile, MetadataGroup, RadioField, SelectField, SubmitButton, TextAreaField, DatePickerField, };

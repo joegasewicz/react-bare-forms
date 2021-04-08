@@ -1,6 +1,10 @@
 # Changelog
 
 ### Changed
+**Release 0.1.8** - 2021-04-08
+- New InputField - DatePicker 🆕 [Issue #115](https://github.com/joegasewicz/react-bare-forms/issues/#115)
+- Includes bundle optimization. 
+
 **Release 0.1.7** - 2021-04-07
 - labeltext prop on RadioField not displaying Fixes  🐛 [Issue #119](https://github.com/joegasewicz/react-bare-forms/issues/119)
 
@@ -30,5 +34,3 @@
 
 
 ### Unreleased
-**Release 0.1.8** - 2021-04-08
-- New InputField - DatePicker 🆕 [Issue #115](https://github.com/joegasewicz/react-bare-forms/issues/#115)
