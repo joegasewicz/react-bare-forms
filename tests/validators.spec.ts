@@ -1,5 +1,17 @@
-import {areFieldsEqual, customValidator, isEmailValid, isFieldEmpty, IValidationVariable} from "../src/validators";
-import {_FieldEmptyErrorMsg,  _isFieldEmptyErrorMsg} from "../src/core/_errors";
+import {
+    areFieldsEqual,
+    customValidator,
+    isEmailValid,
+    isFieldEmpty,
+    isValidDate,
+    IValidationVariable
+} from "../src/validators";
+import {
+    _DateValidatorArgsError,
+    _DateValidatorArgsErrorMsg,
+    _FieldEmptyErrorMsg,
+    _isFieldEmptyErrorMsg
+} from "../src/core/_errors";
 
 const isFieldEmptyResult = (limit: number) => ({
     isValid: false,
@@ -79,6 +91,60 @@ describe("#isEmailValid()", () => {
         isValid: false,
         messages: ["Must be a valid email"],
     });
+});
+
+describe("#isValidDate()", () => {
+    let context = {
+        state: {
+            date: new Date("2021-04-07T11:00:00.000"),
+        }
+    }
+    try {
+        expect(isValidDate()(context.state.date, context)).toEqual({
+            isValid: true,
+            messages: [],
+        });
+    } catch (err) {
+        expect(err).toEqual(new _DateValidatorArgsError(_DateValidatorArgsErrorMsg));
+    }
+
+    // Test Days
+    expect(isValidDate(["2021-04-1", "2021-04-10"])(context.state.date, context)).toEqual({
+        isValid: true,
+        messages: [],
+    });
+
+    expect(isValidDate(["2021-04-8", "2021-04-10"])(context.state.date, context)).toEqual({
+        isValid: false,
+        messages: [`Must be a valid date`],
+    });
+
+    // Test Months
+    context.state.date = new Date("2021-03-07T11:00:00.000");
+    expect(isValidDate(["2021-04-8", "2021-04-10"])(context.state.date, context)).toEqual({
+        isValid: false,
+        messages: [`Must be a valid date`],
+    });
+
+    context.state.date = new Date("2021-05-07T11:00:00.000");
+    expect(isValidDate(["2021-04-8", "2021-04-10"])(context.state.date, context)).toEqual({
+        isValid: false,
+        messages: [`Must be a valid date`],
+    });
+
+    // Test Years
+    context.state.date = new Date("2020-04-07T11:00:00.000");
+    expect(isValidDate(["2021-04-8", "2021-04-10"])(context.state.date, context)).toEqual({
+        isValid: false,
+        messages: [`Must be a valid date`],
+    });
+
+    context.state.date = new Date("2019-01-07T11:00:00.000");
+    expect(isValidDate(["2021-04-8", "2021-04-10"])(context.state.date, context)).toEqual({
+        isValid: false,
+        messages: [`Must be a valid date`],
+    });
+
 });
 
 describe("#customValidator()", () => {

@@ -39,13 +39,25 @@ export function updateCursorPosCallback(cursorState: TypeCursorPositionState, up
     }
 }
 
-/** @internal */
+/**
+ * @internal
+ */
 export function updateParentState(parentState: any, setParentState: Function, formKey: string = ""): TypeHandler {
-    return (e: React.ChangeEvent<any>, name: string) => {
-        setParentState({
-            ...parentState,
-            ..._getCorrectStatePositionFromFormKey(parentState, formKey, {[name]: e.target.value}),
-        });
+    return (e: React.ChangeEvent<any> | null, name: string, fieldValue?: any) => {
+        let value: any;
+        if(e) {
+          value = e.target.value;
+        } else if(fieldValue) {
+            // If event is null then we are getting field values from fieldValue param
+             value = fieldValue
+        }
+        if (value) {
+            setParentState({
+                ...parentState,
+                ..._getCorrectStatePositionFromFormKey(parentState, formKey, {[name]: value}),
+            });
+        }
+
     };
 }
 

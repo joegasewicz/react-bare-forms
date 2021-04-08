@@ -10,6 +10,7 @@ import {RadioField} from "./_RadioField";
 import {SelectField} from "./_SelectField";
 import {SubmitButton} from "./_SubmitButton";
 import {TextAreaField} from "./_TextAreaField";
+import {DatePickerField} from "./_DatePickerField";
 
 
 export {
@@ -25,4 +26,5 @@ export {
     SelectField,
     SubmitButton,
     TextAreaField,
+    DatePickerField,
 };

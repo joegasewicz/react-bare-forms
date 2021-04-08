@@ -24,7 +24,9 @@ function App(props: any) {
             </div>
                 <div className="container">
                     <div className="container">
-                    <>{pageState.page === 1 ? <Main /> : <FPForm />}</>
+                    <>{pageState.page === 1
+                        ? <FPForm />
+                        : <Main />}</>
                     </div>
                 </div>
         

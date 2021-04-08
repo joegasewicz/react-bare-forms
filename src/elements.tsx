@@ -15,7 +15,11 @@ import {
     RadioField as _RadioField,
     SelectField as _SelectField,
     TextAreaField as _TextAreaField,
+    DatePickerField as _DatePickerField,
+
 } from "./field_classes";
+import {Simulate} from "react-dom/test-utils";
+import select = Simulate.select;
 
 /** @internal */
 export enum FIELD_NAMES {
@@ -27,6 +31,7 @@ export enum FIELD_NAMES {
     CHECKBOX = "checkbox",
     SELECT = "select",
     FILE = "file",
+    DATE = "date",
 }
 
 export interface IFieldBase {
@@ -77,6 +82,10 @@ export interface ICheckBoxField extends IField<HTMLInputElement> {
 export interface ITextAreaField extends IField<HTMLTextAreaElement> {
     rows?: number;
     /** The state property that gets updated by this input field */
+    value: any;
+}
+
+export interface IDatePicker extends IField<HTMLInputElement> {
     value: any;
 }
 
@@ -409,6 +418,28 @@ export const SelectField = (props: ISelectField) => {
 };
 
 /**
+ * @description A Date picker with optional validation
+ * @param props {@link IDatePicker}
+ * @constructor
+ * The Datepicker field is already styled & includes optional validation for
+ * to & from dates. To use the {@link isValidDate} pass in an array containing
+ * either a from or to date string OR both OR none.
+ * @example
+ * ```
+ *    <DatePickerField
+ *        value={fpState.date}
+ *        name="date"
+ *        // Optional validators
+ *        validators={[isValidDate(["2021-01-10", "2021-03-10"])]}
+ *    />
+ * ```
+ */
+export const DatePickerField = (props: IDatePicker) => {
+    const datePicker = new _DatePickerField(FIELD_NAMES.DATE, props);
+    return datePicker.create();
+};
+
+/**
  * The SubmitButton only requires a text string as children props (see below example).
  * The SubmitButton will be disabled until all form fields are validated.
  * @param props {@link ISubmitButtonProps}
@@ -425,6 +456,7 @@ export const FileField = React.forwardRef((props: IFileField, ref: React.RefObje
     const file = new _FileField<IFileField>(FIELD_NAMES.FILE, _props);
     return file.create();
 });
+
 
 
 export const SubmitButton = new _SubmitButton().create();

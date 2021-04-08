@@ -19,8 +19,10 @@ import {
     isEmailValid,
     isFieldEmpty,
     isFile,
-    isRadioChecked
-} from "../src/index";
+    isRadioChecked,
+    DatePickerField, isValidDate,
+} from "../src";
+
 
 interface IProps{}
 
@@ -42,13 +44,17 @@ interface IState{
         radio3: boolean;
         fruitChoice: string;
         myFileTest?: any;
+        date?: any;
     }
 }
 
 export function FPForm() {
-    const state = { age: 0, password: "", radio1: false, radio2: true, radio3: false }
+    const state = {age: 0, password: "", radio1: false, radio2: true, radio3: false, date: "" }
 
     const [fpState, fpSetState] = React.useState(state);
+
+    const fromDate = new Date("2021-04-01");
+    const toDate = new Date("2021-04-10");
     return <>
         <h2>Form with hooks</h2>
         <Form
@@ -57,6 +63,13 @@ export function FPForm() {
             bare={false}
             autoComplete="off"
             callback={() => console.log("Form submitted!")}>
+
+            <p>Hello</p>
+            <DatePickerField
+                value={fpState.date}
+                name="date"
+                validators={[isValidDate([fromDate, toDate])]}
+            />
 
             <TextInputField
                 value={fpState.age}
@@ -100,7 +113,7 @@ export function FPForm() {
             <FormConsumer>
                 {(context: any) => {
                     // this.setState({...context});
-                    return <div className="container"><code><var>metadata</var>: {JSON.stringify(context.metadata.radioGroup)}</code></div>;
+                    return <div className="container"><code><var>metadata</var>: {JSON.stringify(context.metadata)}</code></div>;
                 }}
             </FormConsumer>
             <br/>

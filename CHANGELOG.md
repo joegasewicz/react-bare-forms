@@ -30,3 +30,5 @@
 
 
 ### Unreleased
+**Release 0.1.8** - 2021-04-08
+- New InputField - DatePicker 🆕 [Issue #115](https://github.com/joegasewicz/react-bare-forms/issues/#115)

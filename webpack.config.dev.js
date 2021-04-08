@@ -12,10 +12,14 @@ module.exports =  {
                 use: "ts-loader",
                 exclude: /node_modules/,
             },
+           {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
+            }
         ],
     },
     resolve: {
-        extensions: [".tsx", ".ts", ".js"],
+        extensions: [".tsx", ".ts", ".js", ".css"],
     },
     output: {
         crossOriginLoading: "anonymous",

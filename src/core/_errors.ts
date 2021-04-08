@@ -30,3 +30,14 @@ export const _noContextError = _throwNewErrorMsg(
     "You must pass in a context prop. Class components use 'state' " +
     "& functional components must use useState hook. See https://joegasewicz.github.io/react-bare-forms/modules/_form_.html"
 );
+
+
+
+export const _DateValidatorArgsErrorMsg = _throwNewErrorMsg(
+    "Required args",
+    "isValidDate()",
+    "You must include either no args or an array with either a 'to date' a 'from date' or both as args.\n" +
+    "See https://joegasewicz.github.io/react-bare-forms for more details."
+);
+
+export class _DateValidatorArgsError extends Error { }
