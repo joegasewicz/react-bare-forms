@@ -31,11 +31,6 @@ module.exports =  function(env, argv) {
             library: "react-bare-lib",
             libraryTarget: "umd",
         },
-        optimization: {
-            splitChunks: {
-                chunks: 'all',
-            },
-        },
         plugins: [new webpack.IgnorePlugin(/^\.\/locale$/, /react-day-picker$/),]
     };
 };

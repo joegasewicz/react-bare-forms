@@ -1,10 +1,10 @@
-import {default as React, Suspense, lazy } from "react";
-import {AbstractField} from "./index";
-import {FIELD_NAMES, IDatePicker} from "../elements";
+import { default as React } from "react";
+import { AbstractField } from "./index";
+import { FIELD_NAMES, IDatePicker } from "../elements";
 
 import {_genericFormGroup} from "./_AbstractField";
-const DayPickerInput = lazy(() => import('react-day-picker/DayPickerInput'));
-import 'react-day-picker/lib/style.css';
+import DayPickerInput from "react-day-picker/DayPickerInput";
+import "react-day-picker/lib/style.css";
 
 export class DatePickerField<T extends IDatePicker> extends AbstractField<T> implements AbstractField<T> {
     constructor(type: FIELD_NAMES, props: T & IDatePicker) {
@@ -25,15 +25,22 @@ export class DatePickerField<T extends IDatePicker> extends AbstractField<T> imp
         (this.context as any).updateParentState(null, this.props.name, date);
     }
 
+
     public getField() {
         return () => {
             return (
-                <Suspense fallback={<>Loading DatePicker...</>}>
                     <DayPickerInput
+                        dayPickerProps={{
+                            className: this.props.datePickerClassNames ? this.props.datePickerClassNames : "",
+                        }}
+                        style={{width: "100%"}}
+                        inputProps={{
+                           style: {display: "block"},
+                           className: "form-control"
+                       }}
                        onDayChange={day => this.onHandleChange(day)}
                        value={this.getStatePositionFromFormKey()[this.props.name]|| ""}
                     />
-                </Suspense>
             );
         }
     }

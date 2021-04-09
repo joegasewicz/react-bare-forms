@@ -85,6 +85,8 @@ export interface ITextAreaField extends IField<HTMLTextAreaElement> {
 
 export interface IDatePicker extends IField<HTMLInputElement> {
     value: any;
+    /** Pass in the css class names to style the calender **/
+    datePickerClassNames?: string;
 }
 
 export interface IRadioField extends IField<HTMLInputElement> {
@@ -427,6 +429,7 @@ export const SelectField = (props: ISelectField) => {
  *    <DatePickerField
  *        value={fpState.date}
  *        name="date"
+ *        datePickerClassNames="yourClassnames"
  *        // Optional validators
  *        validators={[isValidDate(["2021-01-10", "2021-03-10"])]}
  *    />

@@ -34,3 +34,5 @@
 
 
 ### Unreleased
+**Release 0.1.8** - 2021-04-08
+- DatePicker fixes 🐛 [Issue  #122](https://github.com/joegasewicz/react-bare-forms/issues/#122)
