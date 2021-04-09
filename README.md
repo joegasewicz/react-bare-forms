@@ -349,6 +349,8 @@ To use the `isValidDate` pass in an array containing either a from or to date st
     <DatePickerField
         value={fpState.date}
         name="date"
+        // Pass in the css class names to style the calender
+        datePickerClassNames="yourClassName..."
         // Optional validators
         validators={[isValidDate(["2021-01-10", "2021-03-10"])]}
     />
