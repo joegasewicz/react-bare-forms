@@ -1,6 +1,9 @@
 # Changelog
 
 ### Changed
+**Release 0.1.9** - 2021-04-08
+- DatePicker fixes 🐛 [Issue  #122](https://github.com/joegasewicz/react-bare-forms/issues/#122)
+
 **Release 0.1.8** - 2021-04-08
 - New InputField - DatePicker 🆕 [Issue #115](https://github.com/joegasewicz/react-bare-forms/issues/#115)
 - Includes bundle optimization. 
@@ -34,5 +37,3 @@
 
 
 ### Unreleased
-**Release 0.1.8** - 2021-04-08
-- DatePicker fixes 🐛 [Issue  #122](https://github.com/joegasewicz/react-bare-forms/issues/#122)
