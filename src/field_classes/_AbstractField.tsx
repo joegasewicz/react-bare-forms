@@ -133,10 +133,13 @@ export abstract class AbstractField<T extends IFieldBase> {
      */
     public validate(): Array<IValidation> {
         let value = this.getFieldValue(this.props);
+        let validation: Array<IValidation> = [];
         // Carry out the validation
-        let validation = this.doValidation(value);
-        // Update the metadata type state
-        this.metadata.update(value, validation, this.props.name);
+        if (this.props.validators) {
+            validation = this.doValidation(value);
+            // Update the metadata type state
+            this.metadata.update(value, validation, this.props.name);
+        }
         return validation;
     }
 
