@@ -40,7 +40,7 @@ export class FileField<T extends IField<HTMLInputElement>> extends AbstractField
             {...this.props}
             ref={(this.props as any).ref}
             type={this.type}
-            onChange={this._updateFieldValidation.bind(this)}
+            onChange={() => this._updateFieldValidation()}
             className={AbstractField.mergeDefaultCssWithProps("form-control-file", this.props.className, (this.context as any).bare)}
         />}</>;
     }

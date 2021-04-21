@@ -19,13 +19,13 @@ export class MetadataFile<T extends IFieldValidation> extends AbstractMetadata<T
         this.fieldType = fieldType;
     }
 
-    public update(value: any, validation: Array<IValidation>): void {
+    public update(value: any, validation: Array<IValidation>, name: string): void {
         let state: {[k: string]: IFieldValidation};
-        if(!(this.name in this.state)){
+        if(!(name in this.state)){
             state = {
                 ...this.state,
-                [this.name]: {
-                    name: this.name,
+                [name]: {
+                    name,
                     validation,
                     isTouched: false,
                     fieldValues: {
@@ -35,17 +35,15 @@ export class MetadataFile<T extends IFieldValidation> extends AbstractMetadata<T
                 },
             };
             useEffect(() => {
-                this.updateState(state);
-            }, [state]);
-            return;
-        }
-        if(this.state[this.name]) {
-            let currentValue: IFile = this.state[this.name].fieldValues.currentValue;
+               this.updateState(state);
+            }, [state])
+        } else if(this.state[name]) {
+            let currentValue: IFile = this.state[name].fieldValues.currentValue;
             if(value === null && Object.keys(currentValue).length || value && value.name !== currentValue.name) {
                 state = {
                     ...this.state,
-                    [this.name]: {
-                        name: this.name,
+                    [name]: {
+                        name,
                         validation,
                         fieldValues: {
                             type: getFieldValueType(this.fieldType),
