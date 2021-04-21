@@ -26,9 +26,6 @@ import {
 
 interface IProps{}
 
-const myFileRef = createFileRef();
-const myFileRef2 = createFileRef();
-
 interface IState{
 
     formData: {
@@ -128,9 +125,10 @@ export function FPForm() {
     </>;
 }
 
+const myFileRef = createFileRef();
+const myFileRef2 = createFileRef();
 
 export class Main extends React.Component<IProps, IState> {
-
 
     state = {
         formData: {
@@ -229,13 +227,15 @@ export class Main extends React.Component<IProps, IState> {
                                     ref={myFileRef}
                                     hint="Must be a file"
                                     labeltext="Upload your file"
-                                    name="myFileTest"
+                                    name="myFileTest1"
+                                    validators={[isFile()]}
                                 />
                                 <FileField
                                     ref={myFileRef2}
                                     hint="Must be a file"
                                     labeltext="Upload your file"
-                                    name="myFileTest"
+                                    name="myFileTest2"
+                                    validators={[isFile()]}
                                 />
 
                                 <RadioGroup name="group1">

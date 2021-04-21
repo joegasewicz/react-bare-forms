@@ -58,7 +58,7 @@ export abstract class AbstractMetadata<T> implements IMetadata<T> {
 
     abstract init(name: string, fieldType: FIELD_NAMES): void
 
-    abstract update(props: any, validation: Array<IValidation>): void;
+    abstract update(props: any, validation: Array<IValidation>, name?: string): void;
 
     public isFieldTouched(): boolean {
         if(this.state[this.name]) {

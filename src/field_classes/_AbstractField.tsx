@@ -136,7 +136,7 @@ export abstract class AbstractField<T extends IFieldBase> {
         // Carry out the validation
         let validation = this.doValidation(value);
         // Update the metadata type state
-        this.metadata.update(value, validation);
+        this.metadata.update(value, validation, this.props.name);
         return validation;
     }
 
