@@ -9,5 +9,5 @@ export declare class MetadataFile<T extends IFieldValidation> extends AbstractMe
         [k: string]: T;
     }, updateState: Function, type: METADATA_NAMES);
     init(name: string, fieldType: FIELD_NAMES): void;
-    update(value: any, validation: Array<IValidation>): void;
+    update(value: any, validation: Array<IValidation>, name: string): void;
 }

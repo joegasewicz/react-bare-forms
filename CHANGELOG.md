@@ -1,6 +1,10 @@
 # Changelog
 
 ### Changed
+
+**Release 0.1.11** - 2021-04-21
+- Multiple Filefield Uncaught Error: Invalid hook call when validators not used 🐛 [Issue  #127](https://github.com/joegasewicz/react-bare-forms/issues/#127)
+
 **Release 0.1.10** - 2021-04-21
 - FileField Invalid hook call 🐛 [Issue  #125](https://github.com/joegasewicz/react-bare-forms/issues/#125)
 

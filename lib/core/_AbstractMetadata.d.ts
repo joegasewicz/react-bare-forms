@@ -34,6 +34,6 @@ export declare abstract class AbstractMetadata<T> implements IMetadata<T> {
     get fieldType(): FIELD_NAMES;
     set fieldType(val: FIELD_NAMES);
     abstract init(name: string, fieldType: FIELD_NAMES): void;
-    abstract update(props: any, validation: Array<IValidation>): void;
+    abstract update(props: any, validation: Array<IValidation>, name?: string): void;
     isFieldTouched(): boolean;
 }
