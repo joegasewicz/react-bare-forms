@@ -1,56 +1,81 @@
 import * as React from "react";
 import {
     areFieldsEqual,
-    createFileRef,
-    getFileFromRef,
-    FormConsumer,
-    Form,
-    SubmitButton,
-    TextInputField,
-    EmailField,
-    PasswordField,
-    TextAreaField,
     CheckBoxField,
-    SelectField,
+    createFileRef,
+    DatePickerField,
+    EmailField,
     FileField,
-    RadioField,
-    RadioGroup,
+    Form,
+    FormConsumer,
+    getFileFromRef,
     isChecked,
     isEmailValid,
     isFieldEmpty,
-    isFile,
     isRadioChecked,
-    DatePickerField, isValidDate,
+    isValidDate,
+    PasswordField,
+    RadioField,
+    RadioGroup,
+    SelectField,
+    SubmitButton,
+    TextAreaField,
+    TextInputField,
 } from "../src";
+import {QueryInputField} from "../src/elements";
+import {useEffect} from "react";
 
 
-interface IProps{}
-
-interface IState{
-
-    formData: {
-        username: string;
-        age: number;
-        password: string;
-        confirmPassword: string;
-        email: string;
-        about: string;
-        terms: boolean;
-        radio1: boolean;
-        radio2: boolean;
-        radio3: boolean;
-        fruitChoice: string;
-        myFileTest?: any;
-        date?: any;
-    }
+function fetchFruit(updateFruit: any, query: string){
+    const promise =  new Promise((resolve, reject) => {
+            setTimeout(() => {
+                let data = {};
+                switch(query) {
+                    case "p": {
+                        data = [
+                            {name: "peach"},
+                            {name: "plum"},
+                        ]
+                        break;
+                    }
+                    case "pl": {
+                        data = [
+                            {name: "plum"},
+                        ]
+                        break;
+                    }
+                    case "pe": {
+                        data = [
+                            {name: "peach"},
+                        ]
+                        break;
+                    }
+                    default: {
+                        data = []
+                    }
+                }
+                resolve(data)
+            }, 300);
+        });
+    promise
+        .then((data) => {
+            updateFruit(data);
+        })
+        .catch((err) => console.error(err))
+    return null;
 }
 
 export function FPForm() {
-    const state = {age: 0, password: "", radio1: false, radio2: true, radio3: false, date: "" }
-
+    const state = {age: 0, password: "", radio1: false, radio2: true, radio3: false, date: "", fruit: "" }
     const [fpState, fpSetState] = React.useState(state);
+    const [fruitState, updateFruit] = React.useState<any>(undefined);
 
-    const fromDate = new Date("2021-04-01");
+    useEffect(() => {
+        fetchFruit(updateFruit, fpState.fruit);
+    }, [fruitState, fpState.fruit]);
+
+
+    const fromDate = new Date("2021-04-01")
     const toDate = new Date("2021-04-10");
     return <>
         <h2>Form with hooks</h2>
@@ -66,6 +91,16 @@ export function FPForm() {
                 value={fpState.date}
                 name="date"
                 validators={[isValidDate([fromDate, toDate])]}
+            />
+
+
+            <QueryInputField
+                value={fpState.fruit}
+                name="fruit"
+                hint="Enter your Fruit"
+                labeltext="fruit"
+                validators={[isFieldEmpty(2)]}
+                queryresults={fruitState}
             />
 
             <TextInputField
@@ -122,7 +157,37 @@ export function FPForm() {
                     }}
                 </FormConsumer>
         </Form>
+
+        <br />
+        <br />
+        <h3>Fruit State</h3>
+        <code>
+            {JSON.stringify(fruitState)}
+        </code>
     </>;
+}
+
+
+
+interface IProps{}
+
+interface IState{
+
+    formData: {
+        username: string;
+        age: number;
+        password: string;
+        confirmPassword: string;
+        email: string;
+        about: string;
+        terms: boolean;
+        radio1: boolean;
+        radio2: boolean;
+        radio3: boolean;
+        fruitChoice: string;
+        myFileTest?: any;
+        date?: any;
+    }
 }
 
 const myFileRef = createFileRef();

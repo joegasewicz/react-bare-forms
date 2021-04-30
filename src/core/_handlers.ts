@@ -45,7 +45,7 @@ export function updateCursorPosCallback(cursorState: TypeCursorPositionState, up
 export function updateParentState(parentState: any, setParentState: Function, formKey: string = ""): TypeHandler {
     return (e: React.ChangeEvent<any> | null, name: string, fieldValue?: any) => {
         let value: any;
-        if(e) {
+        if(e && !fieldValue) {
           value = e.target.value;
         } else if(fieldValue) {
             // If event is null then we are getting field values from fieldValue param

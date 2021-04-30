@@ -16,7 +16,7 @@ import {
     SelectField as _SelectField,
     TextAreaField as _TextAreaField,
     DatePickerField as _DatePickerField,
-
+    QueryField as _QueryField, QueryField,
 } from "./field_classes";
 
 /** @internal */
@@ -89,6 +89,12 @@ export interface IDatePicker extends IField<HTMLInputElement> {
     datePickerClassNames?: string;
 }
 
+export interface IQueryField extends IField<HTMLInputElement> {
+    /** The state property that gets updated by this input field */
+    value: any;
+    queryresults?: Array<any>;
+}
+
 export interface IRadioField extends IField<HTMLInputElement> {
     checked: boolean;
     disabled?: boolean;
@@ -138,6 +144,38 @@ export const TextInputField = (props: ITextInputField) => {
   const textInput = new InputField<ITextInputField>(FIELD_NAMES.TEXT, props);
   return textInput.create();
 };
+
+/**
+ *
+ * @param props {@link ITextInputField}
+ * @example
+ * ```
+ *  import {TextInputField} from "react-base-forms"
+ *
+ *  const state = { username: "" }
+ *
+ * // A bare form example ... remember to set the {@link Form.bare} property to `true`
+ * <TextInputField
+ *    value={state.username}
+ *    name="username"
+ * />
+ *
+ * // Example with Bootstrap styling (Bootstrap styling comes as default)
+ *
+ * <TextInputField
+ *    value={state.username}
+ *    name="username"
+ *    hint="Needs to be at least 50 characters long"
+ *    labeltext="Username"
+ *  />
+ * ```
+ * @constructor
+ */
+export const QueryInputField = (props: IQueryField) => {
+    const textInput = new QueryField<ITextInputField>(FIELD_NAMES.TEXT, props);
+    return textInput.create();
+};
+
 
 /**
  * @param props {@link IEmailField}
