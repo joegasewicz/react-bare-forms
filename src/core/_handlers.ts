@@ -51,7 +51,7 @@ export function updateParentState(parentState: any, setParentState: Function, fo
             // If event is null then we are getting field values from fieldValue param
              value = fieldValue
         }
-        if (value) {
+        if (typeof value !== "undefined") {
             setParentState({
                 ...parentState,
                 ..._getCorrectStatePositionFromFormKey(parentState, formKey, {[name]: value}),

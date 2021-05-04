@@ -25,7 +25,6 @@ export class QueryField<T extends IField<HTMLInputElement>> extends AbstractFiel
     }
 
     private handleOnClick = (e: any, value: string) => {
-        console.log("here-----> ", value);
         (this.context as any).updateParentState(e, this.props.name, value);
     }
 
