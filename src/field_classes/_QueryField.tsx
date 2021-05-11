@@ -44,7 +44,10 @@ export class QueryField<T extends IField<HTMLInputElement>> extends AbstractFiel
                     />
                     <ul className={`${this.bare ? "": "list-group"}`}>
                         {queryResults.map((result: any, i: number) => {
-                            return <li key={i} onClick={e => this.handleOnClick(e, result[(this.props as unknown as IQueryField).objectkey])} className={`${this.bare ? "": "list-group-item"}`}>{result.name}</li>
+                            return <li
+                                key={i}
+                                onClick={e => this.handleOnClick(e, result[(this.props as unknown as IQueryField).objectkey])}
+                                className={`${this.bare ? "": "list-group-item"}`}>{result[(this.props as unknown as IQueryField).objectkey]}</li>
                         })}
                     </ul>
                 </>
