@@ -2,6 +2,11 @@
 
 ### Changed
 
+**Release 0.1.12** - 2021-05-11
+- New field - QueryField 🆕 [Issue #129](https://github.com/joegasewicz/react-bare-forms/issues/#129)
+- DatePicker doesn't remove css classes with form state bare true 🐛 [Issue  #131](https://github.com/joegasewicz/react-bare-forms/issues/#131)
+- SubmitField doesn't remove css classes with form state bare true 🐛 [Issue  #132](https://github.com/joegasewicz/react-bare-forms/issues/#132)
+
 **Release 0.1.11** - 2021-04-21
 - Multiple Filefield Uncaught Error: Invalid hook call when validators not used 🐛 [Issue  #127](https://github.com/joegasewicz/react-bare-forms/issues/#127)
 
