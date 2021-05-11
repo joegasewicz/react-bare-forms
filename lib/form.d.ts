@@ -73,12 +73,23 @@ export interface IForm extends React.FormHTMLAttributes<HTMLFormElement> {
     /** Callback function wil be called on form submission if all validators pass */
     readonly callback?: Function;
 }
+/** @internal */
 export interface ICursorPositionState {
     cursorPosition: number;
     fieldName: string;
 }
+/** @internal */
+export interface IQueryState {
+    queryResults: Array<any>;
+    showResults: boolean;
+}
+/** @internal */
 export declare type TypeCursorPositionState = {
     [key: string]: ICursorPositionState;
+};
+/** @internal */
+export declare type TypeQueryState = {
+    [key: string]: IQueryState;
 };
 export interface IFormContext {
     readonly bare?: boolean;
@@ -86,11 +97,13 @@ export interface IFormContext {
     readonly dynamic?: boolean;
     readonly formKey?: string;
     cursorPositions: TypeCursorPositionState;
+    queryState: TypeQueryState;
     metadata: IMetadata;
     state: any;
     updateCursorPositionState: (fieldName: string, cursorPosition: number) => void;
     updateParentState?: (e: React.ChangeEvent<any>, name: string, formKey?: string) => void;
     updateRadioGroupStateFromPassedInContext?: (e: React.ChangeEvent<any>, name: string, radioGroup: any, formKey?: string) => void;
+    updateQueryResultsState: (fieldName: string, showResults: boolean) => void;
 }
 /** @internal */
 export interface IRadioGroupParentContext {
