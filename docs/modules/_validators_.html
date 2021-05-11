@@ -100,7 +100,7 @@
 					<div class="tsd-signature tsd-kind-icon">are<wbr>Fields<wbr>Equal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((fieldKey, fieldValue, context: IFormContext) &#x3D;&gt; {let testField: IFieldBase;let message &#x3D; [&#x60;Fields do not match&#x60;];let contextState &#x3D; getFormStateFromContext(context);if(fieldKey in contextState) {testField &#x3D; contextState[fieldKey];if(!testField || !fieldValue  || fieldValue !&#x3D;&#x3D; contextState[fieldKey]) {return message;}} else {throw new Error(&#x60;React-BareForms Error: No Field with name of ${fieldKey} exists when calling &#x27;areFieldsEqual&#x27; &#x60;+ &#x60;validator function.\n For more info, visit: &#x60;+ &#x60;https://joegasewicz.github.io/react-bare-forms/modules/_validators_.html#arefieldsequal&#x60;,);}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/4a20b5c/src/validators.ts#L41">src/validators.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/75966d9/src/validators.ts#L41">src/validators.ts:41</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -136,7 +136,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Checked<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((_, fieldValue, context) &#x3D;&gt; {if(fieldValue &#x3D;&#x3D;&#x3D; false) {return [&#x60;Must be checked&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/4a20b5c/src/validators.ts#L183">src/validators.ts:183</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/75966d9/src/validators.ts#L183">src/validators.ts:183</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -166,7 +166,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Email<wbr>Valid<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((_ , fieldValue, context) &#x3D;&gt; {const isValid &#x3D; EMAIL_REGEX.test(String(fieldValue).toLowerCase());if(!isValid) {return [&#x60;Must be a valid email&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/4a20b5c/src/validators.ts#L102">src/validators.ts:102</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/75966d9/src/validators.ts#L102">src/validators.ts:102</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -193,7 +193,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Field<wbr>Empty<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((minLength, fieldValue, _) &#x3D;&gt; {const isValid &#x3D; (typeof fieldValue !&#x3D;&#x3D; &quot;undefined&quot; &amp;&amp; fieldValue.length &gt;&#x3D; minLength);if(!isValid) {return [&#x60;Must be at least ${minLength} characters&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/4a20b5c/src/validators.ts#L79">src/validators.ts:79</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/75966d9/src/validators.ts#L79">src/validators.ts:79</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -226,7 +226,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>File<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((_, name, context) &#x3D;&gt; {if(!name) {return [&#x60;Must be a file type&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/4a20b5c/src/validators.ts#L130">src/validators.ts:130</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/75966d9/src/validators.ts#L130">src/validators.ts:130</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -259,7 +259,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Radio<wbr>Checked<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((_ , value, context) &#x3D;&gt; {if(!value) {return [&#x60;This option must be selected&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/4a20b5c/src/validators.ts#L160">src/validators.ts:160</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/75966d9/src/validators.ts#L160">src/validators.ts:160</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -296,7 +296,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Valid<wbr>Date<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IValidationVariable</span><span class="tsd-signature-symbol"> = customValidator((args: [string, string], fieldValue: Date, _) &#x3D;&gt; {let isValid &#x3D; false;if (!fieldValue) {return [&#x60;Must be a valid date&#x60;];}if (!args || !args.length) {throw new _DateValidatorArgsError(_DateValidatorArgsErrorMsg);}const [from, to] &#x3D; args;const fromDate &#x3D; from ? new Date(from) : null;const toDate &#x3D; to ? new Date(to) : null;if (fromDate &amp;&amp; toDate) {if(fieldValue &gt; fromDate &amp;&amp; fieldValue &lt; toDate) {isValid &#x3D; true;}}if(!isValid) {return [&#x60;Must be a valid date&#x60;];}})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/4a20b5c/src/validators.ts#L203">src/validators.ts:203</a></li>
+							<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/75966d9/src/validators.ts#L203">src/validators.ts:203</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -330,7 +330,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/4a20b5c/src/validators.ts#L258">src/validators.ts:258</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/75966d9/src/validators.ts#L258">src/validators.ts:258</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -407,7 +407,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/4a20b5c/src/validators.ts#L292">src/validators.ts:292</a></li>
+									<li>Defined in <a href="https://github.com/joegasewicz/react-bare-forms/blob/75966d9/src/validators.ts#L292">src/validators.ts:292</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
