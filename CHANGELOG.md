@@ -1,6 +1,8 @@
 # Changelog
 
 ### Changed
+**Release 0.1.14** - 2021-05-11
+- QueryInputField selection value not displaying correct value 🐛 [Issue  #133](https://github.com/joegasewicz/react-bare-forms/issues/#133)
 
 **Release 0.1.12-13** - 2021-05-11
 - New field - QueryField 🆕 [Issue #129](https://github.com/joegasewicz/react-bare-forms/issues/#129)
