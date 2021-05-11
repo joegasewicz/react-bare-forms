@@ -12,8 +12,8 @@ import {
     CheckBoxField as _CheckBoxField,
     FileField as _FileField,
     InputField,
-    RadioField as _RadioField,
     SelectField as _SelectField,
+    RadioField as _RadioField,
     TextAreaField as _TextAreaField,
     DatePickerField as _DatePickerField,
     QueryField as _QueryField, QueryField,
@@ -92,7 +92,11 @@ export interface IDatePicker extends IField<HTMLInputElement> {
 export interface IQueryField extends IField<HTMLInputElement> {
     /** The state property that gets updated by this input field */
     value: any;
-    queryresults?: Array<any>;
+    /** Required. Array of key value results. */
+    queryresults: Array<any>;
+    autocomplete?: string;
+    /** The **queryresults** target key to display each value */
+    objectkey: string;
 }
 
 export interface IRadioField extends IField<HTMLInputElement> {
@@ -172,7 +176,7 @@ export const TextInputField = (props: ITextInputField) => {
  * @constructor
  */
 export const QueryInputField = (props: IQueryField) => {
-    const textInput = new QueryField<ITextInputField>(FIELD_NAMES.TEXT, props);
+    const textInput = new QueryField<ITextInputField & IQueryField>(FIELD_NAMES.TEXT, props);
     return textInput.create();
 };
 
