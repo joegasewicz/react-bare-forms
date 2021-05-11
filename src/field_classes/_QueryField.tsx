@@ -1,6 +1,6 @@
-import {ChangeEvent, default as React, MouseEventHandler, ReactElement} from "react";
+import {ChangeEvent, default as React, ReactElement} from "react";
 
-import {FIELD_NAMES, IField, IQueryField, ITextInputField} from "../elements";
+import {FIELD_NAMES, IField, IQueryField} from "../elements";
 import {_genericFormGroup, AbstractField, IAbstractField} from "./_AbstractField";
 
 
@@ -38,6 +38,7 @@ export class QueryField<T extends IField<HTMLInputElement>> extends AbstractFiel
                         type={this.type}
                         value={this.getStatePositionFromFormKey()[this.props.name]|| ""}
                         name={this.props.name}
+                        autocomplete="off"
                         onChange={this.handleOnChange}
                         className={AbstractField.mergeDefaultCssWithProps("form-control", this.props.className, this.bare)}
                     />

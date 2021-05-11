@@ -94,7 +94,6 @@ export interface IQueryField extends IField<HTMLInputElement> {
     value: any;
     /** Required. Array of key value results. */
     queryresults: Array<any>;
-    autocomplete?: string;
     /** The **queryresults** target key to display each value */
     objectkey: string;
 }
@@ -151,26 +150,22 @@ export const TextInputField = (props: ITextInputField) => {
 
 /**
  *
- * @param props {@link ITextInputField}
+ * @param props {@link IQueryField}
  * @example
+ * This field provides a list of options to select from using the onChange event.
+ * {@link IQueryField.queryresults} is the an array of objects (usually returned from a remote api)
+ * {@link IQueryField.objectkey} is the key of the value you require to display when the user begins to type
  * ```
- *  import {TextInputField} from "react-base-forms"
+ *  let fruitState = [{name: "peach"},{name: "plum"}]
  *
- *  const state = { username: "" }
- *
- * // A bare form example ... remember to set the {@link Form.bare} property to `true`
- * <TextInputField
- *    value={state.username}
- *    name="username"
- * />
- *
- * // Example with Bootstrap styling (Bootstrap styling comes as default)
- *
- * <TextInputField
- *    value={state.username}
- *    name="username"
- *    hint="Needs to be at least 50 characters long"
- *    labeltext="Username"
+ *  <QueryInputField
+ *      value={fpState.fruit}
+ *      name="fruit"
+ *      hint="Enter your Fruit"
+ *      labeltext="fruit"
+ *      validators={[isFieldEmpty(2)]}
+ *      queryresults={fruitState}
+ *      objectkey="name"
  *  />
  * ```
  * @constructor

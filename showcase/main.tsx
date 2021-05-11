@@ -101,7 +101,6 @@ export function FPForm() {
                 labeltext="fruit"
                 validators={[isFieldEmpty(2)]}
                 queryresults={fruitState}
-                autocomplete="off"
                 objectkey="name"
             />
 

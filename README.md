@@ -237,14 +237,14 @@ const this.state = { // in the constructor
 ```
 
 ## Input Field components
-There are 4 components that cover the `input` field element:
+Components that cover the `input` field element:
 
-- [TextInputField](https://joegasewicz.github.io/react-bare-forms/modules/_elements_.html#textinputfield)
-- [EmailField](https://joegasewicz.github.io/react-bare-forms/modules/_elements_.html#emailfield)
-- [PasswordField](https://joegasewicz.github.io/react-bare-forms/modules/_elements_.html#passwordfield)
-- [CheckBoxField](https://joegasewicz.github.io/react-bare-forms/modules/_elements_.html#checkboxfield) 
-- [DatePickerField](https://joegasewicz.github.io/react-bare-forms/modules/_elements_.html#datepickerfield)
-
+- [TextInputField](https://github.com/joegasewicz/react-bare-forms#textinputfield)
+- [EmailField](https://github.com/joegasewicz/react-bare-forms#emailfield)
+- [PasswordField](https://github.com/joegasewicz/react-bare-forms#passwordfield)
+- [CheckBoxField](https://github.com/joegasewicz/react-bare-forms#checkboxfield) 
+- [DatePickerField](https://github.com/joegasewicz/react-bare-forms#datepickerfield)
+- [QueryInputField](https://github.com/joegasewicz/react-bare-forms#queryinputfield)
 #### TextInputField
 ```typescript jsx
 import {TextInputField} from "react-bare-forms";
@@ -347,7 +347,7 @@ The Datepicker field is already styled & includes optional validation for to & f
 To use the `isValidDate` pass in an array containing either a from or to date string OR both OR none.
  ```typescript jsx
     <DatePickerField
-        value={fpState.date}
+        value={state.date}
         name="date"
         // Pass in the css class names to style the calender
         datePickerClassNames="yourClassName..."
@@ -355,6 +355,24 @@ To use the `isValidDate` pass in an array containing either a from or to date st
         validators={[isValidDate(["2021-01-10", "2021-03-10"])]}
     />
  ```
+
+#### QueryInputField
+This field provides a list of options to select from using the onChange event.
+`queryresults` is the an array of objects (usually returned from a remote api)
+`objectkey` is the key of the value you require to display when the user begins to type
+
+```typescript
+let fruitState = [{name: "peach"},{name: "plum"}]
+<QueryInputField
+    value={state.fruit}
+    name="fruit"
+    hint="Enter your Fruit"
+    labeltext="fruit"
+    validators={[isFieldEmpty(2)]}
+    queryresults={fruitState}
+    objectkey="name"
+/>
+```
 
 #### CheckBoxField
 The **CheckBoxField** component takes a `checked` prop instead of the usual `value` prop. 

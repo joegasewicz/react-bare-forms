@@ -1,7 +1,7 @@
 import {default as React, ReactElement, useContext} from "react";
 
 
-import {FormContext, IMetadata, METADATA_NAMES} from "../form";
+import {FormConsumer, FormContext, IFormContext, IMetadata, METADATA_NAMES} from "../form";
 
 export interface IButton<T> {
     create(): (props: T) => ReactElement<T>;
@@ -23,7 +23,6 @@ export interface ISubmitButtonProps {
 /** @internal */
 export class SubmitButton implements Button<ISubmitButtonProps> {
 
-
     private readonly GROUP_TYPES = ["radioGroups"]; // TODO...
 
     private isGroup(metaType: METADATA_NAMES): boolean {
@@ -38,6 +37,7 @@ export class SubmitButton implements Button<ISubmitButtonProps> {
 
            // Styles
            const { className = "btn btn-success btn-lg", disabled = true} = props;
+           const getBtnClass = (context: IFormContext) => `${context.bare ? "": "btn btn-success btn-lg"}`;
 
            let isDisabled = false;
            const inputState = context.metadata.inputs.state;
@@ -69,11 +69,17 @@ export class SubmitButton implements Button<ISubmitButtonProps> {
 
            }
 
-           return (<button
-               {...props}
-               disabled={isDisabled}
-               className={className}
-           >{props.children}</button>);
+           return (
+               <FormConsumer>
+                   {(context: IFormContext) => (
+                       <button
+                           {...props}
+                           disabled={isDisabled}
+                           className={getBtnClass(context)}
+                       >{props.children}</button>
+                   )}
+               </FormConsumer>
+           );
        }
     }
 }
