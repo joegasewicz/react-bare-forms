@@ -1,7 +1,7 @@
 // Handlers
 // Handlers are methods on the context object that update state.
 import * as React from "react";
-import {IRadioGroupParentContext, TypeCursorPositionState} from "../form";
+import {IQueryState, IRadioGroupParentContext, TypeCursorPositionState, TypeQueryState} from "../form";
 
 /** @internal */
 type TypeHandler = (e: React.ChangeEvent<any>, name: string) => void;
@@ -36,6 +36,20 @@ export function updateCursorPosCallback(cursorState: TypeCursorPositionState, up
             };
             updateCursorState(state);
         }
+    }
+}
+
+/** @internal */
+export function updateQueryResultsCallback(queryState: TypeQueryState, updateQueryState: any) {
+    return (fieldName: string, showResults: boolean): void => {
+        const state: TypeQueryState = {
+           ...queryState,
+            [fieldName]: {
+                ...queryState[fieldName],
+                showResults,
+            }
+        };
+        updateQueryState(state);
     }
 }
 

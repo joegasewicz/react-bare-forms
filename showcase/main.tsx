@@ -31,14 +31,14 @@ function fetchFruit(updateFruit: any, query: string){
             setTimeout(() => {
                 let data = {};
                 switch(query) {
-                    case "p": {
+                    case "peach": {
                         data = [
                             {name: "peach"},
                             {name: "plum"},
                         ]
                         break;
                     }
-                    case "pl": {
+                    case "plum": {
                         data = [
                             {name: "plum"},
                         ]

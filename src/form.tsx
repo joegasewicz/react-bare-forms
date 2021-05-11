@@ -8,7 +8,7 @@ import {
     MetadataGroup,
 } from "./field_classes";
 import { _noContextError } from "./core/_errors";
-import {updateCursorPosCallback} from "./core/_handlers";
+import {updateCursorPosCallback, updateQueryResultsCallback} from "./core/_handlers";
 
 /** @internal */
 export type TypeFieldValueTypes = "value"|"checked"|"file";
@@ -85,13 +85,20 @@ export interface IForm extends React.FormHTMLAttributes<HTMLFormElement> {
     /** Callback function wil be called on form submission if all validators pass */
     readonly callback?: Function;
 }
-
+/** @internal */
 export interface ICursorPositionState {
     cursorPosition: number;
     fieldName: string;
 }
-
+/** @internal */
+export interface IQueryState {
+    queryResults: Array<any>;
+    showResults: boolean;
+}
+/** @internal */
 export type TypeCursorPositionState = {[key: string]: ICursorPositionState};
+/** @internal */
+export type TypeQueryState = {[key: string]: IQueryState};
 
 export interface IFormContext {
     readonly bare?: boolean;
@@ -99,11 +106,13 @@ export interface IFormContext {
     readonly dynamic?: boolean;
     readonly formKey?: string;
     cursorPositions: TypeCursorPositionState;
+    queryState: TypeQueryState;
     metadata: IMetadata;
     state: any;
     updateCursorPositionState: (fieldName: string, cursorPosition: number) => void;
     updateParentState?: (e: React.ChangeEvent<any>, name: string, formKey?: string) => void;
     updateRadioGroupStateFromPassedInContext?: (e: React.ChangeEvent<any>, name: string, radioGroup: any, formKey?: string) => void;
+    updateQueryResultsState: (fieldName: string, showResults: boolean) => void;
 }
 /** @internal */
 const INPUTS_STATE: TypeInputMetadata = {} as any;
@@ -115,6 +124,8 @@ const FILES_STATE: TypeFileMetadata = {} as any;
 const CHECKBOXES_STATE: TypeCheckboxesMetadata = {} as any;
 /** @internal **/
 const CURSOR_POSITION_STATE: TypeCursorPositionState = {};
+/** @internal **/
+const QUERY_STATE: TypeQueryState = {};
 /** @internal */
 const providerContext: IFormContext = {
     bare: false,
@@ -123,7 +134,9 @@ const providerContext: IFormContext = {
     debug: false,
     dynamic: true,
     cursorPositions: {},
+    queryState: {},
     updateCursorPositionState: {} as any,
+    updateQueryResultsState: {} as any,
     metadata: {
         inputs: null as any,
         radioGroups: null as any,
@@ -212,6 +225,7 @@ export const Form = (props: IForm) => {
     const [fileState, updateFileState] = useState(FILES_STATE);
     const [radioState, updateRadioState] = useState(RADIO_GROUPS_STATE);
     const [cursorPositionState, updateCursorPositionState] = useState<TypeCursorPositionState>(CURSOR_POSITION_STATE);
+    const [queryState, updateQueryState] = useState<TypeQueryState>(QUERY_STATE);
     // If the parentName component is a class component, then the state needs to be updated from the parentName context
     // Functions component must use useState hook. See https://joegasewicz.github.io/react-bare-forms/modules/_form_.html
     if(props.context && "setState" in props.context) {
@@ -235,11 +249,13 @@ export const Form = (props: IForm) => {
         state: props.state,
         formKey: props.formKey,
         cursorPositions: cursorPositionState,
+        queryState: queryState,
         debug: props.debug || context.debug,
         dynamic: props.dynamic || context.dynamic,
         updateParentState: updateParentState(parentState, setParentState, props.formKey),
         updateRadioGroupStateFromPassedInContext: updateRadioGroupStateFromPassedInContext(parentState, setParentState, props.formKey),
         updateCursorPositionState: updateCursorPosCallback(cursorPositionState!, updateCursorPositionState),
+        updateQueryResultsState: updateQueryResultsCallback(queryState, updateQueryState),
         metadata: {
             [METADATA_NAMES.INPUTS]: new Metadata<IInputFieldMetadata>(
                 inputState as {},
