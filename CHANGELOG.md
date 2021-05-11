@@ -2,7 +2,7 @@
 
 ### Changed
 
-**Release 0.1.12** - 2021-05-11
+**Release 0.1.12-13** - 2021-05-11
 - New field - QueryField 🆕 [Issue #129](https://github.com/joegasewicz/react-bare-forms/issues/#129)
 - DatePicker doesn't remove css classes with form state bare true 🐛 [Issue  #131](https://github.com/joegasewicz/react-bare-forms/issues/#131)
 - SubmitField doesn't remove css classes with form state bare true 🐛 [Issue  #132](https://github.com/joegasewicz/react-bare-forms/issues/#132)

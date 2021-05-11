@@ -65,6 +65,7 @@ export {
     TextInputField,
     SelectField,
     DatePickerField,
+    QueryInputField,
 };
 export type {
     // Interfaces
@@ -77,5 +78,6 @@ export type {
     ITextInputField,
     ISelectField,
     IDatePicker,
+    IQueryField,
 };
 
