@@ -1,4 +1,4 @@
-import {ChangeEvent, default as React, ReactElement} from "react";
+import {ChangeEvent, default as React, ReactElement, useState} from "react";
 
 import {FIELD_NAMES, IField, IQueryField} from "../elements";
 import {_genericFormGroup, AbstractField, IAbstractField} from "./_AbstractField";
@@ -21,10 +21,12 @@ export class QueryField<T extends IField<HTMLInputElement>> extends AbstractFiel
     }
 
     private handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+        this.context?.updateQueryResultsState(this.props.name, true);
         (this.context as any).updateParentState(e, this.props.name);
     }
 
     private handleOnClick = (e: any, value: string) => {
+        this.context?.updateQueryResultsState(this.props.name, false);
         (this.context as any).updateParentState(e, this.props.name, value);
     }
 
@@ -38,18 +40,19 @@ export class QueryField<T extends IField<HTMLInputElement>> extends AbstractFiel
                         type={this.type}
                         value={this.getStatePositionFromFormKey()[this.props.name]|| ""}
                         name={this.props.name}
-                        autocomplete="off"
+                        autoComplete="off"
                         onChange={this.handleOnChange}
                         className={AbstractField.mergeDefaultCssWithProps("form-control", this.props.className, this.bare)}
                     />
-                    <ul className={`${this.bare ? "": "list-group"}`}>
-                        {queryResults.map((result: any, i: number) => {
-                            return <li
-                                key={i}
-                                onClick={e => this.handleOnClick(e, result[(this.props as unknown as IQueryField).objectkey])}
-                                className={`${this.bare ? "": "list-group-item"}`}>{result[(this.props as unknown as IQueryField).objectkey]}</li>
-                        })}
-                    </ul>
+                    {this.context && this.props.name in this.context?.queryState && this.context?.queryState[this.props.name].showResults &&
+                        <ul className={`${this.bare ? "": "list-group"}`}>
+                            {queryResults.map((result: any, i: number) => {
+                                return <li
+                                    key={i}
+                                    onClick={e => this.handleOnClick(e, result[(this.props as unknown as IQueryField).objectkey])}
+                                    className={`${this.bare ? "": "list-group-item"}`}>{result[(this.props as unknown as IQueryField).objectkey]}</li>
+                            })}
+                        </ul>}
                 </>
             )
         }
