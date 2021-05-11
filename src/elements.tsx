@@ -12,11 +12,11 @@ import {
     CheckBoxField as _CheckBoxField,
     FileField as _FileField,
     InputField,
-    RadioField as _RadioField,
     SelectField as _SelectField,
+    RadioField as _RadioField,
     TextAreaField as _TextAreaField,
     DatePickerField as _DatePickerField,
-
+    QueryField as _QueryField, QueryField,
 } from "./field_classes";
 
 /** @internal */
@@ -89,6 +89,15 @@ export interface IDatePicker extends IField<HTMLInputElement> {
     datePickerClassNames?: string;
 }
 
+export interface IQueryField extends IField<HTMLInputElement> {
+    /** The state property that gets updated by this input field */
+    value: any;
+    /** Required. Array of key value results. */
+    queryresults: Array<any>;
+    /** The **queryresults** target key to display each value */
+    objectkey: string;
+}
+
 export interface IRadioField extends IField<HTMLInputElement> {
     checked: boolean;
     disabled?: boolean;
@@ -138,6 +147,34 @@ export const TextInputField = (props: ITextInputField) => {
   const textInput = new InputField<ITextInputField>(FIELD_NAMES.TEXT, props);
   return textInput.create();
 };
+
+/**
+ *
+ * @param props {@link IQueryField}
+ * @example
+ * This field provides a list of options to select from using the onChange event.
+ * {@link IQueryField.queryresults} is the an array of objects (usually returned from a remote api)
+ * {@link IQueryField.objectkey} is the key of the value you require to display when the user begins to type
+ * ```
+ *  let fruitState = [{name: "peach"},{name: "plum"}]
+ *
+ *  <QueryInputField
+ *      value={fpState.fruit}
+ *      name="fruit"
+ *      hint="Enter your Fruit"
+ *      labeltext="fruit"
+ *      validators={[isFieldEmpty(2)]}
+ *      queryresults={fruitState}
+ *      objectkey="name"
+ *  />
+ * ```
+ * @constructor
+ */
+export const QueryInputField = (props: IQueryField) => {
+    const textInput = new QueryField<ITextInputField & IQueryField>(FIELD_NAMES.TEXT, props);
+    return textInput.create();
+};
+
 
 /**
  * @param props {@link IEmailField}

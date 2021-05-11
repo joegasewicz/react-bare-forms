@@ -11,7 +11,7 @@ import {SelectField} from "./_SelectField";
 import {SubmitButton} from "./_SubmitButton";
 import {TextAreaField} from "./_TextAreaField";
 import {DatePickerField} from "./_DatePickerField";
-
+import {QueryField} from "./_QueryField";
 
 export {
     AbstractField,
@@ -27,4 +27,5 @@ export {
     SubmitButton,
     TextAreaField,
     DatePickerField,
+    QueryField,
 };

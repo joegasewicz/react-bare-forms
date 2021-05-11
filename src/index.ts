@@ -11,6 +11,7 @@ import {
     ITextAreaField,
     ITextInputField,
     IDatePicker,
+    IQueryField,
     PasswordField,
     RadioField,
     RadioGroup,
@@ -19,6 +20,7 @@ import {
     TextAreaField,
     TextInputField,
     DatePickerField,
+    QueryInputField,
 } from "./elements";
 import {
     areFieldsEqual,

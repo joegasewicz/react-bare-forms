@@ -36,7 +36,7 @@ export class DatePickerField<T extends IDatePicker> extends AbstractField<T> imp
                         style={{width: "100%"}}
                         inputProps={{
                            style: {display: "block"},
-                           className: "form-control"
+                           className: `${this.bare ? "" : "form-control"}`
                        }}
                        onDayChange={day => this.onHandleChange(day)}
                        value={this.getStatePositionFromFormKey()[this.props.name]|| ""}
