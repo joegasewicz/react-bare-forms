@@ -3,6 +3,7 @@ import {ChangeEvent, default as React, ReactElement} from "react";
 import {FormContext, IFormContext, TypeCursorPositionState} from "../form";
 import {FIELD_NAMES, IField} from "../elements";
 import {_genericFormGroup, AbstractField, IAbstractField} from "./_AbstractField";
+import {isChar, isNonChar} from "../core/_helpers";
 
 
 /** @internal */
@@ -36,7 +37,7 @@ export class InputField<T extends IField<HTMLInputElement>> extends AbstractFiel
                 value={this.getStatePositionFromFormKey()[this.props.name]|| ""}
                 onChange={(e) => this.handleOnChange(e, cursorPositions, updateCursorPositionState)}
                 onKeyUp={(e) => {
-                    if (this.type !== FIELD_NAMES.EMAIL) {
+                    if (this.type !== FIELD_NAMES.EMAIL && isChar(e.keyCode)) {
                         e.currentTarget.selectionStart = cursorPositions[this.props.name].cursorPosition;
                         e.currentTarget.selectionEnd = cursorPositions[this.props.name].cursorPosition;
                     }
