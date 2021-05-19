@@ -82,3 +82,10 @@ export function getFieldValueType(type: FIELD_NAMES): TypeFieldValueTypes {
         }
     }
 }
+
+/** @internal */
+export function isChar(charCode: number) {
+    const charCodeStart = 48; // 0
+    const charCodeEnd = 90; // z
+    return charCode >= charCodeStart && charCodeEnd <= charCodeEnd;
+}
