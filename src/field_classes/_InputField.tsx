@@ -3,7 +3,7 @@ import {ChangeEvent, default as React, ReactElement} from "react";
 import {FormContext, IFormContext, TypeCursorPositionState} from "../form";
 import {FIELD_NAMES, IField} from "../elements";
 import {_genericFormGroup, AbstractField, IAbstractField} from "./_AbstractField";
-import {isChar, isNonChar} from "../core/_helpers";
+import {isChar} from "../core/_helpers";
 
 
 /** @internal */

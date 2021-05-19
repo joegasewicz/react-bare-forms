@@ -1,9 +1,11 @@
 # Changelog
 
 ### Changed
+**Release 0.1.16** - 2021-05-19
+- Be able to step through the form with the arrow key 🐛 [Issue  #137](https://github.com/joegasewicz/react-bare-forms/issues/#137)
+
 **Release 0.1.15** - 2021-05-11
 - QueryInputField listed results hangs 🐛 [Issue  #135](https://github.com/joegasewicz/react-bare-forms/issues/#135)
-
 
 **Release 0.1.14** - 2021-05-11
 - QueryInputField selection value not displaying correct value 🐛 [Issue  #133](https://github.com/joegasewicz/react-bare-forms/issues/#133)
