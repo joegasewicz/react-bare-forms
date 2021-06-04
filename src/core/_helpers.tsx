@@ -83,9 +83,27 @@ export function getFieldValueType(type: FIELD_NAMES): TypeFieldValueTypes {
     }
 }
 
-/** @internal */
+/**
+ *  @internal
+ *  @description Temporary fix until this issue is solved from a state perspective
+ * */
 export function isChar(charCode: number) {
     const charCodeStart = 48; // 0
     const charCodeEnd = 90; // z
-    return charCode >= charCodeStart && charCodeEnd <= charCodeEnd;
+    const charCodeBackSpace = 8; // delete
+    const charCodeDelete = 127; // delete
+    switch (true) {
+        case charCode >= charCodeStart && charCodeEnd <= charCodeEnd:  {
+            return true
+        }
+        case charCode === charCodeBackSpace: {
+            return true;
+        }
+        case charCode === charCodeDelete: {
+            return true;
+        }
+        default: {
+            return false;
+        }
+    }
 }
