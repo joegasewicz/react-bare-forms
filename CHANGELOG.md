@@ -1,6 +1,9 @@
 # Changelog
 
 ### Changed
+**Release 0.1.17** - 2021-05-19
+- When i delete a char in the text field the cursor jumps to end of string  🐛 [Issue  #140](https://github.com/joegasewicz/react-bare-forms/issues/#140)
+
 **Release 0.1.16** - 2021-05-19
 - Be able to step through the form with the arrow key 🐛 [Issue  #137](https://github.com/joegasewicz/react-bare-forms/issues/#137)
 
