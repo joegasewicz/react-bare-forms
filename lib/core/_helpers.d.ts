@@ -6,5 +6,8 @@ export declare function mergeDefaultCssWithProps(defaultValue: string, cssProps:
 export declare function getMetadataNameType(type: FIELD_NAMES): METADATA_NAMES;
 /** @internal */
 export declare function getFieldValueType(type: FIELD_NAMES): TypeFieldValueTypes;
-/** @internal */
+/**
+ *  @internal
+ *  @description Temporary fix until this issue is solved from a state perspective
+ * */
 export declare function isChar(charCode: number): boolean;
