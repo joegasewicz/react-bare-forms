@@ -24,6 +24,7 @@ import {
 } from "../src";
 import {QueryInputField} from "../src/elements";
 import {useEffect} from "react";
+import {isFile} from "../lib";
 
 
 function fetchFruit(updateFruit: any, query: string){
@@ -294,12 +295,15 @@ export class Main extends React.Component<IProps, IState> {
                                     hint="Must be a file"
                                     labeltext="Upload your file"
                                     name="myFileTest1"
+                                    validators={[isFile()]}
                                 />
                                 <FileField
                                     ref={myFileRef2}
                                     hint="Must be a file"
                                     labeltext="Upload your file"
                                     name="myFileTest2"
+                                    validators={[isFile()]}
+                                    onChange={() => console.log("onChanged called")}
                                 />
 
                                 <RadioGroup name="group1">
