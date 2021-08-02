@@ -1,4 +1,4 @@
-import {default as React} from "react";
+import {ChangeEvent, default as React} from "react";
 import {_genericFormGroup, AbstractField, IAbstractField} from "./_AbstractField";
 import {FIELD_NAMES, IField, IFileField} from "../elements";
 import {createFileObject, IFile} from "../core/index";
@@ -35,12 +35,19 @@ export class FileField<T extends IField<HTMLInputElement>> extends AbstractField
         return _genericFormGroup<T>(this.props, children);
     }
 
+    public handleOnChange = (e: ChangeEvent<HTMLInputElement>): void => {
+        if (this.props.onChange && typeof this.props.onChange === "function") {
+            this.props.onChange(e);
+        }
+        this._updateFieldValidation();
+    }
+
     public getField() {
         return () => <>{<input
             {...this.props}
             ref={(this.props as any).ref}
             type={this.type}
-            onChange={() => this._updateFieldValidation()}
+            onChange={this.handleOnChange}
             className={AbstractField.mergeDefaultCssWithProps("form-control-file", this.props.className, (this.context as any).bare)}
         />}</>;
     }
