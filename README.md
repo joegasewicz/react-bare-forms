@@ -505,8 +505,8 @@ The SubmitButton will be disabled until all form fields with a *validators* prop
  <SubmitButton>Submit</SubmitButton>
 ```
 
-## Bootstrap 4
-Bootstrap 4 doesn't come with React Bare Forms so that you can obtain the smallest bundle size possible!
+## Bootstrap 4 / 5
+Bootstrap 4 / 5 doesn't come with React Bare Forms so that you can obtain the smallest bundle size possible!
 
 There are several ways to include Bootstrap 4. the simplist (but not the best) is to import it directly from the cdn in your index.html file. For example
 ```html
