@@ -1,6 +1,9 @@
 # Changelog
 
 ### Changed
+**Release 0.1.18** - 2021-08-02
+- Add onChange event to FileField 🐛 [Issue  #146](https://github.com/joegasewicz/react-bare-forms/issues/#146)
+
 **Release 0.1.17** - 2021-05-19
 - When i delete a char in the text field the cursor jumps to end of string  🐛 [Issue  #140](https://github.com/joegasewicz/react-bare-forms/issues/#140)
 
