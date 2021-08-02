@@ -1,4 +1,4 @@
-import { default as React } from "react";
+import { ChangeEvent, default as React } from "react";
 import { AbstractField, IAbstractField } from "./_AbstractField";
 import { FIELD_NAMES, IField, IFileField } from "../elements";
 import { IFile } from "../core/index";
@@ -14,6 +14,7 @@ export declare class FileField<T extends IField<HTMLInputElement>> extends Abstr
     set file(val: IFile | null);
     create(): JSX.Element;
     formGroup(children: any): React.ReactElement;
+    handleOnChange: (e: ChangeEvent<HTMLInputElement>) => void;
     getField(): () => JSX.Element;
     private _updateFieldValidation;
     /**
