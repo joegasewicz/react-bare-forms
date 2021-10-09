@@ -1,6 +1,6 @@
 import {ChangeEvent, default as React} from "react";
 import {_genericFormGroup, AbstractField, IAbstractField} from "./_AbstractField";
-import {FIELD_NAMES, IField, IFileField} from "../elements";
+import {FIELD_NAMES, IField, IFileField, TypeStyleSize} from "../elements";
 import {createFileObject, IFile} from "../core/index";
 
 
@@ -13,7 +13,7 @@ export class FileField<T extends IField<HTMLInputElement>> extends AbstractField
 
     _file?: IFile|null;
 
-    constructor(type: FIELD_NAMES, props: T & IFileField) {
+    constructor(type: FIELD_NAMES, props: T & IField<HTMLInputElement>) {
         super(props, type);
         this.type = type;
         this.props = props;
@@ -42,6 +42,10 @@ export class FileField<T extends IField<HTMLInputElement>> extends AbstractField
         this._updateFieldValidation();
     }
 
+    private setSizeStyles(styleSize: TypeStyleSize): string {
+        return !styleSize ? "form-control-sm" : styleSize;
+    }
+
     public getField() {
         return () => <>{<input
             {...this.props}
@@ -49,7 +53,11 @@ export class FileField<T extends IField<HTMLInputElement>> extends AbstractField
             ref={(this.props as any).ref}
             type={this.type}
             onChange={this.handleOnChange}
-            className={AbstractField.mergeDefaultCssWithProps("form-control-file", this.props.className, (this.context as any).bare)}
+            className={AbstractField.mergeDefaultCssWithProps(
+                `form-control-file form-control ${this.setSizeStyles((this.props as any).styleSize)}`,
+                this.props.className,
+                (this.context as any).bare,
+            )}
         />}</>;
     }
 

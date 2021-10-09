@@ -141,7 +141,7 @@ export function FPForm() {
                     labeltext="Radio 3"
                 />
                 </RadioGroup>
-                    
+
             <SubmitButton>Submit Form</SubmitButton>
             <br />
             <FormConsumer>
@@ -304,6 +304,7 @@ export class Main extends React.Component<IProps, IState> {
                                     name="myFileTest2"
                                     validators={[isFile()]}
                                     onChange={() => console.log("onChanged called")}
+                                    styleSize="large"
                                 />
 
                                 <RadioGroup name="group1">
@@ -360,7 +361,7 @@ export class Main extends React.Component<IProps, IState> {
                                 </FormConsumer>
                             </Form>
 
-              
+
                         <br />
                         <div className="container">
                             <code><var>State</var>: {JSON.stringify(this.state)}</code>
