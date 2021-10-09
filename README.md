@@ -135,6 +135,7 @@ For example:
      name="myFile" // You must assign a name to use the validators
      hint="Must be a file"
      labeltext="Upload your file"
+     styleSize="large" // Optional (default is "small"). Either "small" or "large" styling.
      validators={[isFile()]}
  />
  

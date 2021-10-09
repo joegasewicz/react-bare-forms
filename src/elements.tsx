@@ -103,9 +103,12 @@ export interface IRadioField extends IField<HTMLInputElement> {
     disabled?: boolean;
 }
 
+export type TypeStyleSize = "small" | "large" | undefined;
 export interface IFileField extends IField<HTMLInputElement> {
     ref: React.RefObject<HTMLFormElement>;
     translate?: "yes" | "no" | undefined;
+    /** Displays the input field in either small or large styling */
+    styleSize?: TypeStyleSize;
 }
 
 export type TypeSelectCssSizeName = |"sm"|"default"|"lg";
