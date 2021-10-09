@@ -105,6 +105,7 @@ export interface IRadioField extends IField<HTMLInputElement> {
 
 export interface IFileField extends IField<HTMLInputElement> {
     ref: React.RefObject<HTMLFormElement>;
+    translate?: "yes" | "no" | undefined;
 }
 
 export type TypeSelectCssSizeName = |"sm"|"default"|"lg";

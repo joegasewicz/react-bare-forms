@@ -45,6 +45,7 @@ export class FileField<T extends IField<HTMLInputElement>> extends AbstractField
     public getField() {
         return () => <>{<input
             {...this.props}
+            translate={this.props.translate || undefined}
             ref={(this.props as any).ref}
             type={this.type}
             onChange={this.handleOnChange}
