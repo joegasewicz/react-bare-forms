@@ -1,6 +1,12 @@
 # Changelog
 
 ### Changed
+**Release 0.1.19** - 2021-10-09
+- TS2741: Property 'translate' is missing in type '{ ref: RefObject<HTMLFormElement>; 🐛 [Issue  #143](https://github.com/joegasewicz/react-bare-forms/issues/#143)
+
+**Release 0.1.19** - 2021-10-09
+- Bootstrap 5 file field not displaying styles #150 🐛 [Issue  #150](https://github.com/joegasewicz/react-bare-forms/issues/#150)
+
 **Release 0.1.18** - 2021-08-02
 - Add onChange event to FileField 🐛 [Issue  #146](https://github.com/joegasewicz/react-bare-forms/issues/#146)
 
@@ -63,8 +69,4 @@
 
 
 ### Unreleased
-**Release 0.1.19** - 2021-10-09
-- TS2741: Property 'translate' is missing in type '{ ref: RefObject<HTMLFormElement>; 🐛 [Issue  #143](https://github.com/joegasewicz/react-bare-forms/issues/#143)
 
-**Release 0.1.19** - 2021-10-09
-- Bootstrap 5 file field not displaying styles #150 🐛 [Issue  #150](https://github.com/joegasewicz/react-bare-forms/issues/#150)
