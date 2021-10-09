@@ -63,3 +63,6 @@
 
 
 ### Unreleased
+**Release 0.1.18** - 2021-08-02
+- TS2741: Property 'translate' is missing in type '{ ref: RefObject<HTMLFormElement>; 🐛 [Issue  #143](https://github.com/joegasewicz/react-bare-forms/issues/#143)
+
