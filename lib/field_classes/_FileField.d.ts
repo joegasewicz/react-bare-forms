@@ -1,6 +1,6 @@
 import { ChangeEvent, default as React } from "react";
 import { AbstractField, IAbstractField } from "./_AbstractField";
-import { FIELD_NAMES, IField, IFileField } from "../elements";
+import { FIELD_NAMES, IField } from "../elements";
 import { IFile } from "../core/index";
 /**
  * @internal
@@ -9,12 +9,13 @@ import { IFile } from "../core/index";
  */
 export declare class FileField<T extends IField<HTMLInputElement>> extends AbstractField<T> implements IAbstractField<T> {
     _file?: IFile | null;
-    constructor(type: FIELD_NAMES, props: T & IFileField);
+    constructor(type: FIELD_NAMES, props: T & IField<HTMLInputElement>);
     get file(): IFile | null;
     set file(val: IFile | null);
     create(): JSX.Element;
     formGroup(children: any): React.ReactElement;
     handleOnChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    private setSizeStyles;
     getField(): () => JSX.Element;
     private _updateFieldValidation;
     /**
