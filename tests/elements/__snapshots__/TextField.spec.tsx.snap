@@ -14,7 +14,7 @@ exports[`#TextInputField() it should display validation errors 1`] = `
       onKeyUp={[Function]}
       type="text"
       validators={
-        Array [
+        [
           [Function],
         ]
       }

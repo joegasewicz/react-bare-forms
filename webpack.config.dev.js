@@ -31,10 +31,18 @@ module.exports =  {
             template: "index.html"
         })
     ],
-    devServer: {
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers': '*',
-        }
+    // devServer: {
+    //     headers: {
+    //         'Access-Control-Allow-Origin': '*',
+    //         'Access-Control-Allow-Headers': '*',
+    //     }
+    // },
+     devServer: {
+        static: {
+            directory: path.join(__dirname, "dist"),
+            watch: true,
+            publicPath: "/",
+        },
+        historyApiFallback: true,
     }
 };

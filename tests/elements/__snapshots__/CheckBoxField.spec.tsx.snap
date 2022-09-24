@@ -14,7 +14,7 @@ exports[`#CheckBoxField() it should display validation errors 1`] = `
       onChange={[Function]}
       type="checkbox"
       validators={
-        Array [
+        [
           [Function],
         ]
       }

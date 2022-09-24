@@ -13,7 +13,7 @@ exports[`#<FileField /> it should display validation errors 1`] = `
       onChange={[Function]}
       type="file"
       validators={
-        Array [
+        [
           [Function],
         ]
       }

@@ -15,9 +15,10 @@ to be the easiest to use form library for React.
 ## Install
 ```
 npm install react-bare-forms
-```
 
-⚠️ Warning: ***The library is still in a beta stage***
+// For react <= 16.*
+npm install react-bare-forms@0.1.19
+```
 
 ## Usage - Functional Component with Hooks
 A basic form example with a text input field & submit button. Also, note how we import the `isFieldEmpty` function
@@ -33,7 +34,6 @@ const [state, setState] = React.useState(myState);
     state={state}
     context={setState}
     bare={false}
-    autoComplete="off"
     callback={() => console.log("Form submitted!")}>
 
     <TextInputField
@@ -63,7 +63,6 @@ class MyForm {
             state={this.state}
             context={this}
             bare={false}
-            autoComplete="off"
             callback={() => console.log("Form submitted!")}>
         
             <TextInputField
@@ -100,7 +99,6 @@ class MyForm {
             context={this}
             formKey="formData" // <-- Required: Name of our for formData attribute in the state object
             bare={false}
-            autoComplete="off"
             callback={() => console.log("Form submitted!")}>
         
             <TextInputField

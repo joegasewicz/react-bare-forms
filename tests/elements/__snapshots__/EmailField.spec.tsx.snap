@@ -14,7 +14,7 @@ exports[`#EmailField() it should display validation errors 1`] = `
       onKeyUp={[Function]}
       type="email"
       validators={
-        Array [
+        [
           [Function],
         ]
       }
