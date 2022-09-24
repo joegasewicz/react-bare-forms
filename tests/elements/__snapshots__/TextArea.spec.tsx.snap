@@ -13,7 +13,7 @@ exports[`#<TextAreaField /> it should display validation errors 1`] = `
       onChange={[Function]}
       rows={20}
       validators={
-        Array [
+        [
           [Function],
         ]
       }

@@ -12,7 +12,7 @@ exports[`#<SelectField> should render props 1`] = `
       name="fruitChoice"
       onChange={[Function]}
       options={
-        Array [
+        [
           "banana",
           "apple",
           "orange",
@@ -54,16 +54,16 @@ exports[`#<SelectField> should render props from object keys 1`] = `
       objectvalue="name"
       onChange={[Function]}
       options={
-        Array [
-          Object {
+        [
+          {
             "id": 1,
             "name": "first",
           },
-          Object {
+          {
             "id": 2,
             "name": "second",
           },
-          Object {
+          {
             "id": 3,
             "name": "third",
           },
