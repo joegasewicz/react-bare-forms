@@ -218,7 +218,6 @@ export const handleSubmit = (props: IForm) =>
  * @constructor
  */
 export const Form = (props: IForm) => {
-    console.log("props: ", props)
     const [parentState, setParentState] = useState(props.state);
     const [context, _] = useState(providerContext);
     const [inputState, updateInputState] = useState(INPUTS_STATE);
