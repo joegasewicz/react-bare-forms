@@ -32,6 +32,7 @@ export abstract class AbstractMetadata<T> implements IMetadata<T> {
     public parentName?: string;
     private _fieldType?: FIELD_NAMES;
     private _name?: string;
+    // @ts-ignore
     public abstract defaultState: T;
 
     protected constructor(state: {[k: string]: T}, updateState: Function, metaType: METADATA_NAMES) {

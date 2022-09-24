@@ -3,17 +3,19 @@ const webpack = require("webpack");
 
 
 module.exports =  function(env, argv) {
-    const mode = env.mode ? "production" : "development";
+    // const mode = env.mode ? "production" : "development";
     return {
-        mode,
-        entry: argv["entry"],
-        devtool: env.mode ? "inline-source-map" : "eval",
+        // mode,
+        mode: "development",
+        // entry: argv["entry"],
+         entry: "./src/index.ts",
+        // devtool: env.mode ? "inline-source-map" : "eval",
         module: {
             rules: [
                 {
                     test: /\.tsx?$/,
                     use: "ts-loader",
-                    exclude: [/node_modules/, path.resolve(__dirname, "./showcase")],
+                    exclude: /node_modules/,
                 },
                 {
                     test: /\.css$/i,
@@ -24,13 +26,21 @@ module.exports =  function(env, argv) {
         resolve: {
             extensions: [".tsx", ".ts", ".js", ".css"],
         },
-        externals: ["react", "react-dom"],
+        // externals: ["react", "react-dom"],
         output: {
-            filename: argv["output-filename"],
-            path: path.resolve(__dirname, argv["output-path"]),
-            library: "react-bare-lib",
+            // filename: argv["outputFilename"],
+            filename: "index.js",
+            // path: path.resolve(__dirname, argv["outputPath"]),
+             path: path.resolve(__dirname, "dist"),
+            // library: "react-bare-lib",
             libraryTarget: "umd",
+             clean: true,
         },
-        plugins: [new webpack.IgnorePlugin(/^\.\/locale$/, /react-day-picker$/),]
+        plugins: [
+            // new webpack.IgnorePlugin({
+            //     resourceRegExp: /^\.\/locale$/,
+            //     contextRegExp: /react-day-picker$/,
+            // }),
+        ]
     };
 };

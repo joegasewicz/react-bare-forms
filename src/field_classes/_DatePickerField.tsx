@@ -3,8 +3,8 @@ import { AbstractField } from "./index";
 import { FIELD_NAMES, IDatePicker } from "../elements";
 
 import {_genericFormGroup} from "./_AbstractField";
-import DayPickerInput from "react-day-picker/DayPickerInput";
-import "react-day-picker/lib/style.css";
+import {DayPicker, DayPickerBase} from "react-day-picker";
+import "react-day-picker/src/style.css";
 
 export class DatePickerField<T extends IDatePicker> extends AbstractField<T> implements AbstractField<T> {
     constructor(type: FIELD_NAMES, props: T & IDatePicker) {
@@ -29,17 +29,16 @@ export class DatePickerField<T extends IDatePicker> extends AbstractField<T> imp
     public getField() {
         return () => {
             return (
-                    <DayPickerInput
-                        dayPickerProps={{
-                            className: this.props.datePickerClassNames ? this.props.datePickerClassNames : "",
-                        }}
+                    <DayPicker
+                        className={this.props.datePickerClassNames ? this.props.datePickerClassNames : ""}
                         style={{width: "100%"}}
-                        inputProps={{
-                           style: {display: "block"},
-                           className: `${this.bare ? "" : "form-control"}`
-                       }}
-                       onDayChange={day => this.onHandleChange(day)}
-                       value={this.getStatePositionFromFormKey()[this.props.name]|| ""}
+                       //  inputProps={{
+                       //     style: {display: "block"},
+                       //     className: `${this.bare ? "" : "form-control"}`
+                       // }}
+
+                       // onDayChange={(day: any) => this.onHandleChange(day)}
+                       // value={this.getStatePositionFromFormKey()[this.props.name]|| ""}
                     />
             );
         }
