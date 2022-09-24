@@ -72,12 +72,15 @@ export function FPForm() {
     const [fruitState, updateFruit] = React.useState<any>(undefined);
 
     useEffect(() => {
-        fetchFruit(updateFruit, fpState.fruit);
+        if (!fruitState) {
+               fetchFruit(updateFruit, fpState.fruit);
+        }
+
     }, [fruitState, fpState.fruit]);
 
 
-    const fromDate = new Date("2021-04-01")
-    const toDate = new Date("2021-04-10");
+    const fromDate = new Date("2022-04-01")
+    const toDate = new Date("2022-12-10");
     return <>
         <h2>Form with hooks</h2>
         <Form

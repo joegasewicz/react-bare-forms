@@ -211,7 +211,8 @@ export const isValidDate: IValidationVariable = customValidator((args: [string, 
     const [from, to] = args;
     const fromDate = from ? new Date(from) : null;
     const toDate = to ? new Date(to) : null;
-
+    console.log("fromDat---:", fromDate)
+    console.log("fromDat---:", toDate)
     if (fromDate && toDate) {
         if(fieldValue > fromDate && fieldValue < toDate) {
             isValid = true;
