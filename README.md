@@ -14,7 +14,7 @@ to be the easiest to use form library for React.
 📚 Docs are [here](https://joegasewicz.github.io/react-bare-forms/) 
 ## Install
 ```
-npm install react-bare-forms
+npm install react-bare-forms@v0.2.0-rc
 
 // For react <= 16.*
 npm install react-bare-forms@0.1.19
