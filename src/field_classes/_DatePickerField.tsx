@@ -4,7 +4,7 @@ import { FIELD_NAMES, IDatePicker } from "../elements";
 
 import {_genericFormGroup} from "./_AbstractField";
 import {DayPicker} from "react-day-picker";
-import "react-day-picker/dist/style.css";
+// import "react-day-picker/src/style.css";
 
 export class DatePickerField<T extends IDatePicker> extends AbstractField<T> implements AbstractField<T> {
     constructor(type: FIELD_NAMES, props: T & IDatePicker) {

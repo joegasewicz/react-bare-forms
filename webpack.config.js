@@ -9,7 +9,7 @@ module.exports =  function(env, argv) {
         mode: "development",
         // entry: argv["entry"],
          entry: "./src/index.ts",
-        // devtool: env.mode ? "inline-source-map" : "eval",
+        devtool: env.mode ? "inline-source-map" : "eval",
         module: {
             rules: [
                 {

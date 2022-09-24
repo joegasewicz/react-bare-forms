@@ -34,7 +34,6 @@ const [state, setState] = React.useState(myState);
     state={state}
     context={setState}
     bare={false}
-    autoComplete="off"
     callback={() => console.log("Form submitted!")}>
 
     <TextInputField
@@ -64,7 +63,6 @@ class MyForm {
             state={this.state}
             context={this}
             bare={false}
-            autoComplete="off"
             callback={() => console.log("Form submitted!")}>
         
             <TextInputField
@@ -101,7 +99,6 @@ class MyForm {
             context={this}
             formKey="formData" // <-- Required: Name of our for formData attribute in the state object
             bare={false}
-            autoComplete="off"
             callback={() => console.log("Form submitted!")}>
         
             <TextInputField
