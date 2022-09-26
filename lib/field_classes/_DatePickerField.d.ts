@@ -1,6 +1,7 @@
 import { default as React } from "react";
 import { AbstractField } from "./index";
 import { FIELD_NAMES, IDatePicker } from "../elements";
+import "react-day-picker/src/style.css";
 export declare class DatePickerField<T extends IDatePicker> extends AbstractField<T> implements AbstractField<T> {
     constructor(type: FIELD_NAMES, props: T & IDatePicker);
     create(): JSX.Element;
