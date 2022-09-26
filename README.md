@@ -19,6 +19,11 @@ npm install react-bare-forms
 // For react <= 16.*
 npm install react-bare-forms@0.1.19
 ```
+React Bare forms has 1 peer dependency. React Day Picker also contains CSS, so you may
+require loaders to build css if you're using Webpack or similar.
+```
+npm i -S react-day-picker
+```
 
 ## Usage - Functional Component with Hooks
 A basic form example with a text input field & submit button. Also, note how we import the `isFieldEmpty` function
