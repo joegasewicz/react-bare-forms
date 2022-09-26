@@ -1,6 +1,12 @@
 # Changelog
 
 ### Changed
+
+**Release 0.2.0** - 2022-09-26
+- Update to react 18 [Issue  #170](https://github.com/joegasewicz/react-bare-forms/issues/#170)
+- Update to Bootstrap 5 [Issue  #118](https://github.com/joegasewicz/react-bare-forms/issues/#118)
+- Security issues [Issue  #99](https://github.com/joegasewicz/react-bare-forms/issues/#99)
+
 **Release 0.1.19** - 2021-10-09
 - TS2741: Property 'translate' is missing in type '{ ref: RefObject<HTMLFormElement>; 🐛 [Issue  #143](https://github.com/joegasewicz/react-bare-forms/issues/#143)
 

@@ -15,7 +15,7 @@
       "node_modules/@types/",
       "index.d.ts",
     ],
-    "esModuleInterop": true
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "./src/**/*",

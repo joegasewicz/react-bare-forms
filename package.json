@@ -1,6 +1,6 @@
 {
   "name": "react-bare-forms",
-  "version": "0.2.0-rc",
+  "version": "0.2.0",
   "description": "A bare minimal React form library for quick & simple forms.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -47,9 +47,6 @@
     "@cfaester/enzyme-adapter-react-18": "^0.5.1",
     "@types/enzyme": "^3.10.12",
     "@types/jest": "^29.0.3",
-    "@types/react": "^18.0.21",
-    "@types/react-day-picker": "^5.3.0",
-    "@types/react-dom": "^18.0.6",
     "@types/react-test-renderer": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
@@ -72,7 +69,6 @@
     "webpack-dev-server": "^4.11.1"
   },
   "peerDependencies": {
-    "date-fns": "^2.29.3",
     "react-day-picker": "^8.2.1"
   },
   "files": [

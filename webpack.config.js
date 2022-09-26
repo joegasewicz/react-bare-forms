@@ -8,7 +8,7 @@ module.exports =  function(env, argv) {
         // mode,
         mode: "development",
         // entry: argv["entry"],
-         entry: "./src/index.ts",
+        entry: "./src/index.ts",
         devtool: env.mode ? "inline-source-map" : "eval",
         module: {
             rules: [
@@ -26,15 +26,12 @@ module.exports =  function(env, argv) {
         resolve: {
             extensions: [".tsx", ".ts", ".js", ".css"],
         },
-        // externals: ["react", "react-dom"],
+        externals: ["react", "react-dom"],
         output: {
-            // filename: argv["outputFilename"],
             filename: "index.js",
-            // path: path.resolve(__dirname, argv["outputPath"]),
-             path: path.resolve(__dirname, "dist"),
-            // library: "react-bare-lib",
-            libraryTarget: "umd",
-             clean: true,
+            path: path.resolve(__dirname, "dist"),
+            library: "react-bare-forms",
+            libraryTarget: "umd"
         },
         plugins: [
             // new webpack.IgnorePlugin({
