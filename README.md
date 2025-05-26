@@ -6,6 +6,11 @@
 
 ![ReactBareForms](./images/rbf_logo4.png)
 
+### ⚠️ **Deprecated Repository**  
+This repository is no longer maintained and has been archived.  
+It has been moved to: [https://github.com/josefdigital/react-bare-forms](https://github.com/josefdigital/react-bare-forms)  
+Please update your references accordingly.
+
 React library using React Hooks to build forms & let you switch in & out Bootstrap 5 styling. **React Bare Forms** aka *RBF* aims
 to be the easiest to use form library for React.
 
